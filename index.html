@@ -3,1935 +3,240 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#090a0f">
+<meta name="theme-color" content="#0b0c12">
 <title>LiftRank</title>
-
 <style>
-* {
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-  background: #090a0f;
-  color: #f5f5f7;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
-}
-
-body {
-  min-height: 100vh;
-  padding-bottom: 110px;
-}
-
-button, input, select {
-  font: inherit;
-}
-
-button {
-  border: 0;
-  cursor: pointer;
-}
-
-.app {
-  width: 100%;
-  max-width: 900px;
-  margin: auto;
-  padding: 22px 18px 120px;
-}
-
-/* HEADER */
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-}
-
-.logo {
-  font-size: 34px;
-  font-weight: 800;
-  letter-spacing: -1.5px;
-}
-
-.logo span {
-  color: #7c5cff;
-}
-
-.date {
-  color: #8e94a5;
-  font-size: 15px;
-}
-
-/* GENERAL */
-
-h1 {
-  font-size: 34px;
-  margin: 10px 0 6px;
-  letter-spacing: -1px;
-}
-
-h2 {
-  font-size: 24px;
-  margin: 28px 0 14px;
-}
-
-h3 {
-  margin: 0;
-}
-
-.subtitle {
-  color: #9298aa;
-  font-size: 17px;
-  margin-bottom: 24px;
-}
-
-.hidden {
-  display: none !important;
-}
-
-/* CARDS */
-
-.card {
-  background: #151720;
-  border: 1px solid #292d3a;
-  border-radius: 22px;
-  padding: 20px;
-  margin-bottom: 14px;
-}
-
-.card-title {
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.card-subtitle {
-  color: #9197a8;
-  margin-top: 5px;
-}
-
-/* RANK */
-
-.rank-card {
-  background: linear-gradient(145deg, #19162d, #141521);
-  border: 1px solid #493a83;
-  border-radius: 26px;
-  padding: 24px;
-  margin-bottom: 18px;
-}
-
-.rank-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.rank-label {
-  color: #a1a6b7;
-  font-size: 15px;
-  text-transform: uppercase;
-  letter-spacing: .5px;
-}
-
-.rank-name {
-  font-size: 38px;
-  font-weight: 800;
-  margin: 4px 0;
-}
-
-.rank-circle {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: #7654ff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-  font-weight: 800;
-}
-
-.xp {
-  color: #979dae;
-}
-
-.progress {
-  height: 10px;
-  border-radius: 20px;
-  background: #2b2f3a;
-  overflow: hidden;
-  margin-top: 18px;
-}
-
-.progress-bar {
-  height: 100%;
-  width: 0%;
-  background: #7654ff;
-  transition: width .3s;
-}
-
-.progress-labels {
-  display: flex;
-  justify-content: space-between;
-  color: #8e94a5;
-  font-size: 13px;
-  margin-top: 7px;
-}
-
-/* STATS */
-
-.stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.stat {
-  background: #151720;
-  border: 1px solid #292d3a;
-  border-radius: 21px;
-  padding: 20px;
-}
-
-.stat-label {
-  color: #999faf;
-  font-size: 14px;
-  text-transform: uppercase;
-}
-
-.stat-number {
-  font-size: 31px;
-  font-weight: 800;
-  margin: 6px 0;
-}
-
-.stat-description {
-  color: #949aaa;
-}
-
-/* SEARCH */
-
-.search {
-  width: 100%;
-  padding: 15px 17px;
-  border-radius: 17px;
-  border: 1px solid #303442;
-  background: #151720;
-  color: white;
-  outline: none;
-  margin-bottom: 14px;
-}
-
-.search:focus {
-  border-color: #7654ff;
-}
-
-/* QUICK START */
-
-.quick-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.quick-card {
-  background: #171924;
-  border: 1px solid #2d3140;
-  border-radius: 20px;
-  padding: 18px;
-  min-height: 125px;
-  text-align: left;
-  color: white;
-}
-
-.quick-icon {
-  font-size: 28px;
-  margin-bottom: 10px;
-}
-
-.quick-title {
-  font-weight: 700;
-}
-
-.quick-description {
-  color: #9298a9;
-  font-size: 13px;
-  margin-top: 5px;
-}
-
-/* WORKOUT CATEGORIES */
-
-.category-scroll {
-  display: flex;
-  gap: 9px;
-  overflow-x: auto;
-  padding-bottom: 5px;
-  scrollbar-width: none;
-}
-
-.category-scroll::-webkit-scrollbar {
-  display: none;
-}
-
-.category {
-  white-space: nowrap;
-  padding: 11px 16px;
-  border-radius: 30px;
-  background: #171924;
-  color: #a8adbc;
-  border: 1px solid #2c3040;
-}
-
-.category.active {
-  background: #7654ff;
-  color: white;
-  border-color: #7654ff;
-}
-
-/* WORKOUT CARDS */
-
-.workout-card {
-  background: #171924;
-  border: 1px solid #2c3040;
-  border-radius: 22px;
-  padding: 18px;
-  margin-bottom: 12px;
-}
-
-.workout-header {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.workout-title {
-  font-size: 19px;
-  font-weight: 750;
-}
-
-.workout-meta {
-  color: #9298a9;
-  margin-top: 6px;
-  font-size: 14px;
-}
-
-.badge {
-  padding: 6px 9px;
-  background: #242837;
-  color: #aeb3c1;
-  border-radius: 9px;
-  font-size: 12px;
-  height: fit-content;
-}
-
-.workout-buttons {
-  display: flex;
-  gap: 9px;
-  margin-top: 16px;
-}
-
-/* BUTTONS */
-
-.primary {
-  background: #7654ff;
-  color: white;
-  border-radius: 15px;
-  padding: 13px 18px;
-  font-weight: 700;
-  flex: 1;
-}
-
-.secondary {
-  background: #242836;
-  color: white;
-  border-radius: 15px;
-  padding: 13px 18px;
-  font-weight: 700;
-}
-
-.green {
-  background: #16a085;
-}
-
-.orange {
-  background: #ff641f;
-}
-
-/* EXERCISES */
-
-.exercise-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #171924;
-  border: 1px solid #2b2f3e;
-  border-radius: 17px;
-  padding: 15px;
-  margin-bottom: 9px;
-}
-
-.exercise-info {
-  min-width: 0;
-}
-
-.exercise-name {
-  font-weight: 700;
-}
-
-.exercise-muscle {
-  color: #8e94a5;
-  font-size: 13px;
-  margin-top: 4px;
-}
-
-.exercise-action {
-  background: #7654ff;
-  color: white;
-  border-radius: 11px;
-  padding: 8px 12px;
-  font-weight: 700;
-}
-
-/* FOOD */
-
-.food-library {
-  display: grid;
-  gap: 10px;
-}
-
-.library-row {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 16px;
-  background: #18191f;
-  border-radius: 18px;
-  border: 1px solid #292c35;
-}
-
-.library-icon {
-  font-size: 26px;
-}
-
-.library-arrow {
-  margin-left: auto;
-  color: #747a8b;
-  font-size: 22px;
-}
-
-/* FOOD ITEMS */
-
-.food-item {
-  background: #171924;
-  border: 1px solid #2b2f3e;
-  border-radius: 18px;
-  padding: 16px;
-  margin-bottom: 10px;
-}
-
-.food-name {
-  font-weight: 700;
-}
-
-.food-brand {
-  color: #858b9b;
-  font-size: 13px;
-  margin-top: 3px;
-}
-
-.macros {
-  display: flex;
-  gap: 12px;
-  margin-top: 10px;
-  font-size: 13px;
-}
-
-.cal {
-  color: #ff4d55;
-}
-
-.protein {
-  color: #24d27e;
-}
-
-.carbs {
-  color: #35a7ff;
-}
-
-/* RECIPE */
-
-.recipe-card {
-  background: #171924;
-  border-radius: 20px;
-  border: 1px solid #2c3040;
-  padding: 18px;
-  margin-bottom: 12px;
-}
-
-.recipe-title {
-  font-size: 19px;
-  font-weight: 750;
-}
-
-.recipe-meta {
-  color: #8e94a5;
-  margin: 6px 0 13px;
-}
-
-/* BOTTOM NAV */
-
-.bottom-nav {
-  position: fixed;
-  left: 50%;
-  bottom: max(14px, env(safe-area-inset-bottom));
-  transform: translateX(-50%);
-  width: calc(100% - 28px);
-  max-width: 620px;
-  background: rgba(26,28,37,.94);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid #303442;
-  border-radius: 25px;
-  padding: 7px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  z-index: 100;
-}
-
-.nav-button {
-  background: transparent;
-  color: #8f95a6;
-  padding: 10px 4px;
-  border-radius: 18px;
-  font-size: 12px;
-}
-
-.nav-button.active {
-  background: #20232f;
-  color: white;
-}
-
-.nav-icon {
-  display: block;
-  font-size: 21px;
-  margin-bottom: 3px;
-}
-
-/* MODAL */
-
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.65);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  z-index: 200;
-}
-
-.modal-box {
-  width: 100%;
-  max-width: 650px;
-  max-height: 90vh;
-  overflow-y: auto;
-  background: #151720;
-  border: 1px solid #303442;
-  border-radius: 28px 28px 0 0;
-  padding: 24px 20px 40px;
-}
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 18px;
-}
-
-.close {
-  background: #272b37;
-  color: white;
-  border-radius: 50%;
-  width: 38px;
-  height: 38px;
-  font-size: 20px;
-}
-
-/* FORM */
-
-.field {
-  margin-bottom: 14px;
-}
-
-.field label {
-  display: block;
-  color: #969cac;
-  font-size: 13px;
-  margin-bottom: 7px;
-}
-
-.field input,
-.field select {
-  width: 100%;
-  padding: 14px;
-  background: #101219;
-  color: white;
-  border: 1px solid #303442;
-  border-radius: 14px;
-  outline: none;
-}
-
-/* EMPTY */
-
-.empty {
-  text-align: center;
-  color: #858b9b;
-  padding: 30px 10px;
-}
-
-/* RESPONSIVE */
-
-@media (min-width: 700px) {
-  .quick-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  .stats {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
+:root{
+  --bg:#090a0f;--card:#151821;--card2:#1b1e28;--line:#292e3a;
+  --text:#f5f6fb;--muted:#9299aa;--purple:#7c5cff;--purple2:#9b7cff;
+  --green:#35d07f;--orange:#ffad45;--blue:#4da3ff;--red:#ff6574;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif}
+body{min-height:100vh;padding-bottom:96px}
+button,input,select{font:inherit}
+button{border:0;color:inherit}
+.app{max-width:900px;margin:auto;padding:20px 18px 30px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+.logo{font-size:30px;font-weight:900;letter-spacing:-1.5px}.logo span{color:var(--purple)}
+.date{color:var(--muted);font-size:14px}
+h1{font-size:38px;line-height:1.05;margin:10px 0 6px;letter-spacing:-1.7px}
+h2{font-size:23px;margin:28px 0 14px}
+h3{margin:0 0 8px}
+.sub{color:var(--muted);font-size:17px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:18px;margin:12px 0}
+.rank{background:linear-gradient(145deg,#18152b,#171824);border-color:#493b79}
+.rankrow{display:flex;justify-content:space-between;align-items:center}
+.rankname{font-size:30px;font-weight:800}.badge{width:68px;height:68px;border-radius:50%;background:var(--purple);display:grid;place-items:center;font-size:25px;font-weight:900}
+.progress{height:9px;background:#2b2f39;border-radius:99px;overflow:hidden;margin:18px 0 7px}.progress i{display:block;height:100%;background:var(--purple);border-radius:99px}
+.smallrow{display:flex;justify-content:space-between;color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat{min-height:130px}.stat .label{color:var(--muted);font-size:14px;text-transform:uppercase;letter-spacing:.5px}.stat .num{font-size:34px;font-weight:850;margin:10px 0 3px}.orange{color:var(--orange)}.green{color:var(--green)}.blue{color:var(--blue)}.purple{color:var(--purple)}
+.btn{background:var(--purple);padding:13px 17px;border-radius:15px;font-weight:800;cursor:pointer}.btn.secondary{background:#252a35}.btn.ghost{background:transparent;border:1px solid var(--line)}.btn.green{background:var(--green);color:#07130d}.btn.danger{background:#392028;color:#ff8490}
+.btnrow{display:flex;gap:9px;flex-wrap:wrap}
+.search{width:100%;background:#11141c;border:1px solid var(--line);color:var(--text);padding:14px 16px;border-radius:15px;outline:none}
+.exercise-list,.routine-list{display:grid;gap:10px}
+.item{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#11141b;border:1px solid var(--line);padding:14px;border-radius:17px}
+.item strong{display:block}.meta{color:var(--muted);font-size:13px;margin-top:4px}
+.chips{display:flex;gap:8px;overflow:auto;padding-bottom:4px}.chip{white-space:nowrap;padding:9px 12px;border-radius:999px;background:#20242e;color:#c6cbd7}.chip.active{background:#32285a;color:#fff}
+.hidden{display:none!important}
+.nav{position:fixed;z-index:50;bottom:12px;left:50%;transform:translateX(-50%);width:min(94%,850px);background:#1b1f29eF;backdrop-filter:blur(20px);border:1px solid #363c49;border-radius:26px;padding:7px;display:grid;grid-template-columns:repeat(4,1fr);box-shadow:0 10px 40px #0008}
+.nav button{background:transparent;padding:10px 4px;border-radius:18px;color:var(--muted);font-size:12px}.nav button.active{background:#202531;color:#fff}.nav .ico{display:block;font-size:23px;margin-bottom:2px}
+.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.exercise-card{padding:15px;background:#10131a;border:1px solid var(--line);border-radius:19px;margin:10px 0}
+.exercise-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.setrow{display:grid;grid-template-columns:35px 1fr 1fr 48px 42px;gap:7px;align-items:center;margin:7px 0}
+.setrow input{width:100%;min-width:0;background:#1b1f28;border:1px solid #303643;color:#fff;border-radius:10px;padding:9px;text-align:center}
+.setnum{color:var(--muted);text-align:center}.check{background:#252a34;border-radius:10px;height:39px}.check.done{background:var(--green);color:#07130d}
+.timer{font-size:46px;font-variant-numeric:tabular-nums;font-weight:850;text-align:center;margin:8px 0}
+.timerbox{text-align:center;background:#11141b;border:1px solid var(--line);border-radius:20px;padding:15px}
+.mini{font-size:12px;color:var(--muted)}
+.recipe{background:#11141b;border:1px solid var(--line);border-radius:18px;padding:15px}.recipe p{color:var(--muted);margin:5px 0 12px}
+.recipe ul,.recipe ol{color:#c9ced8;padding-left:20px}.recipe li{margin:6px 0}
+.barrow{margin:12px 0}.barlabel{display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px}.bar{height:12px;background:#292e38;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:var(--purple);border-radius:99px}
+.muscle-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.muscle{background:#11141b;border:1px solid var(--line);border-radius:16px;padding:13px}
+.empty{color:var(--muted);text-align:center;padding:25px}
+.modal{position:fixed;inset:0;background:#05060aeF;z-index:100;overflow:auto;padding:18px}
+.modalinner{max-width:760px;margin:auto;padding-bottom:40px}.modalhead{display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:#090a0fEE;padding:8px 0 14px;backdrop-filter:blur(12px);z-index:2}
+.close{width:42px;height:42px;border-radius:50%;background:#252a34;font-size:22px}
+.toast{position:fixed;z-index:200;left:50%;bottom:105px;transform:translateX(-50%);background:#f4f5f8;color:#101116;padding:12px 16px;border-radius:14px;font-weight:700;box-shadow:0 10px 30px #0008}
+label{display:block;color:var(--muted);font-size:13px;margin:10px 0 5px}
+input,select{background:#11141b;border:1px solid var(--line);color:#fff;border-radius:12px;padding:12px;width:100%}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:520px){h1{font-size:34px}.setrow{grid-template-columns:27px 1fr 1fr 43px 38px}.setrow input{padding:8px 4px}.app{padding-left:14px;padding-right:14px}}
 </style>
 </head>
-
 <body>
-
-<div class="app">
-
-  <!-- HOME -->
-  <section id="homePage" class="page">
-
-    <div class="header">
-      <div class="logo">Lift<span>Rank</span></div>
-      <div class="date" id="todayDate"></div>
-    </div>
-
-    <h1>Welcome back 👋</h1>
-    <div class="subtitle">Let's make today count.</div>
-
-    <div class="rank-card">
-      <div class="rank-top">
-        <div>
-          <div class="rank-label">Current Rank</div>
-          <div class="rank-name" id="rankName">Bronze</div>
-          <div class="xp"><span id="xp">0</span> XP</div>
-        </div>
-
-        <div class="rank-circle" id="rankLetter">B</div>
-      </div>
-
-      <div class="progress">
-        <div class="progress-bar" id="xpBar"></div>
-      </div>
-
-      <div class="progress-labels">
-        <span id="xpStart">0 XP</span>
-        <span id="xpNext">100 XP</span>
-      </div>
-    </div>
-
-    <div class="stats">
-      <div class="stat">
-        <div class="stat-label">Calories</div>
-        <div class="stat-number cal" id="homeCalories">0</div>
-        <div class="stat-description">eaten today</div>
-      </div>
-
-      <div class="stat">
-        <div class="stat-label">Protein</div>
-        <div class="stat-number protein" id="homeProtein">0g</div>
-        <div class="stat-description">today</div>
-      </div>
-
-      <div class="stat">
-        <div class="stat-label">Workouts</div>
-        <div class="stat-number" id="homeWorkouts">0</div>
-        <div class="stat-description">total</div>
-      </div>
-
-      <div class="stat">
-        <div class="stat-label">Volume</div>
-        <div class="stat-number" id="homeVolume">0</div>
-        <div class="stat-description">lbs lifted</div>
-      </div>
-    </div>
-
-    <h2>Quick Start</h2>
-
-    <div class="quick-grid">
-      <button class="quick-card" onclick="startQuickWorkout('Full Body')">
-        <div class="quick-icon">⚡</div>
-        <div class="quick-title">Quick Workout</div>
-        <div class="quick-description">Start a fast full-body workout</div>
-      </button>
-
-      <button class="quick-card" onclick="startQuickWorkout('Chest')">
-        <div class="quick-icon">🏋️</div>
-        <div class="quick-title">Chest</div>
-        <div class="quick-description">Chest-focused workout</div>
-      </button>
-
-      <button class="quick-card" onclick="startQuickWorkout('Back')">
-        <div class="quick-icon">💪</div>
-        <div class="quick-title">Back</div>
-        <div class="quick-description">Build your back</div>
-      </button>
-
-      <button class="quick-card" onclick="startQuickWorkout('Legs')">
-        <div class="quick-icon">🦵</div>
-        <div class="quick-title">Legs</div>
-        <div class="quick-description">Train your lower body</div>
-      </button>
-    </div>
-
-    <h2>Recommended</h2>
-
-    <div id="recommendedWorkouts"></div>
-
-  </section>
-
-
-  <!-- WORKOUT PAGE -->
-  <section id="workoutPage" class="page hidden">
-
-    <div class="header">
-      <div>
-        <div class="logo">Workouts</div>
-        <div class="subtitle" style="margin:4px 0 0">Find your next workout.</div>
-      </div>
-
-      <button class="secondary" onclick="openCreateRoutine()">＋</button>
-    </div>
-
-    <input
-      id="workoutSearch"
-      class="search"
-      placeholder="Search workouts or exercises..."
-      oninput="renderWorkoutLibrary()"
-    >
-
-    <div class="category-scroll" id="workoutCategories"></div>
-
-    <h2>My Routines</h2>
-
-    <div id="myRoutines"></div>
-
-    <h2>Workout Library</h2>
-
-    <div id="workoutLibrary"></div>
-
-  </section>
-
-
-  <!-- FOOD PAGE -->
-  <section id="foodPage" class="page hidden">
-
-    <div class="header">
-      <div>
-        <div class="logo">Food</div>
-        <div class="subtitle" style="margin:4px 0 0">Track food without making it complicated.</div>
-      </div>
-    </div>
-
-    <div class="stats">
-      <div class="stat">
-        <div class="stat-label">Calories</div>
-        <div class="stat-number cal" id="foodCalories">0</div>
-        <div class="stat-description">today</div>
-      </div>
-
-      <div class="stat">
-        <div class="stat-label">Protein</div>
-        <div class="stat-number protein" id="foodProtein">0g</div>
-        <div class="stat-description">today</div>
-      </div>
-    </div>
-
-    <h2>Library</h2>
-
-    <div class="food-library">
-
-      <button class="library-row" onclick="showFoodSection('foods')">
-        <div class="library-icon">🥕</div>
-        <div>
-          <div class="card-title">Foods</div>
-          <div class="card-subtitle">Search individual foods</div>
-        </div>
-        <div class="library-arrow">›</div>
-      </button>
-
-      <button class="library-row" onclick="showFoodSection('recipes')">
-        <div class="library-icon">📖</div>
-        <div>
-          <div class="card-title">Recipes</div>
-          <div class="card-subtitle">Save and use your recipes</div>
-        </div>
-        <div class="library-arrow">›</div>
-      </button>
-
-      <button class="library-row" onclick="showFoodSection('meals')">
-        <div class="library-icon">🍱</div>
-        <div>
-          <div class="card-title">Meals</div>
-          <div class="card-subtitle">Build reusable meals</div>
-        </div>
-        <div class="library-arrow">›</div>
-      </button>
-
-    </div>
-
-    <h2>Today's Food</h2>
-
-    <input
-      id="foodSearch"
-      class="search"
-      placeholder="Search foods..."
-      oninput="renderFoods()"
-    >
-
-    <div id="foodList"></div>
-
-    <h2>Recipes</h2>
-
-    <div id="recipeList"></div>
-
-  </section>
-
-
-  <!-- PROGRESS -->
-  <section id="progressPage" class="page hidden">
-
-    <div class="header">
-      <div>
-        <div class="logo">Progress</div>
-        <div class="subtitle" style="margin:4px 0 0">See how you're improving.</div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">Your Rank</div>
-      <div style="font-size:42px;font-weight:800;margin-top:8px" id="progressRank">
-        Bronze
-      </div>
-      <div class="card-subtitle">
-        Keep earning XP to level up.
-      </div>
-    </div>
-
-    <div class="stats">
-      <div class="stat">
-        <div class="stat-label">Total XP</div>
-        <div class="stat-number" id="progressXP">0</div>
-      </div>
-
-      <div class="stat">
-        <div class="stat-label">Workouts</div>
-        <div class="stat-number" id="progressWorkouts">0</div>
-      </div>
-
-      <div class="stat">
-        <div class="stat-label">Volume</div>
-        <div class="stat-number" id="progressVolume">0</div>
-      </div>
-
-      <div class="stat">
-        <div class="stat-label">Exercises</div>
-        <div class="stat-number" id="progressExercises">0</div>
-      </div>
-    </div>
-
-    <h2>Muscles Trained</h2>
-
-    <div id="muscleProgress"></div>
-
-  </section>
-
-</div>
-
-
-<!-- BOTTOM NAV -->
-
-<nav class="bottom-nav">
-
-  <button class="nav-button active" onclick="showPage('homePage', this)">
-    <span class="nav-icon">🏠</span>
-    Home
-  </button>
-
-  <button class="nav-button" onclick="showPage('workoutPage', this)">
-    <span class="nav-icon">🏋️</span>
-    Workout
-  </button>
-
-  <button class="nav-button" onclick="showPage('foodPage', this)">
-    <span class="nav-icon">🍎</span>
-    Food
-  </button>
-
-  <button class="nav-button" onclick="showPage('progressPage', this)">
-    <span class="nav-icon">📈</span>
-    Progress
-  </button>
-
+<div id="app"></div>
+<div id="modal" class="modal hidden"></div>
+<div id="toast" class="toast hidden"></div>
+
+<nav class="nav">
+  <button data-tab="home" onclick="showTab('home')"><span class="ico">🏠</span>Home</button>
+  <button data-tab="workout" onclick="showTab('workout')"><span class="ico">🏋️</span>Workout</button>
+  <button data-tab="food" onclick="showTab('food')"><span class="ico">🍎</span>Food</button>
+  <button data-tab="progress" onclick="showTab('progress')"><span class="ico">📈</span>Progress</button>
 </nav>
 
-
-<!-- MODAL -->
-
-<div id="modal" class="modal hidden" onclick="closeModalOutside(event)">
-  <div class="modal-box" id="modalContent"></div>
-</div>
-
-
 <script>
+const KEY="liftrank_v3";
+const today=()=>new Date().toISOString().slice(0,10);
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 
-/* =========================
-   DATA
-========================= */
+const defaultExercises=[
+ ["Bench Press","Chest","Barbell"],["Incline Dumbbell Press","Chest","Dumbbell"],["Chest Fly","Chest","Machine"],
+ ["Lat Pulldown","Back","Machine"],["Seated Row","Back","Machine"],["One-Arm Dumbbell Row","Back","Dumbbell"],
+ ["Shoulder Press","Shoulders","Machine"],["Lateral Raise","Shoulders","Dumbbell"],["Rear Delt Fly","Shoulders","Machine"],
+ ["Bicep Curl","Biceps","Dumbbell"],["Hammer Curl","Biceps","Dumbbell"],["Tricep Pushdown","Triceps","Cable"],
+ ["Overhead Tricep Extension","Triceps","Cable"],["Leg Press","Quads","Machine"],["Leg Extension","Quads","Machine"],
+ ["Leg Curl","Hamstrings","Machine"],["Romanian Deadlift","Hamstrings","Barbell"],["Hip Thrust","Glutes","Barbell"],
+ ["Calf Raise","Calves","Machine"],["Plank","Core","Bodyweight"]
+].map(([name,muscle,equipment])=>({id:uid(),name,muscle,equipment}));
 
-let state = JSON.parse(localStorage.getItem("liftrank_v2")) || {
-  xp: 0,
-  workouts: 0,
-  volume: 0,
-  exercises: 0,
-  calories: 0,
-  protein: 0,
-  routines: [],
-  foodLog: [],
-  muscle: {}
+const defaultRoutines=[
+ {id:uid(),name:"Push Day",desc:"Chest • Shoulders • Triceps",ex:["Bench Press","Incline Dumbbell Press","Shoulder Press","Lateral Raise","Tricep Pushdown"]},
+ {id:uid(),name:"Pull Day",desc:"Back • Biceps",ex:["Lat Pulldown","Seated Row","Rear Delt Fly","Bicep Curl","Hammer Curl"]},
+ {id:uid(),name:"Leg Day",desc:"Quads • Hamstrings • Glutes • Calves",ex:["Leg Press","Leg Extension","Leg Curl","Hip Thrust","Calf Raise"]},
+ {id:uid(),name:"Full Body",desc:"A little of everything",ex:["Leg Press","Bench Press","Lat Pulldown","Shoulder Press","Bicep Curl","Tricep Pushdown"]}
+];
+
+let db=JSON.parse(localStorage.getItem(KEY)||"null")||{
+ xp:0, workouts:[], food:[], routines:defaultRoutines, exercises:defaultExercises
 };
+if(!db.exercises?.length) db.exercises=defaultExercises;
+if(!db.routines?.length) db.routines=defaultRoutines;
+let activeTab="home", activeWorkout=null, timerInt=null, timerSec=0;
 
-let selectedCategory = "All";
-
-const exercises = [
-
-  {name:"Bench Press", muscle:"Chest"},
-  {name:"Incline Dumbbell Press", muscle:"Chest"},
-  {name:"Chest Fly", muscle:"Chest"},
-  {name:"Push Ups", muscle:"Chest"},
-
-  {name:"Lat Pulldown", muscle:"Back"},
-  {name:"Seated Cable Row", muscle:"Back"},
-  {name:"Dumbbell Row", muscle:"Back"},
-  {name:"Pull Ups", muscle:"Back"},
-
-  {name:"Squat", muscle:"Legs"},
-  {name:"Leg Press", muscle:"Legs"},
-  {name:"Romanian Deadlift", muscle:"Legs"},
-  {name:"Leg Extension", muscle:"Legs"},
-  {name:"Leg Curl", muscle:"Legs"},
-
-  {name:"Shoulder Press", muscle:"Shoulders"},
-  {name:"Lateral Raise", muscle:"Shoulders"},
-  {name:"Front Raise", muscle:"Shoulders"},
-
-  {name:"Bicep Curl", muscle:"Arms"},
-  {name:"Hammer Curl", muscle:"Arms"},
-  {name:"Tricep Pushdown", muscle:"Arms"},
-  {name:"Tricep Extension", muscle:"Arms"},
-
-  {name:"Crunch", muscle:"Core"},
-  {name:"Plank", muscle:"Core"},
-  {name:"Hanging Leg Raise", muscle:"Core"},
-  {name:"Russian Twist", muscle:"Core"}
-];
-
-
-const workouts = [
-
-  {
-    id:1,
-    name:"Full Body Starter",
-    muscle:"Full Body",
-    duration:"30 min",
-    difficulty:"Beginner",
-    exercises:[
-      ["Squat",3,10],
-      ["Bench Press",3,10],
-      ["Lat Pulldown",3,10],
-      ["Shoulder Press",3,10],
-      ["Crunch",3,15]
-    ]
-  },
-
-  {
-    id:2,
-    name:"Chest Builder",
-    muscle:"Chest",
-    duration:"40 min",
-    difficulty:"Intermediate",
-    exercises:[
-      ["Bench Press",4,8],
-      ["Incline Dumbbell Press",3,10],
-      ["Chest Fly",3,12],
-      ["Push Ups",3,12]
-    ]
-  },
-
-  {
-    id:3,
-    name:"Back Builder",
-    muscle:"Back",
-    duration:"40 min",
-    difficulty:"Intermediate",
-    exercises:[
-      ["Lat Pulldown",4,10],
-      ["Seated Cable Row",3,10],
-      ["Dumbbell Row",3,10],
-      ["Pull Ups",3,8]
-    ]
-  },
-
-  {
-    id:4,
-    name:"Leg Day",
-    muscle:"Legs",
-    duration:"45 min",
-    difficulty:"Intermediate",
-    exercises:[
-      ["Squat",4,8],
-      ["Leg Press",3,10],
-      ["Romanian Deadlift",3,10],
-      ["Leg Extension",3,12],
-      ["Leg Curl",3,12]
-    ]
-  },
-
-  {
-    id:5,
-    name:"Shoulder & Arms",
-    muscle:"Shoulders",
-    duration:"35 min",
-    difficulty:"Intermediate",
-    exercises:[
-      ["Shoulder Press",3,10],
-      ["Lateral Raise",3,12],
-      ["Bicep Curl",3,10],
-      ["Tricep Pushdown",3,10]
-    ]
-  },
-
-  {
-    id:6,
-    name:"Core Crusher",
-    muscle:"Core",
-    duration:"20 min",
-    difficulty:"Beginner",
-    exercises:[
-      ["Crunch",3,15],
-      ["Plank",3,30],
-      ["Hanging Leg Raise",3,10],
-      ["Russian Twist",3,15]
-    ]
-  }
-
-];
-
-
-const foods = [
-
-  {name:"Chicken Breast", brand:"Generic", calories:165, protein:31, carbs:0, fat:3.6},
-  {name:"Egg", brand:"Generic", calories:72, protein:6, carbs:.4, fat:5},
-  {name:"Greek Yogurt", brand:"Generic", calories:100, protein:17, carbs:6, fat:0},
-  {name:"Rice", brand:"Cooked", calories:205, protein:4, carbs:45, fat:.4},
-  {name:"Banana", brand:"Generic", calories:105, protein:1.3, carbs:27, fat:.4},
-  {name:"Oatmeal", brand:"Generic", calories:150, protein:5, carbs:27, fat:3},
-  {name:"Protein Shake", brand:"LiftRank", calories:200, protein:30, carbs:8, fat:4},
-  {name:"Peanut Butter", brand:"Generic", calories:190, protein:7, carbs:7, fat:16}
-
-];
-
-
-const recipes = [
-
-  {
-    name:"Protein Yogurt Bowl",
-    description:"Greek yogurt, fruit and protein",
-    calories:350,
-    protein:35,
-    carbs:30,
-    fat:7
-  },
-
-  {
-    name:"Chicken Rice Bowl",
-    description:"Chicken breast, rice and vegetables",
-    calories:520,
-    protein:45,
-    carbs:55,
-    fat:10
-  },
-
-  {
-    name:"High Protein Oatmeal",
-    description:"Oats, protein powder and banana",
-    calories:420,
-    protein:30,
-    carbs:55,
-    fat:9
-  }
-
-];
-
-
-/* =========================
-   SAVE
-========================= */
-
-function save() {
-  localStorage.setItem("liftrank_v2", JSON.stringify(state));
+function save(){localStorage.setItem(KEY,JSON.stringify(db))}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function rank(){
+ const x=db.xp;
+ if(x>=5000)return["Diamond","D",5000];
+ if(x>=2500)return["Platinum","P",2500];
+ if(x>=1200)return["Gold","G",1200];
+ if(x>=600)return["Silver","S",600];
+ if(x>=250)return["Bronze+","B+",250];
+ return["Bronze","B",0];
 }
-
-
-/* =========================
-   RANK SYSTEM
-========================= */
-
-function getRank() {
-
-  if(state.xp >= 5000) return ["Diamond","D",5000,10000];
-  if(state.xp >= 2500) return ["Platinum","P",2500,5000];
-  if(state.xp >= 1000) return ["Gold","G",1000,2500];
-  if(state.xp >= 500) return ["Silver","S",500,1000];
-
-  return ["Bronze","B",0,500];
+function xpToNext(){const x=db.xp; if(x<250)return 250; if(x<600)return 600;if(x<1200)return 1200;if(x<2500)return 2500;if(x<5000)return 5000;return 5000}
+function volume(){return db.workouts.reduce((a,w)=>a+(w.exercises||[]).reduce((b,e)=>b+(e.sets||[]).reduce((c,s)=>c+(+s.weight||0)*(+s.reps||0),0),0),0)}
+function todayFood(){return db.food.filter(x=>x.date===today()).reduce((a,x)=>({cal:a.cal+(+x.cal||0),protein:a.protein+(+x.protein||0)}),{cal:0,protein:0})}
+function musclesForRange(days){
+ const cutoff=new Date();cutoff.setDate(cutoff.getDate()-days+1);
+ const counts={};
+ db.workouts.filter(w=>new Date(w.date)>=cutoff).forEach(w=>(w.exercises||[]).forEach(e=>{
+   const ex=db.exercises.find(x=>x.name===e.name); if(ex) counts[ex.muscle]=(counts[ex.muscle]||0)+(e.sets||[]).filter(s=>s.done).length;
+ }));
+ return counts;
 }
-
-
-function updateStats() {
-
-  const rank = getRank();
-
-  document.getElementById("rankName").textContent = rank[0];
-  document.getElementById("rankLetter").textContent = rank[1];
-
-  document.getElementById("xp").textContent = state.xp;
-
-  const progress =
-    ((state.xp - rank[2]) / (rank[3] - rank[2])) * 100;
-
-  document.getElementById("xpBar").style.width =
-    Math.min(100, Math.max(0, progress)) + "%";
-
-  document.getElementById("xpStart").textContent = rank[2] + " XP";
-  document.getElementById("xpNext").textContent = rank[3] + " XP";
-
-  document.getElementById("homeCalories").textContent = state.calories;
-  document.getElementById("homeProtein").textContent = state.protein + "g";
-  document.getElementById("homeWorkouts").textContent = state.workouts;
-  document.getElementById("homeVolume").textContent = state.volume;
-
-  document.getElementById("foodCalories").textContent = state.calories;
-  document.getElementById("foodProtein").textContent = state.protein + "g";
-
-  document.getElementById("progressRank").textContent = rank[0];
-  document.getElementById("progressXP").textContent = state.xp;
-  document.getElementById("progressWorkouts").textContent = state.workouts;
-  document.getElementById("progressVolume").textContent = state.volume;
-  document.getElementById("progressExercises").textContent = state.exercises;
-
-  renderMuscles();
+function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.remove("hidden");setTimeout(()=>t.classList.add("hidden"),1800)}
+function showTab(tab){activeTab=tab;render()}
+function render(){
+ const r=rank(),food=todayFood(),next=xpToNext(),pct=Math.min(100,Math.round((db.xp/(next||1))*100));
+ document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.tab===activeTab));
+ let html="";
+ if(activeTab==="home") html=homeHTML(r,food,next,pct);
+ if(activeTab==="workout") html=workoutHTML();
+ if(activeTab==="food") html=foodHTML(food);
+ if(activeTab==="progress") html=progressHTML();
+ document.getElementById("app").innerHTML=`<main class="app">${html}</main>`;
 }
-
-
-/* =========================
-   NAVIGATION
-========================= */
-
-function showPage(pageId, button) {
-
-  document.querySelectorAll(".page").forEach(page => {
-    page.classList.add("hidden");
-  });
-
-  document.getElementById(pageId).classList.remove("hidden");
-
-  document.querySelectorAll(".nav-button").forEach(btn => {
-    btn.classList.remove("active");
-  });
-
-  if(button) button.classList.add("active");
-
-  if(pageId === "workoutPage") {
-    renderWorkoutLibrary();
-  }
-
-  if(pageId === "foodPage") {
-    renderFoods();
-    renderRecipes();
-  }
-
-  if(pageId === "homePage") {
-    renderRecommended();
-  }
+function homeHTML(r,food,next,pct){
+ return `<div class="top"><div class="logo">Lift<span>Rank</span></div><div class="date">${new Date().toLocaleDateString(undefined,{weekday:"short",month:"short",day:"numeric"})}</div></div>
+ <h1>Welcome back 👋</h1><div class="sub">Let's make today count.</div>
+ <div class="card rank"><div class="rankrow"><div><div class="mini">CURRENT RANK</div><div class="rankname">${r[0]}</div><div class="sub">${db.xp} XP</div></div><div class="badge">${r[1]}</div></div>
+ <div class="progress"><i style="width:${pct}%"></i></div><div class="smallrow"><span>${db.xp} XP</span><span>${next} XP</span></div></div>
+ <div class="grid">
+  <div class="card stat"><div class="label">Calories</div><div class="num orange">${food.cal}</div><div class="sub">eaten today</div></div>
+  <div class="card stat"><div class="label">Protein</div><div class="num green">${Math.round(food.protein)}g</div><div class="sub">today</div></div>
+  <div class="card stat"><div class="label">Workouts</div><div class="num purple">${db.workouts.length}</div><div class="sub">total</div></div>
+  <div class="card stat"><div class="label">Volume</div><div class="num blue">${Math.round(volume()).toLocaleString()}</div><div class="sub">lbs lifted</div></div>
+ </div>
+ <h2>Quick Start</h2><div class="routine-list">${db.routines.slice(0,4).map(x=>`<div class="item"><div><strong>${esc(x.name)}</strong><div class="meta">${esc(x.desc)}</div></div><button class="btn" onclick="startRoutine('${x.id}')">Start</button></div>`).join("")}</div>`;
 }
-
-
-/* =========================
-   WORKOUT LIBRARY
-========================= */
-
-function renderWorkoutCategories() {
-
-  const categories = [
-    "All",
-    "Chest",
-    "Back",
-    "Legs",
-    "Shoulders",
-    "Arms",
-    "Core",
-    "Full Body"
-  ];
-
-  document.getElementById("workoutCategories").innerHTML =
-    categories.map(category => `
-      <button
-        class="category ${selectedCategory === category ? "active" : ""}"
-        onclick="selectCategory('${category}')">
-        ${category}
-      </button>
-    `).join("");
+function workoutHTML(){
+ return `<div class="top"><div><div class="logo">Lift<span>Rank</span></div><div class="sub">Build your workout.</div></div><button class="btn" onclick="newWorkout()">＋ Start Empty</button></div>
+ <div class="chips"><button class="chip active">All</button><button class="chip">Chest</button><button class="chip">Back</button><button class="chip">Legs</button><button class="chip">Shoulders</button></div>
+ <input id="exerciseSearch" class="search" placeholder="Search exercises..." oninput="filterExercises(this.value)">
+ <h2>Routines</h2><div class="routine-list">${db.routines.map(x=>`<div class="item"><div><strong>${esc(x.name)}</strong><div class="meta">${esc(x.desc)} • ${x.ex.length} exercises</div></div><div class="btnrow"><button class="btn secondary" onclick="startRoutine('${x.id}')">Fast Start</button></div></div>`).join("")}</div>
+ <h2>Exercises</h2><div id="exerciseList" class="exercise-list">${exerciseItems(db.exercises)}</div>`;
 }
-
-
-function selectCategory(category) {
-
-  selectedCategory = category;
-  renderWorkoutCategories();
-  renderWorkoutLibrary();
+function exerciseItems(list){
+ return list.map(x=>`<div class="item"><div><strong>${esc(x.name)}</strong><div class="meta">${esc(x.muscle)} • ${esc(x.equipment)}</div></div><button class="btn secondary" onclick="addExerciseToNew('${x.name.replace(/'/g,"\\'")}')">Add</button></div>`).join("")||`<div class="empty">No exercises found.</div>`;
 }
-
-
-function renderWorkoutLibrary() {
-
-  renderWorkoutCategories();
-
-  const search =
-    document.getElementById("workoutSearch").value.toLowerCase();
-
-  let list = workouts.filter(workout => {
-
-    const categoryMatch =
-      selectedCategory === "All" ||
-      workout.muscle === selectedCategory;
-
-    const searchMatch =
-      workout.name.toLowerCase().includes(search) ||
-      workout.muscle.toLowerCase().includes(search) ||
-      workout.exercises.some(e =>
-        e[0].toLowerCase().includes(search)
-      );
-
-    return categoryMatch && searchMatch;
-  });
-
-  document.getElementById("workoutLibrary").innerHTML =
-    list.length
-      ? list.map(workoutCard).join("")
-      : `<div class="empty">No workouts found.</div>`;
-
-  renderRoutines();
+function filterExercises(q){const list=db.exercises.filter(x=>(x.name+" "+x.muscle+" "+x.equipment).toLowerCase().includes(q.toLowerCase()));document.getElementById("exerciseList").innerHTML=exerciseItems(list)}
+function foodHTML(food){
+ return `<div class="top"><div><div class="logo">Lift<span>Rank</span></div><div class="sub">Fuel your training.</div></div><button class="btn" onclick="openFoodForm()">＋ Log Food</button></div>
+ <div class="grid"><div class="card stat"><div class="label">Calories</div><div class="num orange">${food.cal}</div><div class="sub">today</div></div><div class="card stat"><div class="label">Protein</div><div class="num green">${Math.round(food.protein)}g</div><div class="sub">today</div></div></div>
+ <h2>Recipes</h2><div class="routine-list">
+ ${recipe("High-Protein Chicken Bowl","~520 cal • 48g protein",["5 oz cooked chicken","1 cup cooked rice","1 cup vegetables","2 tbsp Greek yogurt sauce"],["Cook or reheat chicken and rice.","Add vegetables and top with Greek yogurt sauce."])}
+ ${recipe("Protein Oatmeal","~390 cal • 30g protein",["1/2 cup oats","1 cup milk","1 scoop protein powder","1/2 banana"],["Cook oats with milk.","Stir in protein powder after cooking and add banana."])}
+ ${recipe("Greek Yogurt Berry Bowl","~300 cal • 25g protein",["1 cup Greek yogurt","1 cup berries","1 tbsp peanut butter","1 tbsp granola"],["Combine yogurt and berries.","Top with peanut butter and granola."])}
+ </div>
+ <h2>Today's Food</h2><div class="routine-list">${db.food.filter(x=>x.date===today()).map((x,i)=>`<div class="item"><div><strong>${esc(x.name)}</strong><div class="meta">${x.cal} cal • ${x.protein}g protein</div></div><button class="btn danger" onclick="deleteFood(${i})">Delete</button></div>`).join("")||`<div class="empty">Nothing logged yet.</div>`}</div>`;
 }
-
-
-function workoutCard(workout) {
-
-  return `
-    <div class="workout-card">
-
-      <div class="workout-header">
-
-        <div>
-          <div class="workout-title">${workout.name}</div>
-          <div class="workout-meta">
-            ${workout.muscle} • ${workout.duration}
-          </div>
-        </div>
-
-        <div class="badge">${workout.difficulty}</div>
-
-      </div>
-
-      <div class="workout-meta">
-        ${workout.exercises.length} exercises
-      </div>
-
-      <div class="workout-buttons">
-
-        <button
-          class="primary"
-          onclick="startWorkout(${workout.id})">
-          ▶ Start Workout
-        </button>
-
-        <button
-          class="secondary"
-          onclick="viewWorkout(${workout.id})">
-          View
-        </button>
-
-      </div>
-
-    </div>
-  `;
+function recipe(name,meta,ingredients,steps){
+ return `<div class="recipe"><h3>${esc(name)}</h3><p>${esc(meta)}</p><strong>Ingredients</strong><ul>${ingredients.map(x=>`<li>${esc(x)}</li>`).join("")}</ul><strong>Steps</strong><ol>${steps.map(x=>`<li>${esc(x)}</li>`).join("")}</ol><button class="btn secondary" onclick="openFoodForm('${name.replace(/'/g,"\\'")}')">Log this recipe</button></div>`;
 }
-
-
-/* =========================
-   RECOMMENDED
-========================= */
-
-function renderRecommended() {
-
-  document.getElementById("recommendedWorkouts").innerHTML =
-    workouts.slice(0,3).map(workoutCard).join("");
+function progressHTML(){
+ const day=musclesForRange(1),week=musclesForRange(7),max=Math.max(1,...Object.values(week));
+ const muscles=["Chest","Back","Shoulders","Biceps","Triceps","Quads","Hamstrings","Glutes","Calves","Core"];
+ const bars=(data)=>muscles.map(m=>`<div class="barrow"><div class="barlabel"><span>${m}</span><span>${data[m]||0} sets</span></div><div class="bar"><i style="width:${Math.min(100,((data[m]||0)/max)*100)}%"></i></div></div>`).join("");
+ return `<div class="top"><div><div class="logo">Lift<span>Rank</span></div><div class="sub">See what you've trained.</div></div></div>
+ <div class="card"><div class="sectionhead"><div><h3>Muscles Today</h3><div class="meta">Completed sets by muscle</div></div></div>${bars(day)}</div>
+ <div class="card"><div class="sectionhead"><div><h3>Muscles This Week</h3><div class="meta">Last 7 days</div></div></div>${bars(week)}</div>
+ <div class="card"><h3>Muscle Map</h3><div class="muscle-grid">${muscles.map(m=>`<div class="muscle"><strong>${m}</strong><div class="meta">${week[m]||0} completed sets</div></div>`).join("")}</div></div>`;
 }
-
-
-/* =========================
-   START WORKOUT
-========================= */
-
-function startQuickWorkout(muscle) {
-
-  let workout =
-    workouts.find(w => w.muscle === muscle);
-
-  if(!workout) workout = workouts[0];
-
-  startWorkout(workout.id);
+function newWorkout(){openWorkout({name:"Quick Workout",exercises:[]})}
+function startRoutine(id){const r=db.routines.find(x=>x.id===id);openWorkout({name:r.name,exercises:r.ex.map(n=>({name:n,sets:[makeSet(),makeSet(),makeSet()]}))})}
+function addExerciseToNew(name){
+ if(!activeWorkout){newWorkout();setTimeout(()=>addExerciseToNew(name),50);return}
+ activeWorkout.exercises.push({name,sets:[makeSet(),makeSet(),makeSet()]});renderWorkoutModal();toast("Exercise added")
 }
-
-
-function startWorkout(id) {
-
-  const workout = workouts.find(w => w.id === id);
-
-  if(!workout) return;
-
-  let html = `
-    <div class="modal-header">
-      <div>
-        <h2 style="margin:0">${workout.name}</h2>
-        <div class="card-subtitle">
-          ${workout.duration} • ${workout.difficulty}
-        </div>
-      </div>
-
-      <button class="close" onclick="closeModal()">×</button>
-    </div>
-
-    <h3 style="margin-bottom:14px">Exercises</h3>
-  `;
-
-  workout.exercises.forEach((exercise,index) => {
-
-    html += `
-      <div class="exercise-row">
-
-        <div class="exercise-info">
-          <div class="exercise-name">
-            ${index + 1}. ${exercise[0]}
-          </div>
-
-          <div class="exercise-muscle">
-            ${exercise[1]} sets × ${exercise[2]} reps
-          </div>
-        </div>
-
-      </div>
-    `;
-  });
-
-  html += `
-    <button
-      class="primary green"
-      style="width:100%;margin-top:12px"
-      onclick="completeWorkout(${workout.id})">
-      ✓ Complete Workout
-    </button>
-  `;
-
-  openModal(html);
+function makeSet(){return {weight:"",reps:"",done:false}}
+function openWorkout(w){activeWorkout={...w,start:Date.now()};timerSec=0;clearInterval(timerInt);timerInt=setInterval(()=>{timerSec++;const el=document.getElementById("elapsed");if(el)el.textContent=formatTime(timerSec)},1000);renderWorkoutModal()}
+function renderWorkoutModal(){
+ const m=document.getElementById("modal");m.classList.remove("hidden");
+ m.innerHTML=`<div class="modalinner"><div class="modalhead"><div><strong>${esc(activeWorkout.name)}</strong><div class="mini">Workout in progress</div></div><button class="close" onclick="confirmCloseWorkout()">×</button></div>
+ <div class="timerbox"><div class="mini">ELAPSED</div><div id="elapsed" class="timer">${formatTime(timerSec)}</div><div class="btnrow" style="justify-content:center"><button class="btn secondary" onclick="startRest()">Rest Timer</button></div></div>
+ <div id="activeExercises">${activeWorkout.exercises.map((e,ei)=>exerciseEditor(e,ei)).join("")}</div>
+ <div class="btnrow"><button class="btn secondary" onclick="chooseExercise()">＋ Add Exercise</button><button class="btn green" onclick="finishWorkout()">Finish Workout</button></div></div>`;
 }
-
-
-function completeWorkout(id) {
-
-  const workout = workouts.find(w => w.id === id);
-
-  state.workouts++;
-  state.exercises += workout.exercises.length;
-
-  state.xp += 100;
-
-  state.volume +=
-    workout.exercises.reduce(
-      (total,e) => total + (e[1] * e[2] * 10),
-      0
-    );
-
-  workout.exercises.forEach(e => {
-
-    const muscle =
-      exercises.find(x => x.name === e[0])?.muscle || workout.muscle;
-
-    state.muscle[muscle] =
-      (state.muscle[muscle] || 0) + 1;
-
-  });
-
-  save();
-  updateStats();
-  closeModal();
-
-  alert("Workout completed! 💪 +100 XP");
-
+function exerciseEditor(e,ei){
+ return `<div class="exercise-card"><div class="exercise-head"><div><strong>${esc(e.name)}</strong><div class="meta">${esc(db.exercises.find(x=>x.name===e.name)?.muscle||"")}</div></div><button class="btn danger" onclick="removeExercise(${ei})">Remove</button></div>
+ <div class="setrow mini"><span>SET</span><span>WEIGHT (LB)</span><span>REPS</span><span></span><span></span></div>
+ ${e.sets.map((s,si)=>`<div class="setrow"><span class="setnum">${si+1}</span><input inputmode="decimal" value="${s.weight}" placeholder="0" onchange="setVal(${ei},${si},'weight',this.value)"><input inputmode="numeric" value="${s.reps}" placeholder="0" onchange="setVal(${ei},${si},'reps',this.value)"><button class="check ${s.done?"done":""}" onclick="toggleSet(${ei},${si})">${s.done?"✓":"○"}</button><button class="check" onclick="removeSet(${ei},${si})">−</button></div>`).join("")}
+ <button class="btn secondary" onclick="addSet(${ei})">＋ Add Set</button></div>`;
 }
-
-
-/* =========================
-   VIEW WORKOUT
-========================= */
-
-function viewWorkout(id) {
-
-  const workout = workouts.find(w => w.id === id);
-
-  let html = `
-    <div class="modal-header">
-      <div>
-        <h2 style="margin:0">${workout.name}</h2>
-        <div class="card-subtitle">
-          ${workout.muscle} • ${workout.duration}
-        </div>
-      </div>
-
-      <button class="close" onclick="closeModal()">×</button>
-    </div>
-  `;
-
-  workout.exercises.forEach(e => {
-
-    html += `
-      <div class="exercise-row">
-
-        <div class="exercise-info">
-          <div class="exercise-name">${e[0]}</div>
-          <div class="exercise-muscle">
-            ${e[1]} sets × ${e[2]} reps
-          </div>
-        </div>
-
-      </div>
-    `;
-  });
-
-  html += `
-    <button
-      class="primary"
-      style="width:100%;margin-top:12px"
-      onclick="startWorkout(${id})">
-      ▶ Start Workout
-    </button>
-  `;
-
-  openModal(html);
+function setVal(e,s,k,v){activeWorkout.exercises[e].sets[s][k]=v}
+function addSet(e){activeWorkout.exercises[e].sets.push(makeSet());renderWorkoutModal()}
+function removeSet(e,s){if(activeWorkout.exercises[e].sets.length>1)activeWorkout.exercises[e].sets.splice(s,1);renderWorkoutModal()}
+function toggleSet(e,s){const set=activeWorkout.exercises[e].sets[s];set.done=!set.done;if(set.done)toast("Set completed ✓");renderWorkoutModal()}
+function removeExercise(e){activeWorkout.exercises.splice(e,1);renderWorkoutModal()}
+function chooseExercise(){
+ const choices=db.exercises.map((x,i)=>`<button class="item" style="width:100%;text-align:left" onclick="addToActive('${x.name.replace(/'/g,"\\'")}')"><span><strong>${esc(x.name)}</strong><span class="meta">${esc(x.muscle)}</span></span><span>＋</span></button>`).join("");
+ document.getElementById("modal").innerHTML=`<div class="modalinner"><div class="modalhead"><strong>Add Exercise</strong><button class="close" onclick="renderWorkoutModal()">×</button></div><div class="exercise-list">${choices}</div></div>`;
 }
-
-
-/* =========================
-   ROUTINES
-========================= */
-
-function renderRoutines() {
-
-  const container =
-    document.getElementById("myRoutines");
-
-  if(!state.routines.length) {
-
-    container.innerHTML =
-      `<div class="empty">You haven't created any routines yet.</div>`;
-
-    return;
-  }
-
-  container.innerHTML =
-    state.routines.map((routine,index) => `
-
-      <div class="workout-card">
-
-        <div class="workout-title">
-          ${routine.name}
-        </div>
-
-        <div class="workout-meta">
-          ${routine.exercises.length} exercises
-        </div>
-
-        <div class="workout-buttons">
-
-          <button
-            class="primary"
-            onclick="startRoutine(${index})">
-            ▶ Start
-          </button>
-
-          <button
-            class="secondary"
-            onclick="deleteRoutine(${index})">
-            Delete
-          </button>
-
-        </div>
-
-      </div>
-
-    `).join("");
+function addToActive(name){activeWorkout.exercises.push({name,sets:[makeSet(),makeSet(),makeSet()]});renderWorkoutModal()}
+function finishWorkout(){
+ if(!activeWorkout.exercises.length){toast("Add at least one exercise");return}
+ const completed=activeWorkout.exercises.reduce((a,e)=>a+e.sets.filter(s=>s.done).length,0);
+ const vol=activeWorkout.exercises.reduce((a,e)=>a+e.sets.reduce((b,s)=>b+(+s.weight||0)*(+s.reps||0),0),0);
+ const xp=Math.max(25,completed*10+Math.round(vol/100));
+ db.workouts.push({id:uid(),date:today(),name:activeWorkout.name,exercises:activeWorkout.exercises,duration:timerSec,volume:vol,xp});
+ db.xp+=xp;save();clearInterval(timerInt);activeWorkout=null;document.getElementById("modal").classList.add("hidden");toast(`Workout saved • +${xp} XP`);render()
 }
-
-
-function openCreateRoutine() {
-
-  const html = `
-
-    <div class="modal-header">
-
-      <h2 style="margin:0">Create Routine</h2>
-
-      <button class="close" onclick="closeModal()">×</button>
-
-    </div>
-
-    <div class="field">
-      <label>Routine name</label>
-      <input id="routineName" placeholder="Example: Monday Push">
-    </div>
-
-    <div class="field">
-      <label>Add exercises</label>
-
-      <select id="routineExercise">
-        ${exercises.map(e =>
-          `<option value="${e.name}">${e.name} — ${e.muscle}</option>`
-        ).join("")}
-      </select>
-    </div>
-
-    <button
-      class="secondary"
-      style="width:100%;margin-bottom:12px"
-      onclick="addExerciseToRoutine()">
-      + Add Exercise
-    </button>
-
-    <div id="routinePreview" class="empty">
-      No exercises added yet.
-    </div>
-
-    <button
-      class="primary"
-      style="width:100%"
-      onclick="saveRoutine()">
-      Save Routine
-    </button>
-  `;
-
-  openModal(html);
-
-  window.tempRoutine = [];
+function confirmCloseWorkout(){if(confirm("Leave this workout? Your unsaved sets will be lost.")){clearInterval(timerInt);activeWorkout=null;document.getElementById("modal").classList.add("hidden")}}
+function startRest(){let s=60;const old=document.getElementById("toast");old.classList.remove("hidden");const tick=setInterval(()=>{old.textContent=`Rest: ${s}s`;s--;if(s<0){clearInterval(tick);old.textContent="Rest finished ✓";setTimeout(()=>old.classList.add("hidden"),1200)}},1000)}
+function formatTime(s){return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")}
+function openFoodForm(prefill=""){
+ const m=document.getElementById("modal");m.classList.remove("hidden");m.innerHTML=`<div class="modalinner"><div class="modalhead"><strong>Log Food</strong><button class="close" onclick="mClose()">×</button></div>
+ <div class="card"><label>Food / recipe name</label><input id="fn" value="${esc(prefill)}" placeholder="Chicken bowl"><div class="formgrid"><div><label>Calories</label><input id="fc" inputmode="numeric" placeholder="500"></div><div><label>Protein (g)</label><input id="fp" inputmode="decimal" placeholder="40"></div></div><br><button class="btn" onclick="saveFood()">Add Food</button></div></div>`;
 }
-
-
-function addExerciseToRoutine() {
-
-  const exercise =
-    document.getElementById("routineExercise").value;
-
-  window.tempRoutine.push(exercise);
-
-  document.getElementById("routinePreview").innerHTML =
-    window.tempRoutine.map((e,i) =>
-      `<div style="padding:7px;text-align:left">${i+1}. ${e}</div>`
-    ).join("");
-}
-
-
-function saveRoutine() {
-
-  const name =
-    document.getElementById("routineName").value.trim();
-
-  if(!name) {
-    alert("Please enter a routine name.");
-    return;
-  }
-
-  if(!window.tempRoutine.length) {
-    alert("Add at least one exercise.");
-    return;
-  }
-
-  state.routines.push({
-    name:name,
-    exercises:[...window.tempRoutine]
-  });
-
-  save();
-  closeModal();
-  renderWorkoutLibrary();
-
-  alert("Routine saved! 💪");
-}
-
-
-function startRoutine(index) {
-
-  const routine = state.routines[index];
-
-  let html = `
-
-    <div class="modal-header">
-
-      <h2 style="margin:0">${routine.name}</h2>
-
-      <button class="close" onclick="closeModal()">×</button>
-
-    </div>
-
-  `;
-
-  routine.exercises.forEach((e,i) => {
-
-    html += `
-      <div class="exercise-row">
-
-        <div class="exercise-info">
-
-          <div class="exercise-name">
-            ${i+1}. ${e}
-          </div>
-
-          <div class="exercise-muscle">
-            ${exercises.find(x=>x.name===e)?.muscle || ""}
-          </div>
-
-        </div>
-
-      </div>
-    `;
-
-  });
-
-  html += `
-    <button
-      class="primary green"
-      style="width:100%;margin-top:12px"
-      onclick="completeRoutine(${index})">
-      ✓ Complete Routine
-    </button>
-  `;
-
-  openModal(html);
-}
-
-
-function completeRoutine(index) {
-
-  const routine = state.routines[index];
-
-  state.workouts++;
-  state.exercises += routine.exercises.length;
-  state.xp += 100;
-
-  routine.exercises.forEach(name => {
-
-    const muscle =
-      exercises.find(x => x.name === name)?.muscle || "Other";
-
-    state.muscle[muscle] =
-      (state.muscle[muscle] || 0) + 1;
-
-  });
-
-  save();
-  updateStats();
-  closeModal();
-
-  alert("Routine completed! 🔥 +100 XP");
-}
-
-
-function deleteRoutine(index) {
-
-  if(!confirm("Delete this routine?")) return;
-
-  state.routines.splice(index,1);
-
-  save();
-  renderWorkoutLibrary();
-}
-
-
-/* =========================
-   FOOD
-========================= */
-
-function renderFoods() {
-
-  const search =
-    document.getElementById("foodSearch")?.value.toLowerCase() || "";
-
-  const list =
-    foods.filter(food =>
-      food.name.toLowerCase().includes(search)
-    );
-
-  document.getElementById("foodList").innerHTML =
-    list.map(food => `
-
-      <div class="food-item">
-
-        <div class="food-name">${food.name}</div>
-
-        <div class="food-brand">
-          ${food.brand}
-        </div>
-
-        <div class="macros">
-
-          <span class="cal">🔥 ${food.calories}</span>
-          <span class="protein">P ${food.protein}g</span>
-          <span class="carbs">C ${food.carbs}g</span>
-
-        </div>
-
-        <button
-          class="primary"
-          style="margin-top:12px;width:100%"
-          onclick='addFood(${JSON.stringify(food)})'>
-          + Add to Today
-        </button>
-
-      </div>
-
-    `).join("");
-}
-
-
-function addFood(food) {
-
-  state.calories += food.calories;
-  state.protein += food.protein;
-
-  state.foodLog.push(food);
-
-  save();
-  updateStats();
-
-  alert(`${food.name} added! 🍎`);
-}
-
-
-function renderRecipes() {
-
-  document.getElementById("recipeList").innerHTML =
-    recipes.map((recipe,index) => `
-
-      <div class="recipe-card">
-
-        <div class="recipe-title">
-          ${recipe.name}
-        </div>
-
-        <div class="recipe-meta">
-          ${recipe.description}
-        </div>
-
-        <div class="macros">
-
-          <span class="cal">🔥 ${recipe.calories}</span>
-          <span class="protein">P ${recipe.protein}g</span>
-          <span class="carbs">C ${recipe.carbs}g</span>
-
-        </div>
-
-        <button
-          class="primary"
-          style="margin-top:13px;width:100%"
-          onclick="addRecipe(${index})">
-          + Add Recipe to Today
-        </button>
-
-      </div>
-
-    `).join("");
-}
-
-
-function addRecipe(index) {
-
-  const recipe = recipes[index];
-
-  state.calories += recipe.calories;
-  state.protein += recipe.protein;
-
-  save();
-  updateStats();
-
-  alert(`${recipe.name} added! 🍳`);
-}
-
-
-function showFoodSection(section) {
-
-  if(section === "foods") {
-
-    document
-      .getElementById("foodSearch")
-      .scrollIntoView({behavior:"smooth"});
-
-    return;
-  }
-
-  if(section === "recipes") {
-
-    document
-      .getElementById("recipeList")
-      .scrollIntoView({behavior:"smooth"});
-
-    return;
-  }
-
-  alert("Meals are coming next!");
-}
-
-
-/* =========================
-   PROGRESS
-========================= */
-
-function renderMuscles() {
-
-  const muscles = [
-    "Chest",
-    "Back",
-    "Legs",
-    "Shoulders",
-    "Arms",
-    "Core"
-  ];
-
-  document.getElementById("muscleProgress").innerHTML =
-    muscles.map(muscle => {
-
-      const value =
-        state.muscle[muscle] || 0;
-
-      const percentage =
-        Math.min(100, value * 10);
-
-      return `
-
-        <div class="card">
-
-          <div style="display:flex;justify-content:space-between">
-
-            <strong>${muscle}</strong>
-
-            <span style="color:#8e94a5">
-              ${value} exercises
-            </span>
-
-          </div>
-
-          <div class="progress">
-
-            <div
-              class="progress-bar"
-              style="width:${percentage}%">
-            </div>
-
-          </div>
-
-        </div>
-      `;
-
-    }).join("");
-}
-
-
-/* =========================
-   MODAL
-========================= */
-
-function openModal(html) {
-
-  document.getElementById("modalContent").innerHTML = html;
-  document.getElementById("modal").classList.remove("hidden");
-
-}
-
-
-function closeModal() {
-
-  document.getElementById("modal").classList.add("hidden");
-
-}
-
-
-function closeModalOutside(event) {
-
-  if(event.target.id === "modal") {
-    closeModal();
-  }
-
-}
-
-
-/* =========================
-   DATE
-========================= */
-
-function setDate() {
-
-  const date = new Date();
-
-  document.getElementById("todayDate").textContent =
-    date.toLocaleDateString("en-US", {
-      weekday:"short",
-      month:"short",
-      day:"numeric"
-    });
-
-}
-
-
-/* =========================
-   INITIALIZE
-========================= */
-
-setDate();
-updateStats();
-renderRecommended();
-renderWorkoutCategories();
-renderWorkoutLibrary();
-renderFoods();
-renderRecipes();
-
+function mClose(){document.getElementById("modal").classList.add("hidden")}
+function saveFood(){const name=document.getElementById("fn").value.trim()||"Food";const cal=+document.getElementById("fc").value||0;const protein=+document.getElementById("fp").value||0;db.food.push({id:uid(),date:today(),name,cal,protein});save();mClose();toast("Food logged");render()}
+function deleteFood(index){const items=db.food.filter(x=>x.date===today());const target=items[index];db.food=db.food.filter(x=>x!==target);save();render()}
+render();
 </script>
-
 </body>
 </html>
