@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#0b0d12">
+<meta name="theme-color" content="#0b0c12">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LiftRank">
@@ -12,462 +12,406 @@
 
 <style>
 * {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 :root {
-    --bg: #0b0d12;
-    --card: #151820;
-    --card2: #1c202a;
-    --text: #f5f7fa;
-    --muted: #9299a8;
-    --border: #292e39;
-    --accent: #7c5cff;
-    --green: #35d07f;
-    --red: #ff5c6c;
-    --orange: #ffad4d;
-    --blue: #4da3ff;
+  --bg: #0b0c12;
+  --card: #151821;
+  --card2: #191c27;
+  --border: #292e3b;
+  --text: #f7f7fb;
+  --muted: #969daf;
+  --purple: #7c55ff;
+  --purple2: #9b7cff;
+  --green: #35d487;
+  --orange: #ffae45;
+  --blue: #48a9ff;
+  --red: #ff5d6c;
 }
 
 body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
-                 "SF Pro Text", Arial, sans-serif;
-    padding-bottom: 95px;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+               "SF Pro Text", Arial, sans-serif;
+  min-height: 100vh;
 }
 
 button,
 input,
 select {
-    font: inherit;
+  font: inherit;
 }
 
 button {
-    border: 0;
+  cursor: pointer;
 }
 
 .app {
-    max-width: 700px;
-    margin: auto;
-    padding: 0 16px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-bottom: 100px;
 }
 
-.header {
-    padding: 24px 0 14px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+header {
+  padding: 35px 22px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
-    font-size: 27px;
-    font-weight: 800;
-    letter-spacing: -1px;
+  font-size: 31px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
 }
 
 .logo span {
-    color: var(--accent);
+  color: var(--purple2);
 }
 
 .date {
-    color: var(--muted);
-    font-size: 13px;
+  color: var(--muted);
+  font-size: 15px;
 }
 
-.page {
-    display: none;
-}
-
-.page.active {
-    display: block;
+main {
+  padding: 15px 20px;
 }
 
 h1 {
-    font-size: 30px;
-    margin: 8px 0 4px;
-    letter-spacing: -1px;
+  font-size: 36px;
+  margin: 10px 0 5px;
+  letter-spacing: -1.5px;
 }
 
 h2 {
-    font-size: 20px;
-    margin: 0 0 14px;
+  font-size: 24px;
+  margin: 0 0 16px;
 }
 
 h3 {
-    font-size: 16px;
-    margin: 0 0 7px;
+  margin: 0 0 10px;
 }
 
 .subtitle {
-    color: var(--muted);
-    margin-bottom: 20px;
+  color: var(--muted);
+  font-size: 18px;
+  margin-bottom: 25px;
 }
 
 .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 18px;
-    margin-bottom: 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 25px;
+  padding: 20px;
+  margin-bottom: 16px;
 }
 
-.hero {
-    background: linear-gradient(145deg, #19152b, #171a24);
-    border: 1px solid #30284f;
+.rank-card {
+  background: linear-gradient(135deg, #19162e, #151821);
+  border: 1px solid #493a78;
 }
 
-.rank-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.rank-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.small-label {
+  color: var(--muted);
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: .5px;
 }
 
 .rank-name {
-    font-size: 25px;
-    font-weight: 800;
+  font-size: 34px;
+  font-weight: 800;
+  margin-top: 5px;
 }
 
-.rank-number {
-    color: var(--muted);
-    font-size: 13px;
-    margin-top: 3px;
+.rank-circle {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: var(--purple);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 29px;
+  font-weight: 800;
+  box-shadow: 0 0 30px rgba(124,85,255,.25);
 }
 
-.rank-badge {
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: var(--accent);
-    font-size: 20px;
-    font-weight: 900;
-    box-shadow: 0 0 30px rgba(124,92,255,.3);
+.progress {
+  height: 10px;
+  background: #292d38;
+  border-radius: 99px;
+  overflow: hidden;
+  margin: 18px 0 7px;
 }
 
-.progress-track {
-    height: 9px;
-    background: #292d38;
-    border-radius: 99px;
-    overflow: hidden;
-    margin-top: 16px;
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--purple), var(--purple2));
+  border-radius: 99px;
+  width: 0%;
+  transition: width .3s;
 }
 
-.progress-fill {
-    height: 100%;
-    background: var(--accent);
-    width: 0%;
-    border-radius: 99px;
-    transition: width .3s;
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 13px;
 }
 
-.progress-label {
-    display: flex;
-    justify-content: space-between;
-    color: var(--muted);
-    font-size: 12px;
-    margin-top: 7px;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
 }
 
 .stat {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 17px;
-    padding: 16px;
-}
-
-.stat-label {
-    color: var(--muted);
-    font-size: 12px;
-    margin-bottom: 7px;
+  min-height: 125px;
 }
 
 .stat-value {
-    font-size: 23px;
-    font-weight: 800;
+  font-size: 36px;
+  font-weight: 800;
+  margin-top: 8px;
 }
 
-.stat-small {
-    color: var(--muted);
-    font-size: 12px;
-    margin-top: 4px;
+.orange { color: var(--orange); }
+.green { color: var(--green); }
+.blue { color: var(--blue); }
+.purple { color: var(--purple2); }
+
+.stat-description {
+  color: var(--muted);
+  margin-top: 5px;
 }
 
-.green {
-    color: var(--green);
+.section {
+  display: none;
 }
 
-.orange {
-    color: var(--orange);
-}
-
-.blue {
-    color: var(--blue);
-}
-
-.purple {
-    color: var(--accent);
-}
-
-.form-group {
-    margin-bottom: 14px;
-}
-
-label {
-    display: block;
-    color: var(--muted);
-    font-size: 12px;
-    margin-bottom: 7px;
-}
-
-input,
-select {
-    width: 100%;
-    padding: 14px;
-    border-radius: 13px;
-    border: 1px solid var(--border);
-    background: var(--card2);
-    color: var(--text);
-    outline: none;
-}
-
-input:focus,
-select:focus {
-    border-color: var(--accent);
-}
-
-.primary-btn {
-    width: 100%;
-    background: var(--accent);
-    color: white;
-    padding: 15px;
-    border-radius: 14px;
-    font-weight: 750;
-    margin-top: 5px;
-}
-
-.secondary-btn {
-    background: var(--card2);
-    color: var(--text);
-    border: 1px solid var(--border);
-    padding: 12px 15px;
-    border-radius: 12px;
-}
-
-.danger-btn {
-    background: rgba(255,92,108,.12);
-    color: var(--red);
-    border: 1px solid rgba(255,92,108,.25);
-    padding: 12px 15px;
-    border-radius: 12px;
-    width: 100%;
-}
-
-.two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-
-.three-col {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 9px;
-}
-
-.section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 24px 0 12px;
-}
-
-.section-header h2 {
-    margin: 0;
-}
-
-.item {
-    background: var(--card);
-    border: 1px solid var(--border);
-    padding: 14px;
-    border-radius: 15px;
-    margin-bottom: 9px;
-}
-
-.item-top {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.item-title {
-    font-weight: 700;
-}
-
-.item-meta {
-    color: var(--muted);
-    font-size: 12px;
-    margin-top: 5px;
-}
-
-.delete-btn {
-    color: var(--red);
-    background: transparent;
-    font-size: 12px;
-}
-
-.muscle-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-}
-
-.muscle {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    padding: 13px;
-    border-radius: 14px;
-}
-
-.muscle-name {
-    font-size: 13px;
-    margin-bottom: 8px;
-}
-
-.muscle-track {
-    height: 7px;
-    background: #292d38;
-    border-radius: 99px;
-    overflow: hidden;
-}
-
-.muscle-fill {
-    height: 100%;
-    background: var(--accent);
-    border-radius: 99px;
-}
-
-.muscle-count {
-    color: var(--muted);
-    font-size: 11px;
-    margin-top: 5px;
-}
-
-.empty {
-    text-align: center;
-    color: var(--muted);
-    padding: 25px 10px;
+.section.active {
+  display: block;
 }
 
 .bottom-nav {
-    position: fixed;
-    left: 50%;
-    bottom: 10px;
-    transform: translateX(-50%);
-    width: calc(100% - 20px);
-    max-width: 680px;
-    background: rgba(23,26,34,.95);
-    backdrop-filter: blur(18px);
-    border: 1px solid var(--border);
-    border-radius: 22px;
-    padding: 8px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    z-index: 100;
+  position: fixed;
+  z-index: 20;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 30px);
+  max-width: 760px;
+  background: rgba(28,31,41,.96);
+  border: 1px solid #303543;
+  border-radius: 28px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 7px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 10px 40px rgba(0,0,0,.4);
 }
 
 .nav-btn {
-    background: transparent;
-    color: var(--muted);
-    padding: 8px 3px;
-    border-radius: 15px;
-    font-size: 10px;
-}
-
-.nav-btn .icon {
-    display: block;
-    font-size: 21px;
-    margin-bottom: 3px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  border-radius: 22px;
+  padding: 9px 4px;
 }
 
 .nav-btn.active {
-    background: var(--card2);
-    color: white;
+  background: #202431;
+  color: white;
 }
 
-.tip {
-    background: rgba(124,92,255,.09);
-    border: 1px solid rgba(124,92,255,.2);
-    border-radius: 15px;
-    padding: 13px;
-    color: #c7c1ff;
-    font-size: 12px;
-    line-height: 1.5;
+.nav-icon {
+  font-size: 24px;
+  display: block;
+  margin-bottom: 3px;
 }
 
-.weight-display {
-    text-align: center;
-    padding: 10px;
+.nav-text {
+  font-size: 12px;
 }
 
-.big-number {
-    font-size: 40px;
-    font-weight: 850;
+.primary {
+  width: 100%;
+  border: 0;
+  border-radius: 16px;
+  padding: 15px;
+  background: var(--purple);
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
 }
 
-.unit {
-    color: var(--muted);
+.secondary {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px 15px;
+  background: #1c202b;
+  color: white;
 }
 
-.chart {
-    height: 150px;
-    display: flex;
-    align-items: end;
-    gap: 7px;
-    padding-top: 15px;
+.danger {
+  background: transparent;
+  color: var(--red);
+  border: 1px solid #52232a;
 }
 
-.bar-wrap {
-    flex: 1;
-    height: 100%;
-    display: flex;
-    align-items: end;
-    justify-content: center;
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
 
-.bar {
-    width: 100%;
-    max-width: 28px;
-    background: var(--accent);
-    border-radius: 7px 7px 2px 2px;
-    min-height: 3px;
+.field {
+  margin-bottom: 13px;
 }
 
-.bar-label {
-    font-size: 9px;
-    color: var(--muted);
-    margin-top: 5px;
-    text-align: center;
+.field label {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 6px;
 }
 
-@media (min-width: 600px) {
-    .stats-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
+.field input,
+.field select {
+  width: 100%;
+  background: #20242e;
+  color: white;
+  border: 1px solid #333947;
+  border-radius: 13px;
+  padding: 13px;
+  outline: none;
+}
 
-    .muscle-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+.field input:focus,
+.field select:focus {
+  border-color: var(--purple);
+}
+
+.exercise-item,
+.food-item {
+  background: #1b1e28;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+
+.item-title {
+  font-weight: 700;
+}
+
+.item-detail {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.xp-badge {
+  color: var(--purple2);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.muscle-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.muscle {
+  background: #1b1e28;
+  border-radius: 15px;
+  padding: 13px;
+}
+
+.muscle-name {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.muscle-bar {
+  height: 7px;
+  background: #292d38;
+  border-radius: 20px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.muscle-fill {
+  height: 100%;
+  background: var(--purple);
+  border-radius: 20px;
+}
+
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 20px 5px;
+}
+
+.total-box {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.total-box:last-child {
+  border-bottom: 0;
+}
+
+.total-number {
+  font-weight: 800;
+}
+
+.notice {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (max-width: 500px) {
+  main {
+    padding: 12px 16px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .card {
+    border-radius: 22px;
+    padding: 17px;
+  }
+
+  .rank-name {
+    font-size: 30px;
+  }
 }
 </style>
 </head>
@@ -476,353 +420,346 @@ select:focus {
 
 <div class="app">
 
-    <header class="header">
-        <div class="logo">Lift<span>Rank</span></div>
-        <div class="date" id="todayDate"></div>
-    </header>
+<header>
+  <div class="logo">Lift<span>Rank</span></div>
+  <div class="date" id="currentDate"></div>
+</header>
+
+<main>
+
+<!-- HOME -->
+<section id="home" class="section active">
+
+  <h1>Welcome back 👋</h1>
+  <div class="subtitle">Let's make today count.</div>
+
+  <div class="card rank-card">
+    <div class="rank-top">
+      <div>
+        <div class="small-label">Current Rank</div>
+        <div class="rank-name" id="rankName">Bronze</div>
+        <div class="subtitle" style="margin:4px 0 0" id="xpText">0 XP</div>
+      </div>
+      <div class="rank-circle" id="rankLetter">B</div>
+    </div>
+
+    <div class="progress">
+      <div class="progress-bar" id="xpBar"></div>
+    </div>
+
+    <div class="progress-labels">
+      <span id="xpCurrent">0 XP</span>
+      <span id="xpNext">100 XP</span>
+    </div>
+  </div>
+
+  <div class="grid">
+
+    <div class="card stat">
+      <div class="small-label">Calories</div>
+      <div class="stat-value orange" id="homeCalories">0</div>
+      <div class="stat-description">eaten today</div>
+    </div>
+
+    <div class="card stat">
+      <div class="small-label">Protein</div>
+      <div class="stat-value green" id="homeProtein">0g</div>
+      <div class="stat-description">today</div>
+    </div>
+
+    <div class="card stat">
+      <div class="small-label">Workouts</div>
+      <div class="stat-value purple" id="homeWorkouts">0</div>
+      <div class="stat-description">total</div>
+    </div>
 
-    <!-- DASHBOARD -->
-    <section id="dashboard" class="page active">
+    <div class="card stat">
+      <div class="small-label">Volume</div>
+      <div class="stat-value blue" id="homeVolume">0</div>
+      <div class="stat-description">lbs lifted</div>
+    </div>
 
-        <h1>Welcome back 👋</h1>
-        <div class="subtitle">Let's make today count.</div>
+  </div>
 
-        <div class="card hero">
+  <div class="card">
+    <h3>Today's Muscles 💪</h3>
+    <div class="muscle-grid" id="homeMuscles"></div>
+  </div>
+
+</section>
 
-            <div class="rank-row">
 
-                <div>
-                    <div class="rank-number">CURRENT RANK</div>
-                    <div class="rank-name" id="rankName">Bronze</div>
-                    <div class="rank-number" id="pointsText">0 XP</div>
-                </div>
+<!-- WORKOUT -->
+<section id="workout" class="section">
 
-                <div class="rank-badge" id="rankBadge">B</div>
+  <h1>Workout 🏋️</h1>
+  <div class="subtitle">Log your lifting and build XP.</div>
 
-            </div>
+  <div class="card">
 
-            <div class="progress-track">
-                <div class="progress-fill" id="rankProgress"></div>
-            </div>
+    <h2>Add Exercise</h2>
 
-            <div class="progress-label">
-                <span id="rankCurrent">0 XP</span>
-                <span id="rankNext">100 XP</span>
-            </div>
+    <div class="field">
+      <label>Exercise</label>
+      <input id="exerciseName" placeholder="Example: Bench Press">
+    </div>
 
-        </div>
+    <div class="form-grid">
 
-        <div class="stats-grid">
+      <div class="field">
+        <label>Muscle</label>
+        <select id="exerciseMuscle">
+          <option>Chest</option>
+          <option>Back</option>
+          <option>Shoulders</option>
+          <option>Biceps</option>
+          <option>Triceps</option>
+          <option>Legs</option>
+          <option>Glutes</option>
+          <option>Core</option>
+          <option>Calves</option>
+        </select>
+      </div>
 
-            <div class="stat">
-                <div class="stat-label">CALORIES</div>
-                <div class="stat-value orange" id="dashCalories">0</div>
-                <div class="stat-small">eaten today</div>
-            </div>
+      <div class="field">
+        <label>Sets</label>
+        <input id="exerciseSets" type="number" min="1" value="3">
+      </div>
 
-            <div class="stat">
-                <div class="stat-label">PROTEIN</div>
-                <div class="stat-value green" id="dashProtein">0g</div>
-                <div class="stat-small">today</div>
-            </div>
+      <div class="field">
+        <label>Reps per Set</label>
+        <input id="exerciseReps" type="number" min="1" value="10">
+      </div>
 
-            <div class="stat">
-                <div class="stat-label">WORKOUTS</div>
-                <div class="stat-value purple" id="dashWorkouts">0</div>
-                <div class="stat-small">total</div>
-            </div>
+      <div class="field">
+        <label>Weight (lbs)</label>
+        <input id="exerciseWeight" type="number" min="0" value="0">
+      </div>
 
-            <div class="stat">
-                <div class="stat-label">VOLUME</div>
-                <div class="stat-value blue" id="dashVolume">0</div>
-                <div class="stat-small">lbs lifted</div>
-            </div>
+    </div>
 
-        </div>
+    <button class="primary" onclick="addExercise()">
+      + Add Exercise
+    </button>
 
-        <div class="section-header">
-            <h2>Muscles This Week</h2>
-        </div>
+  </div>
 
-        <div class="card">
-            <div class="muscle-grid" id="dashboardMuscles"></div>
-        </div>
+  <div class="card">
+    <div class="item-row">
+      <h2 style="margin:0">Today's Workout</h2>
+      <strong id="workoutVolume">0 lbs</strong>
+    </div>
 
-        <div class="tip">
-            💡 <strong>How XP works:</strong> Log workouts, complete exercises, lift more weight, and stay consistent to increase your rank.
-        </div>
+    <div id="exerciseList" style="margin-top:15px"></div>
 
-    </section>
+    <button class="primary" onclick="finishWorkout()">
+      Finish Workout
+    </button>
+  </div>
 
+</section>
 
-    <!-- WORKOUT -->
-    <section id="workout" class="page">
 
-        <h1>Workout</h1>
-        <div class="subtitle">Track your strength and build XP.</div>
+<!-- FOOD -->
+<section id="food" class="section">
 
-        <div class="card">
+  <h1>Food 🍎</h1>
+  <div class="subtitle">Track your calories and protein.</div>
 
-            <h2>Log Exercise</h2>
+  <div class="card">
 
-            <div class="form-group">
-                <label>EXERCISE</label>
-                <input id="exerciseName" type="text" placeholder="e.g. Bench Press">
-            </div>
+    <h2>Add Food</h2>
 
-            <div class="form-group">
-                <label>MUSCLE GROUP</label>
-                <select id="muscleSelect">
-                    <option>Chest</option>
-                    <option>Back</option>
-                    <option>Shoulders</option>
-                    <option>Biceps</option>
-                    <option>Triceps</option>
-                    <option>Abs</option>
-                    <option>Glutes</option>
-                    <option>Quads</option>
-                    <option>Hamstrings</option>
-                    <option>Calves</option>
-                </select>
-            </div>
+    <div class="field">
+      <label>Food</label>
+      <input id="foodName" placeholder="Example: Chicken & rice">
+    </div>
 
-            <div class="three-col">
+    <div class="form-grid">
 
-                <div class="form-group">
-                    <label>SETS</label>
-                    <input id="sets" type="number" min="1" placeholder="3">
-                </div>
+      <div class="field">
+        <label>Calories</label>
+        <input id="foodCalories" type="number" min="0" placeholder="500">
+      </div>
 
-                <div class="form-group">
-                    <label>REPS</label>
-                    <input id="reps" type="number" min="1" placeholder="10">
-                </div>
+      <div class="field">
+        <label>Protein (g)</label>
+        <input id="foodProtein" type="number" min="0" placeholder="40">
+      </div>
 
-                <div class="form-group">
-                    <label>WEIGHT</label>
-                    <input id="weight" type="number" min="0" step="0.5" placeholder="100">
-                </div>
+    </div>
 
-            </div>
+    <button class="primary" onclick="addFood()">
+      + Add Food
+    </button>
 
-            <button class="primary-btn" onclick="addWorkout()">
-                + Add Exercise
-            </button>
+  </div>
 
-        </div>
+  <div class="card">
+    <h2>Today's Food</h2>
 
-        <div class="section-header">
-            <h2>Workout History</h2>
-        </div>
+    <div class="total-box">
+      <span>Calories</span>
+      <span class="total-number orange" id="foodTotalCalories">0</span>
+    </div>
 
-        <div id="workoutList"></div>
+    <div class="total-box">
+      <span>Protein</span>
+      <span class="total-number green" id="foodTotalProtein">0g</span>
+    </div>
 
-    </section>
+    <div id="foodList" style="margin-top:15px"></div>
+  </div>
 
+</section>
 
-    <!-- FOOD -->
-    <section id="food" class="page">
 
-        <h1>Nutrition</h1>
-        <div class="subtitle">Keep track of what fuels you.</div>
+<!-- PROGRESS -->
+<section id="progress" class="section">
 
-        <div class="stats-grid">
+  <h1>Progress 📈</h1>
+  <div class="subtitle">See how your training is adding up.</div>
 
-            <div class="stat">
-                <div class="stat-label">CALORIES</div>
-                <div class="stat-value orange" id="foodCalories">0</div>
-            </div>
+  <div class="grid">
 
-            <div class="stat">
-                <div class="stat-label">PROTEIN</div>
-                <div class="stat-value green" id="foodProtein">0g</div>
-            </div>
+    <div class="card stat">
+      <div class="small-label">Total XP</div>
+      <div class="stat-value purple" id="progressXP">0</div>
+      <div class="stat-description">earned</div>
+    </div>
 
-            <div class="stat">
-                <div class="stat-label">CARBS</div>
-                <div class="stat-value blue" id="foodCarbs">0g</div>
-            </div>
+    <div class="card stat">
+      <div class="small-label">Workouts</div>
+      <div class="stat-value blue" id="progressWorkouts">0</div>
+      <div class="stat-description">completed</div>
+    </div>
 
-            <div class="stat">
-                <div class="stat-label">FAT</div>
-                <div class="stat-value purple" id="foodFat">0g</div>
-            </div>
+    <div class="card stat">
+      <div class="small-label">Volume</div>
+      <div class="stat-value orange" id="progressVolume">0</div>
+      <div class="stat-description">lbs lifted</div>
+    </div>
 
-        </div>
+    <div class="card stat">
+      <div class="small-label">Foods</div>
+      <div class="stat-value green" id="progressFoods">0</div>
+      <div class="stat-description">logged</div>
+    </div>
 
-        <br>
+  </div>
 
-        <div class="card">
+  <div class="card">
+    <h2>Muscle Progress 💪</h2>
+    <div id="progressMuscles"></div>
+  </div>
 
-            <h2>Add Food</h2>
+  <div class="card">
+    <h2>Rank System 🏆</h2>
 
-            <div class="form-group">
-                <label>FOOD / MEAL</label>
-                <input id="foodName" type="text" placeholder="e.g. Chicken & Rice">
-            </div>
+    <div class="total-box">
+      <span>🥉 Bronze</span>
+      <span>0 XP</span>
+    </div>
 
-            <div class="two-col">
+    <div class="total-box">
+      <span>🥈 Silver</span>
+      <span>100 XP</span>
+    </div>
 
-                <div class="form-group">
-                    <label>CALORIES</label>
-                    <input id="foodCal" type="number" min="0" placeholder="500">
-                </div>
+    <div class="total-box">
+      <span>🥇 Gold</span>
+      <span>300 XP</span>
+    </div>
 
-                <div class="form-group">
-                    <label>PROTEIN (G)</label>
-                    <input id="foodProt" type="number" min="0" placeholder="40">
-                </div>
+    <div class="total-box">
+      <span>💎 Platinum</span>
+      <span>600 XP</span>
+    </div>
 
-            </div>
+    <div class="total-box">
+      <span>🔥 Diamond</span>
+      <span>1,000 XP</span>
+    </div>
 
-            <div class="two-col">
+  </div>
 
-                <div class="form-group">
-                    <label>CARBS (G)</label>
-                    <input id="foodCarb" type="number" min="0" placeholder="50">
-                </div>
+  <div class="card">
+    <h2>Privacy 🔒</h2>
+    <p class="notice">
+      LiftRank Version 2 stores your workout and food information
+      locally in this browser on your device. No account is required,
+      and this version does not intentionally send your logged data to
+      an external server.
+    </p>
 
-                <div class="form-group">
-                    <label>FAT (G)</label>
-                    <input id="foodFatInput" type="number" min="0" placeholder="15">
-                </div>
+    <button class="secondary danger" onclick="clearAllData()">
+      Reset All LiftRank Data
+    </button>
+  </div>
 
-            </div>
+</section>
 
-            <button class="primary-btn" onclick="addFood()">
-                + Add Food
-            </button>
+</main>
 
-        </div>
 
-        <div class="section-header">
-            <h2>Today's Food</h2>
-        </div>
-
-        <div id="foodList"></div>
-
-    </section>
-
-
-    <!-- PROGRESS -->
-    <section id="progress" class="page">
-
-        <h1>Progress</h1>
-        <div class="subtitle">See how you're improving over time.</div>
-
-        <div class="card">
-
-            <h2>Current Weight</h2>
-
-            <div class="weight-display">
-                <div class="big-number" id="currentWeight">—</div>
-                <div class="unit">lbs</div>
-            </div>
-
-            <div class="form-group">
-                <label>UPDATE WEIGHT</label>
-                <input id="weightInput" type="number" step="0.1" placeholder="260">
-            </div>
-
-            <button class="primary-btn" onclick="addWeight()">
-                Save Weight
-            </button>
-
-        </div>
-
-        <div class="card">
-
-            <h2>Weight History</h2>
-
-            <div id="weightChart" class="chart"></div>
-
-            <div id="weightHistory"></div>
-
-        </div>
-
-        <div class="card">
-
-            <h2>Muscle Training</h2>
-
-            <div class="muscle-grid" id="progressMuscles"></div>
-
-        </div>
-
-        <div class="card">
-
-            <h2>Lifetime Stats</h2>
-
-            <div class="stats-grid">
-
-                <div class="stat">
-                    <div class="stat-label">WORKOUTS</div>
-                    <div class="stat-value" id="lifeWorkouts">0</div>
-                </div>
-
-                <div class="stat">
-                    <div class="stat-label">EXERCISES</div>
-                    <div class="stat-value" id="lifeExercises">0</div>
-                </div>
-
-                <div class="stat">
-                    <div class="stat-label">TOTAL VOLUME</div>
-                    <div class="stat-value" id="lifeVolume">0</div>
-                </div>
-
-                <div class="stat">
-                    <div class="stat-label">XP</div>
-                    <div class="stat-value purple" id="lifeXP">0</div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-</div>
-
-
-<!-- BOTTOM NAVIGATION -->
-
+<!-- NAVIGATION -->
 <nav class="bottom-nav">
 
-    <button class="nav-btn active" onclick="showPage('dashboard', this)">
-        <span class="icon">🏠</span>
-        Home
-    </button>
+  <button class="nav-btn active" onclick="showSection('home', this)">
+    <span class="nav-icon">🏠</span>
+    <span class="nav-text">Home</span>
+  </button>
 
-    <button class="nav-btn" onclick="showPage('workout', this)">
-        <span class="icon">🏋️</span>
-        Workout
-    </button>
+  <button class="nav-btn" onclick="showSection('workout', this)">
+    <span class="nav-icon">🏋️</span>
+    <span class="nav-text">Workout</span>
+  </button>
 
-    <button class="nav-btn" onclick="showPage('food', this)">
-        <span class="icon">🍎</span>
-        Food
-    </button>
+  <button class="nav-btn" onclick="showSection('food', this)">
+    <span class="nav-icon">🍎</span>
+    <span class="nav-text">Food</span>
+  </button>
 
-    <button class="nav-btn" onclick="showPage('progress', this)">
-        <span class="icon">📈</span>
-        Progress
-    </button>
+  <button class="nav-btn" onclick="showSection('progress', this)">
+    <span class="nav-icon">📈</span>
+    <span class="nav-text">Progress</span>
+  </button>
 
 </nav>
+
+</div>
 
 
 <script>
 
 /* =========================
-   DATA
+   LIFTRANK DATA
 ========================= */
 
-let data = JSON.parse(localStorage.getItem("liftrankData")) || {
+const MUSCLES = [
+  "Chest",
+  "Back",
+  "Shoulders",
+  "Biceps",
+  "Triceps",
+  "Legs",
+  "Glutes",
+  "Core",
+  "Calves"
+];
 
-    workouts: [],
-    foods: [],
-    weights: [],
-    xp: 0
+let data = JSON.parse(
+  localStorage.getItem("liftrankData")
+) || {
+  xp: 0,
+  workouts: [],
+  foods: [],
+  muscles: {}
 };
+
+MUSCLES.forEach(m => {
+  if (!data.muscles[m]) data.muscles[m] = 0;
+});
 
 
 /* =========================
@@ -830,7 +767,10 @@ let data = JSON.parse(localStorage.getItem("liftrankData")) || {
 ========================= */
 
 function saveData() {
-    localStorage.setItem("liftrankData", JSON.stringify(data));
+  localStorage.setItem(
+    "liftrankData",
+    JSON.stringify(data)
+  );
 }
 
 
@@ -838,41 +778,22 @@ function saveData() {
    DATE
 ========================= */
 
-function todayString() {
-    return new Date().toLocaleDateString();
+function todayKey() {
+  const d = new Date();
+
+  return d.getFullYear() + "-" +
+    String(d.getMonth() + 1).padStart(2, "0") + "-" +
+    String(d.getDate()).padStart(2, "0");
 }
 
-document.getElementById("todayDate").textContent =
-    new Date().toLocaleDateString(undefined, {
-        weekday: "short",
-        month: "short",
-        day: "numeric"
-    });
+function displayDate() {
+  const d = new Date();
 
-
-/* =========================
-   NAVIGATION
-========================= */
-
-function showPage(page, button) {
-
-    document.querySelectorAll(".page").forEach(p => {
-        p.classList.remove("active");
-    });
-
-    document.getElementById(page).classList.add("active");
-
-    document.querySelectorAll(".nav-btn").forEach(b => {
-        b.classList.remove("active");
-    });
-
-    button.classList.add("active");
-
-    renderAll();
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+  document.getElementById("currentDate").textContent =
+    d.toLocaleDateString(undefined, {
+      weekday: "short",
+      month: "short",
+      day: "numeric"
     });
 }
 
@@ -881,195 +802,217 @@ function showPage(page, button) {
    RANK SYSTEM
 ========================= */
 
-const ranks = [
-    { name: "Bronze", min: 0, max: 100, letter: "B" },
-    { name: "Silver", min: 100, max: 300, letter: "S" },
-    { name: "Gold", min: 300, max: 600, letter: "G" },
-    { name: "Platinum", min: 600, max: 1000, letter: "P" },
-    { name: "Diamond", min: 1000, max: 1600, letter: "D" },
-    { name: "Elite", min: 1600, max: 2500, letter: "E" },
-    { name: "Legend", min: 2500, max: 999999, letter: "L" }
-];
+function getRank(xp) {
 
-function getRank() {
+  if (xp >= 1000) {
+    return {
+      name: "Diamond",
+      letter: "D",
+      min: 1000,
+      next: 1500
+    };
+  }
 
-    return ranks.find(r =>
-        data.xp >= r.min && data.xp < r.max
-    ) || ranks[ranks.length - 1];
-}
+  if (xp >= 600) {
+    return {
+      name: "Platinum",
+      letter: "P",
+      min: 600,
+      next: 1000
+    };
+  }
 
-function updateRank() {
+  if (xp >= 300) {
+    return {
+      name: "Gold",
+      letter: "G",
+      min: 300,
+      next: 600
+    };
+  }
 
-    const rank = getRank();
+  if (xp >= 100) {
+    return {
+      name: "Silver",
+      letter: "S",
+      min: 100,
+      next: 300
+    };
+  }
 
-    document.getElementById("rankName").textContent =
-        rank.name;
-
-    document.getElementById("rankBadge").textContent =
-        rank.letter;
-
-    document.getElementById("pointsText").textContent =
-        data.xp + " XP";
-
-    document.getElementById("rankCurrent").textContent =
-        data.xp + " XP";
-
-    if (rank.max === 999999) {
-
-        document.getElementById("rankNext").textContent =
-            "MAX RANK";
-
-        document.getElementById("rankProgress").style.width =
-            "100%";
-
-    } else {
-
-        const progress =
-            ((data.xp - rank.min) /
-            (rank.max - rank.min)) * 100;
-
-        document.getElementById("rankProgress").style.width =
-            Math.min(100, progress) + "%";
-
-        document.getElementById("rankNext").textContent =
-            rank.max + " XP";
-    }
+  return {
+    name: "Bronze",
+    letter: "B",
+    min: 0,
+    next: 100
+  };
 }
 
 
 /* =========================
-   WORKOUTS
+   NAVIGATION
 ========================= */
 
-function addWorkout() {
+function showSection(id, button) {
 
-    const exercise =
-        document.getElementById("exerciseName").value.trim();
-
-    const muscle =
-        document.getElementById("muscleSelect").value;
-
-    const sets =
-        Number(document.getElementById("sets").value);
-
-    const reps =
-        Number(document.getElementById("reps").value);
-
-    const weight =
-        Number(document.getElementById("weight").value);
-
-    if (!exercise || !sets || !reps) {
-
-        alert("Please enter the exercise, sets, and reps.");
-
-        return;
-    }
-
-    const volume = sets * reps * weight;
-
-    data.workouts.push({
-
-        id: Date.now(),
-
-        date: todayString(),
-
-        exercise,
-
-        muscle,
-
-        sets,
-
-        reps,
-
-        weight,
-
-        volume
-
+  document.querySelectorAll(".section")
+    .forEach(section => {
+      section.classList.remove("active");
     });
 
-    /* XP */
+  document.getElementById(id)
+    .classList.add("active");
 
-    data.xp += 10;
+  document.querySelectorAll(".nav-btn")
+    .forEach(btn => {
+      btn.classList.remove("active");
+    });
 
-    if (volume > 0) {
-        data.xp += Math.floor(volume / 100);
-    }
+  button.classList.add("active");
 
-    saveData();
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 
-    document.getElementById("exerciseName").value = "";
-    document.getElementById("sets").value = "";
-    document.getElementById("reps").value = "";
-    document.getElementById("weight").value = "";
-
-    renderAll();
-
-    alert("Exercise added! 💪");
+  render();
 }
 
 
-function deleteWorkout(id) {
+/* =========================
+   WORKOUT
+========================= */
 
-    data.workouts =
-        data.workouts.filter(w => w.id !== id);
+function addExercise() {
 
-    saveData();
+  const name =
+    document.getElementById("exerciseName").value.trim();
 
-    renderAll();
+  const muscle =
+    document.getElementById("exerciseMuscle").value;
+
+  const sets =
+    Number(document.getElementById("exerciseSets").value);
+
+  const reps =
+    Number(document.getElementById("exerciseReps").value);
+
+  const weight =
+    Number(document.getElementById("exerciseWeight").value);
+
+  if (!name) {
+    alert("Please enter an exercise name.");
+    return;
+  }
+
+  if (!sets || !reps) {
+    alert("Please enter sets and reps.");
+    return;
+  }
+
+  const exercise = {
+    id: Date.now(),
+    date: todayKey(),
+    name,
+    muscle,
+    sets,
+    reps,
+    weight,
+    volume: sets * reps * weight
+  };
+
+  data.workouts.push(exercise);
+
+  data.xp += 10 + Math.min(
+    20,
+    Math.floor(exercise.volume / 500)
+  );
+
+  data.muscles[muscle] += sets * reps;
+
+  saveData();
+
+  document.getElementById("exerciseName").value = "";
+
+  render();
+
+  alert("Exercise added! 💪");
 }
 
 
-function renderWorkouts() {
+function getTodayExercises() {
 
-    const list =
-        document.getElementById("workoutList");
+  return data.workouts.filter(
+    workout => workout.date === todayKey()
+  );
+}
 
-    if (data.workouts.length === 0) {
 
-        list.innerHTML =
-            '<div class="card empty">No workouts logged yet.<br>Start your first workout above! 💪</div>';
+function finishWorkout() {
 
-        return;
-    }
+  const exercises = getTodayExercises();
 
-    const recent =
-        [...data.workouts].reverse().slice(0, 30);
+  if (exercises.length === 0) {
+    alert("Add at least one exercise first.");
+    return;
+  }
 
-    list.innerHTML = recent.map(w => `
+  const alreadyFinished =
+    data.workouts.some(
+      w => w.date === todayKey() && w.finished
+    );
 
-        <div class="item">
+  if (!alreadyFinished) {
 
-            <div class="item-top">
+    data.workouts.push({
+      id: Date.now(),
+      date: todayKey(),
+      finished: true
+    });
 
-                <div>
+    data.xp += 50;
 
-                    <div class="item-title">
-                        ${escapeHTML(w.exercise)}
-                    </div>
+    saveData();
 
-                    <div class="item-meta">
-                        ${escapeHTML(w.muscle)}
-                        • ${w.sets} sets × ${w.reps} reps
-                        • ${w.weight || 0} lbs
-                    </div>
+    alert("Workout complete! +50 XP 🏆");
+  } else {
+    alert("Today's workout is already complete.");
+  }
 
-                    <div class="item-meta">
-                        Volume: ${formatNumber(w.volume)} lbs
-                        • ${w.date}
-                    </div>
+  render();
+}
 
-                </div>
 
-                <button class="delete-btn"
-                    onclick="deleteWorkout(${w.id})">
-                    Delete
-                </button>
+function deleteExercise(id) {
 
-            </div>
+  const index =
+    data.workouts.findIndex(w => w.id === id);
 
-        </div>
+  if (index === -1) return;
 
-    `).join("");
+  const workout = data.workouts[index];
+
+  if (workout.finished) return;
+
+  data.xp -=
+    10 + Math.min(
+      20,
+      Math.floor(workout.volume / 500)
+    );
+
+  data.xp = Math.max(0, data.xp);
+
+  data.muscles[workout.muscle] -=
+    workout.sets * workout.reps;
+
+  data.muscles[workout.muscle] =
+    Math.max(0, data.muscles[workout.muscle]);
+
+  data.workouts.splice(index, 1);
+
+  saveData();
+
+  render();
 }
 
 
@@ -1079,484 +1022,427 @@ function renderWorkouts() {
 
 function addFood() {
 
-    const name =
-        document.getElementById("foodName").value.trim();
+  const name =
+    document.getElementById("foodName").value.trim();
 
-    const calories =
-        Number(document.getElementById("foodCal").value) || 0;
+  const calories =
+    Number(document.getElementById("foodCalories").value);
 
-    const protein =
-        Number(document.getElementById("foodProt").value) || 0;
+  const protein =
+    Number(document.getElementById("foodProtein").value);
 
-    const carbs =
-        Number(document.getElementById("foodCarb").value) || 0;
+  if (!name) {
+    alert("Please enter the food name.");
+    return;
+  }
 
-    const fat =
-        Number(document.getElementById("foodFatInput").value) || 0;
+  if (calories < 0 || protein < 0) {
+    alert("Calories and protein cannot be negative.");
+    return;
+  }
 
-    if (!name || calories <= 0) {
+  data.foods.push({
+    id: Date.now(),
+    date: todayKey(),
+    name,
+    calories,
+    protein
+  });
 
-        alert("Please enter the food name and calories.");
+  data.xp += 5;
 
-        return;
-    }
+  saveData();
 
-    data.foods.push({
+  document.getElementById("foodName").value = "";
+  document.getElementById("foodCalories").value = "";
+  document.getElementById("foodProtein").value = "";
 
-        id: Date.now(),
+  render();
 
-        date: todayString(),
-
-        name,
-
-        calories,
-
-        protein,
-
-        carbs,
-
-        fat
-
-    });
-
-    /* Small XP reward for tracking nutrition */
-
-    data.xp += 2;
-
-    saveData();
-
-    document.getElementById("foodName").value = "";
-    document.getElementById("foodCal").value = "";
-    document.getElementById("foodProt").value = "";
-    document.getElementById("foodCarb").value = "";
-    document.getElementById("foodFatInput").value = "";
-
-    renderAll();
-
-    alert("Food added! 🍎");
+  alert("Food added! 🍎 +5 XP");
 }
 
 
 function deleteFood(id) {
 
-    data.foods =
-        data.foods.filter(f => f.id !== id);
+  const index =
+    data.foods.findIndex(food => food.id === id);
 
-    saveData();
+  if (index === -1) return;
 
-    renderAll();
+  data.foods.splice(index, 1);
+
+  data.xp = Math.max(0, data.xp - 5);
+
+  saveData();
+
+  render();
 }
 
 
-function getTodayFoods() {
+/* =========================
+   CALCULATIONS
+========================= */
 
-    return data.foods.filter(f =>
-        f.date === todayString()
+function getTodayFood() {
+
+  return data.foods.filter(
+    food => food.date === todayKey()
+  );
+}
+
+
+function getTodayCalories() {
+
+  return getTodayFood()
+    .reduce(
+      (total, food) => total + food.calories,
+      0
     );
 }
 
 
-function renderFood() {
+function getTodayProtein() {
 
-    const foods = getTodayFoods();
-
-    let calories = 0;
-    let protein = 0;
-    let carbs = 0;
-    let fat = 0;
-
-    foods.forEach(f => {
-
-        calories += f.calories;
-        protein += f.protein;
-        carbs += f.carbs;
-        fat += f.fat;
-
-    });
-
-    document.getElementById("foodCalories").textContent =
-        formatNumber(calories);
-
-    document.getElementById("foodProtein").textContent =
-        formatNumber(protein) + "g";
-
-    document.getElementById("foodCarbs").textContent =
-        formatNumber(carbs) + "g";
-
-    document.getElementById("foodFat").textContent =
-        formatNumber(fat) + "g";
+  return getTodayFood()
+    .reduce(
+      (total, food) => total + food.protein,
+      0
+    );
+}
 
 
-    const list =
-        document.getElementById("foodList");
+function getTotalVolume() {
 
-    if (foods.length === 0) {
+  return data.workouts
+    .reduce(
+      (total, workout) =>
+        total + (workout.volume || 0),
+      0
+    );
+}
 
-        list.innerHTML =
-            '<div class="card empty">No food logged today.</div>';
 
-        return;
-    }
+function getCompletedWorkouts() {
 
-    list.innerHTML = [...foods].reverse().map(f => `
+  return data.workouts.filter(
+    workout => workout.finished
+  ).length;
+}
 
-        <div class="item">
 
-            <div class="item-top">
+/* =========================
+   RENDER HOME
+========================= */
 
-                <div>
+function renderHome() {
 
-                    <div class="item-title">
-                        ${escapeHTML(f.name)}
-                    </div>
+  const rank = getRank(data.xp);
 
-                    <div class="item-meta">
-                        ${f.calories} calories
-                        • ${f.protein}g protein
-                    </div>
+  document.getElementById("rankName")
+    .textContent = rank.name;
 
-                    <div class="item-meta">
-                        Carbs ${f.carbs}g
-                        • Fat ${f.fat}g
-                    </div>
+  document.getElementById("rankLetter")
+    .textContent = rank.letter;
 
-                </div>
+  document.getElementById("xpText")
+    .textContent = data.xp + " XP";
 
-                <button class="delete-btn"
-                    onclick="deleteFood(${f.id})">
-                    Delete
-                </button>
+  document.getElementById("xpCurrent")
+    .textContent = data.xp + " XP";
 
+  document.getElementById("xpNext")
+    .textContent = rank.next + " XP";
+
+  const percentage =
+    ((data.xp - rank.min) /
+      (rank.next - rank.min)) * 100;
+
+  document.getElementById("xpBar")
+    .style.width =
+    Math.min(100, Math.max(0, percentage)) + "%";
+
+  document.getElementById("homeCalories")
+    .textContent =
+    getTodayCalories();
+
+  document.getElementById("homeProtein")
+    .textContent =
+    Math.round(getTodayProtein()) + "g";
+
+  document.getElementById("homeWorkouts")
+    .textContent =
+    getCompletedWorkouts();
+
+  document.getElementById("homeVolume")
+    .textContent =
+    Math.round(getTotalVolume()).toLocaleString();
+
+  renderMuscles(
+    document.getElementById("homeMuscles")
+  );
+}
+
+
+/* =========================
+   RENDER WORKOUT
+========================= */
+
+function renderWorkout() {
+
+  const list =
+    document.getElementById("exerciseList");
+
+  const exercises =
+    getTodayExercises()
+      .filter(w => !w.finished);
+
+  const volume =
+    exercises.reduce(
+      (total, exercise) =>
+        total + exercise.volume,
+      0
+    );
+
+  document.getElementById("workoutVolume")
+    .textContent =
+    Math.round(volume).toLocaleString() + " lbs";
+
+  if (exercises.length === 0) {
+
+    list.innerHTML =
+      `<div class="empty">
+        No exercises logged today yet.
+       </div>`;
+
+    return;
+  }
+
+  list.innerHTML =
+    exercises.map(exercise => `
+
+      <div class="exercise-item">
+
+        <div class="item-row">
+
+          <div>
+            <div class="item-title">
+              ${escapeHtml(exercise.name)}
             </div>
 
+            <div class="item-detail">
+              ${exercise.muscle} •
+              ${exercise.sets} sets ×
+              ${exercise.reps} reps •
+              ${exercise.weight} lbs
+            </div>
+
+            <div class="item-detail">
+              Volume:
+              ${exercise.volume.toLocaleString()} lbs
+            </div>
+          </div>
+
+          <div>
+            <button
+              class="secondary"
+              onclick="deleteExercise(${exercise.id})">
+              ×
+            </button>
+          </div>
+
         </div>
+
+      </div>
 
     `).join("");
 }
 
 
 /* =========================
-   MUSCLE TRACKING
+   RENDER FOOD
 ========================= */
 
-const muscles = [
+function renderFood() {
 
-    "Chest",
-    "Back",
-    "Shoulders",
-    "Biceps",
-    "Triceps",
-    "Abs",
-    "Glutes",
-    "Quads",
-    "Hamstrings",
-    "Calves"
+  const foods = getTodayFood();
 
-];
+  document.getElementById("foodTotalCalories")
+    .textContent =
+    getTodayCalories().toLocaleString();
 
+  document.getElementById("foodTotalProtein")
+    .textContent =
+    Math.round(getTodayProtein()) + "g";
 
-function getMuscleCounts() {
+  const list =
+    document.getElementById("foodList");
 
-    const counts = {};
+  if (foods.length === 0) {
 
-    muscles.forEach(m => counts[m] = 0);
+    list.innerHTML =
+      `<div class="empty">
+        No food logged today yet.
+       </div>`;
 
-    data.workouts.forEach(w => {
+    return;
+  }
 
-        if (counts[w.muscle] !== undefined) {
-            counts[w.muscle]++;
-        }
+  list.innerHTML =
+    foods.map(food => `
 
-    });
+      <div class="food-item">
 
-    return counts;
+        <div class="item-row">
+
+          <div>
+            <div class="item-title">
+              ${escapeHtml(food.name)}
+            </div>
+
+            <div class="item-detail">
+              ${food.calories} calories •
+              ${food.protein}g protein
+            </div>
+          </div>
+
+          <button
+            class="secondary"
+            onclick="deleteFood(${food.id})">
+            ×
+          </button>
+
+        </div>
+
+      </div>
+
+    `).join("");
 }
 
 
-function renderMuscles(elementId) {
+/* =========================
+   MUSCLE DISPLAY
+========================= */
 
-    const element =
-        document.getElementById(elementId);
+function renderMuscles(container) {
 
-    const counts =
-        getMuscleCounts();
+  const max =
+    Math.max(
+      1,
+      ...MUSCLES.map(
+        muscle => data.muscles[muscle]
+      )
+    );
 
-    const max =
-        Math.max(...Object.values(counts), 1);
+  container.innerHTML =
+    MUSCLES.map(muscle => {
 
-    element.innerHTML = muscles.map(m => {
+      const value =
+        data.muscles[muscle] || 0;
 
-        const percentage =
-            (counts[m] / max) * 100;
+      const percentage =
+        Math.min(
+          100,
+          (value / max) * 100
+        );
 
-        return `
+      return `
 
-            <div class="muscle">
+        <div class="muscle">
 
-                <div class="muscle-name">
-                    ${m}
-                </div>
+          <div class="muscle-name">
+            <span>${muscle}</span>
+            <span>${value}</span>
+          </div>
 
-                <div class="muscle-track">
-                    <div
-                        class="muscle-fill"
-                        style="width:${percentage}%">
-                    </div>
-                </div>
-
-                <div class="muscle-count">
-                    ${counts[m]} exercise${counts[m] === 1 ? "" : "s"}
-                </div>
-
+          <div class="muscle-bar">
+            <div
+              class="muscle-fill"
+              style="width:${percentage}%">
             </div>
+          </div>
 
-        `;
+        </div>
+
+      `;
 
     }).join("");
 }
 
 
 /* =========================
-   WEIGHT TRACKING
+   PROGRESS
 ========================= */
 
-function addWeight() {
+function renderProgress() {
 
-    const weight =
-        Number(document.getElementById("weightInput").value);
+  document.getElementById("progressXP")
+    .textContent =
+    data.xp.toLocaleString();
 
-    if (!weight) {
+  document.getElementById("progressWorkouts")
+    .textContent =
+    getCompletedWorkouts();
 
-        alert("Please enter your weight.");
+  document.getElementById("progressVolume")
+    .textContent =
+    Math.round(getTotalVolume())
+      .toLocaleString();
 
-        return;
-    }
+  document.getElementById("progressFoods")
+    .textContent =
+    data.foods.length;
 
-    data.weights.push({
-
-        id: Date.now(),
-
-        date: todayString(),
-
-        weight
-
-    });
-
-    saveData();
-
-    document.getElementById("weightInput").value = "";
-
-    renderAll();
-
-    alert("Weight saved! 📈");
-}
-
-
-function renderWeights() {
-
-    const current =
-        data.weights[data.weights.length - 1];
-
-    document.getElementById("currentWeight").textContent =
-        current ? current.weight : "—";
-
-
-    const history =
-        document.getElementById("weightHistory");
-
-    if (data.weights.length === 0) {
-
-        history.innerHTML =
-            '<div class="empty">No weight entries yet.</div>';
-
-        document.getElementById("weightChart").innerHTML = "";
-
-        return;
-    }
-
-
-    const recent =
-        data.weights.slice(-10);
-
-    const values =
-        recent.map(x => x.weight);
-
-    const min =
-        Math.min(...values);
-
-    const max =
-        Math.max(...values);
-
-    const range =
-        Math.max(max - min, 1);
-
-
-    document.getElementById("weightChart").innerHTML =
-        recent.map(x => {
-
-            const height =
-                25 + ((x.weight - min) / range) * 75;
-
-            return `
-
-                <div class="bar-wrap">
-
-                    <div
-                        class="bar"
-                        style="height:${height}%">
-                    </div>
-
-                </div>
-
-            `;
-
-        }).join("");
-
-
-    history.innerHTML =
-        [...data.weights]
-        .reverse()
-        .slice(0, 10)
-        .map(x => `
-
-            <div class="item">
-
-                <div class="item-top">
-
-                    <div>
-
-                        <div class="item-title">
-                            ${x.weight} lbs
-                        </div>
-
-                        <div class="item-meta">
-                            ${x.date}
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        `).join("");
+  renderMuscles(
+    document.getElementById("progressMuscles")
+  );
 }
 
 
 /* =========================
-   DASHBOARD
+   SECURITY
 ========================= */
 
-function renderDashboard() {
+function escapeHtml(text) {
 
-    updateRank();
+  const div =
+    document.createElement("div");
 
-    const todayFoods =
-        getTodayFoods();
+  div.textContent = text;
 
-    let calories = 0;
-    let protein = 0;
-
-    todayFoods.forEach(f => {
-
-        calories += f.calories;
-        protein += f.protein;
-
-    });
-
-    document.getElementById("dashCalories").textContent =
-        formatNumber(calories);
-
-    document.getElementById("dashProtein").textContent =
-        formatNumber(protein) + "g";
-
-    document.getElementById("dashWorkouts").textContent =
-        data.workouts.length;
-
-    const volume =
-        data.workouts.reduce(
-            (total, w) => total + Number(w.volume || 0),
-            0
-        );
-
-    document.getElementById("dashVolume").textContent =
-        formatNumber(volume);
-
-    renderMuscles("dashboardMuscles");
+  return div.innerHTML;
 }
 
 
 /* =========================
-   LIFETIME STATS
+   RESET
 ========================= */
 
-function renderLifetimeStats() {
+function clearAllData() {
 
-    const volume =
-        data.workouts.reduce(
-            (total, w) => total + Number(w.volume || 0),
-            0
-        );
-
-    document.getElementById("lifeWorkouts").textContent =
-        data.workouts.length;
-
-    document.getElementById("lifeExercises").textContent =
-        data.workouts.length;
-
-    document.getElementById("lifeVolume").textContent =
-        formatNumber(volume);
-
-    document.getElementById("lifeXP").textContent =
-        data.xp;
-
-    renderMuscles("progressMuscles");
-}
-
-
-/* =========================
-   RENDER EVERYTHING
-========================= */
-
-function renderAll() {
-
-    renderDashboard();
-
-    renderWorkouts();
-
-    renderFood();
-
-    renderWeights();
-
-    renderLifetimeStats();
-
-}
-
-
-/* =========================
-   HELPERS
-========================= */
-
-function formatNumber(number) {
-
-    return Number(number).toLocaleString(
-        undefined,
-        {
-            maximumFractionDigits: 1
-        }
+  const confirmed =
+    confirm(
+      "Are you sure you want to erase all LiftRank data on this device?"
     );
+
+  if (!confirmed) return;
+
+  localStorage.removeItem("liftrankData");
+
+  location.reload();
 }
 
 
-function escapeHTML(text) {
+/* =========================
+   MASTER RENDER
+========================= */
 
-    return String(text)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+function render() {
 
+  renderHome();
+  renderWorkout();
+  renderFood();
+  renderProgress();
 }
 
 
@@ -1564,7 +1450,8 @@ function escapeHTML(text) {
    START APP
 ========================= */
 
-renderAll();
+displayDate();
+render();
 
 </script>
 
