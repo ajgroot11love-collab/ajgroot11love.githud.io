@@ -2,29 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#090a10">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <title>LiftRank</title>
 
 <style>
 :root{
-  --bg:#080910;
-  --panel:#141621;
-  --panel2:#1b1d2a;
-  --panel3:#202332;
-  --line:#303444;
+  --bg:#08080d;
+  --card:#15151e;
+  --card2:#1d1d29;
+  --card3:#242435;
+  --border:#303044;
   --text:#f7f7fb;
-  --muted:#9da2b5;
-  --purple:#805cff;
-  --purple2:#a78bff;
-  --blue:#4ca8ff;
-  --blue2:#79c2ff;
-  --green:#39d98a;
-  --gold:#ffc247;
-  --orange:#ff9f43;
-  --red:#ff6677;
-  --primary:#3478ff;
-  --secondary:#7c91d8;
+  --muted:#9b9baa;
+  --purple:#7657ff;
+  --purple2:#9b7cff;
+  --blue:#51b7ff;
+  --primary:#2860e0;
+  --secondary:#7894df;
+  --green:#36d17a;
+  --orange:#ffae3d;
+  --danger:#ff5d6c;
 }
 
 *{
@@ -34,24 +33,20 @@
 
 html,body{
   margin:0;
-  min-height:100%;
-  background:
-    radial-gradient(circle at 50% -10%,#1c1730 0,#080910 45%);
+  padding:0;
+  background:var(--bg);
   color:var(--text);
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "SF Pro Display",
-    "SF Pro Text",
-    Arial,
-    sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Arial,sans-serif;
 }
 
 body{
+  min-height:100vh;
   padding-bottom:105px;
 }
 
-button,input,select{
+button,
+input,
+select{
   font:inherit;
 }
 
@@ -64,888 +59,768 @@ button{
   width:100%;
   max-width:900px;
   margin:auto;
-  padding:22px 16px 35px;
+  padding:25px 18px 100px;
 }
 
-.topbar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:24px;
+h1,h2,h3,p{
+  margin-top:0;
 }
 
-.logo{
-  font-size:36px;
-  font-weight:950;
-  letter-spacing:-2px;
+h1{
+  font-size:42px;
+  margin-bottom:5px;
+  letter-spacing:-1.5px;
 }
 
-.logo span{
-  color:var(--purple);
+h2{
+  font-size:30px;
+  margin-bottom:8px;
+}
+
+h3{
+  font-size:21px;
 }
 
 .subtitle{
   color:var(--muted);
-  font-size:16px;
-  margin-top:3px;
+  font-size:18px;
+  margin-bottom:25px;
 }
 
-h1{
-  font-size:39px;
-  line-height:1.03;
-  letter-spacing:-1.7px;
-  margin:10px 0 7px;
+.brand{
+  font-size:40px;
+  font-weight:900;
+  letter-spacing:-2px;
 }
 
-h2{
-  font-size:27px;
-  letter-spacing:-.8px;
-  margin:28px 0 15px;
+.brand span{
+  color:var(--purple);
 }
 
-h3{
-  margin:0 0 7px;
+.top-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.icon-button{
+  width:48px;
+  height:48px;
+  border-radius:15px;
+  background:var(--card2);
+  color:white;
+  border:1px solid var(--border);
+  font-size:23px;
 }
 
 .card{
-  background:
-    linear-gradient(145deg,#171925,#11131c);
-  border:1px solid #303442;
+  background:linear-gradient(145deg,#171721,#12121a);
+  border:1px solid var(--border);
   border-radius:25px;
-  padding:19px;
-  margin:12px 0;
-  box-shadow:
-    0 10px 30px rgba(0,0,0,.16);
+  padding:22px;
+  margin-bottom:18px;
+  box-shadow:0 8px 30px rgba(0,0,0,.18);
 }
 
 .hero{
-  padding:24px;
+  padding:26px;
 }
 
 .rank-card{
-  background:
-    radial-gradient(circle at 90% 20%,#3b286b55,transparent 35%),
-    linear-gradient(145deg,#1b1730,#14141f);
-  border-color:#57458f;
+  display:flex;
+  gap:20px;
+  align-items:center;
 }
 
-.rank-row{
+.rank-icon{
+  width:105px;
+  height:105px;
+  border-radius:25px;
+  background:#2b2342;
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  gap:15px;
-}
-
-.rank-label{
-  color:#a9a5bb;
-  font-size:13px;
-  letter-spacing:1px;
-  font-weight:700;
+  justify-content:center;
+  font-size:52px;
+  flex-shrink:0;
 }
 
 .rank-name{
   font-size:34px;
-  font-weight:950;
-  margin:4px 0;
-}
-
-.rank-badge{
-  width:76px;
-  height:76px;
-  border-radius:24px;
-  background:linear-gradient(145deg,#8d68ff,#5f3ee7);
-  display:grid;
-  place-items:center;
-  font-size:30px;
-  font-weight:950;
-  box-shadow:0 8px 25px #704cff55;
+  font-weight:900;
+  color:#ffc33d;
 }
 
 .progress{
-  height:10px;
-  background:#292d39;
-  border-radius:999px;
+  height:13px;
+  background:#292c37;
+  border-radius:20px;
   overflow:hidden;
-  margin-top:18px;
+  margin-top:15px;
 }
 
-.progress i{
-  display:block;
+.progress > div{
   height:100%;
-  background:linear-gradient(90deg,#6c45ff,#a181ff);
-  border-radius:999px;
+  width:0%;
+  background:linear-gradient(90deg,var(--blue),var(--purple));
+  border-radius:20px;
+  transition:.3s;
 }
 
-.progress-label{
-  display:flex;
-  justify-content:space-between;
-  color:var(--muted);
-  font-size:12px;
-  margin-top:7px;
-}
-
-.grid{
+.grid-2{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:12px;
+  gap:15px;
 }
 
 .stat{
-  min-height:135px;
+  background:#13131b;
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:22px;
 }
 
 .stat-label{
   color:var(--muted);
+  font-size:15px;
   text-transform:uppercase;
-  letter-spacing:.7px;
-  font-size:13px;
+  letter-spacing:.8px;
 }
 
-.stat-number{
-  font-size:35px;
-  font-weight:950;
-  margin-top:10px;
+.stat-value{
+  font-size:38px;
+  font-weight:900;
+  margin:8px 0;
 }
 
 .orange{color:var(--orange)}
 .green{color:var(--green)}
 .blue{color:var(--blue)}
-.purple{color:var(--purple)}
-.gold{color:var(--gold)}
+.purple{color:var(--purple2)}
 
-.btn{
-  border-radius:16px;
-  padding:13px 17px;
-  background:linear-gradient(145deg,#8662ff,#7047ed);
-  color:#fff;
-  font-weight:850;
-  transition:.15s;
+.quick-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
 }
 
-.btn:active{
-  transform:scale(.97);
+.quick{
+  background:var(--card2);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:22px;
+  min-height:145px;
+  text-align:left;
+  color:white;
 }
 
-.btn.secondary{
-  background:#272b38;
+.quick-icon{
+  font-size:35px;
+  margin-bottom:15px;
 }
 
-.btn.green{
-  background:var(--green);
-  color:#07140e;
+.quick-title{
+  font-size:21px;
+  font-weight:800;
 }
 
-.btn.danger{
-  background:#3a2029;
-  color:#ff8998;
+.quick-sub{
+  color:var(--muted);
+  margin-top:6px;
 }
 
-.btn.blue{
-  background:linear-gradient(145deg,#51b3ff,#327fd0);
-}
-
-.btn.full{
+.primary-button{
   width:100%;
+  padding:17px 20px;
+  border-radius:18px;
+  color:white;
+  font-weight:800;
+  background:linear-gradient(135deg,#7454ff,#875eff);
+  font-size:18px;
 }
 
-.btnrow{
-  display:flex;
-  gap:9px;
-  flex-wrap:wrap;
-}
-
-.chips{
-  display:flex;
-  gap:9px;
-  overflow-x:auto;
-  scrollbar-width:none;
-  margin-bottom:12px;
-}
-
-.chips::-webkit-scrollbar{
-  display:none;
-}
-
-.chip{
-  white-space:nowrap;
-  padding:10px 15px;
-  border-radius:999px;
-  background:#222632;
-  color:#adb2c2;
+.secondary-button{
+  padding:14px 18px;
+  border-radius:16px;
+  color:white;
+  background:var(--card3);
+  border:1px solid var(--border);
   font-weight:700;
 }
 
-.chip.active{
-  background:#382a6c;
-  color:#fff;
-  outline:1px solid #7459d6;
+.danger-button{
+  background:#32171d;
+  color:#ff7580;
+}
+
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:30px 0 15px;
+}
+
+.section-title h2{
+  margin:0;
 }
 
 .search{
   width:100%;
-  border:1px solid var(--line);
-  border-radius:17px;
-  background:#11131c;
-  color:#fff;
-  padding:15px 16px;
+  background:#111119;
+  border:1px solid var(--border);
+  color:white;
+  border-radius:18px;
+  padding:17px 18px;
   outline:none;
+  margin-bottom:15px;
 }
 
 .search:focus{
-  border-color:#7558d8;
+  border-color:var(--purple);
 }
 
-.item{
+.filters{
+  display:flex;
+  gap:9px;
+  overflow-x:auto;
+  padding-bottom:8px;
+  margin-bottom:15px;
+  scrollbar-width:none;
+}
+
+.filters::-webkit-scrollbar{
+  display:none;
+}
+
+.filter{
+  white-space:nowrap;
+  padding:12px 17px;
+  border-radius:30px;
+  background:#20212b;
+  color:#c9c9d4;
+  border:1px solid transparent;
+}
+
+.filter.active{
+  background:#3c286f;
+  color:white;
+  border-color:#7050ff;
+}
+
+.exercise-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:22px;
+  margin-bottom:12px;
+  overflow:hidden;
+}
+
+.exercise-main{
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  padding:15px;
-  border:1px solid var(--line);
-  border-radius:19px;
-  background:#11131b;
-  margin:9px 0;
-}
-
-.item-main{
-  min-width:0;
-}
-
-.item-title{
-  font-weight:850;
-  font-size:16px;
-}
-
-.item-meta{
-  color:var(--muted);
-  font-size:13px;
-  margin-top:4px;
+  gap:15px;
+  padding:16px;
 }
 
 .exercise-thumb{
-  width:65px;
-  height:65px;
-  flex:0 0 65px;
+  width:68px;
+  height:68px;
   border-radius:17px;
-  background:
-    linear-gradient(145deg,#303446,#151722);
-  display:grid;
-  place-items:center;
-  overflow:hidden;
-}
-
-.exercise-thumb svg{
-  width:100%;
-  height:100%;
-}
-
-.exercise-row{
+  background:linear-gradient(145deg,#30303d,#171720);
   display:flex;
   align-items:center;
-  gap:12px;
-  min-width:0;
+  justify-content:center;
+  font-size:34px;
+  flex-shrink:0;
 }
 
 .exercise-info{
-  min-width:0;
+  flex:1;
 }
 
-.exercise-info .item-title{
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-
-.mini-rank{
-  display:inline-flex;
-  align-items:center;
-  gap:4px;
-  padding:4px 8px;
-  border-radius:8px;
-  background:#292333;
-  color:#cfc6e9;
-  font-size:10px;
+.exercise-name{
   font-weight:800;
-  margin-top:6px;
+  font-size:18px;
+  margin-bottom:5px;
 }
 
-.section-head{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-}
-
-.empty{
-  text-align:center;
+.exercise-meta{
   color:var(--muted);
-  padding:30px 15px;
+  font-size:14px;
 }
 
-/* MUSCLE MAP */
+.chevron{
+  color:#77778a;
+  font-size:24px;
+}
 
-.muscle-card{
+.detail-header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:20px;
+}
+
+.detail-header h1{
+  font-size:29px;
+  flex:1;
+  margin:0;
+}
+
+.exercise-art{
+  height:235px;
+  border-radius:22px;
+  background:linear-gradient(145deg,#e9e9ed,#cfd0d5);
+  display:flex;
+  align-items:center;
+  justify-content:center;
   overflow:hidden;
+  margin-bottom:16px;
 }
 
-.muscle-header{
+.exercise-art svg{
+  width:94%;
+  height:94%;
+}
+
+.detail-tags{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:20px;
+}
+
+.tag{
+  padding:8px 12px;
+  border-radius:12px;
+  background:#282838;
+  color:#ddd;
+  font-size:13px;
+}
+
+.muscle-section{
+  margin-top:25px;
+}
+
+.muscle-title{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:10px;
+  margin-bottom:10px;
 }
 
 .legend{
   display:flex;
   gap:12px;
-  flex-wrap:wrap;
   color:var(--muted);
   font-size:12px;
 }
 
-.legend-dot{
-  width:10px;
-  height:10px;
-  display:inline-block;
-  border-radius:3px;
-  margin-right:4px;
+.legend span{
+  display:flex;
+  align-items:center;
+  gap:5px;
 }
 
-.legend-primary{
+.dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+}
+
+.dot.primary{
   background:var(--primary);
 }
 
-.legend-secondary{
+.dot.secondary{
   background:var(--secondary);
 }
 
-.anatomy{
+.muscle-map{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:10px;
-  margin-top:14px;
+  gap:8px;
 }
 
-.body-panel{
-  background:
-    radial-gradient(circle at 50% 45%,#26304d55,transparent 50%),
-    #0f1119;
-  border:1px solid #2d3242;
-  border-radius:20px;
-  padding:10px;
-  min-height:385px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-}
-
-.body-label{
-  color:#8f95a9;
-  font-size:11px;
-  letter-spacing:1px;
-  font-weight:800;
-  margin-bottom:5px;
-}
-
-.body-svg{
+.body{
   width:100%;
-  height:350px;
+  height:390px;
 }
 
-.muscle-none{
-  fill:#dfe2eb;
-  opacity:.92;
-}
-
-.muscle-primary{
-  fill:#2e68ff;
-  filter:drop-shadow(0 0 5px #2e68ff77);
-}
-
-.muscle-secondary{
-  fill:#7187d0;
-}
-
-.body-outline{
-  fill:none;
-  stroke:#b8bfd0;
-  stroke-width:1.2;
-  opacity:.8;
-}
-
-.body-detail{
-  fill:none;
-  stroke:#9ea6b9;
-  stroke-width:1;
-  opacity:.55;
-}
-
-/* MUSCLE RANKS */
-
-.muscle-rank-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-
-.muscle-rank{
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:14px;
-  background:#11131b;
-}
-
-.muscle-rank-top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.muscle-name{
-  font-weight:850;
-}
-
-.tier{
-  font-size:12px;
-  font-weight:900;
-  padding:5px 8px;
-  border-radius:8px;
-  background:#32294b;
-  color:#d7caff;
-}
-
-.rank-xp{
-  color:var(--muted);
-  font-size:12px;
-  margin-top:6px;
-}
-
-/* EXERCISE DETAIL */
-
-.detail-image{
-  width:100%;
-  height:245px;
-  border-radius:22px;
-  overflow:hidden;
-  background:
-    radial-gradient(circle at 50% 50%,#38405a,transparent 58%),
-    linear-gradient(145deg,#e8e8ec,#c7c8cf);
-  border:1px solid #5c5f69;
-  display:grid;
-  place-items:center;
-}
-
-.detail-image svg{
+.body svg{
   width:100%;
   height:100%;
 }
 
-.detail-title{
-  font-size:31px;
-  font-weight:950;
-  margin:18px 0 4px;
-  letter-spacing:-1px;
+.body .none{
+  fill:#dedfe8;
 }
 
-.detail-sub{
-  color:var(--muted);
+.body .primary{
+  fill:#2860e0;
+  filter:drop-shadow(0 0 5px rgba(40,96,224,.35));
 }
 
-.muscle-pills{
-  display:flex;
-  flex-wrap:wrap;
-  gap:7px;
-  margin-top:13px;
+.body .secondary{
+  fill:#7894df;
+}
+
+.body .outline{
+  fill:#dedfe8;
+  stroke:#c0c2cd;
+  stroke-width:1.5;
+}
+
+.body .line{
+  fill:none;
+  stroke:#aeb1bd;
+  stroke-width:1.3;
+}
+
+.muscle-list{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:15px;
 }
 
 .muscle-pill{
-  padding:7px 10px;
-  border-radius:9px;
-  font-size:11px;
-  font-weight:800;
-  background:#2e68ff;
-  color:#fff;
-}
-
-.muscle-pill.secondary{
-  background:#53679e;
-}
-
-.howto{
-  display:block;
-  text-align:center;
-  text-decoration:none;
-  color:#06111d;
-  background:linear-gradient(145deg,#58baff,#318bd5);
-  padding:16px;
-  border-radius:17px;
-  font-weight:950;
-  margin-top:15px;
-}
-
-.detail-tabs{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:5px;
-  background:#11131b;
-  padding:5px;
+  background:#191923;
+  border:1px solid var(--border);
   border-radius:15px;
-  margin:15px 0;
+  padding:13px;
 }
 
-.detail-tabs button{
-  padding:11px 6px;
-  border-radius:11px;
-  background:transparent;
-  color:var(--muted);
-  font-weight:800;
-}
-
-.detail-tabs button.active{
-  background:#292331;
-  color:#fff;
-}
-
-.detail-section{
-  margin-top:16px;
-}
-
-/* WORKOUT */
-
-.workout-card{
-  background:#11131b;
-  border:1px solid var(--line);
-  border-radius:20px;
-  padding:15px;
-  margin:11px 0;
-}
-
-.workout-exercise-head{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  align-items:center;
-  margin-bottom:12px;
-}
-
-.set-header,
-.set-row{
-  display:grid;
-  grid-template-columns:34px 1fr 1fr 45px 40px;
-  gap:6px;
-  align-items:center;
-}
-
-.set-header{
-  color:#777d91;
-  font-size:10px;
-  font-weight:800;
+.muscle-pill strong{
+  display:block;
   margin-bottom:5px;
 }
 
-.set-row{
-  margin:7px 0;
+.primary-text{
+  color:#4f82ff;
 }
 
-.set-row input{
-  width:100%;
-  min-width:0;
-  background:#1d202b;
-  border:1px solid #343948;
-  border-radius:10px;
-  color:#fff;
-  padding:10px 5px;
-  text-align:center;
+.secondary-text{
+  color:#91a6df;
+}
+
+.rank-list{
+  display:grid;
+  gap:12px;
+}
+
+.muscle-rank{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:17px;
+}
+
+.rank-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.rank-letter{
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  background:#4932a4;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  font-size:20px;
+}
+
+.small-progress{
+  height:9px;
+  background:#292c37;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:12px;
+}
+
+.small-progress div{
+  height:100%;
+  background:linear-gradient(90deg,#5d8cff,#8a63ff);
+}
+
+.workout-exercise{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:17px;
+  margin-bottom:13px;
+}
+
+.workout-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:14px;
+}
+
+.set-row{
+  display:grid;
+  grid-template-columns:45px 1fr 1fr 45px;
+  gap:8px;
+  align-items:center;
+  margin-bottom:8px;
 }
 
 .set-number{
-  color:#888ea0;
   text-align:center;
-}
-
-.set-button{
-  height:40px;
-  border-radius:10px;
-  background:#282c38;
-  color:#a9afc0;
-  font-weight:900;
-}
-
-.set-button.done{
-  background:var(--green);
-  color:#06140d;
-}
-
-.timer-card{
-  text-align:center;
-  padding:18px;
-}
-
-.timer-label{
   color:var(--muted);
-  font-size:11px;
-  letter-spacing:1px;
-  font-weight:800;
 }
 
-.timer{
-  font-size:48px;
-  font-weight:950;
-  font-variant-numeric:tabular-nums;
-  margin:4px 0 12px;
-}
-
-/* FOOD */
-
-.food-summary{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-
-.recipe{
-  border:1px solid var(--line);
-  background:#11131b;
-  border-radius:20px;
-  padding:17px;
-  margin:10px 0;
-}
-
-.recipe-title{
-  font-size:20px;
-  font-weight:900;
-}
-
-.recipe-meta{
-  color:var(--muted);
-  margin:6px 0 13px;
-}
-
-.recipe ul,
-.recipe ol{
-  color:#c9ceda;
-  padding-left:20px;
-}
-
-.recipe li{
-  margin:6px 0;
-}
-
-/* PROGRESS */
-
-.chart{
-  display:flex;
-  align-items:flex-end;
-  gap:8px;
-  height:150px;
-  margin-top:15px;
-}
-
-.chart-col{
-  flex:1;
-  height:100%;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  align-items:center;
-  gap:5px;
-}
-
-.chart-bar{
+.set-input{
   width:100%;
-  max-width:30px;
-  border-radius:8px 8px 3px 3px;
-  background:linear-gradient(180deg,#9a7aff,#6344e7);
-  min-height:4px;
+  background:#101017;
+  border:1px solid var(--border);
+  color:white;
+  border-radius:11px;
+  padding:10px;
+  text-align:center;
+  outline:none;
 }
 
-.chart-label{
-  color:#858b9e;
-  font-size:9px;
+.remove-set{
+  width:40px;
+  height:40px;
+  border-radius:11px;
+  background:#29171b;
+  color:#ff6c78;
 }
 
-.stat-line{
+.routine{
   display:flex;
   justify-content:space-between;
-  padding:11px 0;
-  border-bottom:1px solid #292d38;
+  align-items:center;
+  gap:15px;
+  padding:18px;
+  border-radius:20px;
+  background:var(--card);
+  border:1px solid var(--border);
+  margin-bottom:12px;
 }
 
-.stat-line:last-child{
-  border-bottom:0;
+.routine-info{
+  flex:1;
 }
 
-.stat-line span:last-child{
-  font-weight:850;
+.routine-name{
+  font-weight:800;
+  font-size:19px;
+  margin-bottom:5px;
 }
 
-/* MODAL */
+.routine-meta{
+  color:var(--muted);
+  font-size:14px;
+}
 
-.modal{
+.food-entry{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:16px;
+  margin-bottom:10px;
+}
+
+.empty{
+  text-align:center;
+  color:var(--muted);
+  padding:35px 15px;
+}
+
+.modal-backdrop{
   position:fixed;
   inset:0;
+  background:rgba(0,0,0,.7);
   z-index:100;
-  background:#05060bee;
-  overflow-y:auto;
-  padding:15px;
-}
-
-.modal.hidden{
   display:none;
+  align-items:flex-end;
 }
 
-.modal-inner{
-  width:100%;
-  max-width:760px;
-  margin:auto;
-  padding-bottom:40px;
-}
-
-.modal-head{
-  position:sticky;
-  top:0;
-  z-index:3;
+.modal-backdrop.show{
   display:flex;
-  align-items:center;
+}
+
+.modal{
+  width:100%;
+  max-height:92vh;
+  overflow:auto;
+  background:#12121a;
+  border-radius:30px 30px 0 0;
+  border:1px solid var(--border);
+  padding:22px;
+  animation:slideUp .2s ease;
+}
+
+@keyframes slideUp{
+  from{transform:translateY(100%)}
+  to{transform:translateY(0)}
+}
+
+.modal-top{
+  display:flex;
   justify-content:space-between;
-  gap:12px;
-  padding:8px 0 14px;
-  background:#080910ed;
-  backdrop-filter:blur(16px);
+  align-items:center;
+  margin-bottom:20px;
 }
 
 .close{
-  width:43px;
-  height:43px;
-  border-radius:50%;
-  background:#292d39;
-  color:#fff;
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  background:#252532;
+  color:white;
   font-size:24px;
+}
+
+.form-group{
+  margin-bottom:15px;
+}
+
+.form-group label{
+  display:block;
+  color:var(--muted);
+  margin-bottom:7px;
+}
+
+.form-control{
+  width:100%;
+  padding:14px;
+  border-radius:14px;
+  background:#0f0f16;
+  color:white;
+  border:1px solid var(--border);
+  outline:none;
+}
+
+.bottom-nav{
+  position:fixed;
+  left:50%;
+  bottom:10px;
+  transform:translateX(-50%);
+  width:calc(100% - 22px);
+  max-width:850px;
+  background:rgba(25,25,35,.96);
+  border:1px solid #363647;
+  border-radius:27px;
+  padding:8px;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  z-index:90;
+  box-shadow:0 12px 40px rgba(0,0,0,.45);
+  backdrop-filter:blur(18px);
+}
+
+.nav-btn{
+  background:transparent;
+  color:#9696a7;
+  border-radius:21px;
+  padding:9px 4px 8px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+}
+
+.nav-btn.active{
+  background:#242432;
+  color:white;
+}
+
+.nav-icon{
+  font-size:23px;
+  line-height:1;
+}
+
+.nav-label{
+  font-size:12px;
 }
 
 .toast{
   position:fixed;
-  z-index:200;
+  left:50%;
   bottom:105px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#f5f6fa;
-  color:#11131a;
-  padding:12px 17px;
-  border-radius:14px;
-  font-weight:850;
-  box-shadow:0 12px 35px #0008;
-}
-
-.form-label{
-  display:block;
-  color:var(--muted);
-  font-size:12px;
+  transform:translateX(-50%) translateY(20px);
+  background:#f4f4f7;
+  color:#111;
+  padding:13px 18px;
+  border-radius:15px;
   font-weight:700;
-  margin:10px 0 5px;
+  opacity:0;
+  pointer-events:none;
+  transition:.25s;
+  z-index:200;
 }
 
-.form-input{
-  width:100%;
-  background:#10121a;
-  border:1px solid var(--line);
-  color:#fff;
-  padding:13px;
-  border-radius:13px;
-  outline:none;
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(0);
 }
 
-.form-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-
-/* BOTTOM NAV */
-
-.nav{
-  position:fixed;
-  z-index:80;
-  bottom:11px;
-  left:50%;
-  transform:translateX(-50%);
-  width:min(95%,850px);
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  padding:7px;
-  border-radius:27px;
-  background:#1b1e29ed;
-  backdrop-filter:blur(22px);
-  border:1px solid #373c4a;
-  box-shadow:0 15px 45px #0009;
-}
-
-.nav button{
-  background:transparent;
-  color:#9a9fb0;
-  border-radius:19px;
-  padding:8px 3px;
-  font-size:11px;
-  font-weight:700;
-}
-
-.nav button.active{
-  background:#252938;
-  color:#fff;
-}
-
-.nav-icon{
-  display:block;
-  font-size:22px;
-  margin-bottom:3px;
-}
-
-.hidden{
-  display:none!important;
-}
-
-@media(max-width:520px){
-
+@media(max-width:560px){
   .app{
-    padding:18px 13px 35px;
+    padding-left:14px;
+    padding-right:14px;
   }
 
   h1{
     font-size:35px;
   }
 
-  h2{
-    font-size:25px;
+  .brand{
+    font-size:35px;
   }
 
-  .logo{
-    font-size:34px;
+  .rank-card{
+    gap:13px;
   }
 
-  .body-panel{
-    min-height:340px;
+  .rank-icon{
+    width:78px;
+    height:78px;
+    font-size:40px;
   }
 
-  .body-svg{
-    height:310px;
+  .rank-name{
+    font-size:28px;
   }
 
-  .detail-image{
-    height:210px;
+  .body{
+    height:300px;
   }
 
-  .set-header,
-  .set-row{
-    grid-template-columns:28px 1fr 1fr 42px 38px;
+  .exercise-art{
+    height:195px;
   }
 
-  .set-row input{
-    padding:9px 3px;
+  .muscle-list{
+    grid-template-columns:1fr;
   }
 
-  .nav{
-    bottom:8px;
+  .quick-grid{
+    gap:10px;
+  }
+
+  .quick{
+    padding:17px;
+    min-height:125px;
+  }
+
+  .quick-title{
+    font-size:18px;
   }
 }
 </style>
@@ -955,477 +830,46 @@ h3{
 
 <div id="app"></div>
 
-<div id="modal" class="modal hidden"></div>
-
-<div id="toast" class="toast hidden"></div>
-
-<nav class="nav">
-
-  <button data-tab="home" onclick="showTab('home')">
+<nav class="bottom-nav">
+  <button class="nav-btn" data-tab="home">
     <span class="nav-icon">🏠</span>
-    Home
+    <span class="nav-label">Home</span>
   </button>
 
-  <button data-tab="workout" onclick="showTab('workout')">
+  <button class="nav-btn" data-tab="workout">
     <span class="nav-icon">🏋️</span>
-    Workout
+    <span class="nav-label">Workout</span>
   </button>
 
-  <button data-tab="exercises" onclick="showTab('exercises')">
+  <button class="nav-btn" data-tab="exercises">
     <span class="nav-icon">📚</span>
-    Exercises
+    <span class="nav-label">Exercises</span>
   </button>
 
-  <button data-tab="food" onclick="showTab('food')">
+  <button class="nav-btn" data-tab="food">
     <span class="nav-icon">🍎</span>
-    Food
+    <span class="nav-label">Food</span>
   </button>
 
-  <button data-tab="progress" onclick="showTab('progress')">
+  <button class="nav-btn" data-tab="ranks">
     <span class="nav-icon">🏆</span>
-    Ranks
+    <span class="nav-label">Ranks</span>
   </button>
-
 </nav>
 
+<div class="toast" id="toast"></div>
+
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal" id="modal"></div>
+</div>
+
 <script>
-
 /* =========================================================
-   LIFTRANK — FULL VISUAL / RANKING UPDATE
+   LIFTRANK
+   COMPLETE SINGLE-FILE APP
 ========================================================= */
 
-const STORAGE_KEY="liftrank_master_v4";
-
-const today=()=>{
-  const d=new Date();
-  return d.toISOString().slice(0,10);
-};
-
-const uid=()=>{
-  return Date.now().toString(36)+Math.random().toString(36).slice(2,8);
-};
-
-const esc=(s)=>{
-  return String(s).replace(
-    /[&<>"']/g,
-    c=>({
-      "&":"&amp;",
-      "<":"&lt;",
-      ">":"&gt;",
-      '"':"&quot;",
-      "'":"&#039;"
-    }[c])
-  );
-};
-
-
-/* =========================================================
-   EXERCISE DATABASE
-========================================================= */
-
-const EXERCISES=[
-
-/* CHEST */
-
-["Barbell Flat Bench Press","Chest","Barbell","Barbell"],
-["Barbell Incline Bench Press","Chest","Barbell","Barbell"],
-["Barbell Decline Bench Press","Chest","Barbell","Barbell"],
-["Dumbbell Flat Bench Press","Chest","Dumbbell","Dumbbell"],
-["Dumbbell Incline Bench Press","Chest","Dumbbell","Dumbbell"],
-["Dumbbell Decline Bench Press","Chest","Dumbbell","Dumbbell"],
-["Smith Machine Flat Bench Press","Chest","Smith Machine","Machine"],
-["Smith Machine Incline Bench Press","Chest","Smith Machine","Machine"],
-["Smith Machine Decline Bench Press","Chest","Smith Machine","Machine"],
-["Plate-Loaded Chest Press","Chest","Plate Machine","Machine"],
-["Selectorized Seated Chest Press","Chest","Selectorized Machine","Machine"],
-["Lever Incline Chest Press","Chest","Plate Machine","Machine"],
-["Cable Standing Chest Press","Chest","Cable","Cable"],
-["Cable Seated Chest Press","Chest","Cable","Cable"],
-["Single-Arm Cable Chest Press","Chest","Cable","Cable"],
-["Resistance Band Chest Press","Chest","Resistance Band","Band"],
-["Push-Ups","Chest","Bodyweight","Bodyweight"],
-["Incline Push-Ups","Chest","Bodyweight","Bodyweight"],
-["Decline Push-Ups","Chest","Bodyweight","Bodyweight"],
-["Weighted Push-Ups","Chest","Plate / Vest","Bodyweight"],
-["Dumbbell Flat Fly","Chest","Dumbbell","Dumbbell"],
-["Dumbbell Incline Fly","Chest","Dumbbell","Dumbbell"],
-["Dumbbell Decline Fly","Chest","Dumbbell","Dumbbell"],
-["Cable Standing Fly","Chest","Cable","Cable"],
-["Cable Seated Fly","Chest","Cable","Cable"],
-["Single-Arm Cable Fly","Chest","Cable","Cable"],
-["Pec Deck Fly","Chest","Machine","Machine"],
-["Plate-Loaded Fly Machine","Chest","Plate Machine","Machine"],
-["Resistance Band Fly","Chest","Resistance Band","Band"],
-["Chest Dips","Chest","Bodyweight","Bodyweight"],
-["Weighted Chest Dips","Chest","Belt / Vest","Bodyweight"],
-["Assisted Chest Dip Machine","Chest","Machine","Machine"],
-["Landmine Chest Press","Chest","Landmine","Barbell"],
-["Plate Svend Press","Chest","Plate","Plate"],
-["Resistance Band Svend Press","Chest","Resistance Band","Band"],
-
-/* BACK */
-
-["Pull-Ups","Back","Bodyweight","Bodyweight"],
-["Weighted Pull-Ups","Back","Weight Belt","Bodyweight"],
-["Assisted Pull-Up Machine","Back","Machine","Machine"],
-["Chin-Ups","Back","Bodyweight","Bodyweight"],
-["Weighted Chin-Ups","Back","Weight Belt","Bodyweight"],
-["Wide-Grip Lat Pulldown","Back","Cable Machine","Cable"],
-["Close-Grip Lat Pulldown","Back","Cable Machine","Cable"],
-["Neutral-Grip Lat Pulldown","Back","Cable Machine","Cable"],
-["Reverse-Grip Lat Pulldown","Back","Cable Machine","Cable"],
-["Single-Arm Lat Pulldown","Back","Cable","Cable"],
-["Plate-Loaded Lat Pulldown","Back","Plate Machine","Machine"],
-["Selectorized Lat Pulldown","Back","Selectorized Machine","Machine"],
-["Barbell Bent-Over Row","Back","Barbell","Barbell"],
-["Pendlay Row","Back","Barbell","Barbell"],
-["Single-Arm Dumbbell Row","Back","Dumbbell","Dumbbell"],
-["Two-Arm Dumbbell Row","Back","Dumbbell","Dumbbell"],
-["Chest-Supported Dumbbell Row","Back","Dumbbell","Dumbbell"],
-["Chest-Supported T-Bar Row","Back","T-Bar","Machine"],
-["T-Bar Row","Back","T-Bar","Machine"],
-["Seated Cable Row","Back","Cable Machine","Cable"],
-["Single-Arm Seated Cable Row","Back","Cable","Cable"],
-["Plate-Loaded Seated Row","Back","Plate Machine","Machine"],
-["Selectorized Seated Row","Back","Selectorized Machine","Machine"],
-["Machine Chest-Supported Row","Back","Machine","Machine"],
-["Straight-Arm Cable Pulldown","Back","Cable","Cable"],
-["Straight-Arm Band Pulldown","Back","Band","Band"],
-["Cable Face Pull","Back","Cable","Cable"],
-["Band Face Pull","Back","Band","Band"],
-["Inverted Row","Back","Bodyweight","Bodyweight"],
-["Weighted Inverted Row","Back","Weight","Bodyweight"],
-["Conventional Deadlift","Back","Barbell","Barbell"],
-["Sumo Deadlift","Back","Barbell","Barbell"],
-["Trap-Bar Deadlift","Back","Trap Bar","Barbell"],
-["Romanian Deadlift","Back","Barbell","Barbell"],
-["Dumbbell Romanian Deadlift","Back","Dumbbell","Dumbbell"],
-["Stiff-Leg Deadlift","Back","Barbell","Barbell"],
-["Single-Leg Romanian Deadlift","Back","Dumbbell","Dumbbell"],
-["Rack Pull","Back","Barbell","Barbell"],
-["Back Extension","Back","Bodyweight","Bodyweight"],
-["Weighted Back Extension","Back","Weight","Bodyweight"],
-["Machine Back Extension","Back","Machine","Machine"],
-["Good Morning","Back","Barbell","Barbell"],
-["Barbell Shrug","Back","Barbell","Barbell"],
-["Dumbbell Shrug","Back","Dumbbell","Dumbbell"],
-["Trap-Bar Shrug","Back","Trap Bar","Barbell"],
-["Machine Shrug","Back","Machine","Machine"],
-["Cable Shrug","Back","Cable","Cable"],
-["Resistance Band Row","Back","Resistance Band","Band"],
-["Resistance Band Lat Pulldown","Back","Resistance Band","Band"],
-["Resistance Band Face Pull","Back","Resistance Band","Band"],
-
-/* SHOULDERS */
-
-["Barbell Overhead Press","Shoulders","Barbell","Barbell"],
-["Dumbbell Overhead Press","Shoulders","Dumbbell","Dumbbell"],
-["Arnold Press","Shoulders","Dumbbell","Dumbbell"],
-["Smith Machine Overhead Press","Shoulders","Smith Machine","Machine"],
-["Plate-Loaded Shoulder Press","Shoulders","Plate Machine","Machine"],
-["Selectorized Shoulder Press","Shoulders","Selectorized Machine","Machine"],
-["Landmine Press","Shoulders","Landmine","Barbell"],
-["Single-Arm Landmine Press","Shoulders","Landmine","Barbell"],
-["Push Press","Shoulders","Barbell","Barbell"],
-["Dumbbell Lateral Raise","Shoulders","Dumbbell","Dumbbell"],
-["Cable Lateral Raise","Shoulders","Cable","Cable"],
-["Machine Lateral Raise","Shoulders","Machine","Machine"],
-["Single-Arm Cable Lateral Raise","Shoulders","Cable","Cable"],
-["Resistance Band Lateral Raise","Shoulders","Band","Band"],
-["Dumbbell Front Raise","Shoulders","Dumbbell","Dumbbell"],
-["Plate Front Raise","Shoulders","Plate","Plate"],
-["Cable Front Raise","Shoulders","Cable","Cable"],
-["Resistance Band Front Raise","Shoulders","Band","Band"],
-["Dumbbell Rear Delt Fly","Shoulders","Dumbbell","Dumbbell"],
-["Cable Rear Delt Fly","Shoulders","Cable","Cable"],
-["Reverse Pec Deck","Shoulders","Machine","Machine"],
-["Cable Rear Delt Pull","Shoulders","Cable","Cable"],
-["Bent-Over Rear Delt Raise","Shoulders","Dumbbell","Dumbbell"],
-["Barbell Upright Row","Shoulders","Barbell","Barbell"],
-["Dumbbell Upright Row","Shoulders","Dumbbell","Dumbbell"],
-["Cable Upright Row","Shoulders","Cable","Cable"],
-["EZ-Bar Upright Row","Shoulders","EZ-Bar","Barbell"],
-["Cuban Rotation","Shoulders","Dumbbell","Dumbbell"],
-["Band Pull-Apart","Shoulders","Band","Band"],
-["Resistance Band Overhead Press","Shoulders","Band","Band"],
-["Resistance Band Rear Delt Pull","Shoulders","Band","Band"],
-
-/* BICEPS */
-
-["Barbell Curl","Biceps","Barbell","Barbell"],
-["EZ-Bar Curl","Biceps","EZ-Bar","Barbell"],
-["Standing Dumbbell Curl","Biceps","Dumbbell","Dumbbell"],
-["Seated Dumbbell Curl","Biceps","Dumbbell","Dumbbell"],
-["Incline Dumbbell Curl","Biceps","Dumbbell","Dumbbell"],
-["Concentration Curl","Biceps","Dumbbell","Dumbbell"],
-["Hammer Curl","Biceps","Dumbbell","Dumbbell"],
-["Cross-Body Hammer Curl","Biceps","Dumbbell","Dumbbell"],
-["Preacher EZ-Bar Curl","Biceps","EZ-Bar","Barbell"],
-["Preacher Dumbbell Curl","Biceps","Dumbbell","Dumbbell"],
-["Preacher Machine Curl","Biceps","Machine","Machine"],
-["Cable Curl","Biceps","Cable","Cable"],
-["Rope Cable Curl","Biceps","Cable","Cable"],
-["Single-Arm Cable Curl","Biceps","Cable","Cable"],
-["High Cable Curl","Biceps","Cable","Cable"],
-["Spider Curl","Biceps","Dumbbell","Dumbbell"],
-["Reverse Barbell Curl","Biceps","Barbell","Barbell"],
-["Reverse Dumbbell Curl","Biceps","Dumbbell","Dumbbell"],
-["Chin-Up Biceps Emphasis","Biceps","Bodyweight","Bodyweight"],
-["Resistance Band Curl","Biceps","Band","Band"],
-["Resistance Band Hammer Curl","Biceps","Band","Band"],
-
-/* TRICEPS */
-
-["Close-Grip Bench Press","Triceps","Barbell","Barbell"],
-["Smith Close-Grip Bench Press","Triceps","Smith Machine","Machine"],
-["Upright Dips","Triceps","Bodyweight","Bodyweight"],
-["Weighted Upright Dips","Triceps","Weight Belt","Bodyweight"],
-["Assisted Dip Machine","Triceps","Machine","Machine"],
-["Barbell Skull Crusher","Triceps","Barbell","Barbell"],
-["EZ-Bar Skull Crusher","Triceps","EZ-Bar","Barbell"],
-["Dumbbell Skull Crusher","Triceps","Dumbbell","Dumbbell"],
-["Two-Hand Dumbbell Overhead Extension","Triceps","Dumbbell","Dumbbell"],
-["Single-Arm Dumbbell Overhead Extension","Triceps","Dumbbell","Dumbbell"],
-["EZ-Bar Overhead Extension","Triceps","EZ-Bar","Barbell"],
-["Cable Overhead Extension","Triceps","Cable","Cable"],
-["Straight-Bar Pushdown","Triceps","Cable","Cable"],
-["V-Bar Pushdown","Triceps","Cable","Cable"],
-["Rope Pushdown","Triceps","Cable","Cable"],
-["Single-Arm Pushdown","Triceps","Cable","Cable"],
-["Dumbbell Tricep Kickback","Triceps","Dumbbell","Dumbbell"],
-["Cable Tricep Kickback","Triceps","Cable","Cable"],
-["Diamond Push-Ups","Triceps","Bodyweight","Bodyweight"],
-["Bench Dips","Triceps","Bodyweight","Bodyweight"],
-["Weighted Bench Dips","Triceps","Weight","Bodyweight"],
-["Machine Tricep Extension","Triceps","Machine","Machine"],
-["Resistance Band Pushdown","Triceps","Band","Band"],
-["Resistance Band Overhead Extension","Triceps","Band","Band"],
-["Resistance Band Kickback","Triceps","Band","Band"],
-
-/* QUADS */
-
-["Back Squat","Quads","Barbell","Barbell"],
-["Front Squat","Quads","Barbell","Barbell"],
-["Safety-Bar Squat","Quads","Safety Bar","Barbell"],
-["Goblet Squat","Quads","Dumbbell / Kettlebell","Dumbbell"],
-["Smith Machine Squat","Quads","Smith Machine","Machine"],
-["Plate-Loaded Leg Press","Quads","Machine","Machine"],
-["Selectorized Leg Press","Quads","Machine","Machine"],
-["Plate-Loaded Hack Squat","Quads","Machine","Machine"],
-["Selectorized Hack Squat","Quads","Machine","Machine"],
-["Pendulum Squat","Quads","Machine","Machine"],
-["Bulgarian Split Squat Dumbbell","Quads","Dumbbell","Dumbbell"],
-["Bulgarian Split Squat Barbell","Quads","Barbell","Barbell"],
-["Walking Dumbbell Lunge","Quads","Dumbbell","Dumbbell"],
-["Walking Barbell Lunge","Quads","Barbell","Barbell"],
-["Reverse Dumbbell Lunge","Quads","Dumbbell","Dumbbell"],
-["Reverse Barbell Lunge","Quads","Barbell","Barbell"],
-["Dumbbell Step-Up","Quads","Dumbbell","Dumbbell"],
-["Barbell Step-Up","Quads","Barbell","Barbell"],
-["Selectorized Leg Extension","Quads","Machine","Machine"],
-["Plate-Loaded Leg Extension","Quads","Machine","Machine"],
-["Sissy Squat","Quads","Bodyweight","Bodyweight"],
-["Wall Sit","Quads","Bodyweight","Bodyweight"],
-["Resistance Band Squat","Quads","Band","Band"],
-["Resistance Band Leg Extension","Quads","Band","Band"],
-
-/* HAMSTRINGS */
-
-["Lying Leg Curl","Hamstrings","Machine","Machine"],
-["Seated Leg Curl","Hamstrings","Machine","Machine"],
-["Standing Leg Curl","Hamstrings","Machine","Machine"],
-["Nordic Hamstring Curl","Hamstrings","Bodyweight","Bodyweight"],
-["Glute-Ham Raise","Hamstrings","Machine","Machine"],
-["Cable Pull-Through","Hamstrings","Cable","Cable"],
-["Resistance Band Leg Curl","Hamstrings","Band","Band"],
-["Resistance Band Good Morning","Hamstrings","Band","Band"],
-
-/* GLUTES */
-
-["Barbell Hip Thrust","Glutes","Barbell","Barbell"],
-["Dumbbell Hip Thrust","Glutes","Dumbbell","Dumbbell"],
-["Machine Hip Thrust","Glutes","Machine","Machine"],
-["Single-Leg Hip Thrust","Glutes","Bodyweight","Bodyweight"],
-["Glute Bridge","Glutes","Bodyweight","Bodyweight"],
-["Cable Kickback","Glutes","Cable","Cable"],
-["Machine Glute Kickback","Glutes","Machine","Machine"],
-["Banded Kickback","Glutes","Band","Band"],
-["Sumo Squat","Glutes","Barbell / Dumbbell","Barbell"],
-["Glute-Focused Bulgarian Split Squat","Glutes","Dumbbell","Dumbbell"],
-["Glute Step-Up","Glutes","Dumbbell","Dumbbell"],
-["Abductor Machine","Glutes","Machine","Machine"],
-["Banded Clamshell","Glutes","Band","Band"],
-["Monster Walk","Glutes","Band","Band"],
-["Cable Hip Abduction","Glutes","Cable","Cable"],
-["Resistance Band Hip Thrust","Glutes","Band","Band"],
-
-/* CALVES */
-
-["Standing Calf Raise Machine","Calves","Machine","Machine"],
-["Smith Machine Calf Raise","Calves","Smith Machine","Machine"],
-["Seated Calf Raise","Calves","Machine","Machine"],
-["Leg Press Calf Raise","Calves","Machine","Machine"],
-["Single-Leg Calf Raise","Calves","Dumbbell / Bodyweight","Dumbbell"],
-["Donkey Calf Raise","Calves","Machine","Machine"],
-["Resistance Band Calf Raise","Calves","Band","Band"],
-
-/* CORE */
-
-["Front Plank","Core","Bodyweight","Bodyweight"],
-["Side Plank","Core","Bodyweight","Bodyweight"],
-["Weighted Plank","Core","Weight","Bodyweight"],
-["Crunch","Core","Bodyweight","Bodyweight"],
-["Machine Crunch","Core","Machine","Machine"],
-["Cable Crunch","Core","Cable","Cable"],
-["Hanging Leg Raise","Core","Bodyweight","Bodyweight"],
-["Hanging Knee Raise","Core","Bodyweight","Bodyweight"],
-["Captain's Chair Leg Raise","Core","Machine","Machine"],
-["Ab Wheel Rollout","Core","Ab Wheel","Bodyweight"],
-["Stability Ball Rollout","Core","Ball","Bodyweight"],
-["Russian Twist","Core","Bodyweight / Weight","Bodyweight"],
-["Cable Woodchopper","Core","Cable","Cable"],
-["Cable Rotation","Core","Cable","Cable"],
-["Pallof Press","Core","Cable","Cable"],
-["Band Pallof Press","Core","Band","Band"],
-["Dead Bug","Core","Bodyweight","Bodyweight"],
-["Bird Dog","Core","Bodyweight","Bodyweight"],
-["Mountain Climbers","Core","Bodyweight","Bodyweight"],
-["Farmer Carry","Core","Dumbbells / Trap Bar","Dumbbell"],
-["Suitcase Carry","Core","Dumbbell","Dumbbell"],
-["Band Anti-Rotation Press","Core","Band","Band"],
-["Band Woodchopper","Core","Band","Band"],
-
-/* FULL BODY / CONDITIONING */
-
-["Clean & Press","Full Body","Barbell / Dumbbell","Barbell"],
-["Barbell Thruster","Full Body","Barbell","Barbell"],
-["Dumbbell Thruster","Full Body","Dumbbell","Dumbbell"],
-["Kettlebell Swing","Full Body","Kettlebell","Kettlebell"],
-["Medicine Ball Slam","Full Body","Medicine Ball","Conditioning"],
-["Battle Ropes","Full Body","Battle Rope","Conditioning"],
-["Sled Push","Full Body","Sled","Conditioning"],
-["Sled Pull","Full Body","Sled","Conditioning"],
-["Farmer's Walk","Full Body","Dumbbells / Trap Bar","Dumbbell"],
-["Burpees","Full Body","Bodyweight","Bodyweight"],
-["Band Deadlift","Full Body","Band","Band"],
-["Band Good Morning","Full Body","Band","Band"],
-
-/* CARDIO */
-
-["Treadmill","Cardio","Treadmill","Cardio"],
-["Elliptical","Cardio","Elliptical","Cardio"],
-["Upright Bike","Cardio","Bike","Cardio"],
-["Recumbent Bike","Cardio","Bike","Cardio"],
-["Spin Bike","Cardio","Spin Bike","Cardio"],
-["Rowing Machine","Cardio","Rower","Cardio"],
-["Stair Climber","Cardio","StepMill","Cardio"],
-["Air Bike","Cardio","Air Bike","Cardio"],
-["Ski Erg","Cardio","Ski Erg","Cardio"],
-["Jump Rope","Cardio","Jump Rope","Cardio"],
-["VersaClimber","Cardio","VersaClimber","Cardio"],
-
-/* STRETCH / MOBILITY */
-
-["Standing Quad Stretch","Mobility","Bodyweight","Mobility"],
-["Standing Hamstring Stretch","Mobility","Bodyweight","Mobility"],
-["Seated Hamstring Stretch","Mobility","Bodyweight","Mobility"],
-["Hip Flexor Stretch","Mobility","Bodyweight","Mobility"],
-["Figure Four Glute Stretch","Mobility","Bodyweight","Mobility"],
-["Calf Wall Stretch","Mobility","Bodyweight","Mobility"],
-["Chest Doorway Stretch","Mobility","Bodyweight","Mobility"],
-["Shoulder Cross-Body Stretch","Mobility","Bodyweight","Mobility"],
-["Overhead Tricep Stretch","Mobility","Bodyweight","Mobility"],
-["Lat Stretch","Mobility","Bodyweight","Mobility"],
-["Child's Pose","Mobility","Bodyweight","Mobility"],
-["Cat-Cow","Mobility","Bodyweight","Mobility"],
-["World's Greatest Stretch","Mobility","Bodyweight","Mobility"],
-["90/90 Hip Stretch","Mobility","Bodyweight","Mobility"],
-["Couch Stretch","Mobility","Bodyweight","Mobility"]
-
-].map(x=>({
-  id:uid(),
-  name:x[0],
-  muscle:x[1],
-  equipment:x[2],
-  type:x[3]
-}));
-
-
-/* =========================================================
-   PRIMARY / SECONDARY MUSCLES
-========================================================= */
-
-const MUSCLE_MAP={
-
-Chest:{
-  primary:["Chest"],
-  secondary:["Triceps","Shoulders"]
-},
-
-Back:{
-  primary:["Back"],
-  secondary:["Biceps","Core"]
-},
-
-Shoulders:{
-  primary:["Shoulders"],
-  secondary:["Triceps","Chest"]
-},
-
-Biceps:{
-  primary:["Biceps"],
-  secondary:["Back","Forearms"]
-},
-
-Triceps:{
-  primary:["Triceps"],
-  secondary:["Chest","Shoulders"]
-},
-
-Quads:{
-  primary:["Quads"],
-  secondary:["Glutes","Hamstrings"]
-},
-
-Hamstrings:{
-  primary:["Hamstrings"],
-  secondary:["Glutes","Back"]
-},
-
-Glutes:{
-  primary:["Glutes"],
-  secondary:["Hamstrings","Quads","Core"]
-},
-
-Calves:{
-  primary:["Calves"],
-  secondary:["Quads"]
-},
-
-Core:{
-  primary:["Core"],
-  secondary:["Shoulders","Back","Glutes"]
-},
-
-"Full Body":{
-  primary:["Quads","Glutes","Core"],
-  secondary:["Chest","Back","Shoulders"]
-},
-
-Cardio:{
-  primary:["Quads","Calves","Core"],
-  secondary:["Glutes","Hamstrings"]
-},
-
-Mobility:{
-  primary:["Core"],
-  secondary:["Shoulders","Glutes","Hamstrings"]
-}
-
-};
-
-
-const MUSCLES=[
+const MUSCLES = [
   "Chest",
   "Back",
   "Shoulders",
@@ -1438,3968 +882,1543 @@ const MUSCLES=[
   "Core"
 ];
 
+const EXERCISES = [
 
-/* =========================================================
-   ROUTINES
-========================================================= */
+/* CHEST */
+{name:"Barbell Flat Bench Press",cat:"Chest",type:"Barbell",primary:["Chest"],secondary:["Triceps","Shoulders"],icon:"🏋️"},
+{name:"Barbell Incline Bench Press",cat:"Chest",type:"Barbell",primary:["Chest"],secondary:["Shoulders","Triceps"],icon:"🏋️"},
+{name:"Barbell Decline Bench Press",cat:"Chest",type:"Barbell",primary:["Chest"],secondary:["Triceps"],icon:"🏋️"},
+{name:"Dumbbell Flat Bench Press",cat:"Chest",type:"Dumbbell",primary:["Chest"],secondary:["Triceps","Shoulders"],icon:"🏋️"},
+{name:"Dumbbell Incline Bench Press",cat:"Chest",type:"Dumbbell",primary:["Chest"],secondary:["Shoulders","Triceps"],icon:"🏋️"},
+{name:"Smith Machine Flat Bench Press",cat:"Chest",type:"Smith Machine",primary:["Chest"],secondary:["Triceps","Shoulders"],icon:"🏋️"},
+{name:"Plate-Loaded Chest Press Machine",cat:"Chest",type:"Machine",primary:["Chest"],secondary:["Triceps","Shoulders"],icon:"🦾"},
+{name:"Selectorized Seated Chest Press",cat:"Chest",type:"Machine",primary:["Chest"],secondary:["Triceps","Shoulders"],icon:"🦾"},
+{name:"Cable Standing Chest Press",cat:"Chest",type:"Cable",primary:["Chest"],secondary:["Triceps","Shoulders"],icon:"🔗"},
+{name:"Single-Arm Cable Chest Press",cat:"Chest",type:"Cable",primary:["Chest"],secondary:["Core","Shoulders"],icon:"🔗"},
+{name:"Push-Ups",cat:"Chest",type:"Bodyweight",primary:["Chest"],secondary:["Triceps","Shoulders","Core"],icon:"🤸"},
+{name:"Weighted Push-Ups",cat:"Chest",type:"Weighted",primary:["Chest"],secondary:["Triceps","Shoulders","Core"],icon:"🤸"},
+{name:"Dumbbell Flat Flyes",cat:"Chest",type:"Dumbbell",primary:["Chest"],secondary:["Shoulders"],icon:"🏋️"},
+{name:"Cable Flyes",cat:"Chest",type:"Cable",primary:["Chest"],secondary:["Shoulders"],icon:"🔗"},
+{name:"Pec Deck",cat:"Chest",type:"Machine",primary:["Chest"],secondary:["Shoulders"],icon:"🦾"},
+{name:"Chest Dips",cat:"Chest",type:"Bodyweight",primary:["Chest"],secondary:["Triceps","Shoulders"],icon:"🤸"},
+{name:"Weighted Chest Dips",cat:"Chest",type:"Weighted",primary:["Chest"],secondary:["Triceps","Shoulders"],icon:"🤸"},
+{name:"Assisted Chest Dip Machine",cat:"Chest",type:"Machine",primary:["Chest"],secondary:["Triceps"],icon:"🦾"},
+{name:"Landmine Chest Press",cat:"Chest",type:"Landmine",primary:["Chest"],secondary:["Shoulders","Triceps","Core"],icon:"🏋️"},
 
-const DEFAULT_ROUTINES=[
+/* BACK */
+{name:"Pull-Ups",cat:"Back",type:"Bodyweight",primary:["Back"],secondary:["Biceps","Core"],icon:"🤸"},
+{name:"Weighted Pull-Ups",cat:"Back",type:"Weighted",primary:["Back"],secondary:["Biceps","Core"],icon:"🤸"},
+{name:"Assisted Pull-Up Machine",cat:"Back",type:"Machine",primary:["Back"],secondary:["Biceps"],icon:"🦾"},
+{name:"Chin-Ups",cat:"Back",type:"Bodyweight",primary:["Back"],secondary:["Biceps"],icon:"🤸"},
+{name:"Lat Pulldown — Wide Grip",cat:"Back",type:"Cable",primary:["Back"],secondary:["Biceps"],icon:"🔗"},
+{name:"Lat Pulldown — Close Grip",cat:"Back",type:"Cable",primary:["Back"],secondary:["Biceps"],icon:"🔗"},
+{name:"Lat Pulldown — Neutral Grip",cat:"Back",type:"Cable",primary:["Back"],secondary:["Biceps"],icon:"🔗"},
+{name:"Single-Arm Lat Pulldown",cat:"Back",type:"Cable",primary:["Back"],secondary:["Biceps","Core"],icon:"🔗"},
+{name:"Plate-Loaded Lat Pulldown",cat:"Back",type:"Machine",primary:["Back"],secondary:["Biceps"],icon:"🦾"},
+{name:"Selectorized Lat Pulldown",cat:"Back",type:"Machine",primary:["Back"],secondary:["Biceps"],icon:"🦾"},
+{name:"Barbell Bent-Over Row",cat:"Back",type:"Barbell",primary:["Back"],secondary:["Biceps","Core"],icon:"🏋️"},
+{name:"Pendlay Row",cat:"Back",type:"Barbell",primary:["Back"],secondary:["Biceps","Core"],icon:"🏋️"},
+{name:"Dumbbell Single-Arm Row",cat:"Back",type:"Dumbbell",primary:["Back"],secondary:["Biceps"],icon:"🏋️"},
+{name:"Chest-Supported Dumbbell Row",cat:"Back",type:"Dumbbell",primary:["Back"],secondary:["Biceps"],icon:"🏋️"},
+{name:"Chest-Supported T-Bar Row",cat:"Back",type:"Machine",primary:["Back"],secondary:["Biceps"],icon:"🦾"},
+{name:"T-Bar Row",cat:"Back",type:"Machine",primary:["Back"],secondary:["Biceps","Core"],icon:"🦾"},
+{name:"Seated Cable Row",cat:"Back",type:"Cable",primary:["Back"],secondary:["Biceps"],icon:"🔗"},
+{name:"Single-Arm Seated Cable Row",cat:"Back",type:"Cable",primary:["Back"],secondary:["Biceps","Core"],icon:"🔗"},
+{name:"Plate-Loaded Seated Row",cat:"Back",type:"Machine",primary:["Back"],secondary:["Biceps"],icon:"🦾"},
+{name:"Machine Chest-Supported Row",cat:"Back",type:"Machine",primary:["Back"],secondary:["Biceps"],icon:"🦾"},
+{name:"Straight-Arm Pulldown",cat:"Back",type:"Cable",primary:["Back"],secondary:["Core"],icon:"🔗"},
+{name:"Face Pull",cat:"Back",type:"Cable",primary:["Back","Shoulders"],secondary:["Biceps"],icon:"🔗"},
+{name:"Conventional Deadlift",cat:"Back",type:"Barbell",primary:["Back","Hamstrings","Glutes"],secondary:["Core","Quads"],icon:"🏋️"},
+{name:"Sumo Deadlift",cat:"Back",type:"Barbell",primary:["Glutes","Hamstrings"],secondary:["Quads","Back","Core"],icon:"🏋️"},
+{name:"Trap-Bar Deadlift",cat:"Back",type:"Trap Bar",primary:["Glutes","Hamstrings"],secondary:["Quads","Back","Core"],icon:"🏋️"},
+{name:"Romanian Deadlift",cat:"Back",type:"Barbell",primary:["Hamstrings","Glutes"],secondary:["Back","Core"],icon:"🏋️"},
+{name:"Back Extensions",cat:"Back",type:"Machine",primary:["Back"],secondary:["Glutes","Hamstrings"],icon:"🦾"},
+{name:"Weighted Back Extensions",cat:"Back",type:"Weighted",primary:["Back"],secondary:["Glutes","Hamstrings"],icon:"🏋️"},
+{name:"Barbell Shrugs",cat:"Back",type:"Barbell",primary:["Back"],secondary:["Shoulders"],icon:"🏋️"},
+{name:"Dumbbell Shrugs",cat:"Back",type:"Dumbbell",primary:["Back"],secondary:["Shoulders"],icon:"🏋️"},
 
-{
-  id:uid(),
-  name:"Push Day",
-  desc:"Chest • Shoulders • Triceps",
-  exercises:[
-    "Barbell Flat Bench Press",
-    "Dumbbell Incline Bench Press",
-    "Dumbbell Lateral Raise",
-    "Rope Pushdown",
-    "Machine Tricep Extension"
-  ]
-},
+/* SHOULDERS */
+{name:"Barbell Overhead Press",cat:"Shoulders",type:"Barbell",primary:["Shoulders"],secondary:["Triceps","Core"],icon:"🏋️"},
+{name:"Dumbbell Overhead Press",cat:"Shoulders",type:"Dumbbell",primary:["Shoulders"],secondary:["Triceps","Core"],icon:"🏋️"},
+{name:"Arnold Press",cat:"Shoulders",type:"Dumbbell",primary:["Shoulders"],secondary:["Triceps"],icon:"🏋️"},
+{name:"Smith Machine Overhead Press",cat:"Shoulders",type:"Smith Machine",primary:["Shoulders"],secondary:["Triceps"],icon:"🦾"},
+{name:"Plate-Loaded Shoulder Press",cat:"Shoulders",type:"Machine",primary:["Shoulders"],secondary:["Triceps"],icon:"🦾"},
+{name:"Selectorized Shoulder Press",cat:"Shoulders",type:"Machine",primary:["Shoulders"],secondary:["Triceps"],icon:"🦾"},
+{name:"Landmine Press",cat:"Shoulders",type:"Landmine",primary:["Shoulders"],secondary:["Chest","Triceps","Core"],icon:"🏋️"},
+{name:"Dumbbell Lateral Raise",cat:"Shoulders",type:"Dumbbell",primary:["Shoulders"],secondary:[],icon:"🏋️"},
+{name:"Cable Lateral Raise",cat:"Shoulders",type:"Cable",primary:["Shoulders"],secondary:[],icon:"🔗"},
+{name:"Machine Lateral Raise",cat:"Shoulders",type:"Machine",primary:["Shoulders"],secondary:[],icon:"🦾"},
+{name:"Dumbbell Front Raise",cat:"Shoulders",type:"Dumbbell",primary:["Shoulders"],secondary:["Chest"],icon:"🏋️"},
+{name:"Cable Front Raise",cat:"Shoulders",type:"Cable",primary:["Shoulders"],secondary:["Chest"],icon:"🔗"},
+{name:"Dumbbell Rear Delt Fly",cat:"Shoulders",type:"Dumbbell",primary:["Shoulders"],secondary:["Back"],icon:"🏋️"},
+{name:"Reverse Pec Deck",cat:"Shoulders",type:"Machine",primary:["Shoulders"],secondary:["Back"],icon:"🦾"},
+{name:"Upright Row",cat:"Shoulders",type:"Barbell",primary:["Shoulders"],secondary:["Back","Biceps"],icon:"🏋️"},
+{name:"Band Pull-Aparts",cat:"Shoulders",type:"Band",primary:["Shoulders"],secondary:["Back"],icon:"〰️"},
 
-{
-  id:uid(),
-  name:"Pull Day",
-  desc:"Back • Rear Delts • Biceps",
-  exercises:[
-    "Wide-Grip Lat Pulldown",
-    "Seated Cable Row",
-    "Single-Arm Dumbbell Row",
-    "Reverse Pec Deck",
-    "Hammer Curl"
-  ]
-},
+/* BICEPS */
+{name:"Barbell Curl",cat:"Biceps",type:"Barbell",primary:["Biceps"],secondary:["Forearms"],icon:"🏋️"},
+{name:"EZ-Bar Curl",cat:"Biceps",type:"EZ-Bar",primary:["Biceps"],secondary:["Forearms"],icon:"🏋️"},
+{name:"Dumbbell Curl",cat:"Biceps",type:"Dumbbell",primary:["Biceps"],secondary:["Forearms"],icon:"🏋️"},
+{name:"Seated Dumbbell Curl",cat:"Biceps",type:"Dumbbell",primary:["Biceps"],secondary:["Forearms"],icon:"🏋️"},
+{name:"Incline Dumbbell Curl",cat:"Biceps",type:"Dumbbell",primary:["Biceps"],secondary:["Forearms"],icon:"🏋️"},
+{name:"Concentration Curl",cat:"Biceps",type:"Dumbbell",primary:["Biceps"],secondary:["Forearms"],icon:"🏋️"},
+{name:"Hammer Curl",cat:"Biceps",type:"Dumbbell",primary:["Biceps"],secondary:["Forearms"],icon:"🏋️"},
+{name:"Cross-Body Hammer Curl",cat:"Biceps",type:"Dumbbell",primary:["Biceps"],secondary:["Forearms"],icon:"🏋️"},
+{name:"Preacher Curl",cat:"Biceps",type:"Machine",primary:["Biceps"],secondary:["Forearms"],icon:"🦾"},
+{name:"Cable Curl",cat:"Biceps",type:"Cable",primary:["Biceps"],secondary:["Forearms"],icon:"🔗"},
+{name:"Single-Arm Cable Curl",cat:"Biceps",type:"Cable",primary:["Biceps"],secondary:["Forearms"],icon:"🔗"},
+{name:"Spider Curl",cat:"Biceps",type:"Dumbbell",primary:["Biceps"],secondary:["Forearms"],icon:"🏋️"},
+{name:"Reverse Curl",cat:"Biceps",type:"Barbell",primary:["Biceps"],secondary:["Forearms"],icon:"🏋️"},
 
-{
-  id:uid(),
-  name:"Leg Day",
-  desc:"Quads • Hamstrings • Glutes • Calves",
-  exercises:[
-    "Plate-Loaded Leg Press",
-    "Selectorized Leg Extension",
-    "Seated Leg Curl",
-    "Barbell Hip Thrust",
-    "Standing Calf Raise Machine"
-  ]
-},
+/* TRICEPS */
+{name:"Close-Grip Bench Press",cat:"Triceps",type:"Barbell",primary:["Triceps"],secondary:["Chest","Shoulders"],icon:"🏋️"},
+{name:"Upright Dips",cat:"Triceps",type:"Bodyweight",primary:["Triceps"],secondary:["Chest","Shoulders"],icon:"🤸"},
+{name:"Weighted Upright Dips",cat:"Triceps",type:"Weighted",primary:["Triceps"],secondary:["Chest","Shoulders"],icon:"🤸"},
+{name:"Assisted Dip Machine",cat:"Triceps",type:"Machine",primary:["Triceps"],secondary:["Chest","Shoulders"],icon:"🦾"},
+{name:"Skull Crushers",cat:"Triceps",type:"Barbell",primary:["Triceps"],secondary:[],icon:"🏋️"},
+{name:"Dumbbell Skull Crushers",cat:"Triceps",type:"Dumbbell",primary:["Triceps"],secondary:[],icon:"🏋️"},
+{name:"Overhead Dumbbell Extension",cat:"Triceps",type:"Dumbbell",primary:["Triceps"],secondary:["Shoulders"],icon:"🏋️"},
+{name:"Cable Overhead Extension",cat:"Triceps",type:"Cable",primary:["Triceps"],secondary:[],icon:"🔗"},
+{name:"Cable Pushdown — Straight Bar",cat:"Triceps",type:"Cable",primary:["Triceps"],secondary:[],icon:"🔗"},
+{name:"Cable Pushdown — Rope",cat:"Triceps",type:"Cable",primary:["Triceps"],secondary:[],icon:"🔗"},
+{name:"Single-Arm Cable Pushdown",cat:"Triceps",type:"Cable",primary:["Triceps"],secondary:[],icon:"🔗"},
+{name:"Dumbbell Kickback",cat:"Triceps",type:"Dumbbell",primary:["Triceps"],secondary:[],icon:"🏋️"},
+{name:"Diamond Push-Ups",cat:"Triceps",type:"Bodyweight",primary:["Triceps"],secondary:["Chest","Shoulders"],icon:"🤸"},
+{name:"Bench Dips",cat:"Triceps",type:"Bodyweight",primary:["Triceps"],secondary:["Chest","Shoulders"],icon:"🤸"},
+{name:"Machine Triceps Extension",cat:"Triceps",type:"Machine",primary:["Triceps"],secondary:[],icon:"🦾"},
 
-{
-  id:uid(),
-  name:"Full Body",
-  desc:"Full-body strength",
-  exercises:[
-    "Back Squat",
-    "Barbell Flat Bench Press",
-    "Lat Pulldown",
-    "Dumbbell Overhead Press",
-    "Romanian Deadlift",
-    "Cable Crunch"
-  ]
-}
+/* QUADS */
+{name:"Back Squat",cat:"Quads",type:"Barbell",primary:["Quads"],secondary:["Glutes","Core"],icon:"🏋️"},
+{name:"Front Squat",cat:"Quads",type:"Barbell",primary:["Quads"],secondary:["Glutes","Core"],icon:"🏋️"},
+{name:"Safety-Bar Squat",cat:"Quads",type:"Barbell",primary:["Quads"],secondary:["Glutes","Core"],icon:"🏋️"},
+{name:"Goblet Squat",cat:"Quads",type:"Dumbbell",primary:["Quads"],secondary:["Glutes","Core"],icon:"🏋️"},
+{name:"Smith Machine Squat",cat:"Quads",type:"Smith Machine",primary:["Quads"],secondary:["Glutes"],icon:"🦾"},
+{name:"Leg Press — Plate Loaded",cat:"Quads",type:"Machine",primary:["Quads"],secondary:["Glutes","Hamstrings"],icon:"🦾"},
+{name:"Leg Press — Selectorized",cat:"Quads",type:"Machine",primary:["Quads"],secondary:["Glutes","Hamstrings"],icon:"🦾"},
+{name:"Hack Squat",cat:"Quads",type:"Machine",primary:["Quads"],secondary:["Glutes"],icon:"🦾"},
+{name:"Pendulum Squat",cat:"Quads",type:"Machine",primary:["Quads"],secondary:["Glutes"],icon:"🦾"},
+{name:"Bulgarian Split Squat",cat:"Quads",type:"Dumbbell",primary:["Quads"],secondary:["Glutes"],icon:"🏋️"},
+{name:"Walking Lunges",cat:"Quads",type:"Dumbbell",primary:["Quads"],secondary:["Glutes","Hamstrings"],icon:"🏋️"},
+{name:"Reverse Lunges",cat:"Quads",type:"Dumbbell",primary:["Quads"],secondary:["Glutes","Hamstrings"],icon:"🏋️"},
+{name:"Step-Ups",cat:"Quads",type:"Dumbbell",primary:["Quads"],secondary:["Glutes"],icon:"🏋️"},
+{name:"Leg Extension",cat:"Quads",type:"Machine",primary:["Quads"],secondary:[],icon:"🦾"},
+{name:"Wall Sit",cat:"Quads",type:"Bodyweight",primary:["Quads"],secondary:["Core"],icon:"🧍"},
 
+/* HAMSTRINGS */
+{name:"Lying Leg Curl",cat:"Hamstrings",type:"Machine",primary:["Hamstrings"],secondary:["Calves"],icon:"🦾"},
+{name:"Seated Leg Curl",cat:"Hamstrings",type:"Machine",primary:["Hamstrings"],secondary:["Calves"],icon:"🦾"},
+{name:"Standing Leg Curl",cat:"Hamstrings",type:"Machine",primary:["Hamstrings"],secondary:["Calves"],icon:"🦾"},
+{name:"Nordic Hamstring Curl",cat:"Hamstrings",type:"Bodyweight",primary:["Hamstrings"],secondary:["Glutes"],icon:"🤸"},
+{name:"Glute-Ham Raise",cat:"Hamstrings",type:"Machine",primary:["Hamstrings"],secondary:["Glutes","Back"],icon:"🦾"},
+{name:"Good Morning",cat:"Hamstrings",type:"Barbell",primary:["Hamstrings"],secondary:["Glutes","Back"],icon:"🏋️"},
+{name:"Cable Pull-Through",cat:"Hamstrings",type:"Cable",primary:["Hamstrings","Glutes"],secondary:["Core"],icon:"🔗"},
+
+/* GLUTES */
+{name:"Barbell Hip Thrust",cat:"Glutes",type:"Barbell",primary:["Glutes"],secondary:["Hamstrings"],icon:"🏋️"},
+{name:"Dumbbell Hip Thrust",cat:"Glutes",type:"Dumbbell",primary:["Glutes"],secondary:["Hamstrings"],icon:"🏋️"},
+{name:"Machine Hip Thrust / Glute Drive",cat:"Glutes",type:"Machine",primary:["Glutes"],secondary:["Hamstrings"],icon:"🦾"},
+{name:"Single-Leg Hip Thrust",cat:"Glutes",type:"Bodyweight",primary:["Glutes"],secondary:["Hamstrings"],icon:"🤸"},
+{name:"Glute Bridge",cat:"Glutes",type:"Bodyweight",primary:["Glutes"],secondary:["Hamstrings"],icon:"🤸"},
+{name:"Cable Kickback",cat:"Glutes",type:"Cable",primary:["Glutes"],secondary:["Hamstrings"],icon:"🔗"},
+{name:"Machine Glute Kickback",cat:"Glutes",type:"Machine",primary:["Glutes"],secondary:["Hamstrings"],icon:"🦾"},
+{name:"Abductor Machine",cat:"Glutes",type:"Machine",primary:["Glutes"],secondary:["Core"],icon:"🦾"},
+{name:"Banded Monster Walks",cat:"Glutes",type:"Band",primary:["Glutes"],secondary:["Quads"],icon:"〰️"},
+{name:"Cable Hip Abduction",cat:"Glutes",type:"Cable",primary:["Glutes"],secondary:[],icon:"🔗"},
+
+/* CALVES */
+{name:"Standing Calf Raise Machine",cat:"Calves",type:"Machine",primary:["Calves"],secondary:[],icon:"🦾"},
+{name:"Standing Calf Raise",cat:"Calves",type:"Machine / Free Weight",primary:["Calves"],secondary:[],icon:"🏋️"},
+{name:"Seated Calf Raise",cat:"Calves",type:"Machine",primary:["Calves"],secondary:[],icon:"🦾"},
+{name:"Leg Press Calf Raise",cat:"Calves",type:"Machine",primary:["Calves"],secondary:[],icon:"🦾"},
+{name:"Single-Leg Calf Raise",cat:"Calves",type:"Bodyweight",primary:["Calves"],secondary:[],icon:"🏋️"},
+{name:"Donkey Calf Raise",cat:"Calves",type:"Machine",primary:["Calves"],secondary:[],icon:"🦾"},
+
+/* CORE */
+{name:"Front Plank",cat:"Core",type:"Bodyweight",primary:["Core"],secondary:["Shoulders"],icon:"🤸"},
+{name:"Side Plank",cat:"Core",type:"Bodyweight",primary:["Core"],secondary:["Shoulders"],icon:"🤸"},
+{name:"Weighted Plank",cat:"Core",type:"Weighted",primary:["Core"],secondary:["Shoulders"],icon:"🏋️"},
+{name:"Floor Crunch",cat:"Core",type:"Bodyweight",primary:["Core"],secondary:[],icon:"🤸"},
+{name:"Machine Crunch",cat:"Core",type:"Machine",primary:["Core"],secondary:[],icon:"🦾"},
+{name:"Cable Crunch",cat:"Core",type:"Cable",primary:["Core"],secondary:[],icon:"🔗"},
+{name:"Hanging Leg Raise",cat:"Core",type:"Bodyweight",primary:["Core"],secondary:["Shoulders"],icon:"🤸"},
+{name:"Hanging Knee Raise",cat:"Core",type:"Bodyweight",primary:["Core"],secondary:["Shoulders"],icon:"🤸"},
+{name:"Captain's Chair Leg Raise",cat:"Core",type:"Machine",primary:["Core"],secondary:["Shoulders"],icon:"🦾"},
+{name:"Ab Wheel Rollout",cat:"Core",type:"Equipment",primary:["Core"],secondary:["Shoulders"],icon:"⭕"},
+{name:"Russian Twist",cat:"Core",type:"Weighted",primary:["Core"],secondary:[],icon:"🏋️"},
+{name:"Cable Woodchopper",cat:"Core",type:"Cable",primary:["Core"],secondary:["Shoulders"],icon:"🔗"},
+{name:"Pallof Press",cat:"Core",type:"Cable",primary:["Core"],secondary:["Shoulders"],icon:"🔗"},
+{name:"Dead Bug",cat:"Core",type:"Bodyweight",primary:["Core"],secondary:[],icon:"🤸"},
+{name:"Bird Dog",cat:"Core",type:"Bodyweight",primary:["Core"],secondary:["Back"],icon:"🤸"},
+{name:"Mountain Climbers",cat:"Core",type:"Bodyweight",primary:["Core"],secondary:["Quads","Shoulders"],icon:"🤸"},
+
+/* FULL BODY */
+{name:"Clean & Press",cat:"Full Body",type:"Barbell",primary:["Shoulders"],secondary:["Quads","Glutes","Core","Back"],icon:"🏋️"},
+{name:"Barbell Thruster",cat:"Full Body",type:"Barbell",primary:["Quads","Shoulders"],secondary:["Glutes","Core"],icon:"🏋️"},
+{name:"Dumbbell Thruster",cat:"Full Body",type:"Dumbbell",primary:["Quads","Shoulders"],secondary:["Glutes","Core"],icon:"🏋️"},
+{name:"Kettlebell Swing",cat:"Full Body",type:"Kettlebell",primary:["Glutes","Hamstrings"],secondary:["Core","Shoulders"],icon:"🏋️"},
+{name:"Medicine Ball Slams",cat:"Full Body",type:"Medicine Ball",primary:["Core"],secondary:["Shoulders","Back"],icon:"🏐"},
+{name:"Battle Ropes",cat:"Full Body",type:"Conditioning",primary:["Shoulders"],secondary:["Core","Back"],icon:"〰️"},
+{name:"Sled Push",cat:"Full Body",type:"Sled",primary:["Quads","Glutes"],secondary:["Hamstrings","Core"],icon:"🛷"},
+{name:"Sled Pull",cat:"Full Body",type:"Sled",primary:["Quads","Glutes"],secondary:["Hamstrings","Back"],icon:"🛷"},
+{name:"Farmer's Carry",cat:"Full Body",type:"Dumbbells",primary:["Core"],secondary:["Shoulders","Back","Forearms"],icon:"🏋️"},
+{name:"Burpees",cat:"Full Body",type:"Bodyweight",primary:["Core"],secondary:["Quads","Chest","Shoulders"],icon:"🤸"},
+
+/* CARDIO */
+{name:"Treadmill",cat:"Cardio",type:"Cardio Machine",primary:["Quads","Calves"],secondary:["Glutes","Hamstrings"],icon:"🏃"},
+{name:"Elliptical",cat:"Cardio",type:"Cardio Machine",primary:["Quads","Glutes"],secondary:["Hamstrings","Calves"],icon:"🏃"},
+{name:"Stationary Bike",cat:"Cardio",type:"Cardio Machine",primary:["Quads"],secondary:["Glutes","Calves"],icon:"🚴"},
+{name:"Recumbent Bike",cat:"Cardio",type:"Cardio Machine",primary:["Quads"],secondary:["Glutes","Calves"],icon:"🚴"},
+{name:"Spin Bike",cat:"Cardio",type:"Cardio Machine",primary:["Quads"],secondary:["Glutes","Hamstrings"],icon:"🚴"},
+{name:"Rowing Machine",cat:"Cardio",type:"Cardio Machine",primary:["Back","Hamstrings"],secondary:["Quads","Glutes","Core"],icon:"🚣"},
+{name:"Stair Climber / StepMill",cat:"Cardio",type:"Cardio Machine",primary:["Quads","Glutes"],secondary:["Calves","Hamstrings"],icon:"🪜"},
+{name:"Assault / Air Bike",cat:"Cardio",type:"Cardio Machine",primary:["Quads"],secondary:["Shoulders","Core"],icon:"🚴"},
+{name:"Ski Erg",cat:"Cardio",type:"Cardio Machine",primary:["Back"],secondary:["Shoulders","Core"],icon:"🎿"},
+{name:"Jump Rope",cat:"Cardio",type:"Conditioning",primary:["Calves"],secondary:["Quads","Core"],icon:"🪢"}
 ];
 
+const ROUTINES = [
+  {
+    name:"Push Day",
+    muscles:"Chest • Shoulders • Triceps",
+    exercises:[
+      "Barbell Flat Bench Press",
+      "Dumbbell Incline Bench Press",
+      "Dumbbell Lateral Raise",
+      "Cable Pushdown — Rope",
+      "Machine Triceps Extension"
+    ]
+  },
+  {
+    name:"Pull Day",
+    muscles:"Back • Biceps",
+    exercises:[
+      "Lat Pulldown — Wide Grip",
+      "Seated Cable Row",
+      "Single-Arm Dumbbell Row",
+      "Face Pull",
+      "Hammer Curl"
+    ]
+  },
+  {
+    name:"Leg Day",
+    muscles:"Quads • Hamstrings • Glutes • Calves",
+    exercises:[
+      "Back Squat",
+      "Leg Press — Plate Loaded",
+      "Romanian Deadlift",
+      "Barbell Hip Thrust",
+      "Standing Calf Raise Machine"
+    ]
+  }
+];
 
 /* =========================================================
-   DATABASE
+   STATE
 ========================================================= */
 
-function createExerciseRecords(){
+let state = JSON.parse(localStorage.getItem("liftrank_state") || "null") || {
+  tab:"home",
+  xp:0,
+  completedSets:0,
+  workouts:0,
+  volume:0,
+  food:[],
+  workout:[],
+  muscleSets:{},
+  history:[]
+};
 
-  return EXERCISES.map(e=>({
-
-    ...e,
-
-    xp:0,
-
-    totalSets:0,
-
-    totalVolume:0,
-
-    bestWeight:0,
-
-    lastUsed:null
-
-  }));
-
-}
-
-let db=JSON.parse(
-  localStorage.getItem(STORAGE_KEY)||"null"
-);
-
-if(!db){
-
-  db={
-    xp:0,
-    workouts:[],
-    food:[],
-    routines:DEFAULT_ROUTINES,
-    exercises:createExerciseRecords(),
-    muscleXP:{}
-  };
-
-}else{
-
-  if(!db.routines?.length)
-    db.routines=DEFAULT_ROUTINES;
-
-  if(!db.workouts)
-    db.workouts=[];
-
-  if(!db.food)
-    db.food=[];
-
-  if(!db.muscleXP)
-    db.muscleXP={};
-
-  if(!db.exercises)
-    db.exercises=createExerciseRecords();
-
-}
-
-
-/* Merge in newly added exercises without destroying existing data */
-
-const existingNames=new Set(
-  db.exercises.map(x=>x.name)
-);
-
-EXERCISES.forEach(ex=>{
-
-  if(!existingNames.has(ex.name)){
-
-    db.exercises.push({
-      ...ex,
-      xp:0,
-      totalSets:0,
-      totalVolume:0,
-      bestWeight:0,
-      lastUsed:null
-    });
-
-  }
-
-});
-
-
-let activeTab="home";
-let activeWorkout=null;
-let workoutTimer=null;
-let workoutSeconds=0;
-
+let exerciseFilter="All";
+let exerciseSearch="";
+let currentExercise=null;
 
 /* =========================================================
-   STORAGE
+   SAVE
 ========================================================= */
 
 function save(){
-
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(db)
-  );
-
+  localStorage.setItem("liftrank_state",JSON.stringify(state));
 }
-
 
 /* =========================================================
-   RANK SYSTEM
+   UTILITIES
 ========================================================= */
 
-function rankFromXP(x){
-
-  if(x>=5000)
-    return{
-      name:"Diamond",
-      short:"D",
-      min:5000,
-      next:null
-    };
-
-  if(x>=2500)
-    return{
-      name:"Platinum",
-      short:"P",
-      min:2500,
-      next:5000
-    };
-
-  if(x>=1200)
-    return{
-      name:"Gold",
-      short:"G",
-      min:1200,
-      next:2500
-    };
-
-  if(x>=600)
-    return{
-      name:"Silver",
-      short:"S",
-      min:600,
-      next:1200
-    };
-
-  if(x>=250)
-    return{
-      name:"Bronze+",
-      short:"B+",
-      min:250,
-      next:600
-    };
-
-  return{
-    name:"Bronze",
-    short:"B",
-    min:0,
-    next:250
-  };
-
+function escapeHTML(str){
+  return String(str)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
 }
 
-
-function rankProgress(x){
-
-  const r=rankFromXP(x);
-
-  if(!r.next)
-    return 100;
-
-  return Math.min(
-    100,
-    Math.round(
-      ((x-r.min)/
-      (r.next-r.min))*100
-    )
-  );
-
-}
-
-
-/* =========================================================
-   EXERCISE / MUSCLE XP
-========================================================= */
-
-function addExerciseXP(exercise,sets,volume){
-
-  const gain=
-    Math.max(
-      5,
-      sets*8+
-      Math.round(volume/100)
-    );
-
-  exercise.xp=
-    (exercise.xp||0)+gain;
-
-  exercise.totalSets=
-    (exercise.totalSets||0)+sets;
-
-  exercise.totalVolume=
-    (exercise.totalVolume||0)+volume;
-
-  exercise.lastUsed=today();
-
-  const best=Math.max(
-    0,
-    ...(
-      activeWorkout?.exercises
-        ?.find(x=>x.name===exercise.name)
-        ?.sets||[]
-    ).map(x=>+x.weight||0)
-  );
-
-  exercise.bestWeight=Math.max(
-    exercise.bestWeight||0,
-    best
-  );
-
-  return gain;
-
-}
-
-
-function addMuscleXP(muscle,sets){
-
-  if(!db.muscleXP)
-    db.muscleXP={};
-
-  const gain=sets*12;
-
-  db.muscleXP[muscle]=
-    (db.muscleXP[muscle]||0)+gain;
-
-}
-
-
-/* =========================================================
-   HELPERS
-========================================================= */
-
-function toast(message){
-
-  const t=
-    document.getElementById("toast");
-
+function showToast(message){
+  const t=document.getElementById("toast");
   t.textContent=message;
+  t.classList.add("show");
 
-  t.classList.remove("hidden");
+  clearTimeout(window.toastTimer);
 
-  clearTimeout(t._timer);
-
-  t._timer=setTimeout(
-    ()=>{
-      t.classList.add("hidden");
-    },
-    1900
-  );
-
+  window.toastTimer=setTimeout(()=>{
+    t.classList.remove("show");
+  },1800);
 }
 
-
-function showTab(tab){
-
-  activeTab=tab;
-
+function setTab(tab){
+  state.tab=tab;
+  currentExercise=null;
+  save();
   render();
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
-
-function exerciseByName(name){
-
-  return db.exercises.find(
-    x=>x.name===name
-  );
-
+function xpLevel(){
+  return Math.floor(state.xp/250)+1;
 }
 
-
-function exerciseRank(name){
-
-  const e=exerciseByName(name);
-
-  return rankFromXP(
-    e?.xp||0
-  );
-
+function xpProgress(){
+  return ((state.xp%250)/250)*100;
 }
 
+function overallRank(){
+  const level=xpLevel();
 
-function muscleRank(muscle){
-
-  return rankFromXP(
-    db.muscleXP?.[muscle]||0
-  );
-
+  if(level>=25)return ["Diamond","💎"];
+  if(level>=20)return ["Platinum","🏆"];
+  if(level>=15)return ["Gold","🥇"];
+  if(level>=10)return ["Silver","🥈"];
+  return ["Bronze","🥉"];
 }
 
+function muscleSets(name){
+  return state.muscleSets[name] || 0;
+}
+
+function muscleRank(name){
+  const sets=muscleSets(name);
+
+  if(sets>=100)return ["S","100+"];
+  if(sets>=75)return ["A","75+"];
+  if(sets>=50)return ["B","50+"];
+  if(sets>=25)return ["C","25+"];
+  if(sets>=10)return ["D","10+"];
+  return ["E","0–9"];
+}
+
+function totalCalories(){
+  return state.food.reduce((a,b)=>a+Number(b.calories||0),0);
+}
+
+function totalProtein(){
+  return state.food.reduce((a,b)=>a+Number(b.protein||0),0);
+}
 
 /* =========================================================
-   EXERCISE VISUAL ENGINE
+   MUSCLE MAP
+========================================================= */
+
+function bodySVG(side, primary=[], secondary=[]){
+
+  const isPrimary=m=>primary.includes(m)?"primary":
+                    secondary.includes(m)?"secondary":"none";
+
+  if(side==="front"){
+
+    return `
+    <svg viewBox="0 0 260 520" aria-label="Front muscle map">
+
+      <!-- head -->
+      <circle cx="130" cy="42" r="28" class="outline"/>
+
+      <!-- neck -->
+      <path d="M115 67 L145 67 L150 90 L110 90 Z" class="outline"/>
+
+      <!-- chest -->
+      <path d="M78 100 Q105 82 130 100 Q155 82 182 100 L171 142 Q151 150 130 137 Q109 150 89 142 Z"
+            class="${isPrimary("Chest")}"/>
+
+      <!-- left/right front delts -->
+      <ellipse cx="76" cy="111" rx="20" ry="29" class="${isPrimary("Shoulders")}"/>
+      <ellipse cx="184" cy="111" rx="20" ry="29" class="${isPrimary("Shoulders")}"/>
+
+      <!-- biceps -->
+      <path d="M62 137 Q77 129 88 144 L81 194 Q69 202 59 188 Z"
+            class="${isPrimary("Biceps")}"/>
+      <path d="M198 137 Q183 129 172 144 L179 194 Q191 202 201 188 Z"
+            class="${isPrimary("Biceps")}"/>
+
+      <!-- triceps/front arm area -->
+      <path d="M55 140 Q43 154 44 190 L51 223 Q61 226 67 214 L59 187 Z"
+            class="${isPrimary("Triceps")}"/>
+      <path d="M205 140 Q217 154 216 190 L209 223 Q199 226 193 214 L201 187 Z"
+            class="${isPrimary("Triceps")}"/>
+
+      <!-- forearms -->
+      <path d="M51 220 L45 276 Q52 286 61 278 L69 220 Z" class="outline"/>
+      <path d="M209 220 L215 276 Q208 286 199 278 L191 220 Z" class="outline"/>
+
+      <!-- abs -->
+      <rect x="103" y="148" width="54" height="85" rx="15"
+            class="${isPrimary("Core")}"/>
+
+      <path d="M130 150 V232 M104 170 H156 M104 194 H156 M104 218 H156"
+            class="line"/>
+
+      <!-- obliques -->
+      <path d="M88 151 L103 150 L103 230 L91 218 Z"
+            class="${isPrimary("Core")}"/>
+      <path d="M172 151 L157 150 L157 230 L169 218 Z"
+            class="${isPrimary("Core")}"/>
+
+      <!-- quads -->
+      <path d="M86 225 Q108 218 126 233 L119 344 Q100 359 84 337 Z"
+            class="${isPrimary("Quads")}"/>
+      <path d="M174 225 Q152 218 134 233 L141 344 Q160 359 176 337 Z"
+            class="${isPrimary("Quads")}"/>
+
+      <!-- inner thigh -->
+      <path d="M127 235 L130 345 L133 235 Q145 270 140 329 L133 349 L127 349 L120 329 Q115 270 127 235Z"
+            class="${isPrimary("Quads")}"/>
+
+      <!-- calves -->
+      <path d="M86 343 Q105 337 119 349 L114 433 Q102 448 91 435 Z"
+            class="${isPrimary("Calves")}"/>
+      <path d="M174 343 Q155 337 141 349 L146 433 Q158 448 169 435 Z"
+            class="${isPrimary("Calves")}"/>
+
+      <!-- feet -->
+      <path d="M88 432 Q101 445 116 438 L122 466 Q98 476 80 461 Z" class="outline"/>
+      <path d="M172 432 Q159 445 144 438 L138 466 Q162 476 180 461 Z" class="outline"/>
+
+      <!-- body outline -->
+      <path d="M110 82
+               Q90 88 76 96
+               Q62 106 57 131
+               L44 190
+               L45 276
+               L57 281
+               Q65 276 69 263
+               L75 220
+               L84 231
+               L82 340
+               L91 438
+               M150 82
+               Q170 88 184 96
+               Q198 106 203 131
+               L216 190
+               L215 276
+               L203 281
+               Q195 276 191 263
+               L185 220
+               L176 231
+               L178 340
+               L169 438"
+            class="line"/>
+
+    </svg>`;
+  }
+
+  return `
+  <svg viewBox="0 0 260 520" aria-label="Back muscle map">
+
+    <circle cx="130" cy="42" r="28" class="outline"/>
+
+    <!-- traps -->
+    <path d="M105 76 L130 91 L155 76 L174 105 L154 147 L130 130 L106 147 L86 105 Z"
+          class="${isPrimary("Back")}"/>
+
+    <!-- rear delts -->
+    <ellipse cx="77" cy="112" rx="20" ry="29" class="${isPrimary("Shoulders")}"/>
+    <ellipse cx="183" cy="112" rx="20" ry="29" class="${isPrimary("Shoulders")}"/>
+
+    <!-- lats -->
+    <path d="M87 135 Q105 130 125 143 L113 230 Q92 240 79 211 Z"
+          class="${isPrimary("Back")}"/>
+    <path d="M173 135 Q155 130 135 143 L147 230 Q168 240 181 211 Z"
+          class="${isPrimary("Back")}"/>
+
+    <!-- triceps -->
+    <path d="M59 138 Q45 153 45 191 L52 222 Q63 226 68 212 L61 183 Z"
+          class="${isPrimary("Triceps")}"/>
+    <path d="M201 138 Q215 153 215 191 L208 222 Q197 226 192 212 L199 183 Z"
+          class="${isPrimary("Triceps")}"/>
+
+    <!-- forearms -->
+    <path d="M52 220 L45 276 Q52 286 61 278 L69 220 Z" class="outline"/>
+    <path d="M208 220 L215 276 Q208 286 199 278 L191 220 Z" class="outline"/>
+
+    <!-- lower back -->
+    <path d="M112 226 Q130 218 148 226 L151 283 Q130 295 109 283 Z"
+          class="${isPrimary("Back")}"/>
+
+    <!-- glutes -->
+    <path d="M83 278 Q105 267 129 286 Q107 338 83 327 Z"
+          class="${isPrimary("Glutes")}"/>
+    <path d="M177 278 Q155 267 131 286 Q153 338 177 327 Z"
+          class="${isPrimary("Glutes")}"/>
+
+    <!-- hamstrings -->
+    <path d="M84 328 Q104 323 119 336 L114 430 Q100 441 89 425 Z"
+          class="${isPrimary("Hamstrings")}"/>
+    <path d="M176 328 Q156 323 141 336 L146 430 Q160 441 171 425 Z"
+          class="${isPrimary("Hamstrings")}"/>
+
+    <!-- calves -->
+    <path d="M89 428 Q103 421 115 432 L113 438 Q103 450 91 438 Z"
+          class="${isPrimary("Calves")}"/>
+    <path d="M171 428 Q157 421 145 432 L147 438 Q157 450 169 438 Z"
+          class="${isPrimary("Calves")}"/>
+
+    <!-- spine -->
+    <path d="M130 91 V282" class="line"/>
+
+    <!-- body outline -->
+    <path d="M105 76
+             Q88 88 76 98
+             Q62 107 57 132
+             L45 190
+             L45 276
+             M155 76
+             Q172 88 184 98
+             Q198 107 203 132
+             L215 190
+             L215 276"
+          class="line"/>
+
+  </svg>`;
+}
+
+function muscleMap(primary,secondary){
+
+  return `
+  <div class="muscle-title">
+    <h3>Muscles Worked</h3>
+    <div class="legend">
+      <span><i class="dot primary"></i>Primary</span>
+      <span><i class="dot secondary"></i>Secondary</span>
+    </div>
+  </div>
+
+  <div class="muscle-map">
+    <div class="body">${bodySVG("front",primary,secondary)}</div>
+    <div class="body">${bodySVG("back",primary,secondary)}</div>
+  </div>
+
+  <div class="muscle-list">
+    ${primary.map(m=>`
+      <div class="muscle-pill">
+        <strong>${escapeHTML(m)}</strong>
+        <span class="primary-text">Primary muscle</span>
+      </div>
+    `).join("")}
+
+    ${secondary.map(m=>`
+      <div class="muscle-pill">
+        <strong>${escapeHTML(m)}</strong>
+        <span class="secondary-text">Secondary muscle</span>
+      </div>
+    `).join("")}
+  </div>`;
+}
+
+/* =========================================================
+   MACHINE / EQUIPMENT ART
 ========================================================= */
 
 function machineSVG(ex){
 
-  const type=ex.type;
+  const type=ex.type.toLowerCase();
 
-  if(type==="Cardio"){
-
-    if(ex.name.includes("Row"))
-      return rowingSVG();
-
-    if(ex.name.includes("Bike"))
-      return bikeSVG();
-
-    if(ex.name.includes("Treadmill"))
-      return treadmillSVG();
-
-    if(ex.name.includes("Stair"))
-      return stairSVG();
-
-    return cardioSVG();
-
+  if(type.includes("machine") || type.includes("selectorized")){
+    return `
+    <svg viewBox="0 0 600 300">
+      <rect x="70" y="240" width="460" height="15" rx="8" fill="#555"/>
+      <rect x="115" y="80" width="20" height="170" rx="8" fill="#777"/>
+      <rect x="465" y="70" width="20" height="180" rx="8" fill="#777"/>
+      <rect x="105" y="65" width="390" height="14" rx="7" fill="#666"/>
+      <rect x="410" y="100" width="80" height="110" rx="12" fill="#25272c"/>
+      <rect x="390" y="190" width="90" height="20" rx="8" fill="#333"/>
+      <rect x="170" y="170" width="180" height="25" rx="10" fill="#34363b"/>
+      <rect x="200" y="195" width="90" height="50" rx="15" fill="#18191d"/>
+      <circle cx="300" cy="135" r="20" fill="#bbb"/>
+      <path d="M300 155 L300 205 L250 230" fill="none" stroke="#bbb" stroke-width="15" stroke-linecap="round"/>
+      <path d="M250 230 L215 215" fill="none" stroke="#bbb" stroke-width="13" stroke-linecap="round"/>
+      <circle cx="410" cy="125" r="7" fill="#bbb"/>
+      <path d="M410 132 V200" stroke="#222" stroke-width="5"/>
+    </svg>`;
   }
 
-  if(type==="Machine"||
-     ex.equipment.includes("Machine")||
-     ex.equipment.includes("Selectorized")||
-     ex.equipment.includes("Plate")){
-
-    return machineSVGGeneric(ex);
-
+  if(type.includes("cable")){
+    return `
+    <svg viewBox="0 0 600 300">
+      <rect x="80" y="45" width="22" height="210" rx="8" fill="#777"/>
+      <rect x="75" y="40" width="190" height="16" rx="8" fill="#666"/>
+      <rect x="65" y="250" width="450" height="14" rx="7" fill="#555"/>
+      <rect x="210" y="85" width="22" height="165" fill="#666"/>
+      <rect x="380" y="85" width="22" height="165" fill="#666"/>
+      <path d="M91 65 V145 H215 V65" fill="none" stroke="#222" stroke-width="5"/>
+      <path d="M221 65 V155 H390 V65" fill="none" stroke="#222" stroke-width="5"/>
+      <circle cx="215" cy="145" r="8" fill="#333"/>
+      <circle cx="390" cy="155" r="8" fill="#333"/>
+      <path d="M215 153 V215" stroke="#222" stroke-width="5"/>
+      <path d="M390 163 V215" stroke="#222" stroke-width="5"/>
+    </svg>`;
   }
 
-  if(type==="Cable"||
-     ex.equipment.includes("Cable")){
-
-    return cableSVG(ex);
-
+  if(type.includes("cardio")){
+    return `
+    <svg viewBox="0 0 600 300">
+      <rect x="75" y="245" width="450" height="13" rx="7" fill="#555"/>
+      <path d="M120 240 L180 80 L350 80 L420 240" fill="none" stroke="#666" stroke-width="16" stroke-linejoin="round"/>
+      <rect x="170" y="58" width="170" height="45" rx="10" fill="#24262b"/>
+      <circle cx="255" cy="140" r="20" fill="#aaa"/>
+      <path d="M255 160 L220 210 M255 160 L295 210" stroke="#aaa" stroke-width="14" stroke-linecap="round"/>
+    </svg>`;
   }
-
-  if(type==="Barbell"||
-     ex.equipment.includes("Barbell")||
-     ex.equipment.includes("Smith")){
-
-    return barbellSVG(ex);
-
-  }
-
-  if(type==="Dumbbell"||
-     ex.equipment.includes("Dumbbell")){
-
-    return dumbbellSVG(ex);
-
-  }
-
-  if(type==="Bodyweight"||
-     ex.equipment.includes("Bodyweight")){
-
-    return bodyweightSVG(ex);
-
-  }
-
-  return genericExerciseSVG(ex);
-
-}
-
-
-function svgWrap(content){
 
   return `
-  <svg
-    viewBox="0 0 500 260"
-    xmlns="http://www.w3.org/2000/svg"
-    preserveAspectRatio="xMidYMid meet"
-  >
-    ${content}
+  <svg viewBox="0 0 600 300">
+    <rect x="70" y="235" width="460" height="15" rx="8" fill="#555"/>
+    <circle cx="250" cy="100" r="25" fill="#aaa"/>
+    <path d="M250 125 L250 190 L205 230" fill="none" stroke="#aaa" stroke-width="18" stroke-linecap="round"/>
+    <path d="M250 145 L195 160" fill="none" stroke="#aaa" stroke-width="16" stroke-linecap="round"/>
+    <path d="M250 145 L305 160" fill="none" stroke="#aaa" stroke-width="16" stroke-linecap="round"/>
+    <rect x="180" y="225" width="120" height="15" rx="8" fill="#333"/>
+    <circle cx="175" cy="230" r="30" fill="none" stroke="#777" stroke-width="8"/>
+    <circle cx="325" cy="230" r="30" fill="none" stroke="#777" stroke-width="8"/>
   </svg>`;
 }
-
-
-function machineSVGGeneric(ex){
-
-  return svgWrap(`
-
-    <defs>
-
-      <linearGradient id="metal" x1="0" x2="1">
-
-        <stop offset="0" stop-color="#50545e"/>
-        <stop offset=".5" stop-color="#c6c8ce"/>
-        <stop offset="1" stop-color="#60646d"/>
-
-      </linearGradient>
-
-    </defs>
-
-    <rect
-      x="50" y="215"
-      width="400" height="10"
-      rx="5"
-      fill="#464a53"
-    />
-
-    <path
-      d="M85 215 L110 45 L145 45 L120 215"
-      fill="none"
-      stroke="url(#metal)"
-      stroke-width="15"
-    />
-
-    <path
-      d="M390 215 L365 45 L330 45 L355 215"
-      fill="none"
-      stroke="url(#metal)"
-      stroke-width="15"
-    />
-
-    <rect
-      x="104" y="38"
-      width="292"
-      height="15"
-      rx="7"
-      fill="#71757e"
-    />
-
-    <rect
-      x="205" y="82"
-      width="90"
-      height="24"
-      rx="8"
-      fill="#242731"
-    />
-
-    <rect
-      x="185" y="105"
-      width="130"
-      height="58"
-      rx="17"
-      fill="#30343e"
-    />
-
-    <rect
-      x="205" y="155"
-      width="90"
-      height="14"
-      rx="7"
-      fill="#181a20"
-    />
-
-    <circle cx="120" cy="72" r="11" fill="#272a31"/>
-    <circle cx="380" cy="72" r="11" fill="#272a31"/>
-
-    <path
-      d="M150 188 H350"
-      stroke="#2a2d34"
-      stroke-width="12"
-      stroke-linecap="round"
-    />
-
-    <text
-      x="250"
-      y="247"
-      text-anchor="middle"
-      fill="#4b4d55"
-      font-size="12"
-      font-weight="800"
-    >
-      ${esc(ex.name)}
-    </text>
-
-  `);
-
-}
-
-
-function barbellSVG(ex){
-
-  return svgWrap(`
-
-    <line
-      x1="55" y1="145"
-      x2="445" y2="145"
-      stroke="#555a65"
-      stroke-width="10"
-      stroke-linecap="round"
-    />
-
-    <rect x="65" y="105" width="35" height="80" rx="7" fill="#292d35"/>
-    <rect x="105" y="93" width="18" height="104" rx="5" fill="#5f646d"/>
-    <rect x="377" y="93" width="18" height="104" rx="5" fill="#5f646d"/>
-    <rect x="400" y="105" width="35" height="80" rx="7" fill="#292d35"/>
-
-    <circle cx="250" cy="108" r="27" fill="#d5d7dc"/>
-
-    <path
-      d="M250 135 L250 188"
-      stroke="#b7bbc3"
-      stroke-width="14"
-      stroke-linecap="round"
-    />
-
-    <path
-      d="M250 150 L210 178 M250 150 L290 178"
-      stroke="#b7bbc3"
-      stroke-width="11"
-      stroke-linecap="round"
-    />
-
-    <path
-      d="M210 178 L185 207 M290 178 L315 207"
-      stroke="#b7bbc3"
-      stroke-width="11"
-      stroke-linecap="round"
-    />
-
-    <text
-      x="250"
-      y="242"
-      text-anchor="middle"
-      fill="#555963"
-      font-size="13"
-      font-weight="800"
-    >
-      ${esc(ex.name)}
-    </text>
-
-  `);
-
-}
-
-
-function dumbbellSVG(ex){
-
-  return svgWrap(`
-
-    <circle cx="135" cy="145" r="32" fill="#30343d"/>
-    <rect x="158" y="138" width="184" height="14" rx="7" fill="#70747d"/>
-    <circle cx="365" cy="145" r="32" fill="#30343d"/>
-
-    <rect x="175" y="102" width="30" height="86" rx="8" fill="#444851"/>
-    <rect x="295" y="102" width="30" height="86" rx="8" fill="#444851"/>
-
-    <circle cx="250" cy="98" r="24" fill="#d4d7dc"/>
-
-    <path
-      d="M250 122 V181"
-      stroke="#b4b8c0"
-      stroke-width="13"
-      stroke-linecap="round"
-    />
-
-    <path
-      d="M250 142 L205 174 M250 142 L295 174"
-      stroke="#b4b8c0"
-      stroke-width="11"
-      stroke-linecap="round"
-    />
-
-    <path
-      d="M205 174 L180 206 M295 174 L320 206"
-      stroke="#b4b8c0"
-      stroke-width="11"
-      stroke-linecap="round"
-    />
-
-    <text
-      x="250"
-      y="242"
-      text-anchor="middle"
-      fill="#555963"
-      font-size="13"
-      font-weight="800"
-    >
-      ${esc(ex.name)}
-    </text>
-
-  `);
-
-}
-
-
-function cableSVG(ex){
-
-  return svgWrap(`
-
-    <rect
-      x="370" y="30"
-      width="80"
-      height="190"
-      rx="15"
-      fill="#454951"
-    />
-
-    <rect
-      x="390" y="55"
-      width="40"
-      height="115"
-      rx="8"
-      fill="#24272e"
-    />
-
-    <path
-      d="M410 170 V110 H300"
-      fill="none"
-      stroke="#15171c"
-      stroke-width="4"
-    />
-
-    <circle cx="300" cy="110" r="10" fill="#777b83"/>
-
-    <circle cx="205" cy="76" r="23" fill="#d6d8de"/>
-
-    <path
-      d="M205 99 L205 155"
-      stroke="#b6bac2"
-      stroke-width="12"
-      stroke-linecap="round"
-    />
-
-    <path
-      d="M205 115 L285 110"
-      stroke="#b6bac2"
-      stroke-width="11"
-      stroke-linecap="round"
-    />
-
-    <path
-      d="M205 145 L175 187"
-      stroke="#b6bac2"
-      stroke-width="11"
-      stroke-linecap="round"
-    />
-
-    <path
-      d="M205 145 L235 187"
-      stroke="#b6bac2"
-      stroke-width="11"
-      stroke-linecap="round"
-    />
-
-    <text
-      x="250"
-      y="244"
-      text-anchor="middle"
-      fill="#555963"
-      font-size="13"
-      font-weight="800"
-    >
-      ${esc(ex.name)}
-    </text>
-
-  `);
-
-}
-
-
-function bodyweightSVG(ex){
-
-  return svgWrap(`
-
-    <circle cx="250" cy="55" r="25" fill="#d7d9df"/>
-
-    <path
-      d="M250 80 V155"
-      stroke="#b8bbc3"
-      stroke-width="14"
-      stroke-linecap="round"
-    />
-
-    <path
-      d="M250 102 L195 135 M250 102 L305 135"
-      stroke="#b8bbc3"
-      stroke-width="12"
-      stroke-linecap="round"
-    />
-
-    <path
-      d="M250 155 L215 215 M250 155 L285 215"
-      stroke="#b8bbc3"
-      stroke-width="13"
-      stroke-linecap="round"
-    />
-
-    <rect
-      x="150" y="213"
-      width="200"
-      height="8"
-      rx="4"
-      fill="#555963"
-    />
-
-    <text
-      x="250"
-      y="244"
-      text-anchor="middle"
-      fill="#555963"
-      font-size="13"
-      font-weight="800"
-    >
-      ${esc(ex.name)}
-    </text>
-
-  `);
-
-}
-
-
-function cardioSVG(){
-
-  return svgWrap(`
-
-    <rect
-      x="90" y="70"
-      width="320"
-      height="130"
-      rx="20"
-      fill="#444850"
-    />
-
-    <rect
-      x="130" y="100"
-      width="240"
-      height="55"
-      rx="8"
-      fill="#191c22"
-    />
-
-    <circle cx="250" cy="127" r="19" fill="#59606a"/>
-
-    <path
-      d="M120 205 H380"
-      stroke="#747981"
-      stroke-width="12"
-      stroke-linecap="round"
-    />
-
-    <text
-      x="250"
-      y="242"
-      text-anchor="middle"
-      fill="#555963"
-      font-size="13"
-      font-weight="800"
-    >
-      CARDIO
-    </text>
-
-  `);
-
-}
-
-
-function treadmillSVG(){
-
-  return svgWrap(`
-
-    <path
-      d="M95 190 H405"
-      stroke="#444850"
-      stroke-width="28"
-      stroke-linecap="round"
-    />
-
-    <path
-      d="M105 190 L150 80 H250"
-      fill="none"
-      stroke="#777b83"
-      stroke-width="12"
-    />
-
-    <rect
-      x="215" y="55"
-      width="105"
-      height="55"
-      rx="10"
-      fill="#30343c"
-    />
-
-    <path
-      d="M150 80 L320 80"
-      stroke="#777b83"
-      stroke-width="10"
-    />
-
-    <circle cx="250" cy="120" r="18" fill="#d5d7dc"/>
-
-    <path
-      d="M250 138 V177 M250 150 L215 170 M250 150 L285 170"
-      stroke="#b6bac2"
-      stroke-width="10"
-      stroke-linecap="round"
-    />
-
-    <text
-      x="250"
-      y="242"
-      text-anchor="middle"
-      fill="#555963"
-      font-size="13"
-      font-weight="800"
-    >
-      TREADMILL
-    </text>
-
-  `);
-
-}
-
-
-function bikeSVG(){
-
-  return svgWrap(`
-
-    <circle cx="145" cy="185" r="45" fill="none" stroke="#5b606a" stroke-width="9"/>
-    <circle cx="355" cy="185" r="45" fill="none" stroke="#5b606a" stroke-width="9"/>
-
-    <path
-      d="M145 185 L225 115 L285 185 L145 185 M225 115 L355 185"
-      fill="none"
-      stroke="#858991"
-      stroke-width="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    />
-
-    <circle cx="250" cy="76" r="22" fill="#d5d7dc"/>
-
-    <path
-      d="M250 98 L245 137 L285 158"
-      stroke="#b7bac2"
-      stroke-width="11"
-      stroke-linecap="round"
-    />
-
-    <path
-      d="M245 137 L210 168"
-      stroke="#b7bac2"
-      stroke-width="10"
-      stroke-linecap="round"
-    />
-
-    <text
-      x="250"
-      y="242"
-      text-anchor="middle"
-      fill="#555963"
-      font-size="13"
-      font-weight="800"
-    >
-      BIKE
-    </text>
-
-  `);
-
-}
-
-
-function rowingSVG(){
-
-  return svgWrap(`
-
-    <rect
-      x="55" y="198"
-      width="390"
-      height="11"
-      rx="5"
-      fill="#555a64"
-    />
-
-    <rect
-      x="300" y="135"
-      width="90"
-      height="25"
-      rx="10"
-      fill="#2b2e35"
-    />
-
-    <circle cx="250" cy="88" r="22" fill="#d5d7dc"/>
-
-    <path
-      d="M250 110 L225 155 L170 182"
-      stroke="#b7bac2"
-      stroke-width="11"
-      fill="none"
-      stroke-linecap="round"
-    />
-
-    <path
-      d="M225 155 L290 175"
-      stroke="#b7bac2"
-      stroke-width="10"
-      fill="none"
-      stroke-linecap="round"
-    />
-
-    <path
-      d="M170 182 L130 182"
-      stroke="#777b83"
-      stroke-width="8"
-      stroke-linecap="round"
-    />
-
-    <text
-      x="250"
-      y="242"
-      text-anchor="middle"
-      fill="#555963"
-      font-size="13"
-      font-weight="800"
-    >
-      ROWING MACHINE
-    </text>
-
-  `);
-
-}
-
-
-function stairSVG(){
-
-  return svgWrap(`
-
-    <path
-      d="M110 205 H390"
-      stroke="#555a64"
-      stroke-width="10"
-    />
-
-    <path
-      d="M150 195 H220 V165 H255 V135 H290 V105 H325 V75 H360"
-      fill="none"
-      stroke="#777b83"
-      stroke-width="24"
-      stroke-linejoin="round"
-    />
-
-    <circle cx="250" cy="60" r="22" fill="#d5d7dc"/>
-
-    <path
-      d="M250 82 V130 M250 100 L215 130 M250 100 L285 130"
-      stroke="#b6bac2"
-      stroke-width="10"
-      stroke-linecap="round"
-    />
-
-    <text
-      x="250"
-      y="242"
-      text-anchor="middle"
-      fill="#555963"
-      font-size="13"
-      font-weight="800"
-    >
-      STAIR CLIMBER
-    </text>
-
-  `);
-
-}
-
-
-/* =========================================================
-   REALISTIC BODY MAP
-========================================================= */
-
-function bodyMap(primary=[],secondary=[],back=false){
-
-  const p=new Set(primary);
-  const s=new Set(secondary);
-
-  const fill=(muscle)=>{
-    if(p.has(muscle))
-      return "muscle-primary";
-
-    if(s.has(muscle))
-      return "muscle-secondary";
-
-    return "muscle-none";
-  };
-
-
-  return `
-
-  <svg
-    class="body-svg"
-    viewBox="0 0 260 430"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-
-    <defs>
-
-      <linearGradient
-        id="skin"
-        x1="0"
-        y1="0"
-        x2="1"
-        y2="1"
-      >
-
-        <stop
-          offset="0"
-          stop-color="#f4f5f8"
-        />
-
-        <stop
-          offset=".55"
-          stop-color="#dfe2ea"
-        />
-
-        <stop
-          offset="1"
-          stop-color="#c6cad5"
-        />
-
-      </linearGradient>
-
-    </defs>
-
-
-    <!-- HEAD -->
-
-    <circle
-      cx="130"
-      cy="43"
-      r="28"
-      fill="url(#skin)"
-      class="body-outline"
-    />
-
-
-    <!-- NECK -->
-
-    <path
-      d="M112 67 L112 90 L148 90 L148 67"
-      fill="url(#skin)"
-      class="body-outline"
-    />
-
-
-    ${
-      back
-      ?
-
-      `
-
-      <!-- BACK -->
-
-      <path
-        d="M75 91
-           C89 79 105 79 130 91
-           C155 79 171 79 185 91
-           L174 190
-           C166 215 151 228 130 232
-           C109 228 94 215 86 190 Z"
-        class="${fill("Back")}"
-      />
-
-      <!-- REAR DELTS -->
-
-      <ellipse
-        cx="82"
-        cy="103"
-        rx="18"
-        ry="23"
-        class="${fill("Shoulders")}"
-      />
-
-      <ellipse
-        cx="178"
-        cy="103"
-        rx="18"
-        ry="23"
-        class="${fill("Shoulders")}"
-      />
-
-      <!-- TRICEPS -->
-
-      <path
-        d="M62 105 C48 120 46 151 57 174 L73 169 C69 145 72 122 82 108 Z"
-        class="${fill("Triceps")}"
-      />
-
-      <path
-        d="M198 105 C212 120 214 151 203 174 L187 169 C191 145 188 122 178 108 Z"
-        class="${fill("Triceps")}"
-      />
-
-      <!-- LATS -->
-
-      <path
-        d="M86 113 C96 106 108 110 126 122 L118 184 C100 181 89 165 84 145 Z"
-        class="${fill("Back")}"
-      />
-
-      <path
-        d="M174 113 C164 106 152 110 134 122 L142 184 C160 181 171 165 176 145 Z"
-        class="${fill("Back")}"
-      />
-
-      <!-- GLUTES -->
-
-      <ellipse
-        cx="109"
-        cy="222"
-        rx="24"
-        ry="27"
-        class="${fill("Glutes")}"
-      />
-
-      <ellipse
-        cx="151"
-        cy="222"
-        rx="24"
-        ry="27"
-        class="${fill("Glutes")}"
-      />
-
-      <!-- HAMSTRINGS -->
-
-      <path
-        d="M87 245 C91 225 103 238 109 248 L108 333 L85 333 Z"
-        class="${fill("Hamstrings")}"
-      />
-
-      <path
-        d="M173 245 C169 225 157 238 151 248 L152 333 L175 333 Z"
-        class="${fill("Hamstrings")}"
-      />
-
-      <!-- CALVES -->
-
-      <path
-        d="M86 338 C80 360 83 387 97 397 L110 388 L109 338 Z"
-        class="${fill("Calves")}"
-      />
-
-      <path
-        d="M174 338 C180 360 177 387 163 397 L150 388 L151 338 Z"
-        class="${fill("Calves")}"
-      />
-
-      `
-
-      :
-
-      `
-
-      <!-- FRONT TORSO -->
-
-      <path
-        d="M76 91
-           C94 79 110 79 130 91
-           C150 79 166 79 184 91
-           L174 188
-           C160 205 146 210 130 210
-           C114 210 100 205 86 188 Z"
-        fill="url(#skin)"
-        class="body-outline"
-      />
-
-      <!-- CHEST -->
-
-      <path
-        d="M84 102 C97 92 113 96 127 108 L127 135 C108 138 92 132 83 119 Z"
-        class="${fill("Chest")}"
-      />
-
-      <path
-        d="M176 102 C163 92 147 96 133 108 L133 135 C152 138 168 132 177 119 Z"
-        class="${fill("Chest")}"
-      />
-
-      <!-- DELTS -->
-
-      <ellipse
-        cx="79"
-        cy="105"
-        rx="19"
-        ry="24"
-        class="${fill("Shoulders")}"
-      />
-
-      <ellipse
-        cx="181"
-        cy="105"
-        rx="19"
-        ry="24"
-        class="${fill("Shoulders")}"
-      />
-
-      <!-- BICEPS -->
-
-      <path
-        d="M61 113 C48 128 48 153 58 175 L73 169 C69 149 71 130 80 118 Z"
-        class="${fill("Biceps")}"
-      />
-
-      <path
-        d="M199 113 C212 128 212 153 202 175 L187 169 C191 149 189 130 180 118 Z"
-        class="${fill("Biceps")}"
-      />
-
-      <!-- TRICEPS SIDE -->
-
-      <path
-        d="M72 120 L80 118 L76 168 L65 174 Z"
-        class="${fill("Triceps")}"
-      />
-
-      <path
-        d="M188 118 L180 118 L184 168 L195 174 Z"
-        class="${fill("Triceps")}"
-      />
-
-      <!-- ABS -->
-
-      <path
-        d="M111 139
-           C119 136 126 137 130 139
-           C134 137 141 136 149 139
-           L148 193
-           C141 199 137 201 130 201
-           C123 201 119 199 112 193 Z"
-        class="${fill("Core")}"
-      />
-
-      <line
-        x1="130"
-        y1="140"
-        x2="130"
-        y2="195"
-        class="body-detail"
-      />
-
-      <line
-        x1="113"
-        y1="155"
-        x2="147"
-        y2="155"
-        class="body-detail"
-      />
-
-      <line
-        x1="113"
-        y1="171"
-        x2="147"
-        y2="171"
-        class="body-detail"
-      />
-
-      <line
-        x1="115"
-        y1="187"
-        x2="145"
-        y2="187"
-        class="body-detail"
-      />
-
-      <!-- QUADS -->
-
-      <path
-        d="M90 205 C99 198 115 204 127 212 L122 317 C112 325 100 321 91 312 Z"
-        class="${fill("Quads")}"
-      />
-
-      <path
-        d="M170 205 C161 198 145 204 133 212 L138 317 C148 325 160 321 169 312 Z"
-        class="${fill("Quads")}"
-      />
-
-      <!-- CALVES -->
-
-      <path
-        d="M90 322 C82 345 84 377 99 397 L113 389 L111 324 Z"
-        class="${fill("Calves")}"
-      />
-
-      <path
-        d="M170 322 C178 345 176 377 161 397 L147 389 L149 324 Z"
-        class="${fill("Calves")}"
-      />
-
-      `
-
-    }
-
-
-    <!-- ARMS -->
-
-    <path
-      d="M58 174 L46 226"
-      stroke="#dfe2ea"
-      stroke-width="18"
-      stroke-linecap="round"
-    />
-
-    <path
-      d="M202 174 L214 226"
-      stroke="#dfe2ea"
-      stroke-width="18"
-      stroke-linecap="round"
-    />
-
-
-    <!-- HANDS -->
-
-    <circle
-      cx="45"
-      cy="233"
-      r="10"
-      fill="#dfe2ea"
-    />
-
-    <circle
-      cx="215"
-      cy="233"
-      r="10"
-      fill="#dfe2ea"
-    />
-
-
-    <!-- FEET -->
-
-    <path
-      d="M94 397 L87 413 L119 413"
-      fill="#dfe2ea"
-    />
-
-    <path
-      d="M166 397 L173 413 L141 413"
-      fill="#dfe2ea"
-    />
-
-  </svg>
-
-  `;
-
-}
-
 
 /* =========================================================
    HOME
 ========================================================= */
 
-function homeHTML(){
+function renderHome(){
 
-  const r=rankFromXP(db.xp);
-
-  const food=todayFood();
-
-  const workoutCount=db.workouts.length;
-
-  const totalVolume=volume();
-
-  const recent=musclesForRange(7);
-
-  const strongest=
-    Object.entries(recent)
-      .sort((a,b)=>b[1]-a[1])
-      .slice(0,3);
-
+  const [rank,icon]=overallRank();
 
   return `
-
-  <div class="topbar">
-
+  <div class="top-row">
     <div>
-
-      <div class="logo">
-        Lift<span>Rank</span>
-      </div>
-
-      <div class="subtitle">
-        Train • Eat • Level Up
-      </div>
-
+      <div class="brand">Lift<span>Rank</span></div>
+      <div class="subtitle">Build your strength. Level every muscle.</div>
     </div>
+  </div>
+
+  <div class="card hero rank-card">
+    <div class="rank-icon">${icon}</div>
+
+    <div style="flex:1">
+      <div class="stat-label">Overall Rank</div>
+      <div class="rank-name">${rank}</div>
+      <div style="color:var(--muted);margin-top:3px">
+        Level ${xpLevel()} • ${state.xp} XP
+      </div>
+
+      <div class="progress">
+        <div style="width:${xpProgress()}%"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="stat">
+      <div class="stat-label">Calories</div>
+      <div class="stat-value orange">${totalCalories()}</div>
+      <div class="subtitle" style="margin:0">today</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">Protein</div>
+      <div class="stat-value green">${totalProtein()}g</div>
+      <div class="subtitle" style="margin:0">today</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">Workouts</div>
+      <div class="stat-value purple">${state.workouts}</div>
+      <div class="subtitle" style="margin:0">completed</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">Volume</div>
+      <div class="stat-value blue">${Math.round(state.volume).toLocaleString()}</div>
+      <div class="subtitle" style="margin:0">lbs</div>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <h2>Quick Start</h2>
+  </div>
+
+  <div class="quick-grid">
+
+    <button class="quick" onclick="startEmptyWorkout()">
+      <div class="quick-icon">🏋️</div>
+      <div class="quick-title">Start Workout</div>
+      <div class="quick-sub">Log sets & reps</div>
+    </button>
+
+    <button class="quick" onclick="setTab('exercises')">
+      <div class="quick-icon">📚</div>
+      <div class="quick-title">Exercises</div>
+      <div class="quick-sub">Browse the gym</div>
+    </button>
+
+    <button class="quick" onclick="setTab('food')">
+      <div class="quick-icon">🍎</div>
+      <div class="quick-title">Food</div>
+      <div class="quick-sub">Track nutrition</div>
+    </button>
+
+    <button class="quick" onclick="setTab('ranks')">
+      <div class="quick-icon">🏆</div>
+      <div class="quick-title">Ranks</div>
+      <div class="quick-sub">Muscle progression</div>
+    </button>
 
   </div>
 
-
-  <h1>
-    Welcome back 👋
-  </h1>
-
-  <div class="subtitle">
-    Build your strength. Level every muscle.
+  <div class="section-title">
+    <h2>Today's Muscles</h2>
   </div>
 
-
-  <div class="card rank-card hero">
-
-    <div class="rank-row">
-
-      <div>
-
-        <div class="rank-label">
-          OVERALL RANK
-        </div>
-
-        <div class="rank-name">
-          ${r.name}
-        </div>
-
-        <div class="subtitle">
-          ${db.xp.toLocaleString()} XP
-        </div>
-
-      </div>
-
-      <div class="rank-badge">
-        ${r.short}
-      </div>
-
-    </div>
-
-
-    <div class="progress">
-
-      <i
-        style="width:${rankProgress(db.xp)}%"
-      ></i>
-
-    </div>
-
-    <div class="progress-label">
-
-      <span>
-        ${r.min.toLocaleString()} XP
-      </span>
-
-      <span>
-        ${r.next ? r.next.toLocaleString()+" XP" : "MAX"}
-      </span>
-
-    </div>
-
+  <div class="card">
+    ${MUSCLES.filter(m=>muscleSets(m)>0).length
+      ? `<div class="muscle-list">
+          ${MUSCLES.filter(m=>muscleSets(m)>0).map(m=>`
+            <div class="muscle-pill">
+              <strong>${m}</strong>
+              ${muscleSets(m)} sets
+            </div>
+          `).join("")}
+        </div>`
+      : `<div class="empty">
+          Complete some sets and your muscle map will appear here.
+        </div>`
+    }
   </div>
 
+  <div class="card">
+    <h2>Today's Summary</h2>
 
-  <div class="grid">
-
-    <div class="card stat">
-
-      <div class="stat-label">
-        Calories
+    <div class="grid-2">
+      <div class="stat">
+        <div class="stat-value blue">${state.completedSets}</div>
+        <div class="stat-label">Sets</div>
       </div>
 
-      <div class="stat-number orange">
-        ${food.cal}
+      <div class="stat">
+        <div class="stat-value purple">${state.xp}</div>
+        <div class="stat-label">XP</div>
       </div>
-
-      <div class="subtitle">
-        eaten today
-      </div>
-
     </div>
-
-
-    <div class="card stat">
-
-      <div class="stat-label">
-        Protein
-      </div>
-
-      <div class="stat-number green">
-        ${Math.round(food.protein)}g
-      </div>
-
-      <div class="subtitle">
-        today
-      </div>
-
-    </div>
-
-
-    <div class="card stat">
-
-      <div class="stat-label">
-        Workouts
-      </div>
-
-      <div class="stat-number purple">
-        ${workoutCount}
-      </div>
-
-      <div class="subtitle">
-        completed
-      </div>
-
-    </div>
-
-
-    <div class="card stat">
-
-      <div class="stat-label">
-        Volume
-      </div>
-
-      <div class="stat-number blue">
-        ${Math.round(totalVolume).toLocaleString()}
-      </div>
-
-      <div class="subtitle">
-        lbs lifted
-      </div>
-
-    </div>
-
   </div>
-
-
-  <h2>
-    Today's Muscles
-  </h2>
-
-
-  <div class="card muscle-card">
-
-    <div class="muscle-header">
-
-      <div>
-
-        <h3>
-          Muscle Map
-        </h3>
-
-        <div class="subtitle">
-          Last 7 days
-        </div>
-
-      </div>
-
-      <div class="legend">
-
-        <span>
-          <i class="legend-dot legend-primary"></i>
-          Primary
-        </span>
-
-        <span>
-          <i class="legend-dot legend-secondary"></i>
-          Secondary
-        </span>
-
-      </div>
-
-    </div>
-
-
-    <div class="anatomy">
-
-      <div class="body-panel">
-
-        <div class="body-label">
-          FRONT
-        </div>
-
-        ${bodyMap(
-          Object.keys(recent).slice(0,5),
-          Object.keys(recent).slice(5),
-          false
-        )}
-
-      </div>
-
-
-      <div class="body-panel">
-
-        <div class="body-label">
-          BACK
-        </div>
-
-        ${bodyMap(
-          Object.keys(recent).slice(0,5),
-          Object.keys(recent).slice(5),
-          true
-        )}
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <h2>
-    Quick Start
-  </h2>
-
-
-  <div>
-
-    ${db.routines.slice(0,4).map(r=>`
-
-      <div class="item">
-
-        <div class="item-main">
-
-          <div class="item-title">
-            ${esc(r.name)}
-          </div>
-
-          <div class="item-meta">
-            ${esc(r.desc)}
-            •
-            ${r.exercises.length}
-            exercises
-          </div>
-
-        </div>
-
-        <button
-          class="btn"
-          onclick="startRoutine('${r.id}')"
-        >
-          Start
-        </button>
-
-      </div>
-
-    `).join("")}
-
-  </div>
-
-
-  ${
-    strongest.length
-    ?
-    `
-
-    <h2>
-      This Week
-    </h2>
-
-    <div class="card">
-
-      ${
-        strongest.map(
-          x=>`
-
-          <div class="stat-line">
-
-            <span>
-              ${esc(x[0])}
-            </span>
-
-            <span>
-              ${x[1]} sets
-            </span>
-
-          </div>
-
-          `
-        ).join("")
-      }
-
-    </div>
-
-    `
-    :
-    ""
-  }
-
   `;
-
 }
 
-
 /* =========================================================
-   WORKOUT PAGE
+   EXERCISES
 ========================================================= */
 
-function workoutHTML(){
+function renderExercises(){
+
+  const categories=[
+    "All",
+    "Chest",
+    "Back",
+    "Shoulders",
+    "Biceps",
+    "Triceps",
+    "Quads",
+    "Hamstrings",
+    "Glutes",
+    "Calves",
+    "Core",
+    "Full Body",
+    "Cardio"
+  ];
+
+  let list=EXERCISES.filter(ex=>{
+    const categoryMatch=exerciseFilter==="All" || ex.cat===exerciseFilter;
+    const searchMatch=ex.name.toLowerCase().includes(exerciseSearch.toLowerCase());
+    return categoryMatch && searchMatch;
+  });
 
   return `
-
-  <div class="topbar">
-
+  <div class="top-row">
     <div>
-
-      <div class="logo">
-        Lift<span>Rank</span>
-      </div>
-
-      <div class="subtitle">
-        Build your workout.
-      </div>
-
+      <div class="brand">Lift<span>Rank</span></div>
+      <div class="subtitle">Explore every exercise in your gym.</div>
     </div>
-
-    <button
-      class="btn"
-      onclick="newWorkout()"
-    >
-      ＋ Start
-    </button>
-
   </div>
 
-
-  <div class="chips">
-
-    <button
-      class="chip active"
-      onclick="filterWorkout('All',this)"
-    >
-      All
-    </button>
-
-    <button
-      class="chip"
-      onclick="filterWorkout('Chest',this)"
-    >
-      Chest
-    </button>
-
-    <button
-      class="chip"
-      onclick="filterWorkout('Back',this)"
-    >
-      Back
-    </button>
-
-    <button
-      class="chip"
-      onclick="filterWorkout('Legs',this)"
-    >
-      Legs
-    </button>
-
-    <button
-      class="chip"
-      onclick="filterWorkout('Shoulders',this)"
-    >
-      Shoulders
-    </button>
-
-    <button
-      class="chip"
-      onclick="filterWorkout('Cardio',this)"
-    >
-      Cardio
-    </button>
-
-  </div>
-
-
-  <input
-    id="workoutSearch"
-    class="search"
-    placeholder="Search exercises..."
-    oninput="renderExerciseList(this.value)"
-  >
-
-
-  <h2>
-    Routines
-  </h2>
-
-
-  <div>
-
-    ${db.routines.map(r=>`
-
-      <div class="item">
-
-        <div class="item-main">
-
-          <div class="item-title">
-            ${esc(r.name)}
-          </div>
-
-          <div class="item-meta">
-            ${esc(r.desc)}
-            •
-            ${r.exercises.length}
-            exercises
-          </div>
-
-        </div>
-
-        <button
-          class="btn secondary"
-          onclick="startRoutine('${r.id}')"
-        >
-          Fast Start
-        </button>
-
-      </div>
-
-    `).join("")}
-
-  </div>
-
-
-  <h2>
-    Exercises
-  </h2>
-
-
-  <div id="exerciseList">
-
-    ${exerciseListHTML(db.exercises.slice(0,40))}
-
-  </div>
-
-
-  <button
-    class="btn secondary full"
-    onclick="showTab('exercises')"
-  >
-    Browse Full Exercise Library
+  <button class="primary-button" onclick="startEmptyWorkout()" style="margin-bottom:18px">
+    + Build Workout
   </button>
 
-  `;
+  <input
+    class="search"
+    placeholder="Search exercises..."
+    value="${escapeHTML(exerciseSearch)}"
+    oninput="exerciseSearch=this.value;render()"
+  >
 
-}
+  <div class="filters">
+    ${categories.map(c=>`
+      <button
+        class="filter ${exerciseFilter===c?"active":""}"
+        onclick="exerciseFilter='${c}';render()">
+        ${c}
+      </button>
+    `).join("")}
+  </div>
 
+  <div style="color:var(--muted);margin-bottom:12px">
+    ${list.length} exercises
+  </div>
 
-function exerciseListHTML(list){
+  ${list.map((ex,i)=>`
+    <button class="exercise-card" style="width:100%;text-align:left;color:white"
+            onclick="openExercise(${EXERCISES.indexOf(ex)})">
+      <div class="exercise-main">
 
-  if(!list.length)
-    return `
-      <div class="empty">
-        No exercises found.
-      </div>
-    `;
-
-
-  return list.map(ex=>{
-
-    const r=exerciseRank(ex.name);
-
-    return `
-
-    <div class="item">
-
-      <div class="exercise-row">
-
-        <div class="exercise-thumb">
-
-          ${machineSVG(ex)}
-
-        </div>
+        <div class="exercise-thumb">${ex.icon}</div>
 
         <div class="exercise-info">
-
-          <div class="item-title">
-            ${esc(ex.name)}
+          <div class="exercise-name">${escapeHTML(ex.name)}</div>
+          <div class="exercise-meta">
+            ${escapeHTML(ex.cat)} • ${escapeHTML(ex.type)}
           </div>
-
-          <div class="item-meta">
-            ${esc(ex.muscle)}
-            •
-            ${esc(ex.equipment)}
-          </div>
-
-          <span class="mini-rank">
-            ${r.name} • ${ex.xp||0} XP
-          </span>
-
         </div>
 
+        <div class="chevron">›</div>
+
       </div>
-
-
-      <button
-        class="btn secondary"
-        onclick="openExercise('${ex.name.replace(/'/g,"\\'")}')"
-      >
-        View
-      </button>
-
-    </div>
-
-    `;
-
-  }).join("");
-
-}
-
-
-let currentWorkoutFilter="All";
-
-function filterWorkout(filter,button){
-
-  currentWorkoutFilter=filter;
-
-  document
-    .querySelectorAll(".chips .chip")
-    .forEach(x=>x.classList.remove("active"));
-
-  button.classList.add("active");
-
-  const input=
-    document.getElementById("workoutSearch");
-
-  renderExerciseList(
-    input?.value||""
-  );
-
-}
-
-
-function renderExerciseList(search=""){
-
-  const q=search.toLowerCase();
-
-  let list=db.exercises.filter(ex=>{
-
-    const text=(
-      ex.name+
-      " "+
-      ex.muscle+
-      " "+
-      ex.equipment
-    ).toLowerCase();
-
-    const matchesSearch=
-      !q||text.includes(q);
-
-    let matchesFilter=true;
-
-    if(currentWorkoutFilter==="Cardio")
-      matchesFilter=ex.muscle==="Cardio";
-
-    else if(currentWorkoutFilter==="Legs")
-      matchesFilter=
-        ["Quads","Hamstrings","Glutes","Calves"].includes(ex.muscle);
-
-    else if(currentWorkoutFilter!=="All")
-      matchesFilter=
-        ex.muscle===currentWorkoutFilter;
-
-    return matchesSearch&&matchesFilter;
-
-  });
-
-  document.getElementById(
-    "exerciseList"
-  ).innerHTML=
-    exerciseListHTML(
-      list.slice(0,70)
-    );
-
-}
-
-
-/* =========================================================
-   FULL EXERCISE LIBRARY
-========================================================= */
-
-function exercisesHTML(){
-
-  const groups={};
-
-  db.exercises.forEach(ex=>{
-
-    if(!groups[ex.muscle])
-      groups[ex.muscle]=[];
-
-    groups[ex.muscle].push(ex);
-
-  });
-
-
-  return `
-
-  <div class="topbar">
-
-    <div>
-
-      <div class="logo">
-        Lift<span>Rank</span>
-      </div>
-
-      <div class="subtitle">
-        Exercise & machine library
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <input
-    id="librarySearch"
-    class="search"
-    placeholder="Search every exercise..."
-    oninput="librarySearch(this.value)"
-  >
-
-
-  <div
-    id="libraryResults"
-    style="margin-top:18px"
-  >
-
-    ${Object.entries(groups)
-      .map(
-        ([muscle,list])=>`
-
-        <h2>
-          ${esc(muscle)}
-          <span
-            style="font-size:13px;color:var(--muted)"
-          >
-            ${list.length}
-          </span>
-        </h2>
-
-        ${exerciseListHTML(list)}
-
-        `
-      )
-      .join("")
-    }
-
-  </div>
-
+    </button>
+  `).join("")}
   `;
-
 }
-
-
-function librarySearch(q){
-
-  const text=q.toLowerCase();
-
-  const list=db.exercises.filter(ex=>
-    (
-      ex.name+
-      " "+
-      ex.muscle+
-      " "+
-      ex.equipment
-    )
-    .toLowerCase()
-    .includes(text)
-  );
-
-  document.getElementById(
-    "libraryResults"
-  ).innerHTML=
-    exerciseListHTML(list);
-
-}
-
 
 /* =========================================================
    EXERCISE DETAIL
 ========================================================= */
 
-function openExercise(name){
-
-  const ex=exerciseByName(name);
-
-  if(!ex)
-    return;
-
-  const r=exerciseRank(name);
-
-  const primary=
-    MUSCLE_MAP[ex.muscle]?.primary||
-    [ex.muscle];
-
-  const secondary=
-    MUSCLE_MAP[ex.muscle]?.secondary||
-    [];
-
-
-  const videoURL=
-    "https://www.youtube.com/results?search_query="+
-    encodeURIComponent(
-      "how to do "+name+" proper form"
-    );
-
-
-  const modal=
-    document.getElementById("modal");
-
-  modal.classList.remove("hidden");
-
-  modal.innerHTML=`
-
-  <div class="modal-inner">
-
-    <div class="modal-head">
-
-      <div>
-
-        <strong>
-          Exercise Details
-        </strong>
-
-        <div class="subtitle">
-          ${esc(ex.muscle)}
-        </div>
-
-      </div>
-
-      <button
-        class="close"
-        onclick="closeModal()"
-      >
-        ×
-      </button>
-
-    </div>
-
-
-    <div class="detail-image">
-
-      ${machineSVG(ex)}
-
-    </div>
-
-
-    <div class="detail-title">
-      ${esc(ex.name)}
-    </div>
-
-    <div class="detail-sub">
-      ${esc(ex.equipment)}
-    </div>
-
-
-    <div class="mini-rank">
-      ${r.name} • ${ex.xp||0} XP
-    </div>
-
-
-    <div class="detail-tabs">
-
-      <button
-        class="active"
-        onclick="detailSection('about',this)"
-      >
-        About
-      </button>
-
-      <button
-        onclick="detailSection('rank',this)"
-      >
-        Rank
-      </button>
-
-      <button
-        onclick="detailSection('stats',this)"
-      >
-        Stats
-      </button>
-
-    </div>
-
-
-    <div id="detailContent">
-
-      <div class="card">
-
-        <h3>
-          Muscles Worked
-        </h3>
-
-        <div class="muscle-pills">
-
-          ${primary.map(
-            x=>`
-            <span class="muscle-pill">
-              ${esc(x)}
-            </span>
-            `
-          ).join("")}
-
-          ${secondary.map(
-            x=>`
-            <span class="muscle-pill secondary">
-              ${esc(x)}
-            </span>
-            `
-          ).join("")}
-
-        </div>
-
-
-        <div class="anatomy">
-
-          <div class="body-panel">
-
-            <div class="body-label">
-              FRONT
-            </div>
-
-            ${bodyMap(
-              primary,
-              secondary,
-              false
-            )}
-
-          </div>
-
-
-          <div class="body-panel">
-
-            <div class="body-label">
-              BACK
-            </div>
-
-            ${bodyMap(
-              primary,
-              secondary,
-              true
-            )}
-
-          </div>
-
-        </div>
-
-
-        <a
-          class="howto"
-          href="${videoURL}"
-          target="_blank"
-          rel="noopener"
-        >
-          ▶ Watch How To Use / Proper Form
-        </a>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  `;
-
-}
-
-
-function detailSection(section,button){
-
-  document
-    .querySelectorAll(".detail-tabs button")
-    .forEach(x=>x.classList.remove("active"));
-
-  button.classList.add("active");
-
-}
-
-
-/* =========================================================
-   WORKOUT ENGINE
-========================================================= */
-
-function makeSet(){
-
-  return{
-    weight:"",
-    reps:"",
-    done:false
-  };
-
-}
-
-
-function newWorkout(){
-
-  openWorkout({
-    name:"Quick Workout",
-    exercises:[]
-  });
-
-}
-
-
-function startRoutine(id){
-
-  const routine=
-    db.routines.find(
-      x=>x.id===id
-    );
-
-  if(!routine)
-    return;
-
-  openWorkout({
-
-    name:routine.name,
-
-    exercises:
-      routine.exercises.map(
-        name=>({
-          name,
-          sets:[
-            makeSet(),
-            makeSet(),
-            makeSet()
-          ]
-        })
-      )
-
-  });
-
-}
-
-
-function addExerciseToWorkout(name){
-
-  if(!activeWorkout){
-
-    openWorkout({
-      name:"Quick Workout",
-      exercises:[]
-    });
-
-  }
-
-  activeWorkout.exercises.push({
-    name,
-    sets:[
-      makeSet(),
-      makeSet(),
-      makeSet()
-    ]
-  });
-
-  renderWorkoutModal();
-
-  toast(
-    "Exercise added"
-  );
-
-}
-
-
-function openWorkout(workout){
-
-  activeWorkout={
-    ...workout,
-    start:Date.now()
-  };
-
-  workoutSeconds=0;
-
-  clearInterval(workoutTimer);
-
-  workoutTimer=setInterval(
-    ()=>{
-
-      workoutSeconds++;
-
-      const el=
-        document.getElementById(
-          "workoutTimer"
-        );
-
-      if(el)
-        el.textContent=
-          formatTime(workoutSeconds);
-
-    },
-    1000
-  );
-
-  renderWorkoutModal();
-
-}
-
-
-function renderWorkoutModal(){
-
-  const modal=
-    document.getElementById("modal");
-
-  modal.classList.remove("hidden");
-
-  modal.innerHTML=`
-
-  <div class="modal-inner">
-
-    <div class="modal-head">
-
-      <div>
-
-        <strong>
-          ${esc(activeWorkout.name)}
-        </strong>
-
-        <div class="subtitle">
-          Workout in progress
-        </div>
-
-      </div>
-
-      <button
-        class="close"
-        onclick="confirmCloseWorkout()"
-      >
-        ×
-      </button>
-
-    </div>
-
-
-    <div class="card timer-card">
-
-      <div class="timer-label">
-        WORKOUT TIME
-      </div>
-
-      <div
-        id="workoutTimer"
-        class="timer"
-      >
-        ${formatTime(workoutSeconds)}
-      </div>
-
-      <button
-        class="btn secondary"
-        onclick="restTimer()"
-      >
-        ⏱ Rest Timer
-      </button>
-
-    </div>
-
-
-    ${
-      activeWorkout.exercises.length
-      ?
-      activeWorkout.exercises
-        .map(
-          (e,i)=>
-            workoutExerciseHTML(e,i)
-        )
-        .join("")
-      :
-      `
-      <div class="card empty">
-        No exercises yet.<br><br>
-        Add an exercise below to start.
-      </div>
-      `
-    }
-
-
-    <div class="btnrow">
-
-      <button
-        class="btn secondary"
-        onclick="chooseWorkoutExercise()"
-      >
-        ＋ Add Exercise
-      </button>
-
-      <button
-        class="btn green"
-        onclick="finishWorkout()"
-      >
-        Finish Workout
-      </button>
-
-    </div>
-
-  </div>
-
-  `;
-
-}
-
-
-function workoutExerciseHTML(ex,index){
+function renderExerciseDetail(ex){
 
   return `
+  <div class="detail-header">
+    <button class="icon-button" onclick="currentExercise=null;render()">‹</button>
+    <h1>${escapeHTML(ex.name)}</h1>
+  </div>
 
-  <div class="workout-card">
+  <div class="exercise-art">
+    ${machineSVG(ex)}
+  </div>
 
-    <div class="workout-exercise-head">
+  <div class="detail-tags">
+    <span class="tag">${escapeHTML(ex.cat)}</span>
+    <span class="tag">${escapeHTML(ex.type)}</span>
+  </div>
 
-      <div class="exercise-row">
+  <button class="primary-button"
+          onclick="addExerciseToWorkout(${EXERCISES.indexOf(ex)})">
+    + Add to Workout
+  </button>
 
-        <div class="exercise-thumb">
+  <div class="muscle-section">
+    ${muscleMap(ex.primary,ex.secondary)}
+  </div>
 
-          ${machineSVG(
-            exerciseByName(ex.name)||{
-              name:ex.name,
-              type:"Bodyweight",
-              equipment:"Bodyweight"
-            }
-          )}
+  <div class="card" style="margin-top:22px">
+    <h3>How to use it</h3>
+    <p style="color:var(--muted);line-height:1.6">
+      Use controlled reps and choose a weight that allows you to maintain
+      good technique. Adjust the machine to your body before starting.
+    </p>
 
-        </div>
+    <button class="secondary-button" style="width:100%"
+            onclick="showToast('Video links can be connected here')">
+      ▶ Watch How-To Video
+    </button>
+  </div>
 
-        <div>
-
-          <div class="item-title">
-            ${esc(ex.name)}
-          </div>
-
-          <div class="item-meta">
-            ${esc(
-              exerciseByName(ex.name)?.muscle||
-              ""
-            )}
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <button
-        class="btn danger"
-        onclick="removeWorkoutExercise(${index})"
-      >
-        Remove
-      </button>
-
-    </div>
-
-
-    <div class="set-header">
-
-      <span>
-        SET
-      </span>
-
-      <span>
-        WEIGHT
-      </span>
-
-      <span>
-        REPS
-      </span>
-
-      <span>
-        DONE
-      </span>
-
-      <span>
-        DEL
-      </span>
-
-    </div>
-
+  <div class="card">
+    <h3>Your History</h3>
 
     ${
-      ex.sets.map(
-        (set,setIndex)=>`
-
-        <div class="set-row">
-
-          <span class="set-number">
-            ${setIndex+1}
-          </span>
-
-          <input
-            inputmode="decimal"
-            placeholder="lb"
-            value="${set.weight}"
-            onchange="
-              updateSet(
-                ${index},
-                ${setIndex},
-                'weight',
-                this.value
-              )
-            "
-          >
-
-          <input
-            inputmode="numeric"
-            placeholder="reps"
-            value="${set.reps}"
-            onchange="
-              updateSet(
-                ${index},
-                ${setIndex},
-                'reps',
-                this.value
-              )
-            "
-          >
-
-          <button
-            class="set-button ${set.done?"done":""}"
-            onclick="
-              toggleWorkoutSet(
-                ${index},
-                ${setIndex}
-              )
-            "
-          >
-            ${set.done?"✓":"○"}
-          </button>
-
-          <button
-            class="set-button"
-            onclick="
-              deleteSet(
-                ${index},
-                ${setIndex}
-              )
-            "
-          >
-            −
-          </button>
-
+      state.history.filter(h=>h.exercise===ex.name).length
+      ?
+      state.history.filter(h=>h.exercise===ex.name).slice(-10).reverse().map(h=>`
+        <div class="food-entry">
+          <div>
+            <strong>${h.weight} lbs × ${h.reps}</strong>
+            <div style="color:var(--muted);font-size:13px">${h.date}</div>
+          </div>
         </div>
-
-        `
-      ).join("")
+      `).join("")
+      :
+      `<div class="empty">No history yet.</div>`
     }
+  </div>
+  `;
+}
 
+/* =========================================================
+   WORKOUT
+========================================================= */
 
-    <button
-      class="btn secondary"
-      onclick="addWorkoutSet(${index})"
-    >
-      ＋ Add Set
+function renderWorkout(){
+
+  return `
+  <div class="top-row">
+    <div>
+      <div class="brand">Lift<span>Rank</span></div>
+      <div class="subtitle">Build your workout.</div>
+    </div>
+
+    <button class="secondary-button" onclick="startEmptyWorkout()">
+      + Empty
     </button>
-
   </div>
 
+  ${state.workout.length===0 ? `
+
+    <div class="card">
+      <h2>Routines</h2>
+
+      ${ROUTINES.map((r,i)=>`
+        <div class="routine">
+          <div class="routine-info">
+            <div class="routine-name">${r.name}</div>
+            <div class="routine-meta">
+              ${r.muscles} • ${r.exercises.length} exercises
+            </div>
+          </div>
+
+          <button class="secondary-button"
+                  onclick="startRoutine(${i})">
+            Start
+          </button>
+        </div>
+      `).join("")}
+
+    </div>
+
+    <div class="card">
+      <div class="empty">
+        Start an empty workout or choose a routine.
+      </div>
+    </div>
+
+  ` : `
+
+    <div class="card">
+      <div class="section-title" style="margin-top:0">
+        <h2>Current Workout</h2>
+        <button class="secondary-button" onclick="finishWorkout()">
+          Finish
+        </button>
+      </div>
+
+      ${state.workout.map((item,index)=>renderWorkoutExercise(item,index)).join("")}
+
+      <button class="secondary-button"
+              style="width:100%;margin-top:5px"
+              onclick="setTab('exercises')">
+        + Add Exercise
+      </button>
+    </div>
+
+  `}
+
   `;
-
 }
 
+function renderWorkoutExercise(item,index){
 
-function updateSet(e,s,key,value){
+  const ex=EXERCISES.find(e=>e.name===item.name);
 
-  activeWorkout
-    .exercises[e]
-    .sets[s][key]=value;
+  return `
+  <div class="workout-exercise">
 
-}
+    <div class="workout-title">
+      <div>
+        <strong>${escapeHTML(item.name)}</strong>
+        <div style="color:var(--muted);font-size:13px;margin-top:3px">
+          ${ex ? ex.cat : ""}
+        </div>
+      </div>
 
-
-function addWorkoutSet(e){
-
-  activeWorkout
-    .exercises[e]
-    .sets.push(
-      makeSet()
-    );
-
-  renderWorkoutModal();
-
-}
-
-
-function deleteSet(e,s){
-
-  const sets=
-    activeWorkout
-      .exercises[e]
-      .sets;
-
-  if(sets.length<=1){
-
-    toast(
-      "Keep at least one set"
-    );
-
-    return;
-
-  }
-
-  sets.splice(s,1);
-
-  renderWorkoutModal();
-
-}
-
-
-function toggleWorkoutSet(e,s){
-
-  const set=
-    activeWorkout
-      .exercises[e]
-      .sets[s];
-
-  set.done=!set.done;
-
-  renderWorkoutModal();
-
-}
-
-
-function removeWorkoutExercise(index){
-
-  activeWorkout
-    .exercises
-    .splice(index,1);
-
-  renderWorkoutModal();
-
-}
-
-
-function chooseWorkoutExercise(){
-
-  const modal=
-    document.getElementById("modal");
-
-  modal.innerHTML=`
-
-  <div class="modal-inner">
-
-    <div class="modal-head">
-
-      <strong>
-        Add Exercise
-      </strong>
-
-      <button
-        class="close"
-        onclick="renderWorkoutModal()"
-      >
+      <button class="remove-set"
+              onclick="removeWorkoutExercise(${index})">
         ×
       </button>
-
     </div>
 
-
-    <input
-      id="addExerciseSearch"
-      class="search"
-      placeholder="Search exercises..."
-      oninput="renderAddExerciseList(this.value)"
-    >
-
-
-    <div
-      id="addExerciseList"
-      style="margin-top:15px"
-    >
-
-      ${exerciseListHTML(
-        db.exercises.slice(0,50)
-      )}
-
+    <div class="set-row" style="color:var(--muted);font-size:12px">
+      <div>SET</div>
+      <div>WEIGHT</div>
+      <div>REPS</div>
+      <div></div>
     </div>
 
-  </div>
+    ${item.sets.map((set,setIndex)=>`
+      <div class="set-row">
 
-  `;
+        <div class="set-number">${setIndex+1}</div>
 
-}
-
-
-function renderAddExerciseList(q){
-
-  const text=q.toLowerCase();
-
-  const list=db.exercises.filter(
-    ex=>
-      (
-        ex.name+
-        " "+
-        ex.muscle+
-        " "+
-        ex.equipment
-      )
-      .toLowerCase()
-      .includes(text)
-  );
-
-
-  document.getElementById(
-    "addExerciseList"
-  ).innerHTML=
-
-    list.slice(0,80)
-      .map(ex=>`
-
-      <div class="item">
-
-        <div class="exercise-row">
-
-          <div class="exercise-thumb">
-            ${machineSVG(ex)}
-          </div>
-
-          <div class="exercise-info">
-
-            <div class="item-title">
-              ${esc(ex.name)}
-            </div>
-
-            <div class="item-meta">
-              ${esc(ex.muscle)}
-            </div>
-
-          </div>
-
-        </div>
-
-        <button
-          class="btn secondary"
-          onclick="
-            addExerciseToWorkout(
-              '${ex.name.replace(/'/g,"\\'")}'
-            )
-          "
+        <input
+          class="set-input"
+          type="number"
+          inputmode="decimal"
+          placeholder="lbs"
+          value="${set.weight}"
+          onchange="updateSet(${index},${setIndex},'weight',this.value)"
         >
-          Add
+
+        <input
+          class="set-input"
+          type="number"
+          inputmode="numeric"
+          placeholder="reps"
+          value="${set.reps}"
+          onchange="updateSet(${index},${setIndex},'reps',this.value)"
+        >
+
+        <button class="remove-set"
+                onclick="removeSet(${index},${setIndex})">
+          −
         </button>
 
       </div>
+    `).join("")}
 
-      `).join("");
+    <button class="secondary-button"
+            style="width:100%;margin-top:8px"
+            onclick="addSet(${index})">
+      + Add Set
+    </button>
 
+  </div>
+  `;
 }
 
+/* =========================================================
+   WORKOUT ACTIONS
+========================================================= */
+
+function startEmptyWorkout(){
+  state.workout=[];
+  state.tab="workout";
+  save();
+  render();
+}
+
+function startRoutine(index){
+
+  const routine=ROUTINES[index];
+
+  state.workout=routine.exercises.map(name=>({
+    name,
+    sets:[
+      {weight:"",reps:""},
+      {weight:"",reps:""}
+    ]
+  }));
+
+  state.tab="workout";
+  save();
+  render();
+}
+
+function addExerciseToWorkout(index){
+
+  const ex=EXERCISES[index];
+
+  if(!state.workout.some(x=>x.name===ex.name)){
+    state.workout.push({
+      name:ex.name,
+      sets:[
+        {weight:"",reps:""}
+      ]
+    });
+
+    save();
+    showToast("Added to workout");
+  }else{
+    showToast("Already in workout");
+  }
+
+  state.tab="workout";
+  currentExercise=null;
+  render();
+}
+
+function removeWorkoutExercise(index){
+  state.workout.splice(index,1);
+  save();
+  render();
+}
+
+function addSet(index){
+
+  state.workout[index].sets.push({
+    weight:"",
+    reps:""
+  });
+
+  save();
+  render();
+}
+
+function removeSet(index,setIndex){
+
+  if(state.workout[index].sets.length<=1){
+    showToast("Keep at least one set");
+    return;
+  }
+
+  state.workout[index].sets.splice(setIndex,1);
+  save();
+  render();
+}
+
+function updateSet(index,setIndex,key,value){
+
+  state.workout[index].sets[setIndex][key]=value;
+  save();
+}
 
 function finishWorkout(){
 
-  if(!activeWorkout)
-    return;
+  let completed=0;
+  let volume=0;
 
+  state.workout.forEach(item=>{
 
-  const completedSets=
-    activeWorkout.exercises.reduce(
-      (total,e)=>
-        total+
-        e.sets.filter(
-          s=>s.done
-        ).length,
-      0
-    );
+    const ex=EXERCISES.find(e=>e.name===item.name);
 
+    item.sets.forEach(set=>{
 
-  if(completedSets===0){
+      const weight=Number(set.weight)||0;
+      const reps=Number(set.reps)||0;
 
-    toast(
-      "Complete at least one set first"
-    );
+      if(reps>0){
 
-    return;
+        completed++;
+        volume += weight*reps;
 
-  }
+        state.history.push({
+          exercise:item.name,
+          weight,
+          reps,
+          date:new Date().toLocaleDateString()
+        });
 
+        if(ex){
 
-  let workoutVolume=0;
-
-  let workoutXP=0;
-
-  const muscleSets={};
-
-
-  activeWorkout.exercises
-    .forEach(ex=>{
-
-      const completed=
-        ex.sets.filter(
-          s=>s.done
-        );
-
-      const volume=
-        completed.reduce(
-          (a,s)=>
-            a+
-            (+s.weight||0)*
-            (+s.reps||0),
-          0
-        );
-
-      workoutVolume+=volume;
-
-
-      const exercise=
-        exerciseByName(ex.name);
-
-      if(exercise){
-
-        const gain=
-          addExerciseXP(
-            exercise,
-            completed.length,
-            volume
-          );
-
-        workoutXP+=gain;
-
-
-        const muscle=
-          exercise.muscle;
-
-        muscleSets[muscle]=
-          (muscleSets[muscle]||0)+
-          completed.length;
-
-      }
-
-    });
-
-
-  Object.entries(muscleSets)
-    .forEach(
-      ([muscle,sets])=>
-        addMuscleXP(
-          muscle,
-          sets
-        )
-    );
-
-
-  workoutXP=Math.max(
-    25,
-    workoutXP
-  );
-
-
-  db.xp+=workoutXP;
-
-
-  db.workouts.push({
-
-    id:uid(),
-
-    date:today(),
-
-    name:activeWorkout.name,
-
-    duration:workoutSeconds,
-
-    volume:workoutVolume,
-
-    xp:workoutXP,
-
-    exercises:
-      JSON.parse(
-        JSON.stringify(
-          activeWorkout.exercises
-        )
-      )
-
-  });
-
-
-  save();
-
-  clearInterval(workoutTimer);
-
-  activeWorkout=null;
-
-  closeModal();
-
-  toast(
-    `Workout saved • +${workoutXP} XP`
-  );
-
-  render();
-
-}
-
-
-function confirmCloseWorkout(){
-
-  if(
-    confirm(
-      "Leave this workout? Unsaved sets will be lost."
-    )
-  ){
-
-    clearInterval(workoutTimer);
-
-    activeWorkout=null;
-
-    closeModal();
-
-  }
-
-}
-
-
-function restTimer(){
-
-  let seconds=60;
-
-  const t=
-    document.getElementById("toast");
-
-  t.classList.remove("hidden");
-
-  const interval=
-    setInterval(
-      ()=>{
-
-        t.textContent=
-          `Rest: ${seconds}s`;
-
-        seconds--;
-
-        if(seconds<0){
-
-          clearInterval(interval);
-
-          t.textContent=
-            "Rest complete ✓";
-
-          setTimeout(
-            ()=>{
-              t.classList.add(
-                "hidden"
-              );
-            },
-            1200
-          );
+          [...ex.primary,...ex.secondary].forEach(m=>{
+            state.muscleSets[m]=(state.muscleSets[m]||0)+1;
+          });
 
         }
-
-      },
-      1000
-    );
-
-}
-
-
-/* =========================================================
-   FOOD
-========================================================= */
-
-function todayFood(){
-
-  return db.food
-    .filter(
-      x=>x.date===today()
-    )
-    .reduce(
-      (a,x)=>({
-
-        cal:
-          a.cal+
-          (+x.cal||0),
-
-        protein:
-          a.protein+
-          (+x.protein||0)
-
-      }),
-      {
-        cal:0,
-        protein:0
       }
-    );
-
-}
-
-
-function foodHTML(){
-
-  const food=todayFood();
-
-  return `
-
-  <div class="topbar">
-
-    <div>
-
-      <div class="logo">
-        Lift<span>Rank</span>
-      </div>
-
-      <div class="subtitle">
-        Fuel your training.
-      </div>
-
-    </div>
-
-    <button
-      class="btn"
-      onclick="openFoodForm()"
-    >
-      ＋ Log Food
-    </button>
-
-  </div>
-
-
-  <div class="food-summary">
-
-    <div class="card stat">
-
-      <div class="stat-label">
-        Calories
-      </div>
-
-      <div class="stat-number orange">
-        ${food.cal}
-      </div>
-
-      <div class="subtitle">
-        today
-      </div>
-
-    </div>
-
-
-    <div class="card stat">
-
-      <div class="stat-label">
-        Protein
-      </div>
-
-      <div class="stat-number green">
-        ${Math.round(food.protein)}g
-      </div>
-
-      <div class="subtitle">
-        today
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <h2>
-    Recipes
-  </h2>
-
-
-  ${recipeHTML(
-    "High-Protein Chicken Bowl",
-    "~520 cal • 48g protein",
-    [
-      "5 oz cooked chicken",
-      "1 cup cooked rice",
-      "1 cup vegetables",
-      "2 tbsp Greek yogurt sauce"
-    ]
-  )}
-
-
-  ${recipeHTML(
-    "Protein Oatmeal",
-    "~390 cal • 30g protein",
-    [
-      "1/2 cup oats",
-      "1 cup milk",
-      "1 scoop protein powder",
-      "1/2 banana"
-    ]
-  )}
-
-
-  ${recipeHTML(
-    "Greek Yogurt Berry Bowl",
-    "~300 cal • 25g protein",
-    [
-      "1 cup Greek yogurt",
-      "1 cup berries",
-      "1 tbsp peanut butter",
-      "1 tbsp granola"
-    ]
-  )}
-
-
-  <h2>
-    Today's Food
-  </h2>
-
-
-  ${
-    db.food.filter(
-      x=>x.date===today()
-    ).map(
-      (x,i)=>`
-
-      <div class="item">
-
-        <div class="item-main">
-
-          <div class="item-title">
-            ${esc(x.name)}
-          </div>
-
-          <div class="item-meta">
-            ${x.cal} calories
-            •
-            ${x.protein}g protein
-          </div>
-
-        </div>
-
-        <button
-          class="btn danger"
-          onclick="deleteFood(${i})"
-        >
-          Delete
-        </button>
-
-      </div>
-
-      `
-    ).join("")
-    ||
-    `
-    <div class="card empty">
-      No food logged today.
-    </div>
-    `
-  }
-
-  `;
-
-}
-
-
-function recipeHTML(
-  name,
-  meta,
-  ingredients
-){
-
-  return `
-
-  <div class="recipe">
-
-    <div class="recipe-title">
-      ${esc(name)}
-    </div>
-
-    <div class="recipe-meta">
-      ${esc(meta)}
-    </div>
-
-    <strong>
-      Ingredients
-    </strong>
-
-    <ul>
-
-      ${ingredients
-        .map(
-          x=>`<li>${esc(x)}</li>`
-        )
-        .join("")
-      }
-
-    </ul>
-
-    <button
-      class="btn secondary"
-      onclick="
-        openFoodForm(
-          '${name.replace(/'/g,"\\'")}'
-        )
-      "
-    >
-      Log Recipe
-    </button>
-
-  </div>
-
-  `;
-
-}
-
-
-function openFoodForm(prefill=""){
-
-  const modal=
-    document.getElementById("modal");
-
-  modal.classList.remove("hidden");
-
-  modal.innerHTML=`
-
-  <div class="modal-inner">
-
-    <div class="modal-head">
-
-      <strong>
-        Log Food
-      </strong>
-
-      <button
-        class="close"
-        onclick="closeModal()"
-      >
-        ×
-      </button>
-
-    </div>
-
-
-    <div class="card">
-
-      <label class="form-label">
-        Food / meal
-      </label>
-
-      <input
-        id="foodName"
-        class="form-input"
-        value="${esc(prefill)}"
-        placeholder="Chicken, rice, protein bar..."
-      >
-
-
-      <div class="form-grid">
-
-        <div>
-
-          <label class="form-label">
-            Calories
-          </label>
-
-          <input
-            id="foodCalories"
-            class="form-input"
-            inputmode="numeric"
-            placeholder="500"
-          >
-
-        </div>
-
-
-        <div>
-
-          <label class="form-label">
-            Protein (g)
-          </label>
-
-          <input
-            id="foodProtein"
-            class="form-input"
-            inputmode="decimal"
-            placeholder="40"
-          >
-
-        </div>
-
-      </div>
-
-
-      <br>
-
-      <button
-        class="btn full"
-        onclick="saveFood()"
-      >
-        Add Food
-      </button>
-
-    </div>
-
-  </div>
-
-  `;
-
-}
-
-
-function saveFood(){
-
-  const name=
-    document.getElementById(
-      "foodName"
-    ).value.trim()||
-    "Food";
-
-
-  const cal=
-    +document.getElementById(
-      "foodCalories"
-    ).value||0;
-
-
-  const protein=
-    +document.getElementById(
-      "foodProtein"
-    ).value||0;
-
-
-  db.food.push({
-
-    id:uid(),
-
-    date:today(),
-
-    name,
-
-    cal,
-
-    protein
-
+    });
   });
 
-
-  save();
-
-  closeModal();
-
-  toast(
-    "Food logged ✓"
-  );
-
-  render();
-
-}
-
-
-function deleteFood(index){
-
-  const items=
-    db.food.filter(
-      x=>x.date===today()
-    );
-
-  const target=
-    items[index];
-
-  if(!target)
+  if(completed===0){
+    showToast("Log at least one set first");
     return;
+  }
 
-  db.food=
-    db.food.filter(
-      x=>x.id!==target.id
-    );
+  state.completedSets+=completed;
+  state.volume+=volume;
+  state.xp+=completed*10;
+  state.workouts++;
+
+  state.workout=[];
 
   save();
 
-  render();
+  showToast("Workout complete! +" + (completed*10) + " XP");
 
+  setTimeout(()=>{
+    setTab("home");
+  },600);
 }
-
 
 /* =========================================================
-   RANKS / PROGRESS
+   RANKS
 ========================================================= */
 
-function progressHTML(){
+function renderRanks(){
 
-  const week=
-    musclesForRange(7);
-
-  const max=
-    Math.max(
-      1,
-      ...Object.values(week)
-    );
-
+  const [rank,icon]=overallRank();
 
   return `
-
-  <div class="topbar">
-
+  <div class="top-row">
     <div>
-
-      <div class="logo">
-        Lift<span>Rank</span>
-      </div>
-
-      <div class="subtitle">
-        Level every muscle.
-      </div>
-
+      <div class="brand">Lift<span>Rank</span></div>
+      <div class="subtitle">See how every muscle is progressing.</div>
     </div>
-
   </div>
-
 
   <div class="card rank-card">
 
-    <div class="rank-row">
+    <div class="rank-icon">${icon}</div>
 
-      <div>
+    <div style="flex:1">
+      <div class="stat-label">Overall Rank</div>
+      <div class="rank-name">${rank}</div>
 
-        <div class="rank-label">
-          OVERALL RANK
-        </div>
-
-        <div class="rank-name">
-          ${rankFromXP(db.xp).name}
-        </div>
-
-        <div class="subtitle">
-          ${db.xp.toLocaleString()} XP
-        </div>
-
+      <div style="color:var(--muted)">
+        Level ${xpLevel()} • ${state.xp} XP
       </div>
 
-      <div class="rank-badge">
-        ${rankFromXP(db.xp).short}
+      <div class="progress">
+        <div style="width:${xpProgress()}%"></div>
       </div>
-
-    </div>
-
-
-    <div class="progress">
-
-      <i
-        style="width:${rankProgress(db.xp)}%"
-      ></i>
-
     </div>
 
   </div>
 
+  <div class="section-title">
+    <h2>Muscle Ranks</h2>
+  </div>
 
-  <h2>
-    Muscle Ranks
-  </h2>
-
-
-  <div class="muscle-rank-grid">
+  <div class="rank-list">
 
     ${MUSCLES.map(m=>{
 
-      const xp=
-        db.muscleXP?.[m]||0;
+      const [letter,label]=muscleRank(m);
+      const sets=muscleSets(m);
 
-      const r=
-        muscleRank(m);
+      const pct=Math.min((sets/100)*100,100);
 
       return `
-
       <div class="muscle-rank">
 
-        <div class="muscle-rank-top">
+        <div class="rank-row">
 
-          <div class="muscle-name">
-            ${m}
+          <div>
+            <strong style="font-size:19px">${m}</strong>
+            <div style="color:var(--muted);font-size:13px;margin-top:4px">
+              ${sets} completed sets
+            </div>
           </div>
 
-          <span class="tier">
-            ${r.name}
-          </span>
+          <div class="rank-letter">${letter}</div>
 
         </div>
 
-        <div class="rank-xp">
-          ${xp} XP
+        <div class="small-progress">
+          <div style="width:${pct}%"></div>
         </div>
 
-        <div class="progress">
-
-          <i
-            style="width:${rankProgress(xp)}%"
-          ></i>
-
+        <div style="display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-top:7px">
+          <span>Rank ${letter}</span>
+          <span>${label} sets</span>
         </div>
 
       </div>
-
       `;
 
     }).join("")}
 
   </div>
 
+  <div class="section-title">
+    <h2>Training Map</h2>
+  </div>
 
-  <h2>
-    Muscle Map
-  </h2>
+  <div class="card">
+    ${
+      MUSCLES.some(m=>muscleSets(m)>0)
+      ?
+      muscleMap(
+        MUSCLES.filter(m=>muscleSets(m)>=2),
+        MUSCLES.filter(m=>muscleSets(m)===1)
+      )
+      :
+      `<div class="empty">
+        Complete workouts to build your muscle heatmap.
+      </div>`
+    }
+  </div>
+  `;
+}
 
+/* =========================================================
+   FOOD
+========================================================= */
 
-  <div class="card muscle-card">
+function renderFood(){
 
-    <div class="legend">
-
-      <span>
-        <i class="legend-dot legend-primary"></i>
-        Primary
-      </span>
-
-      <span>
-        <i class="legend-dot legend-secondary"></i>
-        Secondary
-      </span>
-
+  return `
+  <div class="top-row">
+    <div>
+      <div class="brand">Lift<span>Rank</span></div>
+      <div class="subtitle">Fuel your training.</div>
     </div>
 
+    <button class="secondary-button" onclick="openFoodModal()">
+      + Log Food
+    </button>
+  </div>
 
-    <div class="anatomy">
+  <div class="grid-2">
 
-      <div class="body-panel">
+    <div class="stat">
+      <div class="stat-label">Calories</div>
+      <div class="stat-value orange">${totalCalories()}</div>
+      <div class="subtitle" style="margin:0">today</div>
+    </div>
 
-        <div class="body-label">
-          FRONT
-        </div>
-
-        ${bodyMap(
-          Object.keys(week),
-          [],
-          false
-        )}
-
-      </div>
-
-
-      <div class="body-panel">
-
-        <div class="body-label">
-          BACK
-        </div>
-
-        ${bodyMap(
-          Object.keys(week),
-          [],
-          true
-        )}
-
-      </div>
-
+    <div class="stat">
+      <div class="stat-label">Protein</div>
+      <div class="stat-value green">${totalProtein()}g</div>
+      <div class="subtitle" style="margin:0">today</div>
     </div>
 
   </div>
 
-
-  <h2>
-    Muscle Activity
-  </h2>
-
+  <div class="section-title">
+    <h2>Today's Food</h2>
+  </div>
 
   <div class="card">
 
     ${
-      MUSCLES.map(m=>{
+      state.food.length
+      ?
+      state.food.map((food,i)=>`
+        <div class="food-entry">
 
-        const value=
-          week[m]||0;
-
-        return `
-
-        <div class="stat-line">
-
-          <span>
-            ${m}
-          </span>
-
-          <span>
-            ${value} sets
-          </span>
-
-        </div>
-
-        `;
-
-      }).join("")
-    }
-
-  </div>
-
-
-  <h2>
-    Exercise & Machine Ranks
-  </h2>
-
-
-  <div>
-
-    ${
-      db.exercises
-        .filter(x=>(x.xp||0)>0)
-        .sort(
-          (a,b)=>
-            (b.xp||0)-
-            (a.xp||0)
-        )
-        .slice(0,30)
-        .map(ex=>{
-
-          const r=
-            exerciseRank(ex.name);
-
-          return `
-
-          <div class="item">
-
-            <div class="exercise-row">
-
-              <div class="exercise-thumb">
-                ${machineSVG(ex)}
-              </div>
-
-              <div class="exercise-info">
-
-                <div class="item-title">
-                  ${esc(ex.name)}
-                </div>
-
-                <div class="item-meta">
-                  ${ex.totalSets||0}
-                  sets •
-                  ${Math.round(
-                    ex.totalVolume||0
-                  ).toLocaleString()}
-                  lb volume
-                </div>
-
-              </div>
-
+          <div>
+            <strong>${escapeHTML(food.name)}</strong>
+            <div style="color:var(--muted);font-size:14px;margin-top:4px">
+              ${food.calories} cal • ${food.protein}g protein
             </div>
-
-            <span class="tier">
-              ${r.name}
-            </span>
-
           </div>
 
-          `;
+          <button class="remove-set"
+                  onclick="removeFood(${i})">
+            ×
+          </button>
 
-        }).join("")
-      ||
-      `
-      <div class="card empty">
-        Start logging exercises to build
-        individual exercise and machine ranks.
-      </div>
-      `
+        </div>
+      `).join("")
+      :
+      `<div class="empty">
+        Nothing logged yet.
+      </div>`
     }
 
   </div>
+
+  <div class="section-title">
+    <h2>Quick Foods</h2>
+  </div>
+
+  <div class="quick-grid">
+
+    <button class="quick" onclick="quickFood('Chicken Breast',280,53)">
+      <div class="quick-icon">🍗</div>
+      <div class="quick-title">Chicken</div>
+      <div class="quick-sub">280 cal • 53g protein</div>
+    </button>
+
+    <button class="quick" onclick="quickFood('Greek Yogurt',150,17)">
+      <div class="quick-icon">🥛</div>
+      <div class="quick-title">Greek Yogurt</div>
+      <div class="quick-sub">150 cal • 17g protein</div>
+    </button>
+
+    <button class="quick" onclick="quickFood('Eggs',140,12)">
+      <div class="quick-icon">🥚</div>
+      <div class="quick-title">Eggs</div>
+      <div class="quick-sub">140 cal • 12g protein</div>
+    </button>
+
+    <button class="quick" onclick="quickFood('Protein Shake',180,30)">
+      <div class="quick-icon">🥤</div>
+      <div class="quick-title">Protein Shake</div>
+      <div class="quick-sub">180 cal • 30g protein</div>
+    </button>
+
+  </div>
+  `;
+}
+
+function quickFood(name,calories,protein){
+
+  state.food.push({
+    name,
+    calories,
+    protein
+  });
+
+  save();
+  render();
+  showToast("Food logged");
+}
+
+function removeFood(index){
+
+  state.food.splice(index,1);
+
+  save();
+  render();
+}
+
+function openFoodModal(){
+
+  document.getElementById("modal").innerHTML=`
+
+    <div class="modal-top">
+      <h2>Log Food</h2>
+      <button class="close" onclick="closeModal()">×</button>
+    </div>
+
+    <div class="form-group">
+      <label>Food</label>
+      <input class="form-control" id="foodName" placeholder="Chicken, rice, protein bar...">
+    </div>
+
+    <div class="form-group">
+      <label>Calories</label>
+      <input class="form-control" id="foodCalories" type="number" inputmode="numeric">
+    </div>
+
+    <div class="form-group">
+      <label>Protein (g)</label>
+      <input class="form-control" id="foodProtein" type="number" inputmode="numeric">
+    </div>
+
+    <button class="primary-button" onclick="saveFoodModal()">
+      Add Food
+    </button>
 
   `;
 
+  document.getElementById("modalBackdrop").classList.add("show");
 }
 
+function saveFoodModal(){
 
-function volume(){
+  const name=document.getElementById("foodName").value.trim();
 
-  return db.workouts.reduce(
-    (total,w)=>
-      total+
-      (w.exercises||[]).reduce(
-        (a,e)=>
-          a+
-          (e.sets||[]).reduce(
-            (b,s)=>
-              b+
-              (+s.weight||0)*
-              (+s.reps||0),
-            0
-          ),
-        0
-      ),
-    0
-  );
+  if(!name){
+    showToast("Enter a food");
+    return;
+  }
 
+  state.food.push({
+    name,
+    calories:Number(document.getElementById("foodCalories").value)||0,
+    protein:Number(document.getElementById("foodProtein").value)||0
+  });
+
+  save();
+  closeModal();
+  render();
+  showToast("Food logged");
 }
 
-
-function musclesForRange(days){
-
-  const cutoff=
-    new Date();
-
-  cutoff.setHours(
-    0,0,0,0
-  );
-
-  cutoff.setDate(
-    cutoff.getDate()-
-    days+
-    1
-  );
-
-
-  const counts={};
-
-
-  db.workouts
-    .filter(
-      w=>
-        new Date(w.date)>=cutoff
-    )
-    .forEach(
-      w=>
-        (w.exercises||[])
-          .forEach(e=>{
-
-            const ex=
-              exerciseByName(
-                e.name
-              );
-
-            if(!ex)
-              return;
-
-            const sets=
-              (e.sets||[])
-                .filter(
-                  s=>s.done
-                ).length;
-
-
-            counts[ex.muscle]=
-              (counts[ex.muscle]||0)+
-              sets;
-
-          })
-    );
-
-
-  return counts;
-
+function closeModal(){
+  document.getElementById("modalBackdrop").classList.remove("show");
 }
-
 
 /* =========================================================
-   NAV / RENDER
+   RENDER
 ========================================================= */
 
 function render(){
 
-  document
-    .querySelectorAll(".nav button")
-    .forEach(
-      b=>
-        b.classList.toggle(
-          "active",
-          b.dataset.tab===activeTab
-        )
-    );
-
-
   let html="";
 
+  if(currentExercise){
 
-  if(activeTab==="home")
-    html=homeHTML();
+    html=renderExerciseDetail(currentExercise);
 
-  if(activeTab==="workout")
-    html=workoutHTML();
+  }else{
 
-  if(activeTab==="exercises")
-    html=exercisesHTML();
+    switch(state.tab){
 
-  if(activeTab==="food")
-    html=foodHTML();
+      case "workout":
+        html=renderWorkout();
+        break;
 
-  if(activeTab==="progress")
-    html=progressHTML();
+      case "exercises":
+        html=renderExercises();
+        break;
 
+      case "food":
+        html=renderFood();
+        break;
 
-  document.getElementById(
-    "app"
-  ).innerHTML=
-    `<main class="app">${html}</main>`;
+      case "ranks":
+        html=renderRanks();
+        break;
 
-}
+      default:
+        html=renderHome();
+    }
 
+  }
 
-/* =========================================================
-   MODALS
-========================================================= */
+  document.getElementById("app").innerHTML=`
+    <main class="app">
+      ${html}
+    </main>
+  `;
 
-function closeModal(){
-
-  document
-    .getElementById("modal")
-    .classList.add("hidden");
-
-  document
-    .getElementById("modal")
-    .innerHTML="";
-
-}
-
-
-/* =========================================================
-   TIME
-========================================================= */
-
-function formatTime(seconds){
-
-  const min=
-    Math.floor(
-      seconds/60
+  document.querySelectorAll(".nav-btn").forEach(btn=>{
+    btn.classList.toggle(
+      "active",
+      !currentExercise && btn.dataset.tab===state.tab
     );
-
-  const sec=
-    seconds%60;
-
-  return(
-    String(min).padStart(2,"0")
-    +
-    ":"
-    +
-    String(sec).padStart(2,"0")
-  );
-
+  });
 }
 
-
 /* =========================================================
-   START
+   OPEN EXERCISE
 ========================================================= */
 
-save();
+function openExercise(index){
+
+  currentExercise=EXERCISES[index];
+
+  window.scrollTo({top:0,behavior:"smooth"});
+
+  render();
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+document.querySelectorAll(".nav-btn").forEach(btn=>{
+
+  btn.addEventListener("click",()=>{
+
+    setTab(btn.dataset.tab);
+
+  });
+
+});
+
+document.getElementById("modalBackdrop").addEventListener("click",e=>{
+  if(e.target.id==="modalBackdrop"){
+    closeModal();
+  }
+});
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
 
 render();
 
