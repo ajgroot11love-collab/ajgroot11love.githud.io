@@ -2209,20 +2209,156 @@ function openMealPhotoModal(){
 
   document.getElementById("modalBackdrop").classList.add("show");
 }
+async function mealPhotoSelected(event){
 
-function mealPhotoSelected(event){
+  const file = event.target.files[0];
 
-  const file=event.target.files[0];
+  if(!file) return;
 
-  if(!file)return;
+  const modal = document.getElementById("modal");
 
-  window.pendingMealPhoto=file;
+  modal.innerHTML = `
+    <div class="modal-top">
 
-  document.getElementById("modal").innerHTML=`
+      <h2>Analyzing Meal</h2>
+
+      <button class="close" onclick="closeModal()">
+        ×
+      </button>
+
+    </div>
+
+    <div class="camera-box">
+
+      <div class="camera-icon">🤖</div>
+
+      <h3>AI is analyzing your meal...</h3>
+
+      <p style="color:var(--muted)">
+        Identifying foods and estimating portions.
+      </p>
+
+    </div>
+  `;
+
+  try{
+
+    const base64 = await fileToBase64(file);
+
+    const response = await fetch("/api/analyze-meal", {
+
+      method:"POST",
+
+      headers:{
+        "Content-Type":"application/json"
+      },
+
+      body:JSON.stringify({
+        image:base64
+      })
+
+    });
+
+    if(!response.ok){
+      throw new Error("AI request failed");
+    }
+
+    const result = await response.json();
+
+    if(!result.foods || !result.foods.length){
+
+      throw new Error("No food detected");
+
+    }
+
+    window.pendingAImeal = result.foods;
+
+    showAIResults(result.foods);
+
+  }catch(error){
+
+    console.error(error);
+
+    modal.innerHTML = `
+
+      <div class="modal-top">
+
+        <h2>Couldn't Analyze Meal</h2>
+
+        <button class="close"
+                onclick="closeModal()">
+          ×
+        </button>
+
+      </div>
+
+      <div class="empty">
+
+        The meal couldn't be analyzed.
+
+        <br><br>
+
+        You can still create the meal manually.
+
+      </div>
+
+      <button
+        class="primary-button"
+        onclick="openRecipeModal()">
+
+        Create Meal Manually
+
+      </button>
+
+    `;
+
+  }
+
+}
+
+
+function fileToBase64(file){
+
+  return new Promise((resolve,reject)=>{
+
+    const reader = new FileReader();
+
+    reader.onload = () => {
+
+      resolve(reader.result);
+
+    };
+
+    reader.onerror = reject;
+
+    reader.readAsDataURL(file);
+
+  });
+
+}
+
+
+function showAIResults(foods){
+
+  let totalCalories = 0;
+  let totalProtein = 0;
+  let totalCarbs = 0;
+  let totalFat = 0;
+
+  foods.forEach(food=>{
+
+    totalCalories += Number(food.calories)||0;
+    totalProtein += Number(food.protein)||0;
+    totalCarbs += Number(food.carbs)||0;
+    totalFat += Number(food.fat)||0;
+
+  });
+
+  document.getElementById("modal").innerHTML = `
 
     <div class="modal-top">
 
-      <h2>Meal Detected</h2>
+      <h2>Meal Analysis</h2>
 
       <button class="close"
               onclick="closeModal()">
@@ -2231,88 +2367,404 @@ function mealPhotoSelected(event){
 
     </div>
 
-    <div class="card">
+    <div class="nutrition-preview">
 
-      <h3>AI Meal Estimate</h3>
+      <div class="macro-grid">
 
-      <p style="color:var(--muted);line-height:1.5">
-        This is the place where the AI vision service will
-        return the foods detected in your picture.
-      </p>
+        <div class="macro">
 
-      <div class="food-entry">
+          <strong>
+            ${totalCalories}
+          </strong>
 
-        <div class="food-entry-main">
-          <div class="food-entry-name">
-            Chicken
-          </div>
-          <div class="food-entry-info">
-            Estimated 4 oz • 185 cal • 35g protein
-          </div>
+          <span>
+            Calories
+          </span>
+
         </div>
 
-        <button class="small-button">
-          Edit
-        </button>
+        <div class="macro">
+
+          <strong>
+            ${totalProtein}g
+          </strong>
+
+          <span>
+            Protein
+          </span>
+
+        </div>
+
+        <div class="macro">
+
+          <strong>
+            ${totalCarbs}g
+          </strong>
+
+          <span>
+            Carbs
+          </span>
+
+        </div>
 
       </div>
 
-      <div class="food-entry">
+      <div style="
+        text-align:center;
+        color:var(--muted);
+        font-size:13px;
+        margin-top:12px;
+      ">
 
-        <div class="food-entry-main">
-          <div class="food-entry-name">
-            Rice
-          </div>
-          <div class="food-entry-info">
-            Estimated 1 cup • 205 cal • 4g protein
-          </div>
-        </div>
-
-        <button class="small-button">
-          Edit
-        </button>
-
-      </div>
-
-      <div class="food-entry">
-
-        <div class="food-entry-main">
-          <div class="food-entry-name">
-            Vegetables
-          </div>
-          <div class="food-entry-info">
-            Estimated 1 serving • 80 cal • 4g protein
-          </div>
-        </div>
-
-        <button class="small-button">
-          Edit
-        </button>
+        Estimated nutrition
 
       </div>
 
     </div>
 
-    <button class="primary-button"
-            onclick="addEstimatedMeal()">
-      Add Estimated Meal
+
+    <div class="section-title">
+
+      <h3>
+        Foods Detected
+      </h3>
+
+    </div>
+
+
+    <div id="aiFoodList">
+
+      ${foods.map((food,index)=>`
+
+        <div class="food-entry">
+
+          <div class="food-entry-main">
+
+            <div class="food-entry-name">
+
+              ${escapeHTML(food.name)}
+
+            </div>
+
+            <div class="food-entry-info">
+
+              ${escapeHTML(food.portion || "Estimated portion")}
+
+              • ${food.calories} cal
+
+              • ${food.protein}g protein
+
+            </div>
+
+          </div>
+
+          <button
+            class="small-button"
+            onclick="editAIFood(${index})">
+
+            Edit
+
+          </button>
+
+        </div>
+
+      `).join("")}
+
+    </div>
+
+
+    <div style="height:12px"></div>
+
+
+    <button
+      class="primary-button"
+      onclick="addAIMeal()">
+
+      ✓ Add Meal to Food Log
+
+    </button>
+
+
+    <div style="height:10px"></div>
+
+
+    <button
+      class="secondary-button"
+      style="width:100%"
+      onclick="saveAIMealAsRecipe()">
+
+      💾 Save as Meal
+
+    </button>
+
+
+    <p style="
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.5;
+      margin-top:15px;
+    ">
+
+      Nutrition and portion sizes are estimates.
+      Review them before relying on the numbers.
+
+    </p>
+
+  `;
+
+}
+
+
+function editAIFood(index){
+
+  const food = window.pendingAImeal[index];
+
+  if(!food) return;
+
+  document.getElementById("modal").innerHTML = `
+
+    <div class="modal-top">
+
+      <h2>Edit Food</h2>
+
+      <button class="close"
+              onclick="showAIResults(window.pendingAImeal)">
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        Food
+      </label>
+
+      <input
+        class="form-control"
+        id="editFoodName"
+        value="${escapeHTML(food.name)}"
+      >
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        Portion
+      </label>
+
+      <input
+        class="form-control"
+        id="editFoodPortion"
+        value="${escapeHTML(food.portion || "")}"
+      >
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        Calories
+      </label>
+
+      <input
+        class="form-control"
+        id="editFoodCalories"
+        type="number"
+        value="${food.calories || 0}"
+      >
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        Protein (g)
+      </label>
+
+      <input
+        class="form-control"
+        id="editFoodProtein"
+        type="number"
+        value="${food.protein || 0}"
+      >
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        Carbs (g)
+      </label>
+
+      <input
+        class="form-control"
+        id="editFoodCarbs"
+        type="number"
+        value="${food.carbs || 0}"
+      >
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        Fat (g)
+      </label>
+
+      <input
+        class="form-control"
+        id="editFoodFat"
+        type="number"
+        value="${food.fat || 0}"
+      >
+
+    </div>
+
+
+    <button
+      class="primary-button"
+      onclick="saveAIFoodEdit(${index})">
+
+      Save Changes
+
     </button>
 
   `;
+
 }
 
-function addEstimatedMeal(){
+function saveAIFoodEdit(index){
 
-  addFood({
-    name:"Photo Meal",
-    calories:470,
-    protein:43,
-    carbs:52,
-    fat:8,
-    serving:"1 meal"
+  const food = window.pendingAImeal[index];
+
+  if(!food) return;
+
+  food.name =
+    document.getElementById("editFoodName").value;
+
+  food.portion =
+    document.getElementById("editFoodPortion").value;
+
+  food.calories =
+    Number(
+      document.getElementById("editFoodCalories").value
+    ) || 0;
+
+  food.protein =
+    Number(
+      document.getElementById("editFoodProtein").value
+    ) || 0;
+
+  food.carbs =
+    Number(
+      document.getElementById("editFoodCarbs").value
+    ) || 0;
+
+  food.fat =
+    Number(
+      document.getElementById("editFoodFat").value
+    ) || 0;
+
+  showAIResults(window.pendingAImeal);
+
+}
+
+
+function addAIMeal(){
+
+  if(!window.pendingAImeal ||
+     !window.pendingAImeal.length){
+
+    return;
+
+  }
+
+  window.pendingAImeal.forEach(food=>{
+
+    addFood({
+
+      name:food.name,
+
+      calories:food.calories,
+
+      protein:food.protein,
+
+      carbs:food.carbs,
+
+      fat:food.fat,
+
+      serving:food.portion || "1 serving"
+
+    });
+
   });
 
   closeModal();
+
+  showToast("AI meal added!");
+
+}
+
+
+function saveAIMealAsRecipe(){
+
+  if(!window.pendingAImeal ||
+     !window.pendingAImeal.length){
+
+    return;
+
+  }
+
+  let calories = 0;
+  let protein = 0;
+  let carbs = 0;
+  let fat = 0;
+
+  window.pendingAImeal.forEach(food=>{
+
+    calories += Number(food.calories)||0;
+    protein += Number(food.protein)||0;
+    carbs += Number(food.carbs)||0;
+    fat += Number(food.fat)||0;
+
+  });
+
+  const name =
+    prompt("Name this meal:", "My AI Meal");
+
+  if(!name) return;
+
+  state.recipes.push({
+
+    name:name,
+
+    calories:calories,
+
+    protein:protein,
+
+    carbs:carbs,
+
+    fat:fat,
+
+    servings:1
+
+  });
+
+  save();
+
+  closeModal();
+
+  render();
+
+  showToast("Meal saved!");
 }
 
 /* =========================================================
