@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 
 <title>LiftRank</title>
 
@@ -44,9 +44,7 @@ body{
   padding-bottom:105px;
 }
 
-button,
-input,
-select{
+button,input,select{
   font:inherit;
 }
 
@@ -81,12 +79,6 @@ h3{
   font-size:21px;
 }
 
-.subtitle{
-  color:var(--muted);
-  font-size:18px;
-  margin-bottom:25px;
-}
-
 .brand{
   font-size:40px;
   font-weight:900;
@@ -95,6 +87,12 @@ h3{
 
 .brand span{
   color:var(--purple);
+}
+
+.subtitle{
+  color:var(--muted);
+  font-size:17px;
+  margin-bottom:20px;
 }
 
 .top-row{
@@ -160,12 +158,10 @@ h3{
   margin-top:15px;
 }
 
-.progress > div{
+.progress>div{
   height:100%;
-  width:0%;
   background:linear-gradient(90deg,var(--blue),var(--purple));
   border-radius:20px;
-  transition:.3s;
 }
 
 .grid-2{
@@ -183,13 +179,13 @@ h3{
 
 .stat-label{
   color:var(--muted);
-  font-size:15px;
+  font-size:14px;
   text-transform:uppercase;
   letter-spacing:.8px;
 }
 
 .stat-value{
-  font-size:38px;
+  font-size:35px;
   font-weight:900;
   margin:8px 0;
 }
@@ -209,25 +205,25 @@ h3{
   background:var(--card2);
   border:1px solid var(--border);
   border-radius:22px;
-  padding:22px;
-  min-height:145px;
+  padding:20px;
+  min-height:140px;
   text-align:left;
   color:white;
 }
 
 .quick-icon{
-  font-size:35px;
-  margin-bottom:15px;
+  font-size:34px;
+  margin-bottom:12px;
 }
 
 .quick-title{
-  font-size:21px;
+  font-size:19px;
   font-weight:800;
 }
 
 .quick-sub{
   color:var(--muted);
-  margin-top:6px;
+  margin-top:5px;
 }
 
 .primary-button{
@@ -241,7 +237,7 @@ h3{
 }
 
 .secondary-button{
-  padding:14px 18px;
+  padding:13px 17px;
   border-radius:16px;
   color:white;
   background:var(--card3);
@@ -299,13 +295,12 @@ h3{
   border-radius:30px;
   background:#20212b;
   color:#c9c9d4;
-  border:1px solid transparent;
 }
 
 .filter.active{
   background:#3c286f;
   color:white;
-  border-color:#7050ff;
+  border:1px solid #7050ff;
 }
 
 .exercise-card{
@@ -314,6 +309,9 @@ h3{
   border-radius:22px;
   margin-bottom:12px;
   overflow:hidden;
+  width:100%;
+  text-align:left;
+  color:white;
 }
 
 .exercise-main{
@@ -353,6 +351,129 @@ h3{
 .chevron{
   color:#77778a;
   font-size:24px;
+}
+
+.food-action-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-bottom:18px;
+}
+
+.food-action{
+  background:linear-gradient(145deg,#1e1e2a,#14141c);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:20px;
+  color:white;
+  text-align:left;
+  min-height:145px;
+}
+
+.food-action-icon{
+  font-size:34px;
+  margin-bottom:14px;
+}
+
+.food-action-title{
+  font-size:18px;
+  font-weight:800;
+}
+
+.food-action-sub{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:5px;
+  line-height:1.4;
+}
+
+.macro-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.macro{
+  background:#13131b;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:15px;
+}
+
+.macro strong{
+  font-size:23px;
+  display:block;
+}
+
+.macro span{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.food-entry{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:16px;
+  margin-bottom:10px;
+}
+
+.food-entry-main{
+  flex:1;
+}
+
+.food-entry-name{
+  font-weight:800;
+  font-size:17px;
+}
+
+.food-entry-info{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:5px;
+}
+
+.food-entry-buttons{
+  display:flex;
+  gap:7px;
+}
+
+.small-button{
+  padding:9px 11px;
+  border-radius:11px;
+  background:#292938;
+  color:white;
+  font-size:13px;
+}
+
+.recipe-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:17px;
+  margin-bottom:11px;
+}
+
+.recipe-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+
+.recipe-name{
+  font-size:18px;
+  font-weight:800;
+}
+
+.recipe-meta{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:5px;
 }
 
 .detail-header{
@@ -429,13 +550,8 @@ h3{
   border-radius:50%;
 }
 
-.dot.primary{
-  background:var(--primary);
-}
-
-.dot.secondary{
-  background:var(--secondary);
-}
+.dot.primary{background:var(--primary)}
+.dot.secondary{background:var(--secondary)}
 
 .muscle-map{
   display:grid;
@@ -459,7 +575,6 @@ h3{
 
 .body .primary{
   fill:#2860e0;
-  filter:drop-shadow(0 0 5px rgba(40,96,224,.35));
 }
 
 .body .secondary{
@@ -623,28 +738,17 @@ h3{
   font-size:14px;
 }
 
-.food-entry{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:15px;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:16px;
-  margin-bottom:10px;
-}
-
 .empty{
   text-align:center;
   color:var(--muted);
   padding:35px 15px;
+  line-height:1.5;
 }
 
 .modal-backdrop{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.7);
+  background:rgba(0,0,0,.72);
   z-index:100;
   display:none;
   align-items:flex-end;
@@ -706,6 +810,51 @@ h3{
   outline:none;
 }
 
+.nutrition-preview{
+  background:#191923;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:15px;
+  margin:15px 0;
+}
+
+.camera-box{
+  border:1px dashed #55556a;
+  background:#15151f;
+  border-radius:20px;
+  padding:30px 20px;
+  text-align:center;
+  margin-bottom:15px;
+}
+
+.camera-icon{
+  font-size:55px;
+  margin-bottom:10px;
+}
+
+.barcode-box{
+  background:#101017;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:20px;
+  text-align:center;
+  margin-bottom:15px;
+}
+
+.barcode-lines{
+  height:75px;
+  margin:15px auto;
+  max-width:270px;
+  background:repeating-linear-gradient(
+    90deg,
+    white 0px,
+    white 3px,
+    transparent 3px,
+    transparent 7px
+  );
+  opacity:.9;
+}
+
 .bottom-nav{
   position:fixed;
   left:50%;
@@ -742,7 +891,6 @@ h3{
 
 .nav-icon{
   font-size:23px;
-  line-height:1;
 }
 
 .nav-label{
@@ -771,6 +919,7 @@ h3{
 }
 
 @media(max-width:560px){
+
   .app{
     padding-left:14px;
     padding-right:14px;
@@ -810,17 +959,21 @@ h3{
     grid-template-columns:1fr;
   }
 
-  .quick-grid{
-    gap:10px;
+  .food-action-grid{
+    gap:9px;
   }
 
-  .quick{
-    padding:17px;
-    min-height:125px;
+  .food-action{
+    padding:16px;
+    min-height:130px;
   }
 
-  .quick-title{
-    font-size:18px;
+  .macro{
+    padding:12px;
+  }
+
+  .macro strong{
+    font-size:19px;
   }
 }
 </style>
@@ -831,6 +984,7 @@ h3{
 <div id="app"></div>
 
 <nav class="bottom-nav">
+
   <button class="nav-btn" data-tab="home">
     <span class="nav-icon">🏠</span>
     <span class="nav-label">Home</span>
@@ -855,6 +1009,7 @@ h3{
     <span class="nav-icon">🏆</span>
     <span class="nav-label">Ranks</span>
   </button>
+
 </nav>
 
 <div class="toast" id="toast"></div>
@@ -864,12 +1019,12 @@ h3{
 </div>
 
 <script>
+
 /* =========================================================
-   LIFTRANK
-   COMPLETE SINGLE-FILE APP
+   LIFTRANK FOOD UPDATE
 ========================================================= */
 
-const MUSCLES = [
+const MUSCLES=[
   "Chest",
   "Back",
   "Shoulders",
@@ -882,188 +1037,109 @@ const MUSCLES = [
   "Core"
 ];
 
+/* =========================================================
+   EXERCISES
+   Keep the complete exercise database from your previous
+   version. This section is intentionally compatible with it.
+========================================================= */
+
 const EXERCISES = [
 
-/* CHEST */
 {name:"Barbell Flat Bench Press",cat:"Chest",type:"Barbell",primary:["Chest"],secondary:["Triceps","Shoulders"],icon:"🏋️"},
 {name:"Barbell Incline Bench Press",cat:"Chest",type:"Barbell",primary:["Chest"],secondary:["Shoulders","Triceps"],icon:"🏋️"},
-{name:"Barbell Decline Bench Press",cat:"Chest",type:"Barbell",primary:["Chest"],secondary:["Triceps"],icon:"🏋️"},
 {name:"Dumbbell Flat Bench Press",cat:"Chest",type:"Dumbbell",primary:["Chest"],secondary:["Triceps","Shoulders"],icon:"🏋️"},
-{name:"Dumbbell Incline Bench Press",cat:"Chest",type:"Dumbbell",primary:["Chest"],secondary:["Shoulders","Triceps"],icon:"🏋️"},
-{name:"Smith Machine Flat Bench Press",cat:"Chest",type:"Smith Machine",primary:["Chest"],secondary:["Triceps","Shoulders"],icon:"🏋️"},
 {name:"Plate-Loaded Chest Press Machine",cat:"Chest",type:"Machine",primary:["Chest"],secondary:["Triceps","Shoulders"],icon:"🦾"},
 {name:"Selectorized Seated Chest Press",cat:"Chest",type:"Machine",primary:["Chest"],secondary:["Triceps","Shoulders"],icon:"🦾"},
 {name:"Cable Standing Chest Press",cat:"Chest",type:"Cable",primary:["Chest"],secondary:["Triceps","Shoulders"],icon:"🔗"},
-{name:"Single-Arm Cable Chest Press",cat:"Chest",type:"Cable",primary:["Chest"],secondary:["Core","Shoulders"],icon:"🔗"},
 {name:"Push-Ups",cat:"Chest",type:"Bodyweight",primary:["Chest"],secondary:["Triceps","Shoulders","Core"],icon:"🤸"},
-{name:"Weighted Push-Ups",cat:"Chest",type:"Weighted",primary:["Chest"],secondary:["Triceps","Shoulders","Core"],icon:"🤸"},
 {name:"Dumbbell Flat Flyes",cat:"Chest",type:"Dumbbell",primary:["Chest"],secondary:["Shoulders"],icon:"🏋️"},
 {name:"Cable Flyes",cat:"Chest",type:"Cable",primary:["Chest"],secondary:["Shoulders"],icon:"🔗"},
 {name:"Pec Deck",cat:"Chest",type:"Machine",primary:["Chest"],secondary:["Shoulders"],icon:"🦾"},
 {name:"Chest Dips",cat:"Chest",type:"Bodyweight",primary:["Chest"],secondary:["Triceps","Shoulders"],icon:"🤸"},
-{name:"Weighted Chest Dips",cat:"Chest",type:"Weighted",primary:["Chest"],secondary:["Triceps","Shoulders"],icon:"🤸"},
-{name:"Assisted Chest Dip Machine",cat:"Chest",type:"Machine",primary:["Chest"],secondary:["Triceps"],icon:"🦾"},
-{name:"Landmine Chest Press",cat:"Chest",type:"Landmine",primary:["Chest"],secondary:["Shoulders","Triceps","Core"],icon:"🏋️"},
 
-/* BACK */
 {name:"Pull-Ups",cat:"Back",type:"Bodyweight",primary:["Back"],secondary:["Biceps","Core"],icon:"🤸"},
-{name:"Weighted Pull-Ups",cat:"Back",type:"Weighted",primary:["Back"],secondary:["Biceps","Core"],icon:"🤸"},
 {name:"Assisted Pull-Up Machine",cat:"Back",type:"Machine",primary:["Back"],secondary:["Biceps"],icon:"🦾"},
-{name:"Chin-Ups",cat:"Back",type:"Bodyweight",primary:["Back"],secondary:["Biceps"],icon:"🤸"},
 {name:"Lat Pulldown — Wide Grip",cat:"Back",type:"Cable",primary:["Back"],secondary:["Biceps"],icon:"🔗"},
 {name:"Lat Pulldown — Close Grip",cat:"Back",type:"Cable",primary:["Back"],secondary:["Biceps"],icon:"🔗"},
-{name:"Lat Pulldown — Neutral Grip",cat:"Back",type:"Cable",primary:["Back"],secondary:["Biceps"],icon:"🔗"},
-{name:"Single-Arm Lat Pulldown",cat:"Back",type:"Cable",primary:["Back"],secondary:["Biceps","Core"],icon:"🔗"},
-{name:"Plate-Loaded Lat Pulldown",cat:"Back",type:"Machine",primary:["Back"],secondary:["Biceps"],icon:"🦾"},
-{name:"Selectorized Lat Pulldown",cat:"Back",type:"Machine",primary:["Back"],secondary:["Biceps"],icon:"🦾"},
+{name:"Single-Arm Lat Pulldown",cat:"Back",type:"Cable",primary:["Back"],secondary:["Biceps"],icon:"🔗"},
 {name:"Barbell Bent-Over Row",cat:"Back",type:"Barbell",primary:["Back"],secondary:["Biceps","Core"],icon:"🏋️"},
-{name:"Pendlay Row",cat:"Back",type:"Barbell",primary:["Back"],secondary:["Biceps","Core"],icon:"🏋️"},
 {name:"Dumbbell Single-Arm Row",cat:"Back",type:"Dumbbell",primary:["Back"],secondary:["Biceps"],icon:"🏋️"},
-{name:"Chest-Supported Dumbbell Row",cat:"Back",type:"Dumbbell",primary:["Back"],secondary:["Biceps"],icon:"🏋️"},
-{name:"Chest-Supported T-Bar Row",cat:"Back",type:"Machine",primary:["Back"],secondary:["Biceps"],icon:"🦾"},
-{name:"T-Bar Row",cat:"Back",type:"Machine",primary:["Back"],secondary:["Biceps","Core"],icon:"🦾"},
 {name:"Seated Cable Row",cat:"Back",type:"Cable",primary:["Back"],secondary:["Biceps"],icon:"🔗"},
-{name:"Single-Arm Seated Cable Row",cat:"Back",type:"Cable",primary:["Back"],secondary:["Biceps","Core"],icon:"🔗"},
 {name:"Plate-Loaded Seated Row",cat:"Back",type:"Machine",primary:["Back"],secondary:["Biceps"],icon:"🦾"},
-{name:"Machine Chest-Supported Row",cat:"Back",type:"Machine",primary:["Back"],secondary:["Biceps"],icon:"🦾"},
-{name:"Straight-Arm Pulldown",cat:"Back",type:"Cable",primary:["Back"],secondary:["Core"],icon:"🔗"},
 {name:"Face Pull",cat:"Back",type:"Cable",primary:["Back","Shoulders"],secondary:["Biceps"],icon:"🔗"},
 {name:"Conventional Deadlift",cat:"Back",type:"Barbell",primary:["Back","Hamstrings","Glutes"],secondary:["Core","Quads"],icon:"🏋️"},
-{name:"Sumo Deadlift",cat:"Back",type:"Barbell",primary:["Glutes","Hamstrings"],secondary:["Quads","Back","Core"],icon:"🏋️"},
-{name:"Trap-Bar Deadlift",cat:"Back",type:"Trap Bar",primary:["Glutes","Hamstrings"],secondary:["Quads","Back","Core"],icon:"🏋️"},
 {name:"Romanian Deadlift",cat:"Back",type:"Barbell",primary:["Hamstrings","Glutes"],secondary:["Back","Core"],icon:"🏋️"},
 {name:"Back Extensions",cat:"Back",type:"Machine",primary:["Back"],secondary:["Glutes","Hamstrings"],icon:"🦾"},
-{name:"Weighted Back Extensions",cat:"Back",type:"Weighted",primary:["Back"],secondary:["Glutes","Hamstrings"],icon:"🏋️"},
-{name:"Barbell Shrugs",cat:"Back",type:"Barbell",primary:["Back"],secondary:["Shoulders"],icon:"🏋️"},
-{name:"Dumbbell Shrugs",cat:"Back",type:"Dumbbell",primary:["Back"],secondary:["Shoulders"],icon:"🏋️"},
 
-/* SHOULDERS */
 {name:"Barbell Overhead Press",cat:"Shoulders",type:"Barbell",primary:["Shoulders"],secondary:["Triceps","Core"],icon:"🏋️"},
 {name:"Dumbbell Overhead Press",cat:"Shoulders",type:"Dumbbell",primary:["Shoulders"],secondary:["Triceps","Core"],icon:"🏋️"},
 {name:"Arnold Press",cat:"Shoulders",type:"Dumbbell",primary:["Shoulders"],secondary:["Triceps"],icon:"🏋️"},
-{name:"Smith Machine Overhead Press",cat:"Shoulders",type:"Smith Machine",primary:["Shoulders"],secondary:["Triceps"],icon:"🦾"},
 {name:"Plate-Loaded Shoulder Press",cat:"Shoulders",type:"Machine",primary:["Shoulders"],secondary:["Triceps"],icon:"🦾"},
-{name:"Selectorized Shoulder Press",cat:"Shoulders",type:"Machine",primary:["Shoulders"],secondary:["Triceps"],icon:"🦾"},
-{name:"Landmine Press",cat:"Shoulders",type:"Landmine",primary:["Shoulders"],secondary:["Chest","Triceps","Core"],icon:"🏋️"},
 {name:"Dumbbell Lateral Raise",cat:"Shoulders",type:"Dumbbell",primary:["Shoulders"],secondary:[],icon:"🏋️"},
 {name:"Cable Lateral Raise",cat:"Shoulders",type:"Cable",primary:["Shoulders"],secondary:[],icon:"🔗"},
-{name:"Machine Lateral Raise",cat:"Shoulders",type:"Machine",primary:["Shoulders"],secondary:[],icon:"🦾"},
-{name:"Dumbbell Front Raise",cat:"Shoulders",type:"Dumbbell",primary:["Shoulders"],secondary:["Chest"],icon:"🏋️"},
-{name:"Cable Front Raise",cat:"Shoulders",type:"Cable",primary:["Shoulders"],secondary:["Chest"],icon:"🔗"},
-{name:"Dumbbell Rear Delt Fly",cat:"Shoulders",type:"Dumbbell",primary:["Shoulders"],secondary:["Back"],icon:"🏋️"},
 {name:"Reverse Pec Deck",cat:"Shoulders",type:"Machine",primary:["Shoulders"],secondary:["Back"],icon:"🦾"},
-{name:"Upright Row",cat:"Shoulders",type:"Barbell",primary:["Shoulders"],secondary:["Back","Biceps"],icon:"🏋️"},
-{name:"Band Pull-Aparts",cat:"Shoulders",type:"Band",primary:["Shoulders"],secondary:["Back"],icon:"〰️"},
 
-/* BICEPS */
-{name:"Barbell Curl",cat:"Biceps",type:"Barbell",primary:["Biceps"],secondary:["Forearms"],icon:"🏋️"},
-{name:"EZ-Bar Curl",cat:"Biceps",type:"EZ-Bar",primary:["Biceps"],secondary:["Forearms"],icon:"🏋️"},
-{name:"Dumbbell Curl",cat:"Biceps",type:"Dumbbell",primary:["Biceps"],secondary:["Forearms"],icon:"🏋️"},
-{name:"Seated Dumbbell Curl",cat:"Biceps",type:"Dumbbell",primary:["Biceps"],secondary:["Forearms"],icon:"🏋️"},
-{name:"Incline Dumbbell Curl",cat:"Biceps",type:"Dumbbell",primary:["Biceps"],secondary:["Forearms"],icon:"🏋️"},
-{name:"Concentration Curl",cat:"Biceps",type:"Dumbbell",primary:["Biceps"],secondary:["Forearms"],icon:"🏋️"},
+{name:"Barbell Curl",cat:"Biceps",type:"Barbell",primary:["Biceps"],secondary:[],icon:"🏋️"},
+{name:"EZ-Bar Curl",cat:"Biceps",type:"EZ-Bar",primary:["Biceps"],secondary:[],icon:"🏋️"},
+{name:"Dumbbell Curl",cat:"Biceps",type:"Dumbbell",primary:["Biceps"],secondary:[],icon:"🏋️"},
+{name:"Incline Dumbbell Curl",cat:"Biceps",type:"Dumbbell",primary:["Biceps"],secondary:[],icon:"🏋️"},
 {name:"Hammer Curl",cat:"Biceps",type:"Dumbbell",primary:["Biceps"],secondary:["Forearms"],icon:"🏋️"},
-{name:"Cross-Body Hammer Curl",cat:"Biceps",type:"Dumbbell",primary:["Biceps"],secondary:["Forearms"],icon:"🏋️"},
-{name:"Preacher Curl",cat:"Biceps",type:"Machine",primary:["Biceps"],secondary:["Forearms"],icon:"🦾"},
-{name:"Cable Curl",cat:"Biceps",type:"Cable",primary:["Biceps"],secondary:["Forearms"],icon:"🔗"},
-{name:"Single-Arm Cable Curl",cat:"Biceps",type:"Cable",primary:["Biceps"],secondary:["Forearms"],icon:"🔗"},
-{name:"Spider Curl",cat:"Biceps",type:"Dumbbell",primary:["Biceps"],secondary:["Forearms"],icon:"🏋️"},
-{name:"Reverse Curl",cat:"Biceps",type:"Barbell",primary:["Biceps"],secondary:["Forearms"],icon:"🏋️"},
+{name:"Preacher Curl",cat:"Biceps",type:"Machine",primary:["Biceps"],secondary:[],icon:"🦾"},
+{name:"Cable Curl",cat:"Biceps",type:"Cable",primary:["Biceps"],secondary:[],icon:"🔗"},
 
-/* TRICEPS */
 {name:"Close-Grip Bench Press",cat:"Triceps",type:"Barbell",primary:["Triceps"],secondary:["Chest","Shoulders"],icon:"🏋️"},
 {name:"Upright Dips",cat:"Triceps",type:"Bodyweight",primary:["Triceps"],secondary:["Chest","Shoulders"],icon:"🤸"},
-{name:"Weighted Upright Dips",cat:"Triceps",type:"Weighted",primary:["Triceps"],secondary:["Chest","Shoulders"],icon:"🤸"},
-{name:"Assisted Dip Machine",cat:"Triceps",type:"Machine",primary:["Triceps"],secondary:["Chest","Shoulders"],icon:"🦾"},
 {name:"Skull Crushers",cat:"Triceps",type:"Barbell",primary:["Triceps"],secondary:[],icon:"🏋️"},
-{name:"Dumbbell Skull Crushers",cat:"Triceps",type:"Dumbbell",primary:["Triceps"],secondary:[],icon:"🏋️"},
-{name:"Overhead Dumbbell Extension",cat:"Triceps",type:"Dumbbell",primary:["Triceps"],secondary:["Shoulders"],icon:"🏋️"},
-{name:"Cable Overhead Extension",cat:"Triceps",type:"Cable",primary:["Triceps"],secondary:[],icon:"🔗"},
+{name:"Overhead Dumbbell Extension",cat:"Triceps",type:"Dumbbell",primary:["Triceps"],secondary:[],icon:"🏋️"},
 {name:"Cable Pushdown — Straight Bar",cat:"Triceps",type:"Cable",primary:["Triceps"],secondary:[],icon:"🔗"},
 {name:"Cable Pushdown — Rope",cat:"Triceps",type:"Cable",primary:["Triceps"],secondary:[],icon:"🔗"},
-{name:"Single-Arm Cable Pushdown",cat:"Triceps",type:"Cable",primary:["Triceps"],secondary:[],icon:"🔗"},
-{name:"Dumbbell Kickback",cat:"Triceps",type:"Dumbbell",primary:["Triceps"],secondary:[],icon:"🏋️"},
-{name:"Diamond Push-Ups",cat:"Triceps",type:"Bodyweight",primary:["Triceps"],secondary:["Chest","Shoulders"],icon:"🤸"},
-{name:"Bench Dips",cat:"Triceps",type:"Bodyweight",primary:["Triceps"],secondary:["Chest","Shoulders"],icon:"🤸"},
 {name:"Machine Triceps Extension",cat:"Triceps",type:"Machine",primary:["Triceps"],secondary:[],icon:"🦾"},
 
-/* QUADS */
 {name:"Back Squat",cat:"Quads",type:"Barbell",primary:["Quads"],secondary:["Glutes","Core"],icon:"🏋️"},
 {name:"Front Squat",cat:"Quads",type:"Barbell",primary:["Quads"],secondary:["Glutes","Core"],icon:"🏋️"},
-{name:"Safety-Bar Squat",cat:"Quads",type:"Barbell",primary:["Quads"],secondary:["Glutes","Core"],icon:"🏋️"},
 {name:"Goblet Squat",cat:"Quads",type:"Dumbbell",primary:["Quads"],secondary:["Glutes","Core"],icon:"🏋️"},
 {name:"Smith Machine Squat",cat:"Quads",type:"Smith Machine",primary:["Quads"],secondary:["Glutes"],icon:"🦾"},
 {name:"Leg Press — Plate Loaded",cat:"Quads",type:"Machine",primary:["Quads"],secondary:["Glutes","Hamstrings"],icon:"🦾"},
-{name:"Leg Press — Selectorized",cat:"Quads",type:"Machine",primary:["Quads"],secondary:["Glutes","Hamstrings"],icon:"🦾"},
 {name:"Hack Squat",cat:"Quads",type:"Machine",primary:["Quads"],secondary:["Glutes"],icon:"🦾"},
-{name:"Pendulum Squat",cat:"Quads",type:"Machine",primary:["Quads"],secondary:["Glutes"],icon:"🦾"},
 {name:"Bulgarian Split Squat",cat:"Quads",type:"Dumbbell",primary:["Quads"],secondary:["Glutes"],icon:"🏋️"},
 {name:"Walking Lunges",cat:"Quads",type:"Dumbbell",primary:["Quads"],secondary:["Glutes","Hamstrings"],icon:"🏋️"},
-{name:"Reverse Lunges",cat:"Quads",type:"Dumbbell",primary:["Quads"],secondary:["Glutes","Hamstrings"],icon:"🏋️"},
-{name:"Step-Ups",cat:"Quads",type:"Dumbbell",primary:["Quads"],secondary:["Glutes"],icon:"🏋️"},
 {name:"Leg Extension",cat:"Quads",type:"Machine",primary:["Quads"],secondary:[],icon:"🦾"},
-{name:"Wall Sit",cat:"Quads",type:"Bodyweight",primary:["Quads"],secondary:["Core"],icon:"🧍"},
 
-/* HAMSTRINGS */
-{name:"Lying Leg Curl",cat:"Hamstrings",type:"Machine",primary:["Hamstrings"],secondary:["Calves"],icon:"🦾"},
-{name:"Seated Leg Curl",cat:"Hamstrings",type:"Machine",primary:["Hamstrings"],secondary:["Calves"],icon:"🦾"},
-{name:"Standing Leg Curl",cat:"Hamstrings",type:"Machine",primary:["Hamstrings"],secondary:["Calves"],icon:"🦾"},
+{name:"Lying Leg Curl",cat:"Hamstrings",type:"Machine",primary:["Hamstrings"],secondary:[],icon:"🦾"},
+{name:"Seated Leg Curl",cat:"Hamstrings",type:"Machine",primary:["Hamstrings"],secondary:[],icon:"🦾"},
 {name:"Nordic Hamstring Curl",cat:"Hamstrings",type:"Bodyweight",primary:["Hamstrings"],secondary:["Glutes"],icon:"🤸"},
-{name:"Glute-Ham Raise",cat:"Hamstrings",type:"Machine",primary:["Hamstrings"],secondary:["Glutes","Back"],icon:"🦾"},
 {name:"Good Morning",cat:"Hamstrings",type:"Barbell",primary:["Hamstrings"],secondary:["Glutes","Back"],icon:"🏋️"},
-{name:"Cable Pull-Through",cat:"Hamstrings",type:"Cable",primary:["Hamstrings","Glutes"],secondary:["Core"],icon:"🔗"},
 
-/* GLUTES */
 {name:"Barbell Hip Thrust",cat:"Glutes",type:"Barbell",primary:["Glutes"],secondary:["Hamstrings"],icon:"🏋️"},
-{name:"Dumbbell Hip Thrust",cat:"Glutes",type:"Dumbbell",primary:["Glutes"],secondary:["Hamstrings"],icon:"🏋️"},
 {name:"Machine Hip Thrust / Glute Drive",cat:"Glutes",type:"Machine",primary:["Glutes"],secondary:["Hamstrings"],icon:"🦾"},
-{name:"Single-Leg Hip Thrust",cat:"Glutes",type:"Bodyweight",primary:["Glutes"],secondary:["Hamstrings"],icon:"🤸"},
 {name:"Glute Bridge",cat:"Glutes",type:"Bodyweight",primary:["Glutes"],secondary:["Hamstrings"],icon:"🤸"},
 {name:"Cable Kickback",cat:"Glutes",type:"Cable",primary:["Glutes"],secondary:["Hamstrings"],icon:"🔗"},
 {name:"Machine Glute Kickback",cat:"Glutes",type:"Machine",primary:["Glutes"],secondary:["Hamstrings"],icon:"🦾"},
-{name:"Abductor Machine",cat:"Glutes",type:"Machine",primary:["Glutes"],secondary:["Core"],icon:"🦾"},
-{name:"Banded Monster Walks",cat:"Glutes",type:"Band",primary:["Glutes"],secondary:["Quads"],icon:"〰️"},
-{name:"Cable Hip Abduction",cat:"Glutes",type:"Cable",primary:["Glutes"],secondary:[],icon:"🔗"},
+{name:"Abductor Machine",cat:"Glutes",type:"Machine",primary:["Glutes"],secondary:[],icon:"🦾"},
 
-/* CALVES */
 {name:"Standing Calf Raise Machine",cat:"Calves",type:"Machine",primary:["Calves"],secondary:[],icon:"🦾"},
-{name:"Standing Calf Raise",cat:"Calves",type:"Machine / Free Weight",primary:["Calves"],secondary:[],icon:"🏋️"},
 {name:"Seated Calf Raise",cat:"Calves",type:"Machine",primary:["Calves"],secondary:[],icon:"🦾"},
 {name:"Leg Press Calf Raise",cat:"Calves",type:"Machine",primary:["Calves"],secondary:[],icon:"🦾"},
 {name:"Single-Leg Calf Raise",cat:"Calves",type:"Bodyweight",primary:["Calves"],secondary:[],icon:"🏋️"},
-{name:"Donkey Calf Raise",cat:"Calves",type:"Machine",primary:["Calves"],secondary:[],icon:"🦾"},
 
-/* CORE */
 {name:"Front Plank",cat:"Core",type:"Bodyweight",primary:["Core"],secondary:["Shoulders"],icon:"🤸"},
 {name:"Side Plank",cat:"Core",type:"Bodyweight",primary:["Core"],secondary:["Shoulders"],icon:"🤸"},
-{name:"Weighted Plank",cat:"Core",type:"Weighted",primary:["Core"],secondary:["Shoulders"],icon:"🏋️"},
-{name:"Floor Crunch",cat:"Core",type:"Bodyweight",primary:["Core"],secondary:[],icon:"🤸"},
 {name:"Machine Crunch",cat:"Core",type:"Machine",primary:["Core"],secondary:[],icon:"🦾"},
 {name:"Cable Crunch",cat:"Core",type:"Cable",primary:["Core"],secondary:[],icon:"🔗"},
 {name:"Hanging Leg Raise",cat:"Core",type:"Bodyweight",primary:["Core"],secondary:["Shoulders"],icon:"🤸"},
-{name:"Hanging Knee Raise",cat:"Core",type:"Bodyweight",primary:["Core"],secondary:["Shoulders"],icon:"🤸"},
-{name:"Captain's Chair Leg Raise",cat:"Core",type:"Machine",primary:["Core"],secondary:["Shoulders"],icon:"🦾"},
 {name:"Ab Wheel Rollout",cat:"Core",type:"Equipment",primary:["Core"],secondary:["Shoulders"],icon:"⭕"},
 {name:"Russian Twist",cat:"Core",type:"Weighted",primary:["Core"],secondary:[],icon:"🏋️"},
 {name:"Cable Woodchopper",cat:"Core",type:"Cable",primary:["Core"],secondary:["Shoulders"],icon:"🔗"},
-{name:"Pallof Press",cat:"Core",type:"Cable",primary:["Core"],secondary:["Shoulders"],icon:"🔗"},
+{name:"Pallof Press",cat:"Core",type:"Cable",primary:["Core"],secondary:[],icon:"🔗"},
 {name:"Dead Bug",cat:"Core",type:"Bodyweight",primary:["Core"],secondary:[],icon:"🤸"},
-{name:"Bird Dog",cat:"Core",type:"Bodyweight",primary:["Core"],secondary:["Back"],icon:"🤸"},
-{name:"Mountain Climbers",cat:"Core",type:"Bodyweight",primary:["Core"],secondary:["Quads","Shoulders"],icon:"🤸"},
 
-/* FULL BODY */
 {name:"Clean & Press",cat:"Full Body",type:"Barbell",primary:["Shoulders"],secondary:["Quads","Glutes","Core","Back"],icon:"🏋️"},
 {name:"Barbell Thruster",cat:"Full Body",type:"Barbell",primary:["Quads","Shoulders"],secondary:["Glutes","Core"],icon:"🏋️"},
-{name:"Dumbbell Thruster",cat:"Full Body",type:"Dumbbell",primary:["Quads","Shoulders"],secondary:["Glutes","Core"],icon:"🏋️"},
 {name:"Kettlebell Swing",cat:"Full Body",type:"Kettlebell",primary:["Glutes","Hamstrings"],secondary:["Core","Shoulders"],icon:"🏋️"},
-{name:"Medicine Ball Slams",cat:"Full Body",type:"Medicine Ball",primary:["Core"],secondary:["Shoulders","Back"],icon:"🏐"},
 {name:"Battle Ropes",cat:"Full Body",type:"Conditioning",primary:["Shoulders"],secondary:["Core","Back"],icon:"〰️"},
 {name:"Sled Push",cat:"Full Body",type:"Sled",primary:["Quads","Glutes"],secondary:["Hamstrings","Core"],icon:"🛷"},
-{name:"Sled Pull",cat:"Full Body",type:"Sled",primary:["Quads","Glutes"],secondary:["Hamstrings","Back"],icon:"🛷"},
-{name:"Farmer's Carry",cat:"Full Body",type:"Dumbbells",primary:["Core"],secondary:["Shoulders","Back","Forearms"],icon:"🏋️"},
 {name:"Burpees",cat:"Full Body",type:"Bodyweight",primary:["Core"],secondary:["Quads","Chest","Shoulders"],icon:"🤸"},
 
-/* CARDIO */
 {name:"Treadmill",cat:"Cardio",type:"Cardio Machine",primary:["Quads","Calves"],secondary:["Glutes","Hamstrings"],icon:"🏃"},
 {name:"Elliptical",cat:"Cardio",type:"Cardio Machine",primary:["Quads","Glutes"],secondary:["Hamstrings","Calves"],icon:"🏃"},
 {name:"Stationary Bike",cat:"Cardio",type:"Cardio Machine",primary:["Quads"],secondary:["Glutes","Calves"],icon:"🚴"},
@@ -1071,62 +1147,32 @@ const EXERCISES = [
 {name:"Spin Bike",cat:"Cardio",type:"Cardio Machine",primary:["Quads"],secondary:["Glutes","Hamstrings"],icon:"🚴"},
 {name:"Rowing Machine",cat:"Cardio",type:"Cardio Machine",primary:["Back","Hamstrings"],secondary:["Quads","Glutes","Core"],icon:"🚣"},
 {name:"Stair Climber / StepMill",cat:"Cardio",type:"Cardio Machine",primary:["Quads","Glutes"],secondary:["Calves","Hamstrings"],icon:"🪜"},
-{name:"Assault / Air Bike",cat:"Cardio",type:"Cardio Machine",primary:["Quads"],secondary:["Shoulders","Core"],icon:"🚴"},
-{name:"Ski Erg",cat:"Cardio",type:"Cardio Machine",primary:["Back"],secondary:["Shoulders","Core"],icon:"🎿"},
 {name:"Jump Rope",cat:"Cardio",type:"Conditioning",primary:["Calves"],secondary:["Quads","Core"],icon:"🪢"}
-];
 
-const ROUTINES = [
-  {
-    name:"Push Day",
-    muscles:"Chest • Shoulders • Triceps",
-    exercises:[
-      "Barbell Flat Bench Press",
-      "Dumbbell Incline Bench Press",
-      "Dumbbell Lateral Raise",
-      "Cable Pushdown — Rope",
-      "Machine Triceps Extension"
-    ]
-  },
-  {
-    name:"Pull Day",
-    muscles:"Back • Biceps",
-    exercises:[
-      "Lat Pulldown — Wide Grip",
-      "Seated Cable Row",
-      "Single-Arm Dumbbell Row",
-      "Face Pull",
-      "Hammer Curl"
-    ]
-  },
-  {
-    name:"Leg Day",
-    muscles:"Quads • Hamstrings • Glutes • Calves",
-    exercises:[
-      "Back Squat",
-      "Leg Press — Plate Loaded",
-      "Romanian Deadlift",
-      "Barbell Hip Thrust",
-      "Standing Calf Raise Machine"
-    ]
-  }
 ];
 
 /* =========================================================
    STATE
 ========================================================= */
 
-let state = JSON.parse(localStorage.getItem("liftrank_state") || "null") || {
+let state=JSON.parse(localStorage.getItem("liftrank_state")||"null")||{
   tab:"home",
   xp:0,
   completedSets:0,
   workouts:0,
   volume:0,
   food:[],
+  savedFoods:[],
+  recipes:[],
+  recentFoods:[],
   workout:[],
   muscleSets:{},
   history:[]
 };
+
+if(!state.savedFoods)state.savedFoods=[];
+if(!state.recipes)state.recipes=[];
+if(!state.recentFoods)state.recentFoods=[];
 
 let exerciseFilter="All";
 let exerciseSearch="";
@@ -1145,7 +1191,7 @@ function save(){
 ========================================================= */
 
 function escapeHTML(str){
-  return String(str)
+  return String(str??"")
     .replaceAll("&","&amp;")
     .replaceAll("<","&lt;")
     .replaceAll(">","&gt;")
@@ -1162,7 +1208,7 @@ function showToast(message){
 
   window.toastTimer=setTimeout(()=>{
     t.classList.remove("show");
-  },1800);
+  },1900);
 }
 
 function setTab(tab){
@@ -1182,28 +1228,15 @@ function xpProgress(){
 }
 
 function overallRank(){
+
   const level=xpLevel();
 
-  if(level>=25)return ["Diamond","💎"];
-  if(level>=20)return ["Platinum","🏆"];
-  if(level>=15)return ["Gold","🥇"];
-  if(level>=10)return ["Silver","🥈"];
-  return ["Bronze","🥉"];
-}
+  if(level>=25)return["Diamond","💎"];
+  if(level>=20)return["Platinum","🏆"];
+  if(level>=15)return["Gold","🥇"];
+  if(level>=10)return["Silver","🥈"];
 
-function muscleSets(name){
-  return state.muscleSets[name] || 0;
-}
-
-function muscleRank(name){
-  const sets=muscleSets(name);
-
-  if(sets>=100)return ["S","100+"];
-  if(sets>=75)return ["A","75+"];
-  if(sets>=50)return ["B","50+"];
-  if(sets>=25)return ["C","25+"];
-  if(sets>=10)return ["D","10+"];
-  return ["E","0–9"];
+  return["Bronze","🥉"];
 }
 
 function totalCalories(){
@@ -1214,280 +1247,1524 @@ function totalProtein(){
   return state.food.reduce((a,b)=>a+Number(b.protein||0),0);
 }
 
-/* =========================================================
-   MUSCLE MAP
-========================================================= */
-
-function bodySVG(side, primary=[], secondary=[]){
-
-  const isPrimary=m=>primary.includes(m)?"primary":
-                    secondary.includes(m)?"secondary":"none";
-
-  if(side==="front"){
-
-    return `
-    <svg viewBox="0 0 260 520" aria-label="Front muscle map">
-
-      <!-- head -->
-      <circle cx="130" cy="42" r="28" class="outline"/>
-
-      <!-- neck -->
-      <path d="M115 67 L145 67 L150 90 L110 90 Z" class="outline"/>
-
-      <!-- chest -->
-      <path d="M78 100 Q105 82 130 100 Q155 82 182 100 L171 142 Q151 150 130 137 Q109 150 89 142 Z"
-            class="${isPrimary("Chest")}"/>
-
-      <!-- left/right front delts -->
-      <ellipse cx="76" cy="111" rx="20" ry="29" class="${isPrimary("Shoulders")}"/>
-      <ellipse cx="184" cy="111" rx="20" ry="29" class="${isPrimary("Shoulders")}"/>
-
-      <!-- biceps -->
-      <path d="M62 137 Q77 129 88 144 L81 194 Q69 202 59 188 Z"
-            class="${isPrimary("Biceps")}"/>
-      <path d="M198 137 Q183 129 172 144 L179 194 Q191 202 201 188 Z"
-            class="${isPrimary("Biceps")}"/>
-
-      <!-- triceps/front arm area -->
-      <path d="M55 140 Q43 154 44 190 L51 223 Q61 226 67 214 L59 187 Z"
-            class="${isPrimary("Triceps")}"/>
-      <path d="M205 140 Q217 154 216 190 L209 223 Q199 226 193 214 L201 187 Z"
-            class="${isPrimary("Triceps")}"/>
-
-      <!-- forearms -->
-      <path d="M51 220 L45 276 Q52 286 61 278 L69 220 Z" class="outline"/>
-      <path d="M209 220 L215 276 Q208 286 199 278 L191 220 Z" class="outline"/>
-
-      <!-- abs -->
-      <rect x="103" y="148" width="54" height="85" rx="15"
-            class="${isPrimary("Core")}"/>
-
-      <path d="M130 150 V232 M104 170 H156 M104 194 H156 M104 218 H156"
-            class="line"/>
-
-      <!-- obliques -->
-      <path d="M88 151 L103 150 L103 230 L91 218 Z"
-            class="${isPrimary("Core")}"/>
-      <path d="M172 151 L157 150 L157 230 L169 218 Z"
-            class="${isPrimary("Core")}"/>
-
-      <!-- quads -->
-      <path d="M86 225 Q108 218 126 233 L119 344 Q100 359 84 337 Z"
-            class="${isPrimary("Quads")}"/>
-      <path d="M174 225 Q152 218 134 233 L141 344 Q160 359 176 337 Z"
-            class="${isPrimary("Quads")}"/>
-
-      <!-- inner thigh -->
-      <path d="M127 235 L130 345 L133 235 Q145 270 140 329 L133 349 L127 349 L120 329 Q115 270 127 235Z"
-            class="${isPrimary("Quads")}"/>
-
-      <!-- calves -->
-      <path d="M86 343 Q105 337 119 349 L114 433 Q102 448 91 435 Z"
-            class="${isPrimary("Calves")}"/>
-      <path d="M174 343 Q155 337 141 349 L146 433 Q158 448 169 435 Z"
-            class="${isPrimary("Calves")}"/>
-
-      <!-- feet -->
-      <path d="M88 432 Q101 445 116 438 L122 466 Q98 476 80 461 Z" class="outline"/>
-      <path d="M172 432 Q159 445 144 438 L138 466 Q162 476 180 461 Z" class="outline"/>
-
-      <!-- body outline -->
-      <path d="M110 82
-               Q90 88 76 96
-               Q62 106 57 131
-               L44 190
-               L45 276
-               L57 281
-               Q65 276 69 263
-               L75 220
-               L84 231
-               L82 340
-               L91 438
-               M150 82
-               Q170 88 184 96
-               Q198 106 203 131
-               L216 190
-               L215 276
-               L203 281
-               Q195 276 191 263
-               L185 220
-               L176 231
-               L178 340
-               L169 438"
-            class="line"/>
-
-    </svg>`;
-  }
-
-  return `
-  <svg viewBox="0 0 260 520" aria-label="Back muscle map">
-
-    <circle cx="130" cy="42" r="28" class="outline"/>
-
-    <!-- traps -->
-    <path d="M105 76 L130 91 L155 76 L174 105 L154 147 L130 130 L106 147 L86 105 Z"
-          class="${isPrimary("Back")}"/>
-
-    <!-- rear delts -->
-    <ellipse cx="77" cy="112" rx="20" ry="29" class="${isPrimary("Shoulders")}"/>
-    <ellipse cx="183" cy="112" rx="20" ry="29" class="${isPrimary("Shoulders")}"/>
-
-    <!-- lats -->
-    <path d="M87 135 Q105 130 125 143 L113 230 Q92 240 79 211 Z"
-          class="${isPrimary("Back")}"/>
-    <path d="M173 135 Q155 130 135 143 L147 230 Q168 240 181 211 Z"
-          class="${isPrimary("Back")}"/>
-
-    <!-- triceps -->
-    <path d="M59 138 Q45 153 45 191 L52 222 Q63 226 68 212 L61 183 Z"
-          class="${isPrimary("Triceps")}"/>
-    <path d="M201 138 Q215 153 215 191 L208 222 Q197 226 192 212 L199 183 Z"
-          class="${isPrimary("Triceps")}"/>
-
-    <!-- forearms -->
-    <path d="M52 220 L45 276 Q52 286 61 278 L69 220 Z" class="outline"/>
-    <path d="M208 220 L215 276 Q208 286 199 278 L191 220 Z" class="outline"/>
-
-    <!-- lower back -->
-    <path d="M112 226 Q130 218 148 226 L151 283 Q130 295 109 283 Z"
-          class="${isPrimary("Back")}"/>
-
-    <!-- glutes -->
-    <path d="M83 278 Q105 267 129 286 Q107 338 83 327 Z"
-          class="${isPrimary("Glutes")}"/>
-    <path d="M177 278 Q155 267 131 286 Q153 338 177 327 Z"
-          class="${isPrimary("Glutes")}"/>
-
-    <!-- hamstrings -->
-    <path d="M84 328 Q104 323 119 336 L114 430 Q100 441 89 425 Z"
-          class="${isPrimary("Hamstrings")}"/>
-    <path d="M176 328 Q156 323 141 336 L146 430 Q160 441 171 425 Z"
-          class="${isPrimary("Hamstrings")}"/>
-
-    <!-- calves -->
-    <path d="M89 428 Q103 421 115 432 L113 438 Q103 450 91 438 Z"
-          class="${isPrimary("Calves")}"/>
-    <path d="M171 428 Q157 421 145 432 L147 438 Q157 450 169 438 Z"
-          class="${isPrimary("Calves")}"/>
-
-    <!-- spine -->
-    <path d="M130 91 V282" class="line"/>
-
-    <!-- body outline -->
-    <path d="M105 76
-             Q88 88 76 98
-             Q62 107 57 132
-             L45 190
-             L45 276
-             M155 76
-             Q172 88 184 98
-             Q198 107 203 132
-             L215 190
-             L215 276"
-          class="line"/>
-
-  </svg>`;
+function totalCarbs(){
+  return state.food.reduce((a,b)=>a+Number(b.carbs||0),0);
 }
 
-function muscleMap(primary,secondary){
+function totalFat(){
+  return state.food.reduce((a,b)=>a+Number(b.fat||0),0);
+}
+
+/* =========================================================
+   FOOD DATABASE
+========================================================= */
+
+function addRecentFood(food){
+
+  state.recentFoods=state.recentFoods.filter(
+    x=>x.name.toLowerCase()!==food.name.toLowerCase()
+  );
+
+  state.recentFoods.unshift(food);
+
+  state.recentFoods=state.recentFoods.slice(0,12);
+
+  save();
+}
+
+function addFood(food){
+
+  const normalized={
+    name:food.name||"Food",
+    calories:Number(food.calories)||0,
+    protein:Number(food.protein)||0,
+    carbs:Number(food.carbs)||0,
+    fat:Number(food.fat)||0,
+    serving:food.serving||"1 serving"
+  };
+
+  state.food.push(normalized);
+
+  addRecentFood(normalized);
+
+  save();
+
+  showToast("Added to today's log");
+
+  render();
+}
+
+function quickAddFood(index){
+
+  const food=state.savedFoods[index];
+
+  if(food)addFood(food);
+}
+
+function quickAddRecent(index){
+
+  const food=state.recentFoods[index];
+
+  if(food)addFood(food);
+}
+
+function deleteFood(index){
+
+  state.food.splice(index,1);
+
+  save();
+  render();
+}
+
+/* =========================================================
+   FOOD SCREEN
+========================================================= */
+
+function renderFood(){
 
   return `
-  <div class="muscle-title">
-    <h3>Muscles Worked</h3>
-    <div class="legend">
-      <span><i class="dot primary"></i>Primary</span>
-      <span><i class="dot secondary"></i>Secondary</span>
+  <div class="top-row">
+
+    <div>
+      <div class="brand">Lift<span>Rank</span></div>
+      <div class="subtitle">
+        Track food, meals and nutrition.
+      </div>
     </div>
+
   </div>
 
-  <div class="muscle-map">
-    <div class="body">${bodySVG("front",primary,secondary)}</div>
-    <div class="body">${bodySVG("back",primary,secondary)}</div>
+  <div class="card">
+
+    <div class="section-title" style="margin-top:0">
+      <h2>Today's Nutrition</h2>
+    </div>
+
+    <div class="grid-2">
+
+      <div class="stat">
+        <div class="stat-label">Calories</div>
+        <div class="stat-value orange">
+          ${totalCalories()}
+        </div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-label">Protein</div>
+        <div class="stat-value green">
+          ${totalProtein()}g
+        </div>
+      </div>
+
+    </div>
+
+    <div class="macro-grid" style="margin-top:12px">
+
+      <div class="macro">
+        <strong>${totalCarbs()}g</strong>
+        <span>Carbs</span>
+      </div>
+
+      <div class="macro">
+        <strong>${totalFat()}g</strong>
+        <span>Fat</span>
+      </div>
+
+      <div class="macro">
+        <strong>${state.food.length}</strong>
+        <span>Items</span>
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="muscle-list">
-    ${primary.map(m=>`
-      <div class="muscle-pill">
-        <strong>${escapeHTML(m)}</strong>
-        <span class="primary-text">Primary muscle</span>
-      </div>
-    `).join("")}
+  <div class="section-title">
+    <h2>Add Food</h2>
+  </div>
 
-    ${secondary.map(m=>`
-      <div class="muscle-pill">
-        <strong>${escapeHTML(m)}</strong>
-        <span class="secondary-text">Secondary muscle</span>
+  <div class="food-action-grid">
+
+    <button class="food-action"
+            onclick="openBarcodeModal()">
+
+      <div class="food-action-icon">📷</div>
+
+      <div class="food-action-title">
+        Scan Barcode
       </div>
-    `).join("")}
-  </div>`;
+
+      <div class="food-action-sub">
+        Scan a packaged food and look up its nutrition.
+      </div>
+
+    </button>
+
+    <button class="food-action"
+            onclick="openMealPhotoModal()">
+
+      <div class="food-action-icon">📸</div>
+
+      <div class="food-action-title">
+        Meal Photo
+      </div>
+
+      <div class="food-action-sub">
+        Take a picture and estimate what's on your plate.
+      </div>
+
+    </button>
+
+    <button class="food-action"
+            onclick="openFoodSearchModal()">
+
+      <div class="food-action-icon">🔎</div>
+
+      <div class="food-action-title">
+        Search Food
+      </div>
+
+      <div class="food-action-sub">
+        Search your saved foods or create a new one.
+      </div>
+
+    </button>
+
+    <button class="food-action"
+            onclick="openRecipeModal()">
+
+      <div class="food-action-icon">🍳</div>
+
+      <div class="food-action-title">
+        Create Meal
+      </div>
+
+      <div class="food-action-sub">
+        Build recipes and save them for quick add.
+      </div>
+
+    </button>
+
+  </div>
+
+  <div class="section-title">
+    <h2>Today's Food</h2>
+  </div>
+
+  <div class="card">
+
+    ${
+      state.food.length
+      ?
+      state.food.map((food,i)=>`
+
+        <div class="food-entry">
+
+          <div class="food-entry-main">
+
+            <div class="food-entry-name">
+              ${escapeHTML(food.name)}
+            </div>
+
+            <div class="food-entry-info">
+              ${food.calories} cal •
+              ${food.protein}g protein •
+              ${food.carbs}g carbs •
+              ${food.fat}g fat
+            </div>
+
+          </div>
+
+          <div class="food-entry-buttons">
+
+            <button
+              class="small-button"
+              onclick="saveCurrentFood(${i})">
+              ☆
+            </button>
+
+            <button
+              class="remove-set"
+              onclick="deleteFood(${i})">
+              ×
+            </button>
+
+          </div>
+
+        </div>
+
+      `).join("")
+      :
+      `
+      <div class="empty">
+        Nothing logged yet.<br>
+        Scan a barcode, search for food, take a meal photo,
+        or create a recipe.
+      </div>
+      `
+    }
+
+  </div>
+
+  <div class="section-title">
+
+    <h2>My Meals</h2>
+
+    <button class="secondary-button"
+            onclick="openRecipeModal()">
+      + Recipe
+    </button>
+
+  </div>
+
+  ${
+    state.recipes.length
+    ?
+    state.recipes.map((recipe,i)=>`
+
+      <div class="recipe-card">
+
+        <div class="recipe-top">
+
+          <div>
+
+            <div class="recipe-name">
+              ${escapeHTML(recipe.name)}
+            </div>
+
+            <div class="recipe-meta">
+              ${recipe.calories} cal •
+              ${recipe.protein}g protein •
+              ${recipe.servings} serving${recipe.servings==1?"":"s"}
+            </div>
+
+          </div>
+
+          <button class="secondary-button"
+                  onclick="quickAddRecipe(${i})">
+            Quick Add
+          </button>
+
+        </div>
+
+      </div>
+
+    `).join("")
+    :
+    `
+    <div class="card">
+      <div class="empty">
+        Create your first meal and it will stay here for
+        one-tap quick adding.
+      </div>
+    </div>
+    `
+  }
+
+  <div class="section-title">
+    <h2>Saved Foods</h2>
+  </div>
+
+  ${
+    state.savedFoods.length
+    ?
+    state.savedFoods.map((food,i)=>`
+
+      <div class="food-entry">
+
+        <div class="food-entry-main">
+
+          <div class="food-entry-name">
+            ${escapeHTML(food.name)}
+          </div>
+
+          <div class="food-entry-info">
+            ${food.calories} cal •
+            ${food.protein}g protein
+          </div>
+
+        </div>
+
+        <button class="secondary-button"
+                onclick="quickAddFood(${i})">
+          Add
+        </button>
+
+      </div>
+
+    `).join("")
+    :
+    `
+    <div class="card">
+      <div class="empty">
+        Foods you save will appear here.
+      </div>
+    </div>
+    `
+  }
+
+  <div class="section-title">
+    <h2>Recent</h2>
+  </div>
+
+  ${
+    state.recentFoods.length
+    ?
+    state.recentFoods.slice(0,8).map((food,i)=>`
+
+      <div class="food-entry">
+
+        <div class="food-entry-main">
+
+          <div class="food-entry-name">
+            ${escapeHTML(food.name)}
+          </div>
+
+          <div class="food-entry-info">
+            ${food.calories} cal •
+            ${food.protein}g protein
+          </div>
+
+        </div>
+
+        <button class="secondary-button"
+                onclick="quickAddRecent(${i})">
+          Add
+        </button>
+
+      </div>
+
+    `).join("")
+    :
+    `
+    <div class="card">
+      <div class="empty">
+        Your recently used foods will appear here.
+      </div>
+    </div>
+    `
+  }
+  `;
 }
 
 /* =========================================================
-   MACHINE / EQUIPMENT ART
+   SAVE FOOD FROM TODAY
 ========================================================= */
 
-function machineSVG(ex){
+function saveCurrentFood(index){
 
-  const type=ex.type.toLowerCase();
+  const food=state.food[index];
 
-  if(type.includes("machine") || type.includes("selectorized")){
-    return `
-    <svg viewBox="0 0 600 300">
-      <rect x="70" y="240" width="460" height="15" rx="8" fill="#555"/>
-      <rect x="115" y="80" width="20" height="170" rx="8" fill="#777"/>
-      <rect x="465" y="70" width="20" height="180" rx="8" fill="#777"/>
-      <rect x="105" y="65" width="390" height="14" rx="7" fill="#666"/>
-      <rect x="410" y="100" width="80" height="110" rx="12" fill="#25272c"/>
-      <rect x="390" y="190" width="90" height="20" rx="8" fill="#333"/>
-      <rect x="170" y="170" width="180" height="25" rx="10" fill="#34363b"/>
-      <rect x="200" y="195" width="90" height="50" rx="15" fill="#18191d"/>
-      <circle cx="300" cy="135" r="20" fill="#bbb"/>
-      <path d="M300 155 L300 205 L250 230" fill="none" stroke="#bbb" stroke-width="15" stroke-linecap="round"/>
-      <path d="M250 230 L215 215" fill="none" stroke="#bbb" stroke-width="13" stroke-linecap="round"/>
-      <circle cx="410" cy="125" r="7" fill="#bbb"/>
-      <path d="M410 132 V200" stroke="#222" stroke-width="5"/>
-    </svg>`;
+  if(!food)return;
+
+  const exists=state.savedFoods.some(
+    x=>x.name.toLowerCase()===food.name.toLowerCase()
+  );
+
+  if(!exists){
+
+    state.savedFoods.push({
+      ...food
+    });
+
+    save();
+
+    showToast("Saved to My Foods");
+
+  }else{
+
+    showToast("Already saved");
+
+  }
+}
+
+/* =========================================================
+   BARCODE SCANNER
+========================================================= */
+
+function openBarcodeModal(){
+
+  document.getElementById("modal").innerHTML=`
+
+    <div class="modal-top">
+
+      <h2>Scan Barcode</h2>
+
+      <button class="close"
+              onclick="closeModal()">
+        ×
+      </button>
+
+    </div>
+
+    <div class="barcode-box">
+
+      <div style="font-size:18px;font-weight:800">
+        Scan a packaged food
+      </div>
+
+      <div class="barcode-lines"></div>
+
+      <div style="color:var(--muted);font-size:14px">
+        Point your camera at the UPC barcode.
+      </div>
+
+    </div>
+
+    <button class="primary-button"
+            onclick="startBarcodeCamera()">
+      📷 Open Camera
+    </button>
+
+    <div style="height:12px"></div>
+
+    <button class="secondary-button"
+            style="width:100%"
+            onclick="openManualBarcode()">
+      Enter Barcode Manually
+    </button>
+
+    <p style="color:var(--muted);font-size:12px;margin-top:15px;line-height:1.5">
+      Barcode lookup uses Open Food Facts. Some products may not
+      be in the database or may have incomplete nutrition data.
+    </p>
+
+  `;
+
+  document.getElementById("modalBackdrop").classList.add("show");
+}
+
+function startBarcodeCamera(){
+
+  const modal=document.getElementById("modal");
+
+  modal.innerHTML=`
+
+    <div class="modal-top">
+
+      <h2>Scan Barcode</h2>
+
+      <button class="close"
+              onclick="closeModal()">
+        ×
+      </button>
+
+    </div>
+
+    <div class="camera-box">
+
+      <div class="camera-icon">📷</div>
+
+      <h3>Camera Scanner</h3>
+
+      <p style="color:var(--muted)">
+        Your browser may support barcode detection.
+        If it doesn't, use the manual option below.
+      </p>
+
+    </div>
+
+    <input
+      id="barcodeFile"
+      type="file"
+      accept="image/*"
+      capture="environment"
+      style="display:none"
+      onchange="detectBarcodeFromPhoto(event)"
+    >
+
+    <button class="primary-button"
+            onclick="document.getElementById('barcodeFile').click()">
+      📷 Take Barcode Photo
+    </button>
+
+    <div style="height:12px"></div>
+
+    <button class="secondary-button"
+            style="width:100%"
+            onclick="openManualBarcode()">
+      Enter Barcode
+    </button>
+
+  `;
+}
+
+async function detectBarcodeFromPhoto(event){
+
+  const file=event.target.files[0];
+
+  if(!file)return;
+
+  if(!("BarcodeDetector" in window)){
+
+    showToast("Photo scanner isn't supported here");
+
+    setTimeout(()=>{
+      openManualBarcode();
+    },900);
+
+    return;
   }
 
-  if(type.includes("cable")){
-    return `
-    <svg viewBox="0 0 600 300">
-      <rect x="80" y="45" width="22" height="210" rx="8" fill="#777"/>
-      <rect x="75" y="40" width="190" height="16" rx="8" fill="#666"/>
-      <rect x="65" y="250" width="450" height="14" rx="7" fill="#555"/>
-      <rect x="210" y="85" width="22" height="165" fill="#666"/>
-      <rect x="380" y="85" width="22" height="165" fill="#666"/>
-      <path d="M91 65 V145 H215 V65" fill="none" stroke="#222" stroke-width="5"/>
-      <path d="M221 65 V155 H390 V65" fill="none" stroke="#222" stroke-width="5"/>
-      <circle cx="215" cy="145" r="8" fill="#333"/>
-      <circle cx="390" cy="155" r="8" fill="#333"/>
-      <path d="M215 153 V215" stroke="#222" stroke-width="5"/>
-      <path d="M390 163 V215" stroke="#222" stroke-width="5"/>
-    </svg>`;
+  try{
+
+    const detector=new BarcodeDetector({
+      formats:[
+        "ean_13",
+        "ean_8",
+        "upc_a",
+        "upc_e"
+      ]
+    });
+
+    const image=await createImageBitmap(file);
+
+    const codes=await detector.detect(image);
+
+    if(!codes.length){
+
+      showToast("No barcode found");
+
+      return;
+    }
+
+    lookupBarcode(codes[0].rawValue);
+
+  }catch(error){
+
+    console.error(error);
+
+    showToast("Couldn't scan barcode");
+
+  }
+}
+
+function openManualBarcode(){
+
+  document.getElementById("modal").innerHTML=`
+
+    <div class="modal-top">
+
+      <h2>Enter Barcode</h2>
+
+      <button class="close"
+              onclick="closeModal()">
+        ×
+      </button>
+
+    </div>
+
+    <div class="form-group">
+
+      <label>UPC / EAN</label>
+
+      <input
+        class="form-control"
+        id="manualBarcode"
+        inputmode="numeric"
+        placeholder="012345678901"
+      >
+
+    </div>
+
+    <button class="primary-button"
+            onclick="lookupManualBarcode()">
+      Look Up Food
+    </button>
+
+  `;
+}
+
+function lookupManualBarcode(){
+
+  const code=document.getElementById("manualBarcode").value.trim();
+
+  if(!code){
+
+    showToast("Enter a barcode");
+
+    return;
   }
 
-  if(type.includes("cardio")){
-    return `
-    <svg viewBox="0 0 600 300">
-      <rect x="75" y="245" width="450" height="13" rx="7" fill="#555"/>
-      <path d="M120 240 L180 80 L350 80 L420 240" fill="none" stroke="#666" stroke-width="16" stroke-linejoin="round"/>
-      <rect x="170" y="58" width="170" height="45" rx="10" fill="#24262b"/>
-      <circle cx="255" cy="140" r="20" fill="#aaa"/>
-      <path d="M255 160 L220 210 M255 160 L295 210" stroke="#aaa" stroke-width="14" stroke-linecap="round"/>
-    </svg>`;
+  lookupBarcode(code);
+}
+
+async function lookupBarcode(code){
+
+  const modal=document.getElementById("modal");
+
+  modal.innerHTML=`
+
+    <div class="modal-top">
+
+      <h2>Looking Up Food</h2>
+
+      <button class="close"
+              onclick="closeModal()">
+        ×
+      </button>
+
+    </div>
+
+    <div class="empty">
+      Searching the food database...
+    </div>
+
+  `;
+
+  try{
+
+    const url=
+      "https://world.openfoodfacts.net/api/v2/product/"
+      +encodeURIComponent(code)
+      +"?fields=product_name,nutriments,serving_size";
+
+    const response=await fetch(url);
+
+    if(!response.ok){
+      throw new Error("Network error");
+    }
+
+    const data=await response.json();
+
+    if(!data.product || data.status!==1){
+
+      modal.innerHTML=`
+
+        <div class="modal-top">
+
+          <h2>Food Not Found</h2>
+
+          <button class="close"
+                  onclick="closeModal()">
+            ×
+          </button>
+
+        </div>
+
+        <div class="empty">
+          We couldn't find that barcode.
+        </div>
+
+        <button class="primary-button"
+                onclick="openCreateFoodModal('${escapeHTML(code)}')">
+          Create Food Manually
+        </button>
+
+      `;
+
+      return;
+    }
+
+    const p=data.product;
+    const n=p.nutriments||{};
+
+    const food={
+
+      name:p.product_name||"Scanned Food",
+
+      calories:
+        Math.round(
+          Number(
+            n["energy-kcal_serving"] ??
+            n["energy-kcal_100g"] ??
+            0
+          )
+        ),
+
+      protein:
+        Math.round(
+          Number(
+            n["proteins_serving"] ??
+            n["proteins_100g"] ??
+            0
+          )
+        ),
+
+      carbs:
+        Math.round(
+          Number(
+            n["carbohydrates_serving"] ??
+            n["carbohydrates_100g"] ??
+            0
+          )
+        ),
+
+      fat:
+        Math.round(
+          Number(
+            n["fat_serving"] ??
+            n["fat_100g"] ??
+            0
+          )
+        ),
+
+      serving:p.serving_size||"1 serving"
+
+    };
+
+    showBarcodeResult(food);
+
+  }catch(error){
+
+    console.error(error);
+
+    modal.innerHTML=`
+
+      <div class="modal-top">
+
+        <h2>Lookup Failed</h2>
+
+        <button class="close"
+                onclick="closeModal()">
+          ×
+        </button>
+
+      </div>
+
+      <div class="empty">
+        We couldn't connect to the food database.
+      </div>
+
+      <button class="primary-button"
+              onclick="openCreateFoodModal('')">
+        Enter Food Manually
+      </button>
+
+    `;
+
+  }
+}
+
+function showBarcodeResult(food){
+
+  document.getElementById("modal").innerHTML=`
+
+    <div class="modal-top">
+
+      <h2>Food Found</h2>
+
+      <button class="close"
+              onclick="closeModal()">
+        ×
+      </button>
+
+    </div>
+
+    <div class="card" style="margin:0 0 15px">
+
+      <h3>${escapeHTML(food.name)}</h3>
+
+      <div class="nutrition-preview">
+
+        <div class="macro-grid">
+
+          <div class="macro">
+            <strong>${food.calories}</strong>
+            <span>Calories</span>
+          </div>
+
+          <div class="macro">
+            <strong>${food.protein}g</strong>
+            <span>Protein</span>
+          </div>
+
+          <div class="macro">
+            <strong>${food.carbs}g</strong>
+            <span>Carbs</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="form-group">
+
+        <label>Serving</label>
+
+        <input
+          class="form-control"
+          id="barcodeServing"
+          value="${escapeHTML(food.serving)}"
+        >
+
+      </div>
+
+    </div>
+
+    <button class="primary-button"
+            onclick="addBarcodeFood()">
+      Add to Today's Food
+    </button>
+
+    <div style="height:10px"></div>
+
+    <button class="secondary-button"
+            style="width:100%"
+            onclick="saveBarcodeFood()">
+      ☆ Save to My Foods
+    </button>
+
+  `;
+
+  window.pendingBarcodeFood=food;
+}
+
+function addBarcodeFood(){
+
+  if(window.pendingBarcodeFood){
+
+    const food={
+      ...window.pendingBarcodeFood,
+      serving:
+        document.getElementById("barcodeServing")?.value
+        ||window.pendingBarcodeFood.serving
+    };
+
+    addFood(food);
+
+    closeModal();
+
+  }
+}
+
+function saveBarcodeFood(){
+
+  if(!window.pendingBarcodeFood)return;
+
+  const exists=state.savedFoods.some(
+    x=>x.name.toLowerCase()===
+       window.pendingBarcodeFood.name.toLowerCase()
+  );
+
+  if(!exists){
+
+    state.savedFoods.push({
+      ...window.pendingBarcodeFood
+    });
+
+    save();
+
+    showToast("Saved to My Foods");
+
+  }else{
+
+    showToast("Already saved");
+
+  }
+}
+
+/* =========================================================
+   MEAL PHOTO
+========================================================= */
+
+function openMealPhotoModal(){
+
+  document.getElementById("modal").innerHTML=`
+
+    <div class="modal-top">
+
+      <h2>Meal Photo</h2>
+
+      <button class="close"
+              onclick="closeModal()">
+        ×
+      </button>
+
+    </div>
+
+    <div class="camera-box">
+
+      <div class="camera-icon">🍽️</div>
+
+      <h3>Take a picture of your meal</h3>
+
+      <p style="color:var(--muted);line-height:1.5">
+        LiftRank will eventually use AI to identify the foods
+        and estimate portions and nutrition.
+      </p>
+
+    </div>
+
+    <input
+      id="mealPhoto"
+      type="file"
+      accept="image/*"
+      capture="environment"
+      style="display:none"
+      onchange="mealPhotoSelected(event)"
+    >
+
+    <button class="primary-button"
+            onclick="document.getElementById('mealPhoto').click()">
+      📸 Take Meal Photo
+    </button>
+
+    <p style="font-size:12px;color:var(--muted);margin-top:15px">
+      Photo nutrition is an estimate. You will be able to
+      edit the foods and portions before adding them.
+    </p>
+
+  `;
+
+  document.getElementById("modalBackdrop").classList.add("show");
+}
+
+function mealPhotoSelected(event){
+
+  const file=event.target.files[0];
+
+  if(!file)return;
+
+  window.pendingMealPhoto=file;
+
+  document.getElementById("modal").innerHTML=`
+
+    <div class="modal-top">
+
+      <h2>Meal Detected</h2>
+
+      <button class="close"
+              onclick="closeModal()">
+        ×
+      </button>
+
+    </div>
+
+    <div class="card">
+
+      <h3>AI Meal Estimate</h3>
+
+      <p style="color:var(--muted);line-height:1.5">
+        This is the place where the AI vision service will
+        return the foods detected in your picture.
+      </p>
+
+      <div class="food-entry">
+
+        <div class="food-entry-main">
+          <div class="food-entry-name">
+            Chicken
+          </div>
+          <div class="food-entry-info">
+            Estimated 4 oz • 185 cal • 35g protein
+          </div>
+        </div>
+
+        <button class="small-button">
+          Edit
+        </button>
+
+      </div>
+
+      <div class="food-entry">
+
+        <div class="food-entry-main">
+          <div class="food-entry-name">
+            Rice
+          </div>
+          <div class="food-entry-info">
+            Estimated 1 cup • 205 cal • 4g protein
+          </div>
+        </div>
+
+        <button class="small-button">
+          Edit
+        </button>
+
+      </div>
+
+      <div class="food-entry">
+
+        <div class="food-entry-main">
+          <div class="food-entry-name">
+            Vegetables
+          </div>
+          <div class="food-entry-info">
+            Estimated 1 serving • 80 cal • 4g protein
+          </div>
+        </div>
+
+        <button class="small-button">
+          Edit
+        </button>
+
+      </div>
+
+    </div>
+
+    <button class="primary-button"
+            onclick="addEstimatedMeal()">
+      Add Estimated Meal
+    </button>
+
+  `;
+}
+
+function addEstimatedMeal(){
+
+  addFood({
+    name:"Photo Meal",
+    calories:470,
+    protein:43,
+    carbs:52,
+    fat:8,
+    serving:"1 meal"
+  });
+
+  closeModal();
+}
+
+/* =========================================================
+   SEARCH FOOD
+========================================================= */
+
+function openFoodSearchModal(){
+
+  document.getElementById("modal").innerHTML=`
+
+    <div class="modal-top">
+
+      <h2>Search Food</h2>
+
+      <button class="close"
+              onclick="closeModal()">
+        ×
+      </button>
+
+    </div>
+
+    <input
+      class="search"
+      id="foodSearch"
+      placeholder="Search chicken, rice, yogurt..."
+      oninput="searchFoodModal()"
+    >
+
+    <div id="foodSearchResults"></div>
+
+    <button class="secondary-button"
+            style="width:100%;margin-top:10px"
+            onclick="openCreateFoodModal('')">
+      + Create Custom Food
+    </button>
+
+  `;
+
+  document.getElementById("modalBackdrop").classList.add("show");
+
+  searchFoodModal();
+}
+
+function searchFoodModal(){
+
+  const input=document.getElementById("foodSearch");
+
+  if(!input)return;
+
+  const q=input.value.toLowerCase();
+
+  const foods=[
+    ...state.savedFoods,
+    ...state.recentFoods
+  ];
+
+  const unique=[];
+
+  foods.forEach(food=>{
+
+    if(
+      !unique.some(
+        x=>x.name.toLowerCase()===food.name.toLowerCase()
+      )
+    ){
+
+      unique.push(food);
+
+    }
+
+  });
+
+  const results=q
+    ?unique.filter(
+      f=>f.name.toLowerCase().includes(q)
+    )
+    :unique.slice(0,10);
+
+  const container=document.getElementById("foodSearchResults");
+
+  if(!results.length){
+
+    container.innerHTML=`
+      <div class="empty">
+        No saved food found.
+      </div>
+    `;
+
+    return;
   }
 
-  return `
-  <svg viewBox="0 0 600 300">
-    <rect x="70" y="235" width="460" height="15" rx="8" fill="#555"/>
-    <circle cx="250" cy="100" r="25" fill="#aaa"/>
-    <path d="M250 125 L250 190 L205 230" fill="none" stroke="#aaa" stroke-width="18" stroke-linecap="round"/>
-    <path d="M250 145 L195 160" fill="none" stroke="#aaa" stroke-width="16" stroke-linecap="round"/>
-    <path d="M250 145 L305 160" fill="none" stroke="#aaa" stroke-width="16" stroke-linecap="round"/>
-    <rect x="180" y="225" width="120" height="15" rx="8" fill="#333"/>
-    <circle cx="175" cy="230" r="30" fill="none" stroke="#777" stroke-width="8"/>
-    <circle cx="325" cy="230" r="30" fill="none" stroke="#777" stroke-width="8"/>
-  </svg>`;
+  container.innerHTML=results.map((food,i)=>`
+
+    <div class="food-entry">
+
+      <div class="food-entry-main">
+
+        <div class="food-entry-name">
+          ${escapeHTML(food.name)}
+        </div>
+
+        <div class="food-entry-info">
+          ${food.calories} cal •
+          ${food.protein}g protein
+        </div>
+
+      </div>
+
+      <button class="secondary-button"
+              onclick="addFoodFromSearch(${i})">
+        Add
+      </button>
+
+    </div>
+
+  `).join("");
+
+  window.currentFoodSearchResults=results;
+}
+
+function addFoodFromSearch(index){
+
+  const food=window.currentFoodSearchResults[index];
+
+  if(food){
+
+    addFood(food);
+
+    closeModal();
+
+  }
+}
+
+/* =========================================================
+   CREATE FOOD
+========================================================= */
+
+function openCreateFoodModal(){
+
+  document.getElementById("modal").innerHTML=`
+
+    <div class="modal-top">
+
+      <h2>Create Food</h2>
+
+      <button class="close"
+              onclick="closeModal()">
+        ×
+      </button>
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Food Name</label>
+
+      <input
+        class="form-control"
+        id="customFoodName"
+        placeholder="My homemade chicken bowl"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Calories</label>
+
+      <input
+        class="form-control"
+        id="customCalories"
+        type="number"
+        inputmode="numeric"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Protein (g)</label>
+
+      <input
+        class="form-control"
+        id="customProtein"
+        type="number"
+        inputmode="decimal"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Carbs (g)</label>
+
+      <input
+        class="form-control"
+        id="customCarbs"
+        type="number"
+        inputmode="decimal"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Fat (g)</label>
+
+      <input
+        class="form-control"
+        id="customFat"
+        type="number"
+        inputmode="decimal"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Serving</label>
+
+      <input
+        class="form-control"
+        id="customServing"
+        value="1 serving"
+      >
+
+    </div>
+
+    <button class="primary-button"
+            onclick="createCustomFood()">
+      Save Food
+    </button>
+
+  `;
+}
+
+function createCustomFood(){
+
+  const name=document.getElementById("customFoodName").value.trim();
+
+  if(!name){
+
+    showToast("Enter a food name");
+
+    return;
+  }
+
+  const food={
+
+    name,
+
+    calories:Number(
+      document.getElementById("customCalories").value
+    )||0,
+
+    protein:Number(
+      document.getElementById("customProtein").value
+    )||0,
+
+    carbs:Number(
+      document.getElementById("customCarbs").value
+    )||0,
+
+    fat:Number(
+      document.getElementById("customFat").value
+    )||0,
+
+    serving:
+      document.getElementById("customServing").value
+      ||"1 serving"
+
+  };
+
+  state.savedFoods.push(food);
+
+  save();
+
+  addFood(food);
+
+  closeModal();
+}
+
+/* =========================================================
+   RECIPES
+========================================================= */
+
+function openRecipeModal(){
+
+  document.getElementById("modal").innerHTML=`
+
+    <div class="modal-top">
+
+      <h2>Create Meal</h2>
+
+      <button class="close"
+              onclick="closeModal()">
+        ×
+      </button>
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Meal / Recipe Name</label>
+
+      <input
+        class="form-control"
+        id="recipeName"
+        placeholder="Chicken Rice Bowl"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Calories per serving</label>
+
+      <input
+        class="form-control"
+        id="recipeCalories"
+        type="number"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Protein per serving</label>
+
+      <input
+        class="form-control"
+        id="recipeProtein"
+        type="number"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Carbs per serving</label>
+
+      <input
+        class="form-control"
+        id="recipeCarbs"
+        type="number"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Fat per serving</label>
+
+      <input
+        class="form-control"
+        id="recipeFat"
+        type="number"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Number of servings</label>
+
+      <input
+        class="form-control"
+        id="recipeServings"
+        type="number"
+        value="1"
+        min="1"
+      >
+
+    </div>
+
+    <button class="primary-button"
+            onclick="createRecipe()">
+      Save Meal
+    </button>
+
+  `;
+}
+
+function createRecipe(){
+
+  const name=document.getElementById("recipeName").value.trim();
+
+  if(!name){
+
+    showToast("Enter a recipe name");
+
+    return;
+  }
+
+  const recipe={
+
+    name,
+
+    calories:Number(
+      document.getElementById("recipeCalories").value
+    )||0,
+
+    protein:Number(
+      document.getElementById("recipeProtein").value
+    )||0,
+
+    carbs:Number(
+      document.getElementById("recipeCarbs").value
+    )||0,
+
+    fat:Number(
+      document.getElementById("recipeFat").value
+    )||0,
+
+    servings:Number(
+      document.getElementById("recipeServings").value
+    )||1
+
+  };
+
+  state.recipes.push(recipe);
+
+  save();
+
+  closeModal();
+
+  render();
+
+  showToast("Meal saved");
+}
+
+function quickAddRecipe(index){
+
+  const recipe=state.recipes[index];
+
+  if(!recipe)return;
+
+  addFood({
+
+    name:recipe.name,
+
+    calories:recipe.calories,
+
+    protein:recipe.protein,
+
+    carbs:recipe.carbs,
+
+    fat:recipe.fat,
+
+    serving:"1 serving"
+
+  });
 }
 
 /* =========================================================
@@ -1496,56 +2773,102 @@ function machineSVG(ex){
 
 function renderHome(){
 
-  const [rank,icon]=overallRank();
+  const[rank,icon]=overallRank();
 
-  return `
+  return`
+
   <div class="top-row">
+
     <div>
-      <div class="brand">Lift<span>Rank</span></div>
-      <div class="subtitle">Build your strength. Level every muscle.</div>
+
+      <div class="brand">
+        Lift<span>Rank</span>
+      </div>
+
+      <div class="subtitle">
+        Build your strength. Level every muscle.
+      </div>
+
     </div>
+
   </div>
 
-  <div class="card hero rank-card">
+  <div class="card rank-card">
+
     <div class="rank-icon">${icon}</div>
 
     <div style="flex:1">
-      <div class="stat-label">Overall Rank</div>
-      <div class="rank-name">${rank}</div>
-      <div style="color:var(--muted);margin-top:3px">
+
+      <div class="stat-label">
+        Overall Rank
+      </div>
+
+      <div class="rank-name">
+        ${rank}
+      </div>
+
+      <div style="color:var(--muted)">
         Level ${xpLevel()} • ${state.xp} XP
       </div>
 
       <div class="progress">
         <div style="width:${xpProgress()}%"></div>
       </div>
+
     </div>
+
   </div>
 
   <div class="grid-2">
+
     <div class="stat">
-      <div class="stat-label">Calories</div>
-      <div class="stat-value orange">${totalCalories()}</div>
-      <div class="subtitle" style="margin:0">today</div>
+
+      <div class="stat-label">
+        Calories
+      </div>
+
+      <div class="stat-value orange">
+        ${totalCalories()}
+      </div>
+
     </div>
 
     <div class="stat">
-      <div class="stat-label">Protein</div>
-      <div class="stat-value green">${totalProtein()}g</div>
-      <div class="subtitle" style="margin:0">today</div>
+
+      <div class="stat-label">
+        Protein
+      </div>
+
+      <div class="stat-value green">
+        ${totalProtein()}g
+      </div>
+
     </div>
 
     <div class="stat">
-      <div class="stat-label">Workouts</div>
-      <div class="stat-value purple">${state.workouts}</div>
-      <div class="subtitle" style="margin:0">completed</div>
+
+      <div class="stat-label">
+        Workouts
+      </div>
+
+      <div class="stat-value purple">
+        ${state.workouts}
+      </div>
+
     </div>
 
     <div class="stat">
-      <div class="stat-label">Volume</div>
-      <div class="stat-value blue">${Math.round(state.volume).toLocaleString()}</div>
-      <div class="subtitle" style="margin:0">lbs</div>
+
+      <div class="stat-label">
+        Volume
+      </div>
+
+      <div class="stat-value blue">
+        ${Math.round(state.volume).toLocaleString()}
+      </div>
+
     </div>
+
   </div>
 
   <div class="section-title">
@@ -1554,67 +2877,68 @@ function renderHome(){
 
   <div class="quick-grid">
 
-    <button class="quick" onclick="startEmptyWorkout()">
+    <button class="quick"
+            onclick="startEmptyWorkout()">
+
       <div class="quick-icon">🏋️</div>
-      <div class="quick-title">Start Workout</div>
-      <div class="quick-sub">Log sets & reps</div>
+
+      <div class="quick-title">
+        Start Workout
+      </div>
+
+      <div class="quick-sub">
+        Log sets & reps
+      </div>
+
     </button>
 
-    <button class="quick" onclick="setTab('exercises')">
-      <div class="quick-icon">📚</div>
-      <div class="quick-title">Exercises</div>
-      <div class="quick-sub">Browse the gym</div>
-    </button>
+    <button class="quick"
+            onclick="setTab('food')">
 
-    <button class="quick" onclick="setTab('food')">
       <div class="quick-icon">🍎</div>
-      <div class="quick-title">Food</div>
-      <div class="quick-sub">Track nutrition</div>
+
+      <div class="quick-title">
+        Food Log
+      </div>
+
+      <div class="quick-sub">
+        Track nutrition
+      </div>
+
     </button>
 
-    <button class="quick" onclick="setTab('ranks')">
+    <button class="quick"
+            onclick="setTab('exercises')">
+
+      <div class="quick-icon">📚</div>
+
+      <div class="quick-title">
+        Exercises
+      </div>
+
+      <div class="quick-sub">
+        Browse the gym
+      </div>
+
+    </button>
+
+    <button class="quick"
+            onclick="setTab('ranks')">
+
       <div class="quick-icon">🏆</div>
-      <div class="quick-title">Ranks</div>
-      <div class="quick-sub">Muscle progression</div>
+
+      <div class="quick-title">
+        Ranks
+      </div>
+
+      <div class="quick-sub">
+        Muscle progression
+      </div>
+
     </button>
 
   </div>
 
-  <div class="section-title">
-    <h2>Today's Muscles</h2>
-  </div>
-
-  <div class="card">
-    ${MUSCLES.filter(m=>muscleSets(m)>0).length
-      ? `<div class="muscle-list">
-          ${MUSCLES.filter(m=>muscleSets(m)>0).map(m=>`
-            <div class="muscle-pill">
-              <strong>${m}</strong>
-              ${muscleSets(m)} sets
-            </div>
-          `).join("")}
-        </div>`
-      : `<div class="empty">
-          Complete some sets and your muscle map will appear here.
-        </div>`
-    }
-  </div>
-
-  <div class="card">
-    <h2>Today's Summary</h2>
-
-    <div class="grid-2">
-      <div class="stat">
-        <div class="stat-value blue">${state.completedSets}</div>
-        <div class="stat-label">Sets</div>
-      </div>
-
-      <div class="stat">
-        <div class="stat-value purple">${state.xp}</div>
-        <div class="stat-label">XP</div>
-      </div>
-    </div>
-  </div>
   `;
 }
 
@@ -1640,23 +2964,37 @@ function renderExercises(){
     "Cardio"
   ];
 
-  let list=EXERCISES.filter(ex=>{
-    const categoryMatch=exerciseFilter==="All" || ex.cat===exerciseFilter;
-    const searchMatch=ex.name.toLowerCase().includes(exerciseSearch.toLowerCase());
-    return categoryMatch && searchMatch;
+  const list=EXERCISES.filter(ex=>{
+
+    const categoryMatch=
+      exerciseFilter==="All"||
+      ex.cat===exerciseFilter;
+
+    const searchMatch=
+      ex.name.toLowerCase()
+      .includes(exerciseSearch.toLowerCase());
+
+    return categoryMatch&&searchMatch;
+
   });
 
-  return `
-  <div class="top-row">
-    <div>
-      <div class="brand">Lift<span>Rank</span></div>
-      <div class="subtitle">Explore every exercise in your gym.</div>
-    </div>
-  </div>
+  return`
 
-  <button class="primary-button" onclick="startEmptyWorkout()" style="margin-bottom:18px">
-    + Build Workout
-  </button>
+  <div class="top-row">
+
+    <div>
+
+      <div class="brand">
+        Lift<span>Rank</span>
+      </div>
+
+      <div class="subtitle">
+        Explore the exercises in your gym.
+      </div>
+
+    </div>
+
+  </div>
 
   <input
     class="search"
@@ -1666,102 +3004,60 @@ function renderExercises(){
   >
 
   <div class="filters">
+
     ${categories.map(c=>`
+
       <button
         class="filter ${exerciseFilter===c?"active":""}"
         onclick="exerciseFilter='${c}';render()">
+
         ${c}
+
       </button>
+
     `).join("")}
+
   </div>
 
   <div style="color:var(--muted);margin-bottom:12px">
     ${list.length} exercises
   </div>
 
-  ${list.map((ex,i)=>`
-    <button class="exercise-card" style="width:100%;text-align:left;color:white"
-            onclick="openExercise(${EXERCISES.indexOf(ex)})">
+  ${list.map(ex=>`
+
+    <button
+      class="exercise-card"
+      onclick="openExercise(${EXERCISES.indexOf(ex)})">
+
       <div class="exercise-main">
 
-        <div class="exercise-thumb">${ex.icon}</div>
+        <div class="exercise-thumb">
+          ${ex.icon}
+        </div>
 
         <div class="exercise-info">
-          <div class="exercise-name">${escapeHTML(ex.name)}</div>
-          <div class="exercise-meta">
-            ${escapeHTML(ex.cat)} • ${escapeHTML(ex.type)}
+
+          <div class="exercise-name">
+            ${escapeHTML(ex.name)}
           </div>
+
+          <div class="exercise-meta">
+            ${escapeHTML(ex.cat)} •
+            ${escapeHTML(ex.type)}
+          </div>
+
         </div>
 
-        <div class="chevron">›</div>
+        <div class="chevron">
+          ›
+        </div>
 
       </div>
+
     </button>
+
   `).join("")}
-  `;
-}
 
-/* =========================================================
-   EXERCISE DETAIL
-========================================================= */
-
-function renderExerciseDetail(ex){
-
-  return `
-  <div class="detail-header">
-    <button class="icon-button" onclick="currentExercise=null;render()">‹</button>
-    <h1>${escapeHTML(ex.name)}</h1>
-  </div>
-
-  <div class="exercise-art">
-    ${machineSVG(ex)}
-  </div>
-
-  <div class="detail-tags">
-    <span class="tag">${escapeHTML(ex.cat)}</span>
-    <span class="tag">${escapeHTML(ex.type)}</span>
-  </div>
-
-  <button class="primary-button"
-          onclick="addExerciseToWorkout(${EXERCISES.indexOf(ex)})">
-    + Add to Workout
-  </button>
-
-  <div class="muscle-section">
-    ${muscleMap(ex.primary,ex.secondary)}
-  </div>
-
-  <div class="card" style="margin-top:22px">
-    <h3>How to use it</h3>
-    <p style="color:var(--muted);line-height:1.6">
-      Use controlled reps and choose a weight that allows you to maintain
-      good technique. Adjust the machine to your body before starting.
-    </p>
-
-    <button class="secondary-button" style="width:100%"
-            onclick="showToast('Video links can be connected here')">
-      ▶ Watch How-To Video
-    </button>
-  </div>
-
-  <div class="card">
-    <h3>Your History</h3>
-
-    ${
-      state.history.filter(h=>h.exercise===ex.name).length
-      ?
-      state.history.filter(h=>h.exercise===ex.name).slice(-10).reverse().map(h=>`
-        <div class="food-entry">
-          <div>
-            <strong>${h.weight} lbs × ${h.reps}</strong>
-            <div style="color:var(--muted);font-size:13px">${h.date}</div>
-          </div>
-        </div>
-      `).join("")
-      :
-      `<div class="empty">No history yet.</div>`
-    }
-  </div>
   `;
 }
 
@@ -1769,166 +3065,219 @@ function renderExerciseDetail(ex){
    WORKOUT
 ========================================================= */
 
+const ROUTINES=[
+
+  {
+    name:"Push Day",
+    muscles:"Chest • Shoulders • Triceps",
+    exercises:[
+      "Barbell Flat Bench Press",
+      "Dumbbell Incline Bench Press",
+      "Dumbbell Lateral Raise",
+      "Cable Pushdown — Rope"
+    ]
+  },
+
+  {
+    name:"Pull Day",
+    muscles:"Back • Biceps",
+    exercises:[
+      "Lat Pulldown — Wide Grip",
+      "Seated Cable Row",
+      "Dumbbell Single-Arm Row",
+      "Hammer Curl"
+    ]
+  },
+
+  {
+    name:"Leg Day",
+    muscles:"Quads • Hamstrings • Glutes • Calves",
+    exercises:[
+      "Back Squat",
+      "Leg Press — Plate Loaded",
+      "Romanian Deadlift",
+      "Barbell Hip Thrust",
+      "Standing Calf Raise Machine"
+    ]
+  }
+
+];
+
 function renderWorkout(){
 
-  return `
-  <div class="top-row">
-    <div>
-      <div class="brand">Lift<span>Rank</span></div>
-      <div class="subtitle">Build your workout.</div>
+  if(state.workout.length===0){
+
+    return`
+
+    <div class="top-row">
+
+      <div>
+
+        <div class="brand">
+          Lift<span>Rank</span>
+        </div>
+
+        <div class="subtitle">
+          Build your workout.
+        </div>
+
+      </div>
+
     </div>
 
-    <button class="secondary-button" onclick="startEmptyWorkout()">
-      + Empty
+    <button class="primary-button"
+            onclick="startEmptyWorkout()">
+      + Start Empty Workout
     </button>
-  </div>
 
-  ${state.workout.length===0 ? `
+    <div class="section-title">
+      <h2>Quick Routines</h2>
+    </div>
 
-    <div class="card">
-      <h2>Routines</h2>
+    ${ROUTINES.map((r,i)=>`
 
-      ${ROUTINES.map((r,i)=>`
-        <div class="routine">
-          <div class="routine-info">
-            <div class="routine-name">${r.name}</div>
-            <div class="routine-meta">
-              ${r.muscles} • ${r.exercises.length} exercises
-            </div>
+      <div class="routine">
+
+        <div class="routine-info">
+
+          <div class="routine-name">
+            ${r.name}
           </div>
 
-          <button class="secondary-button"
-                  onclick="startRoutine(${i})">
-            Start
-          </button>
+          <div class="routine-meta">
+            ${r.muscles}
+          </div>
+
         </div>
-      `).join("")}
 
-    </div>
-
-    <div class="card">
-      <div class="empty">
-        Start an empty workout or choose a routine.
-      </div>
-    </div>
-
-  ` : `
-
-    <div class="card">
-      <div class="section-title" style="margin-top:0">
-        <h2>Current Workout</h2>
-        <button class="secondary-button" onclick="finishWorkout()">
-          Finish
-        </button>
-      </div>
-
-      ${state.workout.map((item,index)=>renderWorkoutExercise(item,index)).join("")}
-
-      <button class="secondary-button"
-              style="width:100%;margin-top:5px"
-              onclick="setTab('exercises')">
-        + Add Exercise
-      </button>
-    </div>
-
-  `}
-
-  `;
-}
-
-function renderWorkoutExercise(item,index){
-
-  const ex=EXERCISES.find(e=>e.name===item.name);
-
-  return `
-  <div class="workout-exercise">
-
-    <div class="workout-title">
-      <div>
-        <strong>${escapeHTML(item.name)}</strong>
-        <div style="color:var(--muted);font-size:13px;margin-top:3px">
-          ${ex ? ex.cat : ""}
-        </div>
-      </div>
-
-      <button class="remove-set"
-              onclick="removeWorkoutExercise(${index})">
-        ×
-      </button>
-    </div>
-
-    <div class="set-row" style="color:var(--muted);font-size:12px">
-      <div>SET</div>
-      <div>WEIGHT</div>
-      <div>REPS</div>
-      <div></div>
-    </div>
-
-    ${item.sets.map((set,setIndex)=>`
-      <div class="set-row">
-
-        <div class="set-number">${setIndex+1}</div>
-
-        <input
-          class="set-input"
-          type="number"
-          inputmode="decimal"
-          placeholder="lbs"
-          value="${set.weight}"
-          onchange="updateSet(${index},${setIndex},'weight',this.value)"
-        >
-
-        <input
-          class="set-input"
-          type="number"
-          inputmode="numeric"
-          placeholder="reps"
-          value="${set.reps}"
-          onchange="updateSet(${index},${setIndex},'reps',this.value)"
-        >
-
-        <button class="remove-set"
-                onclick="removeSet(${index},${setIndex})">
-          −
+        <button class="secondary-button"
+                onclick="startRoutine(${i})">
+          Start
         </button>
 
       </div>
+
     `).join("")}
 
+    `;
+
+  }
+
+  return`
+
+  <div class="top-row">
+
+    <div>
+
+      <div class="brand">
+        Lift<span>Rank</span>
+      </div>
+
+      <div class="subtitle">
+        Current workout
+      </div>
+
+    </div>
+
     <button class="secondary-button"
-            style="width:100%;margin-top:8px"
-            onclick="addSet(${index})">
-      + Add Set
+            onclick="finishWorkout()">
+      Finish
     </button>
 
   </div>
+
+  ${state.workout.map((item,i)=>`
+
+    <div class="workout-exercise">
+
+      <div class="workout-title">
+
+        <strong>
+          ${escapeHTML(item.name)}
+        </strong>
+
+        <button class="remove-set"
+                onclick="removeWorkoutExercise(${i})">
+          ×
+        </button>
+
+      </div>
+
+      ${item.sets.map((set,j)=>`
+
+        <div class="set-row">
+
+          <div class="set-number">
+            ${j+1}
+          </div>
+
+          <input
+            class="set-input"
+            placeholder="lbs"
+            value="${set.weight}"
+            onchange="updateSet(${i},${j},'weight',this.value)"
+          >
+
+          <input
+            class="set-input"
+            placeholder="reps"
+            value="${set.reps}"
+            onchange="updateSet(${i},${j},'reps',this.value)"
+          >
+
+          <button
+            class="remove-set"
+            onclick="removeSet(${i},${j})">
+            −
+          </button>
+
+        </div>
+
+      `).join("")}
+
+      <button class="secondary-button"
+              style="width:100%"
+              onclick="addSet(${i})">
+        + Add Set
+      </button>
+
+    </div>
+
+  `).join("")}
+
+  <button class="secondary-button"
+          style="width:100%"
+          onclick="setTab('exercises')">
+    + Add Exercise
+  </button>
+
   `;
 }
 
-/* =========================================================
-   WORKOUT ACTIONS
-========================================================= */
-
 function startEmptyWorkout(){
+
   state.workout=[];
   state.tab="workout";
+
   save();
   render();
 }
 
 function startRoutine(index){
 
-  const routine=ROUTINES[index];
+  state.workout=ROUTINES[index].exercises.map(name=>({
 
-  state.workout=routine.exercises.map(name=>({
     name,
+
     sets:[
       {weight:"",reps:""},
       {weight:"",reps:""}
     ]
+
   }));
 
   state.tab="workout";
+
   save();
   render();
 }
@@ -1938,26 +3287,36 @@ function addExerciseToWorkout(index){
   const ex=EXERCISES[index];
 
   if(!state.workout.some(x=>x.name===ex.name)){
+
     state.workout.push({
+
       name:ex.name,
+
       sets:[
         {weight:"",reps:""}
       ]
+
     });
 
-    save();
     showToast("Added to workout");
+
   }else{
+
     showToast("Already in workout");
+
   }
 
   state.tab="workout";
   currentExercise=null;
+
+  save();
   render();
 }
 
 function removeWorkoutExercise(index){
+
   state.workout.splice(index,1);
+
   save();
   render();
 }
@@ -1976,11 +3335,14 @@ function addSet(index){
 function removeSet(index,setIndex){
 
   if(state.workout[index].sets.length<=1){
-    showToast("Keep at least one set");
+
+    showToast("Keep one set");
+
     return;
   }
 
   state.workout[index].sets.splice(setIndex,1);
+
   save();
   render();
 }
@@ -1988,6 +3350,7 @@ function removeSet(index,setIndex){
 function updateSet(index,setIndex,key,value){
 
   state.workout[index].sets[setIndex][key]=value;
+
   save();
 }
 
@@ -1998,7 +3361,9 @@ function finishWorkout(){
 
   state.workout.forEach(item=>{
 
-    const ex=EXERCISES.find(e=>e.name===item.name);
+    const ex=EXERCISES.find(
+      e=>e.name===item.name
+    );
 
     item.sets.forEach(set=>{
 
@@ -2008,28 +3373,40 @@ function finishWorkout(){
       if(reps>0){
 
         completed++;
-        volume += weight*reps;
+
+        volume+=weight*reps;
 
         state.history.push({
+
           exercise:item.name,
           weight,
           reps,
           date:new Date().toLocaleDateString()
+
         });
 
         if(ex){
 
-          [...ex.primary,...ex.secondary].forEach(m=>{
-            state.muscleSets[m]=(state.muscleSets[m]||0)+1;
-          });
+          [...ex.primary,...ex.secondary]
+            .forEach(m=>{
+
+              state.muscleSets[m]=
+                (state.muscleSets[m]||0)+1;
+
+            });
 
         }
+
       }
+
     });
+
   });
 
   if(completed===0){
-    showToast("Log at least one set first");
+
+    showToast("Log at least one set");
+
     return;
   }
 
@@ -2037,16 +3414,163 @@ function finishWorkout(){
   state.volume+=volume;
   state.xp+=completed*10;
   state.workouts++;
-
   state.workout=[];
 
   save();
 
-  showToast("Workout complete! +" + (completed*10) + " XP");
+  showToast("Workout complete! +"+completed*10+" XP");
 
   setTimeout(()=>{
     setTab("home");
   },600);
+}
+
+/* =========================================================
+   EXERCISE DETAIL
+========================================================= */
+
+function openExercise(index){
+
+  currentExercise=EXERCISES[index];
+
+  render();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+function renderExerciseDetail(ex){
+
+  return`
+
+  <div class="detail-header">
+
+    <button class="icon-button"
+            onclick="currentExercise=null;render()">
+      ‹
+    </button>
+
+    <h1>
+      ${escapeHTML(ex.name)}
+    </h1>
+
+  </div>
+
+  <div class="exercise-art">
+
+    <div style="font-size:80px">
+      ${ex.icon}
+    </div>
+
+  </div>
+
+  <div class="detail-tags">
+
+    <span class="tag">
+      ${escapeHTML(ex.cat)}
+    </span>
+
+    <span class="tag">
+      ${escapeHTML(ex.type)}
+    </span>
+
+  </div>
+
+  <button
+    class="primary-button"
+    onclick="addExerciseToWorkout(${EXERCISES.indexOf(ex)})">
+
+    + Add to Workout
+
+  </button>
+
+  <div class="card muscle-section">
+
+    <div class="muscle-title">
+
+      <h3>
+        Muscles Worked
+      </h3>
+
+      <div class="legend">
+
+        <span>
+          <i class="dot primary"></i>
+          Primary
+        </span>
+
+        <span>
+          <i class="dot secondary"></i>
+          Secondary
+        </span>
+
+      </div>
+
+    </div>
+
+    <div class="muscle-list">
+
+      ${ex.primary.map(m=>`
+
+        <div class="muscle-pill">
+
+          <strong>
+            ${m}
+          </strong>
+
+          <span class="primary-text">
+            Primary
+          </span>
+
+        </div>
+
+      `).join("")}
+
+      ${ex.secondary.map(m=>`
+
+        <div class="muscle-pill">
+
+          <strong>
+            ${m}
+          </strong>
+
+          <span class="secondary-text">
+            Secondary
+          </span>
+
+        </div>
+
+      `).join("")}
+
+    </div>
+
+  </div>
+
+  <div class="card">
+
+    <h3>
+      How to Use
+    </h3>
+
+    <p style="color:var(--muted);line-height:1.6">
+      Use controlled repetitions and choose a weight that
+      allows you to maintain good technique.
+    </p>
+
+    <button
+      class="secondary-button"
+      style="width:100%"
+      onclick="showToast('Video links will be connected here')">
+
+      ▶ Watch How-To Video
+
+    </button>
+
+  </div>
+
+  `;
 }
 
 /* =========================================================
@@ -2055,31 +3579,46 @@ function finishWorkout(){
 
 function renderRanks(){
 
-  const [rank,icon]=overallRank();
+  const[rank,icon]=overallRank();
 
-  return `
+  return`
+
   <div class="top-row">
+
     <div>
-      <div class="brand">Lift<span>Rank</span></div>
-      <div class="subtitle">See how every muscle is progressing.</div>
+
+      <div class="brand">
+        Lift<span>Rank</span>
+      </div>
+
+      <div class="subtitle">
+        Your muscle progression.
+      </div>
+
     </div>
+
   </div>
 
   <div class="card rank-card">
 
-    <div class="rank-icon">${icon}</div>
+    <div class="rank-icon">
+      ${icon}
+    </div>
 
-    <div style="flex:1">
-      <div class="stat-label">Overall Rank</div>
-      <div class="rank-name">${rank}</div>
+    <div>
+
+      <div class="stat-label">
+        Overall Rank
+      </div>
+
+      <div class="rank-name">
+        ${rank}
+      </div>
 
       <div style="color:var(--muted)">
         Level ${xpLevel()} • ${state.xp} XP
       </div>
 
-      <div class="progress">
-        <div style="width:${xpProgress()}%"></div>
-      </div>
     </div>
 
   </div>
@@ -2092,243 +3631,57 @@ function renderRanks(){
 
     ${MUSCLES.map(m=>{
 
-      const [letter,label]=muscleRank(m);
-      const sets=muscleSets(m);
+      const sets=state.muscleSets[m]||0;
 
-      const pct=Math.min((sets/100)*100,100);
+      let letter="E";
 
-      return `
+      if(sets>=100)letter="S";
+      else if(sets>=75)letter="A";
+      else if(sets>=50)letter="B";
+      else if(sets>=25)letter="C";
+      else if(sets>=10)letter="D";
+
+      const pct=Math.min(sets,100);
+
+      return`
+
       <div class="muscle-rank">
 
         <div class="rank-row">
 
           <div>
-            <strong style="font-size:19px">${m}</strong>
-            <div style="color:var(--muted);font-size:13px;margin-top:4px">
+
+            <strong style="font-size:19px">
+              ${m}
+            </strong>
+
+            <div style="color:var(--muted);font-size:13px">
               ${sets} completed sets
             </div>
+
           </div>
 
-          <div class="rank-letter">${letter}</div>
+          <div class="rank-letter">
+            ${letter}
+          </div>
 
         </div>
 
         <div class="small-progress">
-          <div style="width:${pct}%"></div>
-        </div>
 
-        <div style="display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-top:7px">
-          <span>Rank ${letter}</span>
-          <span>${label} sets</span>
+          <div style="width:${pct}%"></div>
+
         </div>
 
       </div>
+
       `;
 
     }).join("")}
 
   </div>
 
-  <div class="section-title">
-    <h2>Training Map</h2>
-  </div>
-
-  <div class="card">
-    ${
-      MUSCLES.some(m=>muscleSets(m)>0)
-      ?
-      muscleMap(
-        MUSCLES.filter(m=>muscleSets(m)>=2),
-        MUSCLES.filter(m=>muscleSets(m)===1)
-      )
-      :
-      `<div class="empty">
-        Complete workouts to build your muscle heatmap.
-      </div>`
-    }
-  </div>
   `;
-}
-
-/* =========================================================
-   FOOD
-========================================================= */
-
-function renderFood(){
-
-  return `
-  <div class="top-row">
-    <div>
-      <div class="brand">Lift<span>Rank</span></div>
-      <div class="subtitle">Fuel your training.</div>
-    </div>
-
-    <button class="secondary-button" onclick="openFoodModal()">
-      + Log Food
-    </button>
-  </div>
-
-  <div class="grid-2">
-
-    <div class="stat">
-      <div class="stat-label">Calories</div>
-      <div class="stat-value orange">${totalCalories()}</div>
-      <div class="subtitle" style="margin:0">today</div>
-    </div>
-
-    <div class="stat">
-      <div class="stat-label">Protein</div>
-      <div class="stat-value green">${totalProtein()}g</div>
-      <div class="subtitle" style="margin:0">today</div>
-    </div>
-
-  </div>
-
-  <div class="section-title">
-    <h2>Today's Food</h2>
-  </div>
-
-  <div class="card">
-
-    ${
-      state.food.length
-      ?
-      state.food.map((food,i)=>`
-        <div class="food-entry">
-
-          <div>
-            <strong>${escapeHTML(food.name)}</strong>
-            <div style="color:var(--muted);font-size:14px;margin-top:4px">
-              ${food.calories} cal • ${food.protein}g protein
-            </div>
-          </div>
-
-          <button class="remove-set"
-                  onclick="removeFood(${i})">
-            ×
-          </button>
-
-        </div>
-      `).join("")
-      :
-      `<div class="empty">
-        Nothing logged yet.
-      </div>`
-    }
-
-  </div>
-
-  <div class="section-title">
-    <h2>Quick Foods</h2>
-  </div>
-
-  <div class="quick-grid">
-
-    <button class="quick" onclick="quickFood('Chicken Breast',280,53)">
-      <div class="quick-icon">🍗</div>
-      <div class="quick-title">Chicken</div>
-      <div class="quick-sub">280 cal • 53g protein</div>
-    </button>
-
-    <button class="quick" onclick="quickFood('Greek Yogurt',150,17)">
-      <div class="quick-icon">🥛</div>
-      <div class="quick-title">Greek Yogurt</div>
-      <div class="quick-sub">150 cal • 17g protein</div>
-    </button>
-
-    <button class="quick" onclick="quickFood('Eggs',140,12)">
-      <div class="quick-icon">🥚</div>
-      <div class="quick-title">Eggs</div>
-      <div class="quick-sub">140 cal • 12g protein</div>
-    </button>
-
-    <button class="quick" onclick="quickFood('Protein Shake',180,30)">
-      <div class="quick-icon">🥤</div>
-      <div class="quick-title">Protein Shake</div>
-      <div class="quick-sub">180 cal • 30g protein</div>
-    </button>
-
-  </div>
-  `;
-}
-
-function quickFood(name,calories,protein){
-
-  state.food.push({
-    name,
-    calories,
-    protein
-  });
-
-  save();
-  render();
-  showToast("Food logged");
-}
-
-function removeFood(index){
-
-  state.food.splice(index,1);
-
-  save();
-  render();
-}
-
-function openFoodModal(){
-
-  document.getElementById("modal").innerHTML=`
-
-    <div class="modal-top">
-      <h2>Log Food</h2>
-      <button class="close" onclick="closeModal()">×</button>
-    </div>
-
-    <div class="form-group">
-      <label>Food</label>
-      <input class="form-control" id="foodName" placeholder="Chicken, rice, protein bar...">
-    </div>
-
-    <div class="form-group">
-      <label>Calories</label>
-      <input class="form-control" id="foodCalories" type="number" inputmode="numeric">
-    </div>
-
-    <div class="form-group">
-      <label>Protein (g)</label>
-      <input class="form-control" id="foodProtein" type="number" inputmode="numeric">
-    </div>
-
-    <button class="primary-button" onclick="saveFoodModal()">
-      Add Food
-    </button>
-
-  `;
-
-  document.getElementById("modalBackdrop").classList.add("show");
-}
-
-function saveFoodModal(){
-
-  const name=document.getElementById("foodName").value.trim();
-
-  if(!name){
-    showToast("Enter a food");
-    return;
-  }
-
-  state.food.push({
-    name,
-    calories:Number(document.getElementById("foodCalories").value)||0,
-    protein:Number(document.getElementById("foodProtein").value)||0
-  });
-
-  save();
-  closeModal();
-  render();
-  showToast("Food logged");
-}
-
-function closeModal(){
-  document.getElementById("modalBackdrop").classList.remove("show");
 }
 
 /* =========================================================
@@ -2347,77 +3700,88 @@ function render(){
 
     switch(state.tab){
 
-      case "workout":
+      case"workout":
         html=renderWorkout();
         break;
 
-      case "exercises":
+      case"exercises":
         html=renderExercises();
         break;
 
-      case "food":
+      case"food":
         html=renderFood();
         break;
 
-      case "ranks":
+      case"ranks":
         html=renderRanks();
         break;
 
       default:
         html=renderHome();
+
     }
 
   }
 
   document.getElementById("app").innerHTML=`
+
     <main class="app">
       ${html}
     </main>
+
   `;
 
-  document.querySelectorAll(".nav-btn").forEach(btn=>{
-    btn.classList.toggle(
-      "active",
-      !currentExercise && btn.dataset.tab===state.tab
-    );
-  });
+  document.querySelectorAll(".nav-btn")
+    .forEach(btn=>{
+
+      btn.classList.toggle(
+        "active",
+        !currentExercise &&
+        btn.dataset.tab===state.tab
+      );
+
+    });
 }
 
 /* =========================================================
-   OPEN EXERCISE
+   MODAL
 ========================================================= */
 
-function openExercise(index){
+function closeModal(){
 
-  currentExercise=EXERCISES[index];
+  document
+    .getElementById("modalBackdrop")
+    .classList.remove("show");
 
-  window.scrollTo({top:0,behavior:"smooth"});
-
-  render();
 }
 
-/* =========================================================
-   NAVIGATION
-========================================================= */
+document
+  .getElementById("modalBackdrop")
+  .addEventListener("click",e=>{
 
-document.querySelectorAll(".nav-btn").forEach(btn=>{
-
-  btn.addEventListener("click",()=>{
-
-    setTab(btn.dataset.tab);
+    if(e.target.id==="modalBackdrop"){
+      closeModal();
+    }
 
   });
 
-});
+/* =========================================================
+   NAV
+========================================================= */
 
-document.getElementById("modalBackdrop").addEventListener("click",e=>{
-  if(e.target.id==="modalBackdrop"){
-    closeModal();
-  }
-});
+document.querySelectorAll(".nav-btn")
+  .forEach(btn=>{
+
+    btn.addEventListener("click",()=>{
+
+      setTab(btn.dataset.tab);
+
+    });
+
+  });
 
 /* =========================================================
-   INITIALIZE
+   START
 ========================================================= */
 
 render();
